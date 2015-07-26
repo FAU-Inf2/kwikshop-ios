@@ -327,6 +327,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Kwik Shop/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -338,6 +339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Kwik Shop/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -387,6 +389,7 @@
 				3A6ABDD31B64F492009FD7BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A6ABDD41B64F492009FD7BE /* Build configuration list for PBXNativeTarget "Kwik ShopTests" */ = {
 			isa = XCConfigurationList;
@@ -395,6 +398,7 @@
 				3A6ABDD61B64F492009FD7BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
