@@ -13,6 +13,8 @@
 		3A6ABDBF1B64F492009FD7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6ABDBE1B64F492009FD7BE /* Assets.xcassets */; };
 		3A6ABDC21B64F492009FD7BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6ABDC01B64F492009FD7BE /* LaunchScreen.storyboard */; };
 		3A6ABDCD1B64F492009FD7BE /* Kwik_ShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6ABDCC1B64F492009FD7BE /* Kwik_ShopTests.swift */; };
+		3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD01B663237000B5396 /* ShoppingList.swift */; };
+		3ADA6FD41B663498000B5396 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD31B663498000B5396 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		3A6ABDC81B64F492009FD7BE /* Kwik ShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kwik ShopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6ABDCC1B64F492009FD7BE /* Kwik_ShopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kwik_ShopTests.swift; sourceTree = "<group>"; };
 		3A6ABDCE1B64F492009FD7BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ADA6FD01B663237000B5396 /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
+		3ADA6FD31B663498000B5396 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 				3A6ABDBE1B64F492009FD7BE /* Assets.xcassets */,
 				3A6ABDC01B64F492009FD7BE /* LaunchScreen.storyboard */,
 				3A6ABDC31B64F492009FD7BE /* Info.plist */,
+				3ADA6FD21B663256000B5396 /* Model */,
 			);
 			path = "Kwik Shop";
 			sourceTree = "<group>";
@@ -94,6 +99,15 @@
 				3A6ABDCE1B64F492009FD7BE /* Info.plist */,
 			);
 			path = "Kwik ShopTests";
+			sourceTree = "<group>";
+		};
+		3ADA6FD21B663256000B5396 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3ADA6FD01B663237000B5396 /* ShoppingList.swift */,
+				3ADA6FD31B663498000B5396 /* Item.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ADA6FD41B663498000B5396 /* Item.swift in Sources */,
 				3A6ABDBA1B64F492009FD7BE /* ViewController.swift in Sources */,
+				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
