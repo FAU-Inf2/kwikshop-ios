@@ -15,6 +15,7 @@
 		3A6ABDCD1B64F492009FD7BE /* Kwik_ShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6ABDCC1B64F492009FD7BE /* Kwik_ShopTests.swift */; };
 		3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD01B663237000B5396 /* ShoppingList.swift */; };
 		3ADA6FD41B663498000B5396 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD31B663498000B5396 /* Item.swift */; };
+		3ADCB0171B68D89B00BA963C /* ItemDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADCB0161B68D89B00BA963C /* ItemDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		3A6ABDCE1B64F492009FD7BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ADA6FD01B663237000B5396 /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		3ADA6FD31B663498000B5396 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		3ADCB0161B68D89B00BA963C /* ItemDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				3A6ABDB71B64F492009FD7BE /* AppDelegate.swift */,
 				3A6ABDB91B64F492009FD7BE /* ViewController.swift */,
+				3ADCB0161B68D89B00BA963C /* ItemDetailsController.swift */,
 				3A6ABDBB1B64F492009FD7BE /* Main.storyboard */,
 				3A6ABDBE1B64F492009FD7BE /* Assets.xcassets */,
 				3A6ABDC01B64F492009FD7BE /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 				3A6ABDBA1B64F492009FD7BE /* ViewController.swift in Sources */,
 				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
+				3ADCB0171B68D89B00BA963C /* ItemDetailsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="1014" y="418"/>
         </scene>
-        <!--View Controller-->
+        <!--Item Details Controller-->
         <scene sceneID="UfP-iA-RdV">
             <objects>
-                <viewController id="XS2-JU-sfC" sceneMemberID="viewController">
+                <viewController id="XS2-JU-sfC" customClass="ItemDetailsController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uup-LB-s0x"/>
                         <viewControllerLayoutGuide type="bottom" id="EKU-nv-Qrc"/>
@@ -144,6 +144,19 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="E3y-LQ-RLe"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="fQ0-3c-R3n"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="amountLabel" destination="fAQ-jh-chq" id="8bT-Pn-de4"/>
+                        <outlet property="amountTextField" destination="lxV-9J-WfT" id="FaM-AC-NMc"/>
+                        <outlet property="brandLabel" destination="7fw-u7-GiG" id="dVB-Zh-8r9"/>
+                        <outlet property="brandTextField" destination="WGT-hs-Tq3" id="aaM-Fn-a72"/>
+                        <outlet property="cancelButton" destination="E3y-LQ-RLe" id="0vA-HX-FOi"/>
+                        <outlet property="commentLabel" destination="URK-dd-hwd" id="OXr-ex-fqb"/>
+                        <outlet property="commentTextField" destination="STt-D3-GV2" id="vZl-9T-SSW"/>
+                        <outlet property="deleteButton" destination="fND-ge-voC" id="ihz-rI-95s"/>
+                        <outlet property="itemNameTextField" destination="Psa-ch-ant" id="BQL-gl-V4o"/>
+                        <outlet property="saveButton" destination="fQ0-3c-R3n" id="Xnq-OC-3nz"/>
+                        <outlet property="unitPicker" destination="M8x-lI-rzB" id="mgt-um-v41"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvs-nc-DCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
