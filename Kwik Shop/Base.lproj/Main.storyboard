@@ -131,6 +131,7 @@
                                     <constraint firstItem="lxV-9J-WfT" firstAttribute="centerY" secondItem="M8x-lI-rzB" secondAttribute="centerY" id="2Re-Gs-qCO"/>
                                     <constraint firstItem="WGT-hs-Tq3" firstAttribute="top" secondItem="M8x-lI-rzB" secondAttribute="bottom" constant="27" id="4H5-jE-dqc"/>
                                     <constraint firstItem="URK-dd-hwd" firstAttribute="top" secondItem="WGT-hs-Tq3" secondAttribute="bottom" constant="8" symbolic="YES" id="4Lb-Sx-UCB"/>
+                                    <constraint firstAttribute="bottom" secondItem="9aT-am-HOh" secondAttribute="bottom" constant="150" id="5AI-jZ-qk6"/>
                                     <constraint firstItem="WGT-hs-Tq3" firstAttribute="top" secondItem="7fw-u7-GiG" secondAttribute="bottom" constant="8" symbolic="YES" id="7Rd-FQ-02R"/>
                                     <constraint firstItem="Psa-ch-ant" firstAttribute="leading" secondItem="TPV-7C-344" secondAttribute="leadingMargin" constant="8" id="83D-Hx-LYA"/>
                                     <constraint firstItem="iPd-rC-1Um" firstAttribute="leading" secondItem="TPV-7C-344" secondAttribute="leading" constant="8" id="8fV-6h-Jjk"/>
@@ -157,6 +158,11 @@
                                     <constraint firstAttribute="bottom" secondItem="STt-D3-GV2" secondAttribute="bottom" constant="184" id="umy-8Z-r5f"/>
                                     <constraint firstItem="9aT-am-HOh" firstAttribute="leading" secondItem="iPd-rC-1Um" secondAttribute="trailing" constant="8" id="vXw-XB-xTR"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="umy-8Z-r5f"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
