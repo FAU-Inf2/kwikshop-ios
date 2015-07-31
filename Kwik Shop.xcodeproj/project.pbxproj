@@ -16,6 +16,8 @@
 		3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD01B663237000B5396 /* ShoppingList.swift */; };
 		3ADA6FD41B663498000B5396 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD31B663498000B5396 /* Item.swift */; };
 		3ADCB0171B68D89B00BA963C /* ItemDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADCB0161B68D89B00BA963C /* ItemDetailsController.swift */; };
+		3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08561B6BF35D0060D2AC /* Group.swift */; };
+		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		3ADA6FD01B663237000B5396 /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		3ADA6FD31B663498000B5396 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3ADCB0161B68D89B00BA963C /* ItemDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsController.swift; sourceTree = "<group>"; };
+		3ADD08561B6BF35D0060D2AC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 			children = (
 				3ADA6FD01B663237000B5396 /* ShoppingList.swift */,
 				3ADA6FD31B663498000B5396 /* Item.swift */,
+				3ADD08561B6BF35D0060D2AC /* Group.swift */,
+				3ADD08581B6BF3C70060D2AC /* Unit.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -216,6 +222,8 @@
 				3ADA6FD41B663498000B5396 /* Item.swift in Sources */,
 				3A6ABDBA1B64F492009FD7BE /* ViewController.swift in Sources */,
 				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
+				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
+				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
 				3ADCB0171B68D89B00BA963C /* ItemDetailsController.swift in Sources */,
 			);
