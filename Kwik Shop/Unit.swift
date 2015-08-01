@@ -13,14 +13,14 @@ class Unit {
     let name : String
     let shortName : String?
     
-    init(id : Int, name : String, shortName : String){
+    init(id : Int, name : String, shortName : String?){
         self.id = id
         self.name = name
         self.shortName = shortName
     }
     
     convenience init (id : Int, name : String) {
-        self.init(id: id, name: name)
+        self.init(id: id, name: name, shortName: nil)
     }
     
 }
