@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Brand"; ObjectID = "7fw-u7-GiG"; */
+"7fw-u7-GiG.text" = "Marke";
+
+/* Class = "UINavigationItem"; title = "Shopping Lists"; ObjectID = "FqU-Ny-ZM3"; */
+"FqU-Ny-ZM3.title" = "Einkaufslisten";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "URK-dd-hwd"; */
+"URK-dd-hwd.text" = "Kommentar";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "fAQ-jh-chq"; */
+"fAQ-jh-chq.text" = "Menge";
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "iPd-rC-1Um"; */
+"iPd-rC-1Um.text" = "Gruppe";
