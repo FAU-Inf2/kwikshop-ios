@@ -184,6 +184,8 @@
                         <outlet property="commentLabel" destination="URK-dd-hwd" id="OXr-ex-fqb"/>
                         <outlet property="commentTextField" destination="STt-D3-GV2" id="vZl-9T-SSW"/>
                         <outlet property="deleteButton" destination="fND-ge-voC" id="ihz-rI-95s"/>
+                        <outlet property="groupLabel" destination="0SQ-lt-wms" id="oiK-HO-N8P"/>
+                        <outlet property="groupPicker" destination="9aT-am-HOh" id="vPG-dy-PfM"/>
                         <outlet property="itemNameTextField" destination="Psa-ch-ant" id="BQL-gl-V4o"/>
                         <outlet property="saveButton" destination="fQ0-3c-R3n" id="Xnq-OC-3nz"/>
                         <outlet property="unitPicker" destination="M8x-lI-rzB" id="mgt-um-v41"/>

@@ -21,6 +21,8 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
+    @IBOutlet weak var groupLabel: NSLayoutConstraint!
+    @IBOutlet weak var groupPicker: UIPickerView!
     
     
     // MARK: UIViewController
