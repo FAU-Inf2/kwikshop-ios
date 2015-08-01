@@ -24,10 +24,16 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var groupLabel: NSLayoutConstraint!
     @IBOutlet weak var groupPicker: UIPickerView!
     
+    var groupDelegate : GroupDelegate?
     
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        if groupDelegate == nil {
+            groupDelegate = GroupDelegate()
+        }
+        groupPicker.delegate = groupDelegate
+        groupPicker.dataSource = groupDelegate
     }
     
     // MARK: Actions
