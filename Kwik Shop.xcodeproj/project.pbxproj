@@ -19,6 +19,7 @@
 		3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08561B6BF35D0060D2AC /* Group.swift */; };
 		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
 		3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */; };
+		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		3ADE96901B6CE8B9007E7DE4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
+		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				3ADA6FD21B663256000B5396 /* Model */,
 				3A790C0D1B6BD1E6003F11A2 /* Launch Screen.xib */,
 				3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */,
+				3AE90B691B6E714600470729 /* UnitDelegate.swift */,
 			);
 			path = "Kwik Shop";
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				3A6ABDBA1B64F492009FD7BE /* ViewController.swift in Sources */,
 				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
+				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
 				3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */,

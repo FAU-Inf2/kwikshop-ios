@@ -25,15 +25,22 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var groupPicker: UIPickerView!
     
     var groupDelegate : GroupDelegate?
+    var unitDelegate : UnitDelegate?
     
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         if groupDelegate == nil {
             groupDelegate = GroupDelegate()
+            groupPicker.delegate = groupDelegate
+            groupPicker.dataSource = groupDelegate
         }
-        groupPicker.delegate = groupDelegate
-        groupPicker.dataSource = groupDelegate
+        if unitDelegate == nil {
+            unitDelegate = UnitDelegate()
+            unitPicker.delegate = unitDelegate
+            unitPicker.dataSource = unitDelegate
+        }
+        
     }
     
     // MARK: Actions
