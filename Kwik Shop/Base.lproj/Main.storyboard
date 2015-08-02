@@ -132,6 +132,7 @@
                                     <constraint firstItem="M8x-lI-rzB" firstAttribute="leading" secondItem="lxV-9J-WfT" secondAttribute="trailing" constant="8" symbolic="YES" id="6Gg-ww-ymk"/>
                                     <constraint firstItem="fAQ-jh-chq" firstAttribute="top" secondItem="Psa-ch-ant" secondAttribute="bottom" constant="52" id="6ZQ-nI-OMe"/>
                                     <constraint firstItem="iPd-rC-1Um" firstAttribute="bottom" secondItem="9aT-am-HOh" secondAttribute="bottom" id="6nL-mQ-VTQ"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="9aT-am-HOh" secondAttribute="trailing" constant="8" id="7mL-gx-GXt"/>
                                     <constraint firstItem="Psa-ch-ant" firstAttribute="leading" secondItem="fAQ-jh-chq" secondAttribute="leading" id="8Cr-ND-Fft"/>
                                     <constraint firstItem="iPd-rC-1Um" firstAttribute="leading" secondItem="TPV-7C-344" secondAttribute="leading" constant="8" id="8fV-6h-Jjk"/>
                                     <constraint firstItem="9aT-am-HOh" firstAttribute="top" secondItem="iPd-rC-1Um" secondAttribute="top" id="BxD-e9-FUt"/>
@@ -146,6 +147,7 @@
                                     <constraint firstItem="lxV-9J-WfT" firstAttribute="leading" secondItem="fAQ-jh-chq" secondAttribute="trailing" constant="8" symbolic="YES" id="OFV-fe-X3D"/>
                                     <constraint firstItem="iPd-rC-1Um" firstAttribute="leading" secondItem="STt-D3-GV2" secondAttribute="leading" id="Pqw-Id-qa6"/>
                                     <constraint firstItem="STt-D3-GV2" firstAttribute="top" secondItem="URK-dd-hwd" secondAttribute="bottom" constant="8" symbolic="YES" id="R1n-8M-96m"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="9aT-am-HOh" secondAttribute="bottom" constant="100" id="Rwe-ag-fqt"/>
                                     <constraint firstAttribute="bottom" secondItem="iPd-rC-1Um" secondAttribute="bottom" constant="9" id="Ta7-sk-Q8N"/>
                                     <constraint firstAttribute="trailing" secondItem="M8x-lI-rzB" secondAttribute="trailing" constant="89" id="cBD-vb-VlQ"/>
                                     <constraint firstItem="7fw-u7-GiG" firstAttribute="leading" secondItem="fAQ-jh-chq" secondAttribute="leading" id="duu-6B-q0o"/>
@@ -159,6 +161,7 @@
                                     <mask key="constraints">
                                         <exclude reference="cBD-vb-VlQ"/>
                                         <exclude reference="8fV-6h-Jjk"/>
+                                        <exclude reference="Ta7-sk-Q8N"/>
                                         <exclude reference="2yA-dJ-faq"/>
                                     </mask>
                                 </variation>
