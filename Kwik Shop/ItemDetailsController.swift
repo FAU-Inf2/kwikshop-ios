@@ -21,8 +21,9 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
-    @IBOutlet weak var groupLabel: NSLayoutConstraint!
+    @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var groupPicker: UIPickerView!
+    @IBOutlet weak var navigationBar: UINavigationItem!
     
     var groupDelegate : GroupDelegate?
     var unitDelegate : UnitDelegate?
@@ -40,7 +41,10 @@ class ItemDetailsController : UIViewController {
             unitPicker.delegate = unitDelegate
             unitPicker.dataSource = unitDelegate
         }
-        
+        //navigationController?.navigationBar.barTintColor = UIColor.greenColor()
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0x00/255, green: 0x89/255, blue: 0x7b/255, alpha: 1)
+        cancelButton.tintColor = UIColor.whiteColor()
+        saveButton.tintColor = UIColor.whiteColor()
     }
     
     // MARK: Actions
