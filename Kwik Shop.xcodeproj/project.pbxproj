@@ -19,6 +19,7 @@
 		3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08561B6BF35D0060D2AC /* Group.swift */; };
 		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
 		3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */; };
+		3AE594DB1B6F9E34007A52DA /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594DA1B6F9E34007A52DA /* Colors.plist */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		3ADE96901B6CE8B9007E7DE4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
+		3AE594DA1B6F9E34007A52DA /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				3A790C0D1B6BD1E6003F11A2 /* Launch Screen.xib */,
 				3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */,
 				3AE90B691B6E714600470729 /* UnitDelegate.swift */,
+				3AE594DA1B6F9E34007A52DA /* Colors.plist */,
 			);
 			path = "Kwik Shop";
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE594DB1B6F9E34007A52DA /* Colors.plist in Resources */,
 				3A6ABDBF1B64F492009FD7BE /* Assets.xcassets in Resources */,
 				3A6ABDBD1B64F492009FD7BE /* Main.storyboard in Resources */,
 				3A790C0E1B6BD1E6003F11A2 /* Launch Screen.xib in Resources */,
