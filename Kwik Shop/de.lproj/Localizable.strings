@@ -6,7 +6,14 @@
   Copyright (c) 2015 FAU-Inf2. All rights reserved.
 */
 
-Hello="Hallo";
-Hi="Hi";
-Huhu="Huhu";
-Huhuh="Huhuh";
+//Pseudo-Groups
+HELLO="Hallo";
+HI="Hi";
+HUHU="Huhu";
+HUHUH="Huhuh";
+
+//Pseudo-Units
+RED="Rot";
+GREEN="Grün";
+BLUE="Blau";
+YELLOW="Gelb";

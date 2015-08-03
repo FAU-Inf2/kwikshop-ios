@@ -14,7 +14,7 @@ class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     var data : [String]
     
     override init() {
-        data = ["Hello", "Hi", "Huhu", "Huhuh"]
+        data = ["HELLO", "HI", "HUHU", "HUHUH"]
         super.init()
     }
     
@@ -27,6 +27,7 @@ class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return NSLocalizedString(data[row], tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
+        //return NSLocalizedString(data[row], tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
+        return data[row].localized
     }
 }

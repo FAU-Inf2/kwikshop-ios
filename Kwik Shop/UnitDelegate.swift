@@ -11,7 +11,7 @@ import UIKit
 
 class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var data = ["Red", "Green", "Blue", "Yellow"]
+    var data = ["RED", "GREEN", "BLUE", "YELLOW"]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -22,6 +22,6 @@ class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return data[row]
+        return data[row].localized
     }
 }

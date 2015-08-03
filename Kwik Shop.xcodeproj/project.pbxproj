@@ -22,6 +22,7 @@
 		3AE594DB1B6F9E34007A52DA /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594DA1B6F9E34007A52DA /* Colors.plist */; };
 		3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */; };
 		3AE594E21B6FDAA9007A52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594E41B6FDAA9007A52DA /* Localizable.strings */; };
+		3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		3AE594E31B6FDAA9007A52DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE594E51B6FDAAE007A52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLocalizationExtension.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */,
+				3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				3A6ABDBA1B64F492009FD7BE /* ViewController.swift in Sources */,
 				3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */,
 				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
+				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
 				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
