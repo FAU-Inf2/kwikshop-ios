@@ -6,11 +6,23 @@
   Copyright (c) 2015 FAU-Inf2. All rights reserved.
 */
 
-//Pseudo-Groups
-HELLO="Hallo";
-HI="Hi";
-HUHU="Huhu";
-HUHUH="Huhuh";
+//Groups
+group_Other="Sonstiges";
+group_babyFoods="Babynahrung";
+group_beverages="Getränke";
+group_breakPastries="Backwaren";
+group_dairy="Milchprodukte";
+group_frozenAndConvenience="TK-Ware";
+group_fruitsAndVegetables="Früchte & Gemüse";
+group_healthAndHygiene="Drogerie";
+group_household="Haushalt";
+group_ingredientsAndSpices="Gewürze";
+group_meatAndFish="Fleisch & Fisch";
+group_pasta="Nudeln & Reis";
+group_petSupplies="Haustiere";
+group_sweetsAndSnacks="Süßwaren & Snacks";
+group_tobacco="Tabak";
+group_CoffeeAndTea="Kaffee und Tee";
 
 //Pseudo-Units
 RED="Rot";

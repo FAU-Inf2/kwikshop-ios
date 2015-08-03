@@ -14,7 +14,7 @@ class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     var data : [String]
     
     override init() {
-        data = ["HELLO", "HI", "HUHU", "HUHUH"]
+        data = ["group_Other", "group_babyFoods", "group_beverages", "group_breakPastries", "group_dairy", "group_frozenAndConvenience", "group_fruitsAndVegetables", "group_healthAndHygiene", "group_household", "group_ingredientsAndSpices", "group_meatAndFish", "group_pasta", "group_petSupplies", "group_sweetsAndSnacks", "group_tobacco", "group_CoffeeAndTea"]
         super.init()
     }
     
