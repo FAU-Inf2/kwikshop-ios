@@ -11,7 +11,12 @@ import UIKit
 
 class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var data = ["Hello", "Hi", "Huhu", "Huhuh"]
+    var data : [String]
+    
+    override init() {
+        data = ["Hello", "Hi", "Huhu", "Huhuh"]
+        super.init()
+    }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -22,6 +27,6 @@ class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return data[row]
+        return NSLocalizedString(data[row], tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
     }
 }
