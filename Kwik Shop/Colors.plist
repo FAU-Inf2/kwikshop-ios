@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>primary_Color</key>
-	<string>#00897B</string>
+	<array>
+		<integer>0</integer>
+		<integer>137</integer>
+		<integer>123</integer>
+	</array>
 </dict>
 </plist>
