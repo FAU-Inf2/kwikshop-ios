@@ -41,15 +41,7 @@ class ItemDetailsController : UIViewController {
             unitPicker.delegate = unitDelegate
             unitPicker.dataSource = unitDelegate
         }
-        var myDict: NSDictionary?
-        if let path = NSBundle.mainBundle().pathForResource("Colors", ofType: "plist") {
-            myDict = NSDictionary(contentsOfFile: path)
-        }
-        if let dict = myDict, rgb = dict["primary_Color"] as? [Int] {
-            let red = CGFloat(rgb[0])/255
-            let green = CGFloat(rgb[1])/255
-            let blue = CGFloat(rgb[2])/255
-            let kwikShopGreen = UIColor(red: red, green: green, blue: blue, alpha: 1)
+        if let kwikShopGreen = UIColor(resourceName: "primary_Color") {
             navigationController?.navigationBar.barTintColor = kwikShopGreen
             cancelButton.tintColor = UIColor.whiteColor()
             saveButton.tintColor = UIColor.whiteColor()

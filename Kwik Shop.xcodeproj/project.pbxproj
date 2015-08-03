@@ -20,6 +20,7 @@
 		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
 		3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */; };
 		3AE594DB1B6F9E34007A52DA /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594DA1B6F9E34007A52DA /* Colors.plist */; };
+		3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		3ADE96901B6CE8B9007E7DE4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
 		3AE594DA1B6F9E34007A52DA /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
+		3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				3A6ABDB71B64F492009FD7BE /* AppDelegate.swift */,
 				3A6ABDB91B64F492009FD7BE /* ViewController.swift */,
 				3ADCB0161B68D89B00BA963C /* ItemDetailsController.swift */,
+				3AE594DF1B6FAE58007A52DA /* Extensions */,
 				3A6ABDBB1B64F492009FD7BE /* Main.storyboard */,
 				3A6ABDBE1B64F492009FD7BE /* Assets.xcassets */,
 				3A6ABDC31B64F492009FD7BE /* Info.plist */,
@@ -135,6 +138,14 @@
 				3AE594DA1B6F9E34007A52DA /* Colors.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		3AE594DF1B6FAE58007A52DA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 			files = (
 				3ADA6FD41B663498000B5396 /* Item.swift in Sources */,
 				3A6ABDBA1B64F492009FD7BE /* ViewController.swift in Sources */,
+				3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */,
 				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
 				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
