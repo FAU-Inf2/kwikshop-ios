@@ -24,8 +24,19 @@ group_sweetsAndSnacks="Süßwaren & Snacks";
 group_tobacco="Tabak";
 group_CoffeeAndTea="Kaffee und Tee";
 
-//Pseudo-Units
-RED="Rot";
-GREEN="Grün";
-BLUE="Blau";
-YELLOW="Gelb";
+//Units
+unit_bag="Säcke";
+unit_bottle="Flaschen";
+unit_box="Kisten";
+unit_dozen="Dutzend";
+unit_gram="Gramm";
+unit_gram_short="g";
+unit_kilogram="Kilogramm";
+unit_kilogram_short="kg";
+unit_litre="Liter";
+unit_litre_short="l";
+unit_millilitre="Milliliter";
+unit_millilitre_short="ml";
+unit_pack="Packungen";
+unit_piece="Stück";
+unit_piece_short="St.";
