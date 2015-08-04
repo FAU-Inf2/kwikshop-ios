@@ -192,7 +192,6 @@
                         <outlet property="groupLabel" destination="iPd-rC-1Um" id="3gz-hU-bhb"/>
                         <outlet property="groupPicker" destination="9aT-am-HOh" id="vPG-dy-PfM"/>
                         <outlet property="itemNameTextField" destination="Psa-ch-ant" id="BQL-gl-V4o"/>
-                        <outlet property="navigationBar" destination="O1D-7e-Lak" id="JN2-gx-Ab3"/>
                         <outlet property="saveButton" destination="fQ0-3c-R3n" id="Xnq-OC-3nz"/>
                         <outlet property="toolBar" destination="4vm-Np-9NP" id="zur-Zf-Yfj"/>
                         <outlet property="unitPicker" destination="M8x-lI-rzB" id="mgt-um-v41"/>

@@ -23,8 +23,8 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var groupPicker: UIPickerView!
-    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var toolBar: UIToolbar!
+    
     
     var groupDelegate : GroupDelegate?
     var unitDelegate : UnitDelegate?
@@ -42,11 +42,12 @@ class ItemDetailsController : UIViewController {
             unitPicker.delegate = unitDelegate
             unitPicker.dataSource = unitDelegate
         }
-        if let kwikShopGreen = UIColor(resourceName: "primary_color") {
-            navigationController?.navigationBar.barTintColor = kwikShopGreen
-            cancelButton.tintColor = UIColor.whiteColor()
-            saveButton.tintColor = UIColor.whiteColor()
+        
+        if let navigationBar = navigationController?.navigationBar, let kwikShopGreen = UIColor(resourceName: "primary_color") {
+            navigationBar.barTintColor = kwikShopGreen
+            navigationBar.tintColor = UIColor.whiteColor()
         }
+        
     }
     
     // MARK: Actions
