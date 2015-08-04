@@ -7,7 +7,7 @@
 */
 
 //Groups
-group_Other="Sonstiges";
+group_other="Sonstiges";
 group_babyFoods="Babynahrung";
 group_beverages="Getränke";
 group_breakPastries="Backwaren";
@@ -22,7 +22,7 @@ group_pasta="Nudeln & Reis";
 group_petSupplies="Haustiere";
 group_sweetsAndSnacks="Süßwaren & Snacks";
 group_tobacco="Tabak";
-group_CoffeeAndTea="Kaffee und Tee";
+group_coffeeAndTea="Kaffee und Tee";
 
 //Units
 unit_bag="Säcke";
