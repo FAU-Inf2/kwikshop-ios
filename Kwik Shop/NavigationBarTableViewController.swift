@@ -12,10 +12,10 @@ class NavigationBarTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let navigationBar = navigationController?.navigationBar, let kwikShopGreen = UIColor(resourceName: "primary_color") {
             navigationBar.barTintColor = kwikShopGreen
             navigationBar.tintColor = UIColor.whiteColor()
         }
+        
     }
 }

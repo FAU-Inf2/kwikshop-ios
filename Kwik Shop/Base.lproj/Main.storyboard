@@ -204,7 +204,7 @@
         <!--Title-->
         <scene sceneID="D0n-CH-pHT">
             <objects>
-                <tableViewController id="bLe-19-zXn" sceneMemberID="viewController">
+                <tableViewController id="bLe-19-zXn" customClass="ShoppingListController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="b4K-ff-ebc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
