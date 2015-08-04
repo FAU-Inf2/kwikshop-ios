@@ -60,10 +60,10 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TPV-7C-344">
-                                <rect key="frame" x="0.0" y="64" width="606" height="492"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Psa-ch-ant">
-                                        <rect key="frame" x="16" y="17" width="574" height="30"/>
+                                        <rect key="frame" x="16" y="17" width="568" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -83,7 +83,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGT-hs-Tq3">
-                                        <rect key="frame" x="16" y="217" width="574" height="30"/>
+                                        <rect key="frame" x="16" y="217" width="568" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -102,7 +102,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="STt-D3-GV2">
-                                        <rect key="frame" x="16" y="284" width="574" height="29"/>
+                                        <rect key="frame" x="16" y="284" width="568" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="aRy-gS-9l6"/>
                                         </constraints>
@@ -116,10 +116,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8x-lI-rzB">
-                                        <rect key="frame" x="192" y="28" width="398" height="162"/>
+                                        <rect key="frame" x="192" y="28" width="392" height="162"/>
                                     </pickerView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aT-am-HOh">
-                                        <rect key="frame" x="80" y="321" width="510" height="162"/>
+                                        <rect key="frame" x="80" y="321" width="504" height="162"/>
                                     </pickerView>
                                 </subviews>
                                 <constraints>
@@ -171,7 +171,7 @@
                             <constraint firstItem="TPV-7C-344" firstAttribute="top" secondItem="Uup-LB-s0x" secondAttribute="bottom" id="9qP-kI-cAl"/>
                             <constraint firstItem="TPV-7C-344" firstAttribute="leading" secondItem="4vm-Np-9NP" secondAttribute="leading" id="IQ9-gN-iG7"/>
                             <constraint firstItem="4vm-Np-9NP" firstAttribute="top" secondItem="TPV-7C-344" secondAttribute="bottom" id="ZDE-BA-xrE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TPV-7C-344" secondAttribute="trailing" constant="-22" id="oKL-u5-A06"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TPV-7C-344" secondAttribute="trailing" constant="-16" id="oKL-u5-A06"/>
                             <constraint firstItem="4vm-Np-9NP" firstAttribute="leading" secondItem="Nbs-ij-zmv" secondAttribute="leading" id="q64-Iv-v7F"/>
                             <constraint firstItem="4vm-Np-9NP" firstAttribute="bottom" secondItem="EKU-nv-Qrc" secondAttribute="top" id="qPO-8C-V7O"/>
                         </constraints>
