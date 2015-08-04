@@ -178,7 +178,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="O1D-7e-Lak">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="E3y-LQ-RLe"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fQ0-3c-R3n"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fQ0-3c-R3n"/>
                     </navigationItem>
                     <connections>
                         <outlet property="amountLabel" destination="fAQ-jh-chq" id="8bT-Pn-de4"/>
