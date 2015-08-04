@@ -24,6 +24,7 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var groupPicker: UIPickerView!
     @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     var groupDelegate : GroupDelegate?
     var unitDelegate : UnitDelegate?
