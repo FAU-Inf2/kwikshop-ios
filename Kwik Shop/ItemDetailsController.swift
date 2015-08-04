@@ -42,7 +42,7 @@ class ItemDetailsController : UIViewController {
             unitPicker.delegate = unitDelegate
             unitPicker.dataSource = unitDelegate
         }
-        if let kwikShopGreen = UIColor(resourceName: "primary_Color") {
+        if let kwikShopGreen = UIColor(resourceName: "primary_color") {
             navigationController?.navigationBar.barTintColor = kwikShopGreen
             cancelButton.tintColor = UIColor.whiteColor()
             saveButton.tintColor = UIColor.whiteColor()
