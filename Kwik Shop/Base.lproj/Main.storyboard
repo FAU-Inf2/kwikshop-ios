@@ -201,7 +201,7 @@
             </objects>
             <point key="canvasLocation" x="1014" y="1143"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Title-->
         <scene sceneID="D0n-CH-pHT">
             <objects>
                 <tableViewController id="bLe-19-zXn" sceneMemberID="viewController">
@@ -222,7 +222,9 @@
                             <outlet property="delegate" destination="bLe-19-zXn" id="Xxa-ZH-MT8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hvi-jB-Mur"/>
+                    <navigationItem key="navigationItem" title="Title" id="XYv-Sc-jtv">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JX2-hy-l42"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVe-JN-jq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

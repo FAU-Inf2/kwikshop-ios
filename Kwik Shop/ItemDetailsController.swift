@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailsController : UIViewController {
+class ItemDetailsController : NavigationBarController {
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var amountLabel: UILabel!    
@@ -41,13 +41,7 @@ class ItemDetailsController : UIViewController {
             unitDelegate = UnitDelegate()
             unitPicker.delegate = unitDelegate
             unitPicker.dataSource = unitDelegate
-        }
-        
-        if let navigationBar = navigationController?.navigationBar, let kwikShopGreen = UIColor(resourceName: "primary_color") {
-            navigationBar.barTintColor = kwikShopGreen
-            navigationBar.tintColor = UIColor.whiteColor()
-        }
-        
+        }        
     }
     
     // MARK: Actions
