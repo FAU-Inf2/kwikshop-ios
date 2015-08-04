@@ -9,6 +9,18 @@
 import Foundation
 
 class Unit {
+    
+    static let BAG = Unit(id: 0, name: "unit_bag")
+    static let BOTTLE = Unit(id: 1, name: "unit_bottle")
+    static let BOX = Unit(id: 2, name: "unit_box")
+    static let DOZEN = Unit(id: 3, name: "unit_dozen")
+    static let GRAM = Unit(id: 4, name: "unit_gram", shortName: "unit_gram_short")
+    static let KILOGRAM = Unit(id: 5, name: "unit_kilogram", shortName: "unit_kilogram_short")
+    static let LITRE = Unit(id: 6, name: "unit_litre", shortName: "unit_litre_short")
+    static let MILLILITRE = Unit(id: 7, name: "unit_millilitre", shortName: "unit_millilitre_short")
+    static let PACK = Unit(id: 8, name: "unit_pack")
+    static let PIECE = Unit(id: 9, name: "unit_piece", shortName: "unit_piece_short")
+    
     let id : Int
     let name : String
     let shortName : String?
