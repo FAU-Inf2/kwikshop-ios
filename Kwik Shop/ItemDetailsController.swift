@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailsController : NavigationBarController {
+class ItemDetailsController : UIViewController {
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var amountLabel: UILabel!    

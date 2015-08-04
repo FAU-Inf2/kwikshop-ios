@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListController : NavigationBarTableViewController {
+class ShoppingListController : UITableViewController {
     
     
 }

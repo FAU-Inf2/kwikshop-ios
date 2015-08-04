@@ -251,7 +251,7 @@
         <!--Navigation Controller-->
         <scene sceneID="KjJ-kz-YTr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AOq-tl-cPV" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AOq-tl-cPV" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rmz-97-omh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -269,7 +269,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SFA-Ke-lQ0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ILR-rb-U5v" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ILR-rb-U5v" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aEK-sU-07j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
