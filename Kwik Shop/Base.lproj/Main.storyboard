@@ -153,7 +153,7 @@
                                     <constraint firstItem="iPd-rC-1Um" firstAttribute="leading" secondItem="STt-D3-GV2" secondAttribute="leading" id="Pqw-Id-qa6"/>
                                     <constraint firstItem="STt-D3-GV2" firstAttribute="top" secondItem="URK-dd-hwd" secondAttribute="bottom" constant="8" symbolic="YES" id="R1n-8M-96m"/>
                                     <constraint firstItem="9aT-am-HOh" firstAttribute="centerY" secondItem="iPd-rC-1Um" secondAttribute="centerY" id="TgX-mx-r7l"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="9aT-am-HOh" secondAttribute="bottom" constant="-16" id="Xuc-ky-51N"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="9aT-am-HOh" secondAttribute="bottom" constant="-152" id="Xuc-ky-51N"/>
                                     <constraint firstItem="9aT-am-HOh" firstAttribute="leading" secondItem="iPd-rC-1Um" secondAttribute="trailing" constant="16" id="ZWK-qg-kLX"/>
                                     <constraint firstItem="PRf-98-Brc" firstAttribute="centerY" secondItem="gfQ-9p-b7A" secondAttribute="centerY" id="Zbh-wB-noR"/>
                                     <constraint firstAttribute="trailing" secondItem="M8x-lI-rzB" secondAttribute="trailing" constant="89" id="cBD-vb-VlQ"/>
@@ -173,6 +173,7 @@
                                     <mask key="constraints">
                                         <exclude reference="cBD-vb-VlQ"/>
                                         <exclude reference="2yA-dJ-faq"/>
+                                        <exclude reference="Xuc-ky-51N"/>
                                         <exclude reference="8fV-6h-Jjk"/>
                                     </mask>
                                 </variation>
