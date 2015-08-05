@@ -54,7 +54,6 @@
 		3ADCB0161B68D89B00BA963C /* ItemDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsController.swift; sourceTree = "<group>"; };
 		3ADD08561B6BF35D0060D2AC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
-		3ADE96901B6CE8B9007E7DE4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
 		3AE10D841B711A1C00E644D1 /* ShoppingListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListController.swift; sourceTree = "<group>"; };
 		3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		3AE594E51B6FDAAE007A52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLocalizationExtension.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
+		3AEB66511B72306900F5A89F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +232,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 3A6ABDAB1B64F492009FD7BE;
 			productRefGroup = 3A6ABDB51B64F492009FD7BE /* Products */;
@@ -310,7 +311,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3A6ABDBC1B64F492009FD7BE /* Base */,
-				3ADE96901B6CE8B9007E7DE4 /* de */,
+				3AEB66511B72306900F5A89F /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

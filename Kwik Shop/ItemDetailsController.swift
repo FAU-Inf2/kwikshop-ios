@@ -14,6 +14,8 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var amountLabel: UILabel!    
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var unitPicker: UIPickerView!
+    @IBOutlet weak var highlightLabel: UILabel!
+    @IBOutlet weak var highlightSwitch: UISwitch!
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var brandTextField: UITextField!
     @IBOutlet weak var commentLabel: UILabel!
@@ -41,7 +43,12 @@ class ItemDetailsController : UIViewController {
             unitDelegate = UnitDelegate()
             unitPicker.delegate = unitDelegate
             unitPicker.dataSource = unitDelegate
-        }        
+        }
+        
+        if let primaryColor = UIColor(resourceName: "primary_color") {
+            highlightSwitch.onTintColor = primaryColor
+        }
+        
     }
     
     // MARK: Actions
