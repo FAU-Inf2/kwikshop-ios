@@ -26,6 +26,8 @@ class ItemDetailsController : UIViewController {
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var groupPicker: UIPickerView!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewToolbarConstraint: NSLayoutConstraint!
     
     
     var groupDelegate : GroupDelegate?
@@ -49,6 +51,14 @@ class ItemDetailsController : UIViewController {
             highlightSwitch.onTintColor = primaryColor
         }
         
+        self.hideToolbar(false)
+    }
+    
+    // needs to be called at least once, otherwise the layout is broken
+    private func hideToolbar(hide : Bool) {
+        toolBar.hidden=hide
+        scrollViewBottomConstraint.active = hide
+        scrollViewToolbarConstraint.active = !hide
     }
     
     // MARK: Actions
