@@ -19,8 +19,13 @@ class ShoppingListController : UIViewController, UITableViewDataSource, UITableV
     
     func loadSampleData() {
         var item1 = Item(id: 0, order: 0, name: "asdf")
+        item1.comment = "bla"
         var item2 = Item(id: 1, order: 1, name: "qwerty")
+        item2.brand = "blub"
         var item3 = Item(id: 2, order: 2, name: "qwertz")
+        item3.brand = "a"
+        item3.comment = "b"
+        
         
         items += [item1, item2, item3]
     }
@@ -33,6 +38,9 @@ class ShoppingListController : UIViewController, UITableViewDataSource, UITableV
         shoppingListTableView.dataSource = self
         
         loadSampleData()
+        
+        shoppingListTableView.estimatedRowHeight = 44.0
+        shoppingListTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     
@@ -57,6 +65,21 @@ class ShoppingListController : UIViewController, UITableViewDataSource, UITableV
         let item = items[indexPath.row]
         
         cell.nameLabel.text = item.name
+        
+        if let brand = item.brand {
+            cell.brandLabel.text = brand
+        } else {
+            //cell.brandLabel.hidden = true
+            cell.brandLabel.removeFromSuperview()
+        }
+        
+        if let comment = item.comment {
+            cell.commentLabel.text = comment
+        } else {
+            cell.commentLabel.hidden = true
+            cell.commentLabel.removeFromSuperview()
+        }
+        
         return cell
     }
 
