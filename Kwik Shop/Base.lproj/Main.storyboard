@@ -244,7 +244,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-WU-Hsc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-WU-Hsc">
                                 <rect key="frame" x="24" y="110" width="552" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -255,15 +255,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg7-W0-qS6">
-                                                    <rect key="frame" x="8" y="40" width="536" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="8" y="40" width="536" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erZ-6n-Tbd">
-                                                    <rect key="frame" x="8" y="69" width="536" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="8" y="61" width="536" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COL-iC-W0q">
@@ -285,7 +285,7 @@
                                                 <constraint firstItem="COL-iC-W0q" firstAttribute="top" secondItem="tRT-M5-G6u" secondAttribute="topMargin" constant="3" id="fhv-0c-MIo"/>
                                                 <constraint firstItem="COL-iC-W0q" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="g3q-Ra-OqF"/>
                                                 <constraint firstItem="COL-iC-W0q" firstAttribute="leading" secondItem="tRT-M5-G6u" secondAttribute="leadingMargin" id="lJQ-sJ-paW"/>
-                                                <constraint firstItem="erZ-6n-Tbd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bg7-W0-qS6" secondAttribute="bottom" constant="8" id="px8-sk-AlO"/>
+                                                <constraint firstItem="erZ-6n-Tbd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bg7-W0-qS6" secondAttribute="bottom" constant="4" id="px8-sk-AlO"/>
                                                 <constraint firstItem="bg7-W0-qS6" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="xdc-jd-B1P"/>
                                             </constraints>
                                         </tableViewCellContentView>
