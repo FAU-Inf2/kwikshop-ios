@@ -61,6 +61,16 @@ class ListOfShoppingListsController: UIViewController, UITableViewDataSource, UI
         
         cell.nameLabel.text = shoppingList.name
         
+        let numberOfItems = shoppingList.items.count
+        var numberOfItemsText = "\(numberOfItems) "
+        if (numberOfItems == 1) {
+            numberOfItemsText += "Item"
+        } else {
+            numberOfItemsText += "Items"
+        }
+        
+        cell.numberOfItemsLabel.text = numberOfItemsText
+        
         return cell
     }
 

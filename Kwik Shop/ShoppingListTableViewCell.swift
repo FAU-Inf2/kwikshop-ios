@@ -12,6 +12,7 @@ class ShoppingListTableViewCell: UITableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var numberOfItemsLabel: UILabel!
     
 
     override func awakeFromNib() {
