@@ -28,6 +28,7 @@
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 		3AF5966B1B74E61600B7D05F /* ListOfShoppingListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966A1B74E61600B7D05F /* ListOfShoppingListsController.swift */; };
 		3AF5966F1B74E97F00B7D05F /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966E1B74E97F00B7D05F /* ShoppingListTableViewCell.swift */; };
+		3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF596701B7525FC00B7D05F /* NSDateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		3AEB66511B72306900F5A89F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3AF5966A1B74E61600B7D05F /* ListOfShoppingListsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfShoppingListsController.swift; sourceTree = "<group>"; };
 		3AF5966E1B74E97F00B7D05F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		3AF596701B7525FC00B7D05F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */,
 				3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */,
+				3AF596701B7525FC00B7D05F /* NSDateExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
 				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
 				3AF5966B1B74E61600B7D05F /* ListOfShoppingListsController.swift in Sources */,
+				3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */,
 				3AE10D8C1B7122BE00E644D1 /* NavigationController.swift in Sources */,
 				3AE10D851B711A1C00E644D1 /* ShoppingListController.swift in Sources */,
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
