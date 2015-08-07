@@ -34,3 +34,4 @@ Carthage/Build
 
 report.xml
 .DS_Store
+*.app.dSYM.zip
