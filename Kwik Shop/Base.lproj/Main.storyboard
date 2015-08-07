@@ -17,17 +17,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oke-tL-UiJ">
-                                <rect key="frame" x="24" y="72" width="552" height="520"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nAg-4f-OGd">
+                                <rect key="frame" x="24" y="8" width="552" height="584"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShoppingListTableViewCell" id="c03-XI-2yt" customClass="ShoppingListTableViewCell" customModule="Kwik_Shop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="552" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c03-XI-2yt" id="FVj-9g-UJh">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QY-MN-QjS">
+                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7QY-MN-QjS" firstAttribute="leading" secondItem="FVj-9g-UJh" secondAttribute="leadingMargin" id="hpe-b0-RXi"/>
+                                                <constraint firstAttribute="centerY" secondItem="7QY-MN-QjS" secondAttribute="centerY" id="yAG-VE-Bfw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="7QY-MN-QjS" id="sxR-oo-H9w"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oke-tL-UiJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="0RL-8l-fAt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oke-tL-UiJ" secondAttribute="trailing" constant="8" id="IcT-i1-fGg"/>
-                            <constraint firstItem="oke-tL-UiJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="KQ9-lS-PSh"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oke-tL-UiJ" secondAttribute="bottom" constant="8" id="uEn-dx-qdh"/>
+                            <constraint firstItem="nAg-4f-OGd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="8" id="3co-yZ-Dmm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nAg-4f-OGd" secondAttribute="trailing" constant="8" id="4hQ-rl-5M4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nAg-4f-OGd" secondAttribute="bottom" constant="8" id="Jw9-qO-kzJ"/>
+                            <constraint firstItem="nAg-4f-OGd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="mu6-af-nUS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shopping Lists" id="FqU-Ny-ZM3">
@@ -39,7 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="B6a-SB-r43" id="p08-6R-gJo"/>
-                        <outlet property="shoppingListsTableView" destination="oke-tL-UiJ" id="FqQ-G8-RtL"/>
+                        <outlet property="shoppingListsTableView" destination="nAg-4f-OGd" id="rJ8-Wx-ZsT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

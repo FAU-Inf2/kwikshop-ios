@@ -18,14 +18,14 @@ class ShoppingListController : UIViewController, UITableViewDataSource, UITableV
     var items = [Item]()
     
     func loadSampleData() {
-        var item1 = Item(id: 0, order: 0, name: "asdf")
+        let item1 = Item(id: 0, order: 0, name: "asdf")
         item1.comment = "bla"
-        var item2 = Item(id: 1, order: 1, name: "qwerty")
+        let item2 = Item(id: 1, order: 1, name: "qwerty")
         item2.brand = "blub"
-        var item3 = Item(id: 2, order: 2, name: "qwertz")
+        let item3 = Item(id: 2, order: 2, name: "qwertz")
         item3.brand = "a"
         item3.comment = "b"
-        var item4 = Item(id: 3, order: 3, name: "item")
+        let item4 = Item(id: 3, order: 3, name: "item")
         
         items += [item1, item2, item3, item4]
     }
@@ -46,22 +46,22 @@ class ShoppingListController : UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Table view data source
     
-    /*override*/ func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
     
-    /*override*/ func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return items.count
     }
     
     
-    /*override*/ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "ItemTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) /*as! UITableViewCell*/ as! ItemTableViewCell
-        //cell.restoreLabels()
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
+        
         
         let item = items[indexPath.row]
         
