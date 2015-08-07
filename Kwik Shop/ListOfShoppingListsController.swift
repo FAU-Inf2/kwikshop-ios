@@ -71,6 +71,14 @@ class ListOfShoppingListsController: UIViewController, UITableViewDataSource, UI
         
         cell.numberOfItemsLabel.text = numberOfItemsText
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .MediumStyle
+        dateFormatter.doesRelativeDateFormatting = true
+        let date = dateFormatter.stringFromDate(shoppingList.lastModifiedDate)
+        
+        cell.lastModifiedLabel.text = date
+        
+        
         return cell
     }
 
