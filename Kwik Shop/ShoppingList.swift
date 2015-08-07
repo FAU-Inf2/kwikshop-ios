@@ -13,11 +13,13 @@ class ShoppingList {
     let name : String
     var sortType : Int
     var items : [Item]
+    var lastModifiedDate : NSDate
     
     init (id : Int, name : String, sortType : Int) {
         self.id = id;
         self.name = name;
         self.sortType = sortType
         self.items = [Item]()
+        self.lastModifiedDate = NSDate()
     }
 }
