@@ -26,7 +26,7 @@ class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         return data.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         //return NSLocalizedString(data[row], tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
         return data[row].localized
     }
