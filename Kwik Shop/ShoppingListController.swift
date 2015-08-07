@@ -61,23 +61,25 @@ class ShoppingListController : UIViewController, UITableViewDataSource, UITableV
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "ItemTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) /*as! UITableViewCell*/ as! ItemTableViewCell
+        //cell.restoreLabels()
         
         let item = items[indexPath.row]
         
         cell.nameLabel.text = item.name
         
         if let brand = item.brand {
-            cell.brandLabel.text = brand
+            cell.brandLabel?.text = brand
         } else {
             //cell.brandLabel.hidden = true
-            cell.brandLabel.removeFromSuperview()
+            cell.brandLabel?.removeFromSuperview()
+            if cell.brandLabel == nil {assert(false)}
         }
         
         if let comment = item.comment {
-            cell.commentLabel.text = comment
+            cell.commentLabel?.text = comment
         } else {
-            cell.commentLabel.hidden = true
-            cell.commentLabel.removeFromSuperview()
+            //cell.commentLabel.hidden = true
+            cell.commentLabel?.removeFromSuperview()
         }
         
         return cell
