@@ -28,10 +28,22 @@ class ListOfShoppingListsController: UIViewController, UITableViewDataSource, UI
     
     func loadSampleData() {
         let list1 = ShoppingList(id: 0, name: "asdf", sortType: 0)
+        let item1 = Item(id: 0, order: 0, name: "asdf")
+        item1.comment = "bla"
+        let item2 = Item(id: 1, order: 1, name: "qwerty")
+        item2.brand = "blub"
+        let item3 = Item(id: 2, order: 2, name: "qwertz")
+        item3.brand = "a"
+        item3.comment = "b"
+        let item4 = Item(id: 3, order: 3, name: "item")
+        list1.items = [item1, item2, item3, item4]
        
         let list2 = ShoppingList(id: 1, name: "qwerty", sortType: 0)
         
-        shoppingLists += [list1, list2]
+        let list3 = ShoppingList(id: 2, name: "qwertz", sortType: 0)
+        list3.items = [Item(id: 4, order: 0, name: "qwert")]
+        
+        shoppingLists += [list1, list2, list3]
     }
     
     override func didReceiveMemoryWarning() {
