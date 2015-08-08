@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListOfShoppingListsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Properties
     

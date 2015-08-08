@@ -58,7 +58,7 @@
         <!--Shopping Lists-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ListOfShoppingListsController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ListOfShoppingListsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="1154" y="418"/>
         </scene>
-        <!--Item Details Controller-->
+        <!--Item Details View Controller-->
         <scene sceneID="UfP-iA-RdV">
             <objects>
-                <viewController id="XS2-JU-sfC" customClass="ItemDetailsController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XS2-JU-sfC" customClass="ItemDetailsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uup-LB-s0x"/>
                         <viewControllerLayoutGuide type="bottom" id="EKU-nv-Qrc"/>
@@ -325,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="1154" y="1143"/>
         </scene>
-        <!--Shopping List Controller-->
+        <!--Shopping List View Controller-->
         <scene sceneID="yKs-gZ-ivh">
             <objects>
-                <viewController id="0cd-0w-Imx" customClass="ShoppingListController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0cd-0w-Imx" customClass="ShoppingListViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cZk-Bm-6Vr"/>
                         <viewControllerLayoutGuide type="bottom" id="r7Q-I9-RKA"/>

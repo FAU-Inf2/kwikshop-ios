@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListController : UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
