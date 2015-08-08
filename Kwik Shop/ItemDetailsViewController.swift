@@ -33,6 +33,9 @@ class ItemDetailsViewController : UIViewController {
     var groupDelegate : GroupDelegate?
     var unitDelegate : UnitDelegate?
     
+    var currentItem : Item?
+    var newItem = true
+    
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,14 +54,37 @@ class ItemDetailsViewController : UIViewController {
             highlightSwitch.onTintColor = primaryColor
         }
         
-        self.hideToolbar(false)
+        self.hideToolbar(newItem)
+        
+        if newItem {
+            saveButton.enabled = false
+        } else if let item = currentItem {
+            itemNameTextField.text = item.name
+            amountTextField.text = "\(item.amount)"
+            //unitPicker has to select unit
+            highlightSwitch.setOn(item.isHighlited, animated: false)
+            if let brand = item.brand {
+                brandTextField.text = brand
+            }
+            if let comment = item.comment {
+                commentTextField.text = comment
+            }
+            //groupPicker has to select group
+        } else {
+            assertionFailure("Item details was loaded with newItem set to false but currentItem set to nil")
+        }
     }
     
-    // needs to be called at least once, otherwise the layout is broken
+    // needs to be called at least once, otherwise the layout might be broken
     private func hideToolbar(hide : Bool) {
         toolBar.hidden=hide
         scrollViewBottomConstraint.active = hide
         scrollViewToolbarConstraint.active = !hide
+    }
+    
+    // MARK: Navigation
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: Actions

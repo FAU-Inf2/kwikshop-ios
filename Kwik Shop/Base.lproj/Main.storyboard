@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sLL-5Z-qtx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eNP-nK-fhw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -302,7 +302,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O1D-7e-Lak">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="E3y-LQ-RLe"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="E3y-LQ-RLe">
+                            <connections>
+                                <action selector="cancel:" destination="XS2-JU-sfC" id="bps-Sb-JdY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="fQ0-3c-R3n"/>
                     </navigationItem>
                     <connections>
@@ -328,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvs-nc-DCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="1143"/>
+            <point key="canvasLocation" x="2574" y="1122"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="yKs-gZ-ivh">
@@ -422,7 +426,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Sm-Y3-37W">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dxp-Wi-ZoL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dxp-Wi-ZoL">
+                            <connections>
+                                <segue destination="AOq-tl-cPV" kind="presentation" id="MKy-JF-4mD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="Dxp-Wi-ZoL" id="MY8-8n-5YS"/>
@@ -433,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtS-8f-aqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="1884"/>
+            <point key="canvasLocation" x="1154" y="1122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="beM-XP-wVb">
@@ -469,7 +477,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCT-Lf-leg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="1143"/>
+            <point key="canvasLocation" x="1858" y="1122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Lb-Z3-kvs">
@@ -487,7 +495,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ky-ao-jGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="1884"/>
+            <point key="canvasLocation" x="342" y="1122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xkb-3Q-ep5">
