@@ -16,12 +16,21 @@ class ShoppingListDetailsViewController: UIViewController {
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
+    
+    var shoppingList : ShoppingList?
+    var newList = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        toolbar.hidden = true
+        if (newList) {
+            toolbar.hidden = true
+            doneButton.enabled = false
+        } else if let list = shoppingList {
+            nameTextField.text = list.name
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
