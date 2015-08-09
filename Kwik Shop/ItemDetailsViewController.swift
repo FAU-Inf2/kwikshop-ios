@@ -65,6 +65,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         // close keyboard when user taps on the view
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
         view.addGestureRecognizer(tapGesture)
+        highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
+
         
         if newItem {
             // do nothing (yet)
