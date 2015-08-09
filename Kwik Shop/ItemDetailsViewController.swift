@@ -141,7 +141,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     // This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
-            let name = itemNameTextField.text ?? ""
+            let name = itemNameTextField.text
             let amount : Int
             if let convertedAmount = amountTextField.text.toInt() {
                 amount = convertedAmount
@@ -155,7 +155,6 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             let comment = commentTextField.text
             // TODO: Group has to be stored
             let group : Group? = nil
-            
             currentItem = Item(name: name, amount: amount, unit: unit, highlight: highlight, brand: brand, comment: comment, group: group)
         }
     }

@@ -108,6 +108,16 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                 if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
                     items[selectedIndexPath.row] = sourceViewController.currentItem!
                     shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                    
+                    /*println("\(items[selectedIndexPath.row].comment)")
+                    if let cell = shoppingListTableView.cellForRowAtIndexPath(selectedIndexPath) as? ItemTableViewCell {
+                        println("\(cell.commentLabel?.text)")
+                    } else {
+                        println("Wrong cell :-(")
+                    }
+                    println()*/
+                } else {
+                    assertionFailure("Returning from item details for an existing item allthough no table row was selected")
                 }
             } else {
                 let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
