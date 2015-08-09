@@ -68,18 +68,18 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         cell.nameLabel.text = item.name
         
         if let brand = item.brand {
-            cell.brandLabel?.text = brand
+            cell.brandLabel!.text = brand
         } else {
             //cell.brandLabel.hidden = true
-            cell.brandLabel?.removeFromSuperview()
+            cell.brandLabel!.removeFromSuperview()
             if cell.brandLabel == nil {assert(false)}
         }
         
         if let comment = item.comment {
-            cell.commentLabel?.text = comment
+            cell.commentLabel!.text = comment
         } else {
             //cell.commentLabel.hidden = true
-            cell.commentLabel?.removeFromSuperview()
+            cell.commentLabel!.removeFromSuperview()
         }
         
         return cell
@@ -98,7 +98,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             }
         }
         else if segue.identifier == "AddItem" {
-            print("Adding new item.")
+            //print("Adding new item.")
         }
     }
     

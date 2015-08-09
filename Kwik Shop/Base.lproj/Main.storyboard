@@ -490,24 +490,6 @@
             <point key="canvasLocation" x="1858" y="1122"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="4Lb-Z3-kvs">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eNP-nK-fhw" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mki-h5-oIO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0cd-0w-Imx" kind="relationship" relationship="rootViewController" id="4j7-09-gVj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2ky-ao-jGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="342" y="1122"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="Xkb-3Q-ep5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IbM-xs-S2W" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
@@ -527,7 +509,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uem-kT-DXj"/>
         <segue reference="W5s-hE-GpY"/>
     </inferredMetricsTieBreakers>
 </document>
