@@ -67,27 +67,16 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         cell.nameLabel.text = item.name
         
-        if let brand = item.brand {
-            cell.brandLabel!.text = brand
-            //cell.hideBrandLabel(false)
-        } else {
-            //cell.hideBrandLabel(true)
-            //cell.brandLabel!.removeFromSuperview()
-            //if cell.brandLabel == nil {assert(false)}
-            cell.brandLabel.text = ""
-        }
+        let brand = item.brand ?? ""
+        let comment = item.comment ?? ""
         
-        if let comment = item.comment {
-            cell.commentLabel!.text = comment
-            cell.hideCommentLabel(false)
-        } else {
-            cell.hideCommentLabel(true)
-            //cell.commentLabel!.removeFromSuperview()
-            
-            //cell.commentLabel.text = ""
+        var brandCommentText = brand
+        if !brand.isEmpty && !comment.isEmpty {
+            brandCommentText += "\n"
         }
+        brandCommentText += comment
         
-        cell.updateConstraintsIfNeeded()
+        cell.brandCommentLabel.text = brandCommentText
         
         return cell
     }
@@ -116,13 +105,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     items[selectedIndexPath.row] = sourceViewController.currentItem!
                     shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                     
-                    /*println("Optional(\"\(items[selectedIndexPath.row].name)\") \(items[selectedIndexPath.row].brand) \(items[selectedIndexPath.row].comment)")
-                    if let cell = shoppingListTableView.cellForRowAtIndexPath(selectedIndexPath) as? ItemTableViewCell {
-                        println("\(cell.nameLabel?.text) \(cell.brandLabel?.text) \(cell.commentLabel?.text)")
-                    } else {
-                        println("Wrong cell :-(")
-                    }
-                    println()*/
                 } else {
                     assertionFailure("Returning from item details for an existing item allthough no table row was selected")
                 }
