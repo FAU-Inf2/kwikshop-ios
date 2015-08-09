@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailsViewController : UIViewController, UITextFieldDelegate {
+class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var amountLabel: UILabel!    
@@ -30,8 +30,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollViewToolbarConstraint: NSLayoutConstraint!
     
     
-    var groupDelegate : GroupDelegate?
-    var unitDelegate : UnitDelegate?
+    var groupDelegate : GroupDelegate!
+    var unitDelegate : UnitDelegate!
     
     var currentItem : Item?
     var newItem = true
@@ -41,13 +41,13 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         if groupDelegate == nil {
             groupDelegate = GroupDelegate()
-            groupPicker.delegate = groupDelegate
-            groupPicker.dataSource = groupDelegate
+            groupPicker.delegate = self
+            groupPicker.dataSource = self
         }
         if unitDelegate == nil {
             unitDelegate = UnitDelegate()
-            unitPicker.delegate = unitDelegate
-            unitPicker.dataSource = unitDelegate
+            unitPicker.delegate = self
+            unitPicker.dataSource = self
         }
         
         if let primaryColor = UIColor(resourceName: "primary_color") {
@@ -61,6 +61,10 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate {
         amountTextField.delegate = self
         commentTextField.delegate = self
         brandTextField.delegate = self
+        
+        // close keyboard when user taps on the view
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+        view.addGestureRecognizer(tapGesture)
         
         if newItem {
             // do nothing (yet)
@@ -93,6 +97,13 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate {
         toolBar.hidden=hide
         scrollViewBottomConstraint.active = hide
         scrollViewToolbarConstraint.active = !hide
+    }
+    
+    func closeKeyboard() {
+        itemNameTextField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
+        brandTextField.resignFirstResponder()
+        commentTextField.resignFirstResponder()
     }
     
     // MARK: UITextFieldDelegate
@@ -140,8 +151,45 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate {
             let group : Group? = nil
             
             currentItem = Item(name: name, amount: amount, unit: unit, highlight: highlight, brand: brand, comment: comment, group: group)
-            
         }
+    }
+    
+    // MARK: PickerView Delegate and Data Source
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        let delegate : UIPickerViewDataSource
+        if pickerView === unitPicker {
+            delegate = self.unitDelegate
+        } else if pickerView === groupPicker {
+            delegate = self.groupDelegate
+        } else {
+            return 0
+        }
+        return delegate.numberOfComponentsInPickerView(pickerView)
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        let delegate : UIPickerViewDataSource
+        if pickerView === unitPicker {
+            delegate = self.unitDelegate
+        } else if pickerView === groupPicker {
+            delegate = self.groupDelegate
+        } else {
+            return 0
+        }
+        return delegate.pickerView(pickerView, numberOfRowsInComponent: component)
+
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let delegate : UIPickerViewDelegate
+        if pickerView === unitPicker {
+            delegate = self.unitDelegate
+        } else if pickerView === groupPicker {
+            delegate = self.groupDelegate
+        } else {
+            return nil
+        }
+        return delegate.pickerView?(pickerView, titleForRow: row, forComponent: component)
     }
     
     // MARK: Actions
