@@ -36,8 +36,16 @@ class Item {
         self.amount = amount
         self.unit = unit
         self.isHighlited = highlight
-        self.brand = brand
-        self.comment = comment
+        if let brandText = brand {
+            if !brandText.isEmpty {
+                self.brand = brandText
+            }
+        }
+        if let commentText = comment {
+            if !commentText.isEmpty {
+                self.comment = commentText
+            }
+        }
         self.group = group
     }
     

@@ -12,7 +12,7 @@ class ItemTableViewCell: UITableViewCell {
 
     //@IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var brandLabel: UILabel? {
+    @IBOutlet weak var brandLabel: UILabel!/*? {
         get {
             return currentBrandLabel
         }
@@ -22,9 +22,9 @@ class ItemTableViewCell: UITableViewCell {
             }
             currentBrandLabel = newValue
         }
-    }
+    }*/
     
-    @IBOutlet weak var commentLabel: UILabel? {
+    @IBOutlet weak var commentLabel: UILabel!/*? {
         get {
             return currentCommentLabel
         }
@@ -34,10 +34,13 @@ class ItemTableViewCell: UITableViewCell {
             }
             currentCommentLabel = newValue
         }
-    }
-
-
-    private weak var currentBrandLabel: UILabel?
+    }*/
+    
+    @IBOutlet weak var nameBrandSpace: NSLayoutConstraint!
+    @IBOutlet weak var brandCommentSpace: NSLayoutConstraint!
+    
+    
+    /*private weak var currentBrandLabel: UILabel?
     private var storedBrandLabel: UILabel?
     private weak var currentCommentLabel: UILabel?
     private var storedCommentLabel: UILabel?
@@ -50,12 +53,46 @@ class ItemTableViewCell: UITableViewCell {
             currentCommentLabel = storedCommentLabel
         }
 
+    }*/
+    
+    func hideCommentLabel(hide : Bool) {
+        commentLabel.hidden = hide
+        let newConstant : CGFloat
+        if hide {
+            newConstant = 0
+        } else {
+            newConstant = 4
+        }
+        
+        self.layoutIfNeeded()
+        UIView.animateWithDuration(1, animations: {
+            self.brandCommentSpace.constant = newConstant
+            self.layoutIfNeeded()
+        })
+    }
+    
+    func hideBrandLabel(hide : Bool) {
+        brandLabel.hidden = hide
+        
+        let newConstant : CGFloat
+        if hide {
+            newConstant = 0
+        } else {
+            newConstant = 8
+        }
+        
+        self.layoutIfNeeded()
+        UIView.animateWithDuration(1, animations: {
+            self.nameBrandSpace.constant = newConstant
+            self.layoutIfNeeded()
+        })
+
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        restoreLabels()
+        /*restoreLabels()*/
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -64,8 +101,8 @@ class ItemTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    deinit {
+    /*deinit {
         storedBrandLabel = nil
         storedCommentLabel = nil
-    }
+    }*/
 }

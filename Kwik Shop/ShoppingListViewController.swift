@@ -69,18 +69,25 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         if let brand = item.brand {
             cell.brandLabel!.text = brand
+            //cell.hideBrandLabel(false)
         } else {
-            //cell.brandLabel.hidden = true
-            cell.brandLabel!.removeFromSuperview()
-            if cell.brandLabel == nil {assert(false)}
+            //cell.hideBrandLabel(true)
+            //cell.brandLabel!.removeFromSuperview()
+            //if cell.brandLabel == nil {assert(false)}
+            cell.brandLabel.text = ""
         }
         
         if let comment = item.comment {
             cell.commentLabel!.text = comment
+            cell.hideCommentLabel(false)
         } else {
-            //cell.commentLabel.hidden = true
-            cell.commentLabel!.removeFromSuperview()
+            cell.hideCommentLabel(true)
+            //cell.commentLabel!.removeFromSuperview()
+            
+            //cell.commentLabel.text = ""
         }
+        
+        cell.updateConstraintsIfNeeded()
         
         return cell
     }
@@ -109,9 +116,9 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     items[selectedIndexPath.row] = sourceViewController.currentItem!
                     shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                     
-                    /*println("\(items[selectedIndexPath.row].comment)")
+                    /*println("Optional(\"\(items[selectedIndexPath.row].name)\") \(items[selectedIndexPath.row].brand) \(items[selectedIndexPath.row].comment)")
                     if let cell = shoppingListTableView.cellForRowAtIndexPath(selectedIndexPath) as? ItemTableViewCell {
-                        println("\(cell.commentLabel?.text)")
+                        println("\(cell.nameLabel?.text) \(cell.brandLabel?.text) \(cell.commentLabel?.text)")
                     } else {
                         println("Wrong cell :-(")
                     }
