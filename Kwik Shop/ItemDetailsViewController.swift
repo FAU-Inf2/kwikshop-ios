@@ -99,10 +99,19 @@ class ItemDetailsViewController : UIViewController {
             }
             // TODO: Unit has to be stored
             let unit : Unit? = nil
+            let highlight = highlightSwitch.on
             let brand = brandTextField.text
             let comment = commentTextField.text
             // TODO: Group has to be stored
             let group : Group? = nil
+            
+            currentItem = Item(name: name)
+            currentItem?.amount = amount
+            currentItem?.unit = unit
+            currentItem?.isHighlited = highlight
+            currentItem?.brand = brand
+            currentItem?.comment = comment
+            currentItem?.group = group
         }
     }
     
