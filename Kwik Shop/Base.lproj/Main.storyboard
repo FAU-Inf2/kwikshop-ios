@@ -338,7 +338,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvs-nc-DCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tQq-Ny-O5Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2574" y="1122"/>
+            <point key="canvasLocation" x="1506" y="1868"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="yKs-gZ-ivh">
@@ -416,6 +416,7 @@
                                             <outlet property="brandLabel" destination="bg7-W0-qS6" id="Cvc-kd-vqA"/>
                                             <outlet property="commentLabel" destination="erZ-6n-Tbd" id="Zkg-gL-Odn"/>
                                             <outlet property="nameLabel" destination="COL-iC-W0q" id="R49-SI-Pw1"/>
+                                            <segue destination="XS2-JU-sfC" kind="show" identifier="ShowItemDetails" id="W5s-hE-GpY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -437,7 +438,7 @@
                     <navigationItem key="navigationItem" id="3Sm-Y3-37W">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dxp-Wi-ZoL">
                             <connections>
-                                <segue destination="AOq-tl-cPV" kind="presentation" id="MKy-JF-4mD"/>
+                                <segue destination="AOq-tl-cPV" kind="presentation" identifier="AddItem" id="MKy-JF-4mD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -527,5 +528,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="uem-kT-DXj"/>
+        <segue reference="W5s-hE-GpY"/>
     </inferredMetricsTieBreakers>
 </document>

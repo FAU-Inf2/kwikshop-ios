@@ -85,11 +85,35 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         return cell
     }
 
+    // MARK: Navigaton
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowItemDetails" {
+            let itemDetailsViewController = segue.destinationViewController as! ItemDetailsViewController
+            if let selectedItemCell = sender as? ItemTableViewCell {
+                let indexPath = shoppingListTableView.indexPathForCell(selectedItemCell)!
+                let selectedItem = items[indexPath.row]
+                itemDetailsViewController.currentItem = selectedItem
+                itemDetailsViewController.newItem = false
+            }
+        }
+        else if segue.identifier == "AddItem" {
+            print("Adding new item.")
+        }
+    }
+    
     @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController, item = sourceViewController.currentItem {
-            let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
-            items.append(item)
-            shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            if sourceViewController.newItem {
+                if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
+                    items[selectedIndexPath.row] = sourceViewController.currentItem!
+                    shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                }
+            } else {
+                let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
+                items.append(item)
+                shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
         }
     }
     
