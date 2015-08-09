@@ -192,5 +192,9 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         return delegate.pickerView?(pickerView, titleForRow: row, forComponent: component)
     }
     
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        closeKeyboard()
+    }
+    
     // MARK: Actions
 }
