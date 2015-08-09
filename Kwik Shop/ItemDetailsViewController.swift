@@ -87,5 +87,24 @@ class ItemDetailsViewController : UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // This method lets you configure a view controller before it's presented.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if saveButton === sender {
+            let name = itemNameTextField.text ?? ""
+            let amount : Int
+            if let convertedAmount = amountTextField.text.toInt() {
+                amount = convertedAmount
+            } else {
+                amount = 1
+            }
+            // TODO: Unit has to be stored
+            let unit : Unit? = nil
+            let brand = brandTextField.text
+            let comment = commentTextField.text
+            // TODO: Group has to be stored
+            let group : Group? = nil
+        }
+    }
+    
     // MARK: Actions
 }
