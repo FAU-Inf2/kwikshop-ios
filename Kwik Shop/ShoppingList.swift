@@ -9,9 +9,9 @@
 import Foundation
 
 class ShoppingList {
-    let id : Int
-    let name : String
-    var sortType : Int
+    var/*let*/ id : Int?
+    var name : String
+    var sortType : Int?
     var items : [Item]
     var lastModifiedDate : NSDate
     
@@ -19,6 +19,12 @@ class ShoppingList {
         self.id = id;
         self.name = name;
         self.sortType = sortType
+        self.items = [Item]()
+        self.lastModifiedDate = NSDate()
+    }
+    
+    init (name: String) {
+        self.name = name
         self.items = [Item]()
         self.lastModifiedDate = NSDate()
     }

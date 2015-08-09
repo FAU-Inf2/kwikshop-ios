@@ -9,8 +9,8 @@
 import Foundation
 
 class Item {
-    let id : Int
-    var order : Int
+    var/*let*/ id : Int?
+    var order : Int?
     var bought = false
     var name : String
     var amount = 1
@@ -23,6 +23,10 @@ class Item {
     init(id : Int, order : Int, name : String) {
         self.id = id
         self.order = order
+        self.name = name
+    }
+    
+    init (name: String) {
         self.name = name
     }
 }
