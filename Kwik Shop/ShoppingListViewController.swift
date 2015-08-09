@@ -85,4 +85,12 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         return cell
     }
 
+    @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController, item = sourceViewController.currentItem {
+            let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
+            items.append(item)
+            shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+        }
+    }
+    
 }
