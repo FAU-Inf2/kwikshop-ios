@@ -104,7 +104,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController, item = sourceViewController.currentItem {
-            if sourceViewController.newItem {
+            if !sourceViewController.newItem {
                 if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
                     items[selectedIndexPath.row] = sourceViewController.currentItem!
                     shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)

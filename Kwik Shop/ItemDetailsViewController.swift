@@ -56,18 +56,6 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         
         self.hideToolbar(newItem)
         
-        itemNameTextField.delegate = self
-        checkValidItemName()
-        amountTextField.delegate = self
-        commentTextField.delegate = self
-        brandTextField.delegate = self
-        
-        // close keyboard when user taps on the view
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
-        view.addGestureRecognizer(tapGesture)
-        highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
-
-        
         if newItem {
             // do nothing (yet)
         } else if let item = currentItem {
@@ -85,6 +73,18 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         } else {
             assertionFailure("Item details was loaded with newItem set to false but currentItem set to nil")
         }
+        
+        itemNameTextField.delegate = self
+        checkValidItemName()
+        amountTextField.delegate = self
+        commentTextField.delegate = self
+        brandTextField.delegate = self
+        
+        // close keyboard when user taps on the view
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+        view.addGestureRecognizer(tapGesture)
+        highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
+
     }
     
     
