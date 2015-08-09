@@ -308,7 +308,11 @@
                                 <action selector="cancel:" destination="XS2-JU-sfC" id="bps-Sb-JdY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fQ0-3c-R3n"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fQ0-3c-R3n">
+                            <connections>
+                                <segue destination="tQq-Ny-O5Q" kind="unwind" unwindAction="unwindToShoppingList:" id="Nqk-f3-dkY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="amountLabel" destination="fAQ-jh-chq" id="8bT-Pn-de4"/>
@@ -332,6 +336,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvs-nc-DCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tQq-Ny-O5Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2574" y="1122"/>
         </scene>

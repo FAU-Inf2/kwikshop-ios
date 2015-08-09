@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailsViewController : UIViewController {
+class ItemDetailsViewController : UIViewController, UITextFieldDelegate {
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var amountLabel: UILabel!    
@@ -56,8 +56,14 @@ class ItemDetailsViewController : UIViewController {
         
         self.hideToolbar(newItem)
         
+        itemNameTextField.delegate = self
+        checkValidItemName()
+        amountTextField.delegate = self
+        commentTextField.delegate = self
+        brandTextField.delegate = self
+        
         if newItem {
-            saveButton.enabled = false
+            // do nothing (yet)
         } else if let item = currentItem {
             itemNameTextField.text = item.name
             amountTextField.text = "\(item.amount)"
@@ -75,11 +81,39 @@ class ItemDetailsViewController : UIViewController {
         }
     }
     
+    
+    func checkValidItemName() {
+        // Disable the Save button if the text field is empty.
+        let text = itemNameTextField.text ?? ""
+        saveButton.enabled = !text.isEmpty
+    }
+    
     // needs to be called at least once, otherwise the layout might be broken
     private func hideToolbar(hide : Bool) {
         toolBar.hidden=hide
         scrollViewBottomConstraint.active = hide
         scrollViewToolbarConstraint.active = !hide
+    }
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField === itemNameTextField) {
+            // Disable the Save button while editing.
+            saveButton.enabled = false
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if (textField === itemNameTextField) {
+            checkValidItemName()
+            navigationItem.title = textField.text
+        }
     }
     
     // MARK: Navigation
