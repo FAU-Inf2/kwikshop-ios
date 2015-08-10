@@ -374,8 +374,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y2Q-Iv-XD2" id="tRT-M5-G6u">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COL-iC-W0q">
-                                                    <rect key="frame" x="8" y="11" width="536" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COL-iC-W0q">
+                                                    <rect key="frame" x="8" y="11" width="486" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -386,17 +386,35 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b23-L1-lCU">
+                                                    <rect key="frame" x="502" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="b23-L1-lCU" firstAttribute="leading" secondItem="COL-iC-W0q" secondAttribute="trailing" constant="8" id="Sav-S5-qu3"/>
+                                                <constraint firstItem="b23-L1-lCU" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="XTI-mY-95Y"/>
                                                 <constraint firstItem="COL-iC-W0q" firstAttribute="top" secondItem="tRT-M5-G6u" secondAttribute="topMargin" constant="3" id="ZiD-5K-gki"/>
                                                 <constraint firstItem="bg7-W0-qS6" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="bN3-Sl-EHv"/>
                                                 <constraint firstItem="bg7-W0-qS6" firstAttribute="leading" secondItem="tRT-M5-G6u" secondAttribute="leadingMargin" id="g5L-4B-31r"/>
+                                                <constraint firstItem="b23-L1-lCU" firstAttribute="centerY" secondItem="COL-iC-W0q" secondAttribute="centerY" id="hHd-bv-f1g"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bg7-W0-qS6" secondAttribute="bottom" constant="3" id="l7w-2H-c66"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="COL-iC-W0q" secondAttribute="bottom" constant="3" id="mWV-Op-gA5"/>
-                                                <constraint firstItem="COL-iC-W0q" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="oAM-Jv-jtR"/>
+                                                <constraint firstItem="COL-iC-W0q" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="oAM-Jv-jtR"/>
+                                                <constraint firstItem="b23-L1-lCU" firstAttribute="leading" secondItem="COL-iC-W0q" secondAttribute="trailing" constant="8" id="rbf-VY-LY0"/>
                                                 <constraint firstItem="bg7-W0-qS6" firstAttribute="top" secondItem="COL-iC-W0q" secondAttribute="bottom" constant="3" id="vGj-Nq-OBz"/>
+                                                <constraint firstItem="b23-L1-lCU" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="yVl-Fe-FVi"/>
                                                 <constraint firstItem="COL-iC-W0q" firstAttribute="leading" secondItem="tRT-M5-G6u" secondAttribute="leadingMargin" id="z12-7v-mxt"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="oAM-Jv-jtR"/>
+                                                    <exclude reference="Sav-S5-qu3"/>
+                                                    <exclude reference="XTI-mY-95Y"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="brandCommentLabel" destination="bg7-W0-qS6" id="SDp-UD-ACg"/>
