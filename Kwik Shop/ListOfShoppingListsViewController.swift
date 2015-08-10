@@ -101,7 +101,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
     }
     
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+    @IBAction func unwindToListOfShoppingLists(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? ShoppingListViewController, shoppingList = sourceViewController.shoppingList {
             // shopping list could have new items
             if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow() {
