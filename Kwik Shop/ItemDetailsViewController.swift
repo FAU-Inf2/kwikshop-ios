@@ -129,6 +129,20 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         }
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField === amountTextField {
+            let digits : [Character] = ["0","1","2","3","4","5","6","7","8","9"]
+            for char in string {
+                if !contains(digits, char) {
+                    return false
+                }
+            }
+            return true
+        } else {
+            return true
+        }
+    }
+    
     // MARK: Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {
         if newItem {
