@@ -26,7 +26,7 @@ class ShoppingListDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         if (newList) {
             toolbar.hidden = true
-            doneButton.enabled = false
+            //doneButton.enabled = false
         } else if let list = shoppingList {
             nameTextField.text = list.name
         }
@@ -46,12 +46,15 @@ class ShoppingListDetailsViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if !nameTextField.text.isEmpty {
+            shoppingList = ShoppingList(name: nameTextField.text)
+        }
+        
     }
-    */
+    
 
 }
