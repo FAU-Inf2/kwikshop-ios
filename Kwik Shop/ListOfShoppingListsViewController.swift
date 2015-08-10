@@ -93,8 +93,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     
     // MARK: Actions
     
-    @IBAction func addButtonClicked(sender: UIBarButtonItem) {
-    }
+    
     
     
 }
