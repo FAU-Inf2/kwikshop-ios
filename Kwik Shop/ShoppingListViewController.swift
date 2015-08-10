@@ -15,9 +15,21 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var quickAddTextField: UITextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
     
-    var items = [Item]()
+    var shoppingList : ShoppingList!
+    var items : [Item] {
+        get {
+            return shoppingList.items
+        }
+        set {
+            shoppingList.items = newValue
+        }
+    }
     
     func loadSampleData() {
+        if shoppingList == nil {
+            shoppingList = ShoppingList(name: "sample List")
+        }
+        
         let item1 = Item(id: 0, order: 0, name: "asdf")
         item1.comment = "bla"
         let item2 = Item(id: 1, order: 1, name: "qwerty")
