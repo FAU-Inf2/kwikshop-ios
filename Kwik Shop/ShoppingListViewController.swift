@@ -78,6 +78,14 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         cell.brandCommentLabel.text = brandCommentText
         
+        var amountText = ""
+        if item.amount != 1 && item.unit == nil{
+            amountText = "\(item.amount)"
+        } else if let unit = item.unit {
+            amountText = "\(item.amount) \(unit.shortName)"
+        }
+        cell.amountLabel.text = amountText
+        
         return cell
     }
 

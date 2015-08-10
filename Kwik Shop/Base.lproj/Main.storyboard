@@ -417,6 +417,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="amountLabel" destination="b23-L1-lCU" id="0RF-dl-kle"/>
                                             <outlet property="brandCommentLabel" destination="bg7-W0-qS6" id="SDp-UD-ACg"/>
                                             <outlet property="nameLabel" destination="COL-iC-W0q" id="R49-SI-Pw1"/>
                                             <segue destination="XS2-JU-sfC" kind="show" identifier="ShowItemDetails" id="W5s-hE-GpY"/>
