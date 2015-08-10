@@ -91,30 +91,47 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         let item = items[index]
         
-        cell.nameLabel.text = item.name
-        if item.isHighlited {
-            cell.nameLabel.highlightedTextColor = UIColor.redColor()
-            cell.nameLabel.highlighted = true
+        
+        
+        if item.bought {
+            let itemName = item.name
+            let strikeThroughText = NSMutableAttributedString(string: itemName)
+            strikeThroughText.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, strikeThroughText.length))
+            cell.nameLabel.attributedText = strikeThroughText
+            cell.nameLabel.font = cell.brandCommentLabel.font
+            cell.nameLabel.textColor = cell.brandCommentLabel.textColor
+            
+            cell.brandCommentLabel.text = ""
+            cell.amountLabel.text = ""
+        } else {
+            cell.nameLabel.text = item.name
+            if item.isHighlited {
+                cell.nameLabel.highlightedTextColor = UIColor.redColor()
+                cell.nameLabel.highlighted = true
+            }
+            
+            let brand = item.brand ?? ""
+            let comment = item.comment ?? ""
+            
+            var brandCommentText = brand
+            if !brand.isEmpty && !comment.isEmpty {
+                brandCommentText += "\n"
+            }
+            brandCommentText += comment
+            
+            cell.brandCommentLabel.text = brandCommentText
+
+            var amountText = ""
+            if item.amount != 1 && item.unit == nil{
+                amountText = "\(item.amount)"
+            } else if let unit = item.unit {
+                amountText = "\(item.amount) \(unit.shortName)"
+            }
+            cell.amountLabel.text = amountText
         }
         
-        let brand = item.brand ?? ""
-        let comment = item.comment ?? ""
         
-        var brandCommentText = brand
-        if !brand.isEmpty && !comment.isEmpty {
-            brandCommentText += "\n"
-        }
-        brandCommentText += comment
         
-        cell.brandCommentLabel.text = brandCommentText
-        
-        var amountText = ""
-        if item.amount != 1 && item.unit == nil{
-            amountText = "\(item.amount)"
-        } else if let unit = item.unit {
-            amountText = "\(item.amount) \(unit.shortName)"
-        }
-        cell.amountLabel.text = amountText
         
         return cell
     }
