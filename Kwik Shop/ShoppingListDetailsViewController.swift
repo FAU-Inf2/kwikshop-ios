@@ -50,7 +50,7 @@ class ShoppingListDetailsViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if !nameTextField.text.isEmpty {
+        if newList && !nameTextField.text.isEmpty {
             shoppingList = ShoppingList(name: nameTextField.text)
         }
         
