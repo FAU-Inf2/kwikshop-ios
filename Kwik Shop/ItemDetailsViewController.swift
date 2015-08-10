@@ -75,7 +75,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         }
         
         itemNameTextField.delegate = self
-        checkValidItemName()
+        checkValidItemName(itemNameTextField.text)
         amountTextField.delegate = self
         commentTextField.delegate = self
         brandTextField.delegate = self
@@ -88,9 +88,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     }
     
     
-    func checkValidItemName() {
+    func checkValidItemName(text: String) {
         // Disable the Save button if the text field is empty.
-        let text = itemNameTextField.text ?? ""
         saveButton.enabled = !text.isEmpty
     }
     
@@ -115,16 +114,16 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         return true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    /*func textFieldDidBeginEditing(textField: UITextField) {
         if (textField === itemNameTextField) {
             // Disable the Save button while editing.
             saveButton.enabled = false
         }
-    }
+    }*/
     
     func textFieldDidEndEditing(textField: UITextField) {
         if (textField === itemNameTextField) {
-            checkValidItemName()
+            checkValidItemName(itemNameTextField.text)
             navigationItem.title = textField.text
         }
     }
@@ -137,6 +136,10 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                     return false
                 }
             }
+            return true
+        } else if textField === itemNameTextField {
+            let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            checkValidItemName(text)
             return true
         } else {
             return true
