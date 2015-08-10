@@ -80,8 +80,13 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Navigation
 
     @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        if newList {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            navigationController!.popViewControllerAnimated(true)
+        }
     }
+
     
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
