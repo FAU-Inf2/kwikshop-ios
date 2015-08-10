@@ -61,18 +61,19 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if (textField === nameTextField) {
-            // Disable the Save button while editing.
-            doneButton.enabled = false
-        }
-    }
-    
     func textFieldDidEndEditing(textField: UITextField) {
-        if (textField === nameTextField) {
+        //if (textField === nameTextField) {
             checkValidName(textField.text)
             navigationItem.title = textField.text
-        }
+        //}
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        //if (textField === nameTextField) {
+            let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            checkValidName(text)
+            return true
+        //}
     }
     
     
