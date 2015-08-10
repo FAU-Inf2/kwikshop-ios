@@ -23,12 +23,21 @@ class Unit {
     
     let id : Int
     let name : String
-    let shortName : String?
+    private let short : String?
     
-    init(id : Int, name : String, shortName : String?){
+    var shortName : String {
+        get {
+            if short != nil {
+                return short!
+            }
+            return name
+        }
+    }
+    
+    init(id : Int, name : String, shortName short : String?){
         self.id = id
         self.name = name
-        self.shortName = shortName
+        self.short = short
     }
     
     convenience init (id : Int, name : String) {
