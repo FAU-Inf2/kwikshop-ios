@@ -62,6 +62,10 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         let item = items[indexPath.row]
         
         cell.nameLabel.text = item.name
+        if item.isHighlited {
+            cell.nameLabel.highlightedTextColor = UIColor.redColor()
+            cell.nameLabel.highlighted = true
+        }
         
         let brand = item.brand ?? ""
         let comment = item.comment ?? ""
