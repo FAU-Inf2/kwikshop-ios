@@ -113,6 +113,24 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         }
     }
     
+    @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? ShoppingListDetailsViewController, shoppingList = sourceViewController.shoppingList {
+            if !sourceViewController.newList {
+                if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow() {
+                    shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList!
+                    shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                    
+                } else {
+                    assertionFailure("Returning from shopping list details for an existing item allthough no table row was selected")
+                }
+            } else {
+                let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
+                shoppingLists.append(shoppingList)
+                shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
+        }
+    }
+    
     
     // MARK: Actions
     

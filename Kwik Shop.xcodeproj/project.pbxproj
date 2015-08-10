@@ -153,11 +153,11 @@
 		3AE10D881B711C6800E644D1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3ADCB0161B68D89B00BA963C /* ItemDetailsViewController.swift */,
-				3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */,
 				3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */,
 				3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */,
 				3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */,
+				3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */,
+				3ADCB0161B68D89B00BA963C /* ItemDetailsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
