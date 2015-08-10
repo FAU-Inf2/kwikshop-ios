@@ -97,12 +97,13 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
             let indexPath = shoppingListsTableView.indexPathForCell(selectedShoppingListCell)!
             let selectedShoppingList = shoppingLists[indexPath.row]
             shoppingListViewController.shoppingList = selectedShoppingList
+            shoppingListViewController.returnToListOfShoppingListsDelegateMethod = unwindToListOfShoppingLists
         }
-        
+     
     }
-    
-    @IBAction func unwindToListOfShoppingLists(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? ShoppingListViewController, shoppingList = sourceViewController.shoppingList {
+        
+    func unwindToListOfShoppingLists(sender: UIViewController) {
+        if let sourceViewController = sender as? ShoppingListViewController, shoppingList = sourceViewController.shoppingList {
             // shopping list could have new items
             if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow() {
                 shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList

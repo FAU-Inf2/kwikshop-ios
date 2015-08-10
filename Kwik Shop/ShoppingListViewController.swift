@@ -15,6 +15,8 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var quickAddTextField: UITextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
     
+    var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
+    
     var shoppingList : ShoppingList!
     var items : [Item] {
         get {
@@ -118,4 +120,13 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    override func viewWillDisappear(animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParentViewController()){
+            if let returnMethod = returnToListOfShoppingListsDelegateMethod {
+                returnMethod(self)
+            }
+        }
+    }
 }
