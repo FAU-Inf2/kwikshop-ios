@@ -26,6 +26,22 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             shoppingList.items = newValue
         }
     }
+    var boughtItems : [Item] {
+        get {
+            return shoppingList.boughtItems
+        }
+        set {
+            shoppingList.boughtItems = newValue
+        }
+    }
+    var notBoughtItems : [Item] {
+        get {
+            return shoppingList.notBoughtItems
+        }
+        set {
+            shoppingList.notBoughtItems = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,24 +65,31 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return items.count + 1
+        var count = notBoughtItems.count
+        let boughtCount = boughtItems.count
+        if boughtCount > 0 {
+            count += boughtCount + 1
+        }
+        return count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         
-        if indexPath.row >= items.count {
+        if indexPath.row == notBoughtItems.count {
             let cellIdentifier = "ShoppingListSeperatorTableViewCell"
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ShoppingListSeperatorTableViewCell
             
             return cell
         }
         
+        let index = getIndexForIndexPath(indexPath)
+        
         let cellIdentifier = "ItemTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         
-        let item = items[indexPath.row]
+        let item = items[index]
         
         cell.nameLabel.text = item.name
         if item.isHighlited {
@@ -95,6 +118,14 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         return cell
     }
+    
+    private func getIndexForIndexPath(indexPath: NSIndexPath) -> Int {
+        if indexPath.row < items.count {
+            return indexPath.row
+        } else {
+            return indexPath.row - 1
+        }
+    }
 
     // MARK: Navigaton
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -103,7 +134,8 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             let itemDetailsViewController = segue.destinationViewController as! ItemDetailsViewController
             if let selectedItemCell = sender as? ItemTableViewCell {
                 let indexPath = shoppingListTableView.indexPathForCell(selectedItemCell)!
-                let selectedItem = items[indexPath.row]
+                let index = getIndexForIndexPath(indexPath)
+                let selectedItem = items[index]
                 itemDetailsViewController.currentItem = selectedItem
                 itemDetailsViewController.newItem = false
             }
@@ -117,15 +149,16 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController, item = sourceViewController.currentItem {
             if !sourceViewController.newItem {
                 if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
-                    items[selectedIndexPath.row] = sourceViewController.currentItem!
+                    let index = getIndexForIndexPath(selectedIndexPath)
+                    items[index] = sourceViewController.currentItem!
                     shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                     
                 } else {
                     assertionFailure("Returning from item details for an existing item allthough no table row was selected")
                 }
             } else {
-                let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
-                items.append(item)
+                let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
+                notBoughtItems.append(item)
                 shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
         }

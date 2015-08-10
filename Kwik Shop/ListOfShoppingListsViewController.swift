@@ -35,6 +35,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         let item3 = Item(id: 2, order: 2, name: "qwertz")
         item3.brand = "a"
         item3.comment = "b"
+        item3.bought = true
         let item4 = Item(id: 3, order: 3, name: "item")
         list1.items = [item1, item2, item3, item4]
        

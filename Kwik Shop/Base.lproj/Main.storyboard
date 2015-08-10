@@ -428,7 +428,7 @@
                                             <segue destination="XS2-JU-sfC" kind="show" identifier="ShowItemDetails" id="W5s-hE-GpY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingListSeperatorTableViewCell" id="YGu-TP-YZh" customClass="ShoppingListSeperatorTableViewCell" customModule="Kwik_Shop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShoppingListSeperatorTableViewCell" id="YGu-TP-YZh" customClass="ShoppingListSeperatorTableViewCell" customModule="Kwik_Shop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="552" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YGu-TP-YZh" id="vgY-SE-XLo">
