@@ -169,7 +169,17 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             let comment = commentTextField.text
             // TODO: Group has to be stored
             let group : Group? = nil
-            currentItem = Item(name: name, amount: amount, unit: unit, highlight: highlight, brand: brand, comment: comment, group: group)
+            if newItem {
+                currentItem = Item(name: name, amount: amount, unit: unit, highlight: highlight, brand: brand, comment: comment, group: group)
+            } else {
+                currentItem!.name = name
+                currentItem!.amount = amount
+                currentItem!.unit = unit
+                currentItem!.isHighlited = highlight
+                currentItem!.brand = brand
+                currentItem!.comment = comment
+                currentItem!.group = group
+            }
         }
     }
     

@@ -152,7 +152,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     let index = getIndexForIndexPath(selectedIndexPath)
                     items[index] = sourceViewController.currentItem!
                     shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-                    
                 } else {
                     assertionFailure("Returning from item details for an existing item allthough no table row was selected")
                 }
