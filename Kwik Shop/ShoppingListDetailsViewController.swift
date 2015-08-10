@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListDetailsViewController: UIViewController {
+class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -22,15 +22,20 @@ class ShoppingListDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        nameTextField.delegate = self
+        
         // Do any additional setup after loading the view.
         if (newList) {
             toolbar.hidden = true
-            //doneButton.enabled = false
+            doneButton.enabled = false
         } else if let list = shoppingList {
             nameTextField.text = list.name
         }
         
+        // close keyboard when user taps on the view
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+        view.addGestureRecognizer(tapGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +43,38 @@ class ShoppingListDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Actions
+    func checkValidName(text : String) {
+        // Disable the Save button if the text field is empty.
+        doneButton.enabled = !text.isEmpty
+    }
 
+    func closeKeyboard() {
+        nameTextField.resignFirstResponder()
+    }
+
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField === nameTextField) {
+            // Disable the Save button while editing.
+            doneButton.enabled = false
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if (textField === nameTextField) {
+            checkValidName(textField.text)
+            navigationItem.title = textField.text
+        }
+    }
+    
     
     // MARK: - Navigation
 
