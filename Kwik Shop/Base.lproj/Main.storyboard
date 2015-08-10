@@ -428,6 +428,29 @@
                                             <segue destination="XS2-JU-sfC" kind="show" identifier="ShowItemDetails" id="W5s-hE-GpY"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingListSeperatorTableViewCell" id="YGu-TP-YZh" customClass="ShoppingListSeperatorTableViewCell" customModule="Kwik_Shop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="552" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YGu-TP-YZh" id="vgY-SE-XLo">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Shopping cart" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLM-xu-WPI">
+                                                    <rect key="frame" x="8" y="23" width="109" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aLM-xu-WPI" firstAttribute="top" secondItem="vgY-SE-XLo" secondAttribute="topMargin" constant="3" id="Pmn-Wb-9hT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="aLM-xu-WPI" secondAttribute="bottom" constant="3" id="m1h-7I-2kr"/>
+                                                <constraint firstItem="aLM-xu-WPI" firstAttribute="leading" secondItem="vgY-SE-XLo" secondAttribute="leadingMargin" id="zSf-Hg-7dP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="shoppingCartLabel" destination="aLM-xu-WPI" id="CyQ-Ud-6AW"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
