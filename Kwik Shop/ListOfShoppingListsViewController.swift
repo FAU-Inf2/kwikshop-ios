@@ -90,6 +90,17 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         return cell
     }
 
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let shoppingListViewController = segue.destinationViewController as! ShoppingListViewController
+        if let selectedShoppingListCell = sender as? ShoppingListTableViewCell {
+            let indexPath = shoppingListsTableView.indexPathForCell(selectedShoppingListCell)!
+            let selectedShoppingList = shoppingLists[indexPath.row]
+            shoppingListViewController.shoppingList = selectedShoppingList
+        }
+        
+    }
+    
     
     // MARK: Actions
     

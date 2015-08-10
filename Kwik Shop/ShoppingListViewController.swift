@@ -27,19 +27,20 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     func loadSampleData() {
         if shoppingList == nil {
+            
             shoppingList = ShoppingList(name: "sample List")
+            
+            let item1 = Item(id: 0, order: 0, name: "asdf")
+            item1.comment = "bla"
+            let item2 = Item(id: 1, order: 1, name: "qwerty")
+            item2.brand = "blub"
+            let item3 = Item(id: 2, order: 2, name: "qwertz")
+            item3.brand = "a"
+            item3.comment = "b"
+            let item4 = Item(id: 3, order: 3, name: "item")
+            
+            items += [item1, item2, item3, item4]
         }
-        
-        let item1 = Item(id: 0, order: 0, name: "asdf")
-        item1.comment = "bla"
-        let item2 = Item(id: 1, order: 1, name: "qwerty")
-        item2.brand = "blub"
-        let item3 = Item(id: 2, order: 2, name: "qwertz")
-        item3.brand = "a"
-        item3.comment = "b"
-        let item4 = Item(id: 3, order: 3, name: "item")
-        
-        items += [item1, item2, item3, item4]
     }
 
     
