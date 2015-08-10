@@ -87,8 +87,10 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if newList && !nameTextField.text.isEmpty {
+        if newList {
             shoppingList = ShoppingList(name: nameTextField.text)
+        } else {
+            shoppingList!.name = nameTextField.text
         }
         
     }

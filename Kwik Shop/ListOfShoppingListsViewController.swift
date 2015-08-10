@@ -85,8 +85,11 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         let date = shoppingList.lastModifiedDate.relativeLocalizedRepresentation
         cell.lastModifiedLabel.text = date
-
+               
+        let longPress = UILongPressGestureRecognizer(target: self, action: "handleGesture:")
+        cell.addGestureRecognizer(longPress)
         
+
         return cell
     }
 
@@ -113,13 +116,14 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         }
     }
     
+    private var lastIndexPath : NSIndexPath?
+    
     @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? ShoppingListDetailsViewController, shoppingList = sourceViewController.shoppingList {
             if !sourceViewController.newList {
-                if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow() {
+                if let selectedIndexPath = lastIndexPath {
                     shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList!
                     shoppingListsTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-                    
                 } else {
                     assertionFailure("Returning from shopping list details for an existing item allthough no table row was selected")
                 }
@@ -133,7 +137,22 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     
     
     // MARK: Actions
-    
+    func handleGesture(gestureRecognizer: UIGestureRecognizer) {
+        
+        let point = gestureRecognizer.locationInView(shoppingListsTableView)
+        
+        if let indexPath = shoppingListsTableView.indexPathForRowAtPoint(point) {
+            if (gestureRecognizer.state == UIGestureRecognizerState.Began) {
+                if let detailsViewController = storyboard?.instantiateViewControllerWithIdentifier("ShoppingListDetailsView") as? ShoppingListDetailsViewController {
+                    lastIndexPath = indexPath
+                    let selectedShoppingList = shoppingLists[indexPath.row]
+                    detailsViewController.shoppingList = selectedShoppingList
+                    detailsViewController.newList = false
+                    navigationController?.pushViewController(detailsViewController, animated: true)
+                }
+            }
+        }
+    }
     
     
     

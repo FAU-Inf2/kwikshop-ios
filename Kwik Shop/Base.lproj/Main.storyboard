@@ -8,7 +8,7 @@
         <!--Shopping List Details View Controller-->
         <scene sceneID="fvY-CY-bRt">
             <objects>
-                <viewController id="eYb-sp-Pzl" customClass="ShoppingListDetailsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShoppingListDetailsView" id="eYb-sp-Pzl" customClass="ShoppingListDetailsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B3g-ED-xaf"/>
                         <viewControllerLayoutGuide type="bottom" id="2WX-nw-E1u"/>
