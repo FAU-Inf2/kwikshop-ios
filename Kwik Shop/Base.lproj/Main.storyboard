@@ -45,7 +45,11 @@
                                 <action selector="cancel:" destination="eYb-sp-Pzl" id="awo-0N-Bl3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="Qrx-TC-0gD"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Qrx-TC-0gD">
+                            <connections>
+                                <segue destination="HfW-gp-QyI" kind="unwind" unwindAction="unwindToShoppingList:" id="z9u-bs-LoW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="ZBb-Rc-jL2" id="qV1-re-kgG"/>
@@ -56,6 +60,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E61-rw-bcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HfW-gp-QyI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2574" y="418"/>
         </scene>

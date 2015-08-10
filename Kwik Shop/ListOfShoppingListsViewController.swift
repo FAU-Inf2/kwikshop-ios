@@ -118,7 +118,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
             if !sourceViewController.newList {
                 if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow() {
                     shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList!
-                    shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                    shoppingListsTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                     
                 } else {
                     assertionFailure("Returning from shopping list details for an existing item allthough no table row was selected")
