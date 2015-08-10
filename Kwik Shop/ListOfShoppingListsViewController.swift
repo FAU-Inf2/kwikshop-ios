@@ -92,14 +92,15 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
 
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let shoppingListViewController = segue.destinationViewController as! ShoppingListViewController
-        if let selectedShoppingListCell = sender as? ShoppingListTableViewCell {
-            let indexPath = shoppingListsTableView.indexPathForCell(selectedShoppingListCell)!
-            let selectedShoppingList = shoppingLists[indexPath.row]
-            shoppingListViewController.shoppingList = selectedShoppingList
-            shoppingListViewController.returnToListOfShoppingListsDelegateMethod = unwindToListOfShoppingLists
+        if let shoppingListViewController = segue.destinationViewController as? ShoppingListViewController {
+            // navigating to shopping list
+            if let selectedShoppingListCell = sender as? ShoppingListTableViewCell {
+                let indexPath = shoppingListsTableView.indexPathForCell(selectedShoppingListCell)!
+                let selectedShoppingList = shoppingLists[indexPath.row]
+                shoppingListViewController.shoppingList = selectedShoppingList
+                shoppingListViewController.returnToListOfShoppingListsDelegateMethod = unwindToListOfShoppingLists
+            }
         }
-     
     }
         
     func unwindToListOfShoppingLists(sender: UIViewController) {
