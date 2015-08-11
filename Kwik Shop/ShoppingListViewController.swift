@@ -137,8 +137,12 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         if editingStyle == .Delete {
             // Delete the row from the data source
             let index = getIndexForIndexPath(indexPath)
-            items.removeAtIndex(index)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            if index == notBoughtItems.count && boughtItems.count == 1 {
+                assertionFailure("not implemented yet") // TODO: implement
+            } else {
+                items.removeAtIndex(index)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
