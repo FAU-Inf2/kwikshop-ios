@@ -62,7 +62,11 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     func swipedView(sender : UISwipeGestureRecognizer) {
         let location = sender.locationInView(shoppingListTableView)
         if let indexPath = shoppingListTableView.indexPathForRowAtPoint(location) {
-            println("Marked swiped the following item: \(items[getIndexForIndexPath(indexPath)].name)")
+            if let index =  getIndexForIndexPath(indexPath) {
+                println("Swiped the following item: \(items[index].name)")
+            } else {
+                println("Swiped the shoppinglist separator")
+            }
         }
     }
     
@@ -94,14 +98,12 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             return cell
         }
         
-        let index = getIndexForIndexPath(indexPath)
+        let index = getIndexForIndexPath(indexPath)!
         
         let cellIdentifier = "ItemTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         
         let item = items[index]
-        
-        
         
         if item.bought {
             let itemName = item.name
@@ -147,6 +149,12 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         if editingStyle == .Delete {
             // Delete the row from the data source
             let index = getIndexForIndexPath(indexPath)
+            
+            if index == nil {
+                // should not happen as tableView:canEditRowAtIndexPath: returns false for the separator
+                return
+            }
+            
             let indexPaths : [NSIndexPath]
             if index == notBoughtItems.count && boughtItems.count == 1 {
                 let separatorIndexPath = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
@@ -155,7 +163,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                 indexPaths = [indexPath]
             }
             
-            items.removeAtIndex(index)
+            items.removeAtIndex(index!)
             tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
 
         } else if editingStyle == .Insert {
@@ -166,9 +174,11 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         return indexPath.row != notBoughtItems.count
     }
     
-    private func getIndexForIndexPath(indexPath: NSIndexPath) -> Int {
+    private func getIndexForIndexPath(indexPath: NSIndexPath) -> Int? {
         if indexPath.row < notBoughtItems.count {
             return indexPath.row
+        } else if indexPath.row == notBoughtItems.count {
+            return nil
         } else {
             return indexPath.row - 1
         }
@@ -182,7 +192,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             if let selectedItemCell = sender as? ItemTableViewCell {
                 let indexPath = shoppingListTableView.indexPathForCell(selectedItemCell)!
                 let index = getIndexForIndexPath(indexPath)
-                let selectedItem = items[index]
+                let selectedItem = items[index!] // index can't be nil because otherwise the as? cast would fail
                 itemDetailsViewController.currentItem = selectedItem
                 itemDetailsViewController.newItem = false
             }
@@ -197,7 +207,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             if !sourceViewController.newItem {
                 if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
                     let index = getIndexForIndexPath(selectedIndexPath)
-                    items[index] = sourceViewController.currentItem!
+                    items[index!] = sourceViewController.currentItem!
                     shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                 } else {
                     assertionFailure("Returning from item details for an existing item allthough no table row was selected")
