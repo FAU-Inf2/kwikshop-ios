@@ -62,10 +62,30 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     func swipedView(sender : UISwipeGestureRecognizer) {
         let location = sender.locationInView(shoppingListTableView)
         if let indexPath = shoppingListTableView.indexPathForRowAtPoint(location) {
-            if let index =  getIndexForIndexPath(indexPath) {
-                let bought = items[index].bought
-                shoppingList.markItemWithIndex(index, asBought: !bought)
-                shoppingListTableView.reloadData()
+            
+            let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
+            
+            if let index = indexAndIndexPaths.index {
+                let boughtBeforeSwipe = items[index].bought
+                //shoppingList.markItemWithIndex(index, asBought: !bought)
+                let item = items.removeAtIndex(index)
+                
+                shoppingListTableView.deleteRowsAtIndexPaths(indexAndIndexPaths.indexPaths, withRowAnimation: .Fade)
+                item.bought = !item.bought
+                
+                if boughtBeforeSwipe {
+                    notBoughtItems.append(item)
+                    let newIndexPath = NSIndexPath(forRow: notBoughtItems.count - 1, inSection: 0)
+                    shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                } else {
+                    boughtItems.append(item)
+                    let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
+                    let newIndexPaths = getIndexAndIndexPathsForIndexPath(newIndexPath).indexPaths
+                    shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
+                }
+                
+                
+                //shoppingListTableView.reloadData()
             } else {
                 // Swiped the shoppinglist separator
                 return
@@ -151,30 +171,35 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            let index = getIndexForIndexPath(indexPath)
+            let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
+            let index = indexAndIndexPaths.index
+            let indexPaths = indexAndIndexPaths.indexPaths
             
-            if index == nil {
-                // should not happen as tableView:canEditRowAtIndexPath: returns false for the separator
-                return
-            }
-            
-            let indexPaths : [NSIndexPath]
-            if index == notBoughtItems.count && boughtItems.count == 1 {
-                let separatorIndexPath = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
-                indexPaths = [separatorIndexPath, indexPath]
-            } else {
-                indexPaths = [indexPath]
-            }
-            
-            items.removeAtIndex(index!)
+            items.removeAtIndex(index!) // index != nil because the separator can't be swiped
             tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
 
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
+    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return indexPath.row != notBoughtItems.count
+    }
+    
+    private func getIndexAndIndexPathsForIndexPath(indexPath: NSIndexPath) -> (index: Int?, indexPaths: [NSIndexPath]) {
+        let index = getIndexForIndexPath(indexPath)
+        if index == nil {
+            return (nil, [indexPath])
+        }
+        let indexPaths : [NSIndexPath]
+        if index == notBoughtItems.count && boughtItems.count == 1 {
+            let separatorIndexPath = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
+            indexPaths = [separatorIndexPath, indexPath]
+        } else {
+            indexPaths = [indexPath]
+        }
+        return (index, indexPaths)
     }
     
     private func getIndexForIndexPath(indexPath: NSIndexPath) -> Int? {
