@@ -168,13 +168,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
-            let index = indexAndIndexPaths.index
-            let indexPaths = indexAndIndexPaths.indexPaths
-            
-            items.removeAtIndex(index!) // index != nil because the separator can't be swiped
-            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-
+            deleteTableViewRowAtIndexPath(indexPath)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -182,6 +176,17 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return indexPath.row != notBoughtItems.count
+    }
+    
+    // MARK: Actions
+    
+    private func deleteTableViewRowAtIndexPath(indexPath: NSIndexPath) {
+        let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
+        let index = indexAndIndexPaths.index! // index != nil because the separator can't be swiped or edited
+        let indexPaths = indexAndIndexPaths.indexPaths
+        
+        items.removeAtIndex(index)
+        shoppingListTableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
     }
     
     private func getIndexAndIndexPathsForIndexPath(indexPath: NSIndexPath) -> (index: Int?, indexPaths: [NSIndexPath]) {
@@ -231,9 +236,15 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController, item = sourceViewController.currentItem {
             if !sourceViewController.newItem {
                 if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
-                    let index = getIndexForIndexPath(selectedIndexPath)
-                    items[index!] = sourceViewController.currentItem!
-                    shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                    let index = getIndexForIndexPath(selectedIndexPath)!
+                    if let item = sourceViewController.currentItem {
+                        // item was changed
+                        items[index] = sourceViewController.currentItem!
+                        shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                    } else {
+                        // item is to be deleted
+                        deleteTableViewRowAtIndexPath(selectedIndexPath)
+                    }
                 } else {
                     assertionFailure("Returning from item details for an existing item allthough no table row was selected")
                 }
