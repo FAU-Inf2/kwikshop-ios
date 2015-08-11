@@ -59,8 +59,11 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     }
     
     // MARK: Swipe Gesture
-    func swipedView(sender:UISwipeGestureRecognizer) {
-        
+    func swipedView(sender : UISwipeGestureRecognizer) {
+        let location = sender.locationInView(shoppingListTableView)
+        if let indexPath = shoppingListTableView.indexPathForRowAtPoint(location) {
+            println("Marked swiped the following item: \(items[getIndexForIndexPath(indexPath)].name)")
+        }
     }
     
     // MARK: - Table view data source
