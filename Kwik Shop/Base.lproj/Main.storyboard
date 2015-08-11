@@ -175,7 +175,7 @@
                                 <items>
                                     <barButtonItem systemItem="trash" id="fND-ge-voC">
                                         <connections>
-                                            <segue destination="tQq-Ny-O5Q" kind="unwind" unwindAction="unwindToShoppingList:" id="hVU-h9-uy7"/>
+                                            <segue destination="tQq-Ny-O5Q" kind="unwind" unwindAction="unwindToShoppingList:" id="vHK-0G-Gjn"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

@@ -155,6 +155,12 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         }
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
+        return true
+    }
+    
+    
     // This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
