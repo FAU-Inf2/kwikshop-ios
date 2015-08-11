@@ -131,10 +131,14 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         if item.bought {
             let itemName = item.name
             let strikeThroughText = NSMutableAttributedString(string: itemName)
-            strikeThroughText.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, strikeThroughText.length))
+            let itemNameRange = NSMakeRange(0, strikeThroughText.length)
+            strikeThroughText.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: itemNameRange)
+            strikeThroughText.addAttribute(NSFontAttributeName, value: cell.brandCommentLabel.font, range: itemNameRange)
+            strikeThroughText.addAttribute(NSForegroundColorAttributeName, value: cell.brandCommentLabel.textColor, range: itemNameRange)
+            
             cell.nameLabel.attributedText = strikeThroughText
-            cell.nameLabel.font = cell.brandCommentLabel.font
-            cell.nameLabel.textColor = cell.brandCommentLabel.textColor
+            //cell.nameLabel.font = cell.brandCommentLabel.font
+            //cell.nameLabel.textColor = cell.brandCommentLabel.textColor
             
             cell.brandCommentLabel.text = ""
             cell.amountLabel.text = ""
