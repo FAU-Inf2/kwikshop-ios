@@ -53,8 +53,15 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         shoppingListTableView.estimatedRowHeight = 44.0
         shoppingListTableView.rowHeight = UITableViewAutomaticDimension
+        
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedView:")
+        shoppingListTableView.addGestureRecognizer(swipeGestureRecognizer)
     }
     
+    // MARK: Swipe Gesture
+    func swipedView(sender:UISwipeGestureRecognizer) {
+        
+    }
     
     // MARK: - Table view data source
     
