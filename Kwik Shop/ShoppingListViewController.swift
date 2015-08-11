@@ -167,7 +167,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     }
     
     private func getIndexForIndexPath(indexPath: NSIndexPath) -> Int {
-        if indexPath.row < items.count {
+        if indexPath.row < notBoughtItems.count {
             return indexPath.row
         } else {
             return indexPath.row - 1
