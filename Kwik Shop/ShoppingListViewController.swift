@@ -233,7 +233,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController, item = sourceViewController.currentItem {
+        if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController {
             if !sourceViewController.newItem {
                 if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
                     let index = getIndexForIndexPath(selectedIndexPath)!
@@ -249,6 +249,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     assertionFailure("Returning from item details for an existing item allthough no table row was selected")
                 }
             } else {
+                let item = sourceViewController.currentItem! // item can only be nil if delete was pressed
                 let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
                 notBoughtItems.append(item)
                 shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)

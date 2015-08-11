@@ -183,6 +183,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                 currentItem!.comment = comment
                 currentItem!.group = group
             }
+        } else if deleteButton === sender {
+            currentItem = nil
         }
     }
     
