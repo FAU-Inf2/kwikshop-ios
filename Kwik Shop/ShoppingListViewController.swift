@@ -67,7 +67,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             
             if let index = indexAndIndexPaths.index {
                 let boughtBeforeSwipe = items[index].bought
-                //shoppingList.markItemWithIndex(index, asBought: !bought)
                 let item = items.removeAtIndex(index)
                 
                 shoppingListTableView.deleteRowsAtIndexPaths(indexAndIndexPaths.indexPaths, withRowAnimation: .Fade)
@@ -83,9 +82,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     let newIndexPaths = getIndexAndIndexPathsForIndexPath(newIndexPath).indexPaths
                     shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
                 }
-                
-                
-                //shoppingListTableView.reloadData()
             } else {
                 // Swiped the shoppinglist separator
                 return
@@ -135,10 +131,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             strikeThroughText.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: itemNameRange)
             strikeThroughText.addAttribute(NSFontAttributeName, value: cell.brandCommentLabel.font, range: itemNameRange)
             strikeThroughText.addAttribute(NSForegroundColorAttributeName, value: cell.brandCommentLabel.textColor, range: itemNameRange)
-            
             cell.nameLabel.attributedText = strikeThroughText
-            //cell.nameLabel.font = cell.brandCommentLabel.font
-            //cell.nameLabel.textColor = cell.brandCommentLabel.textColor
             
             cell.brandCommentLabel.text = ""
             cell.amountLabel.text = ""
