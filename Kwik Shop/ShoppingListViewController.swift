@@ -168,7 +168,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            deleteTableViewRowAtIndexPath(indexPath)
+            deleteItemAtIndexPath(indexPath)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -180,7 +180,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     // MARK: Actions
     
-    private func deleteTableViewRowAtIndexPath(indexPath: NSIndexPath) {
+    private func deleteItemAtIndexPath(indexPath: NSIndexPath) {
         let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
         let index = indexAndIndexPaths.index! // index != nil because the separator can't be swiped or edited
         let indexPaths = indexAndIndexPaths.indexPaths
@@ -243,7 +243,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                         shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                     } else {
                         // item is to be deleted
-                        deleteTableViewRowAtIndexPath(selectedIndexPath)
+                        deleteItemAtIndexPath(selectedIndexPath)
                     }
                 } else {
                     assertionFailure("Returning from item details for an existing item allthough no table row was selected")
