@@ -129,39 +129,22 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             }
             cell.amountLabel.text = amountText
         }
-        
-        
-        
-        
+
         return cell
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let more = UITableViewRowAction(style: .Normal, title: "More") { action, index in
-            println("more button tapped")
-        }
-        more.backgroundColor = UIColor.lightGrayColor()
-        
-        let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
-            println("favorite button tapped")
-        }
-        favorite.backgroundColor = UIColor.orangeColor()
-        
-        let share = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
-            println("share button tapped")
-        }
-        share.backgroundColor = UIColor.blueColor()
-        
-        return [share, favorite, more]
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // the cells you would like the actions to appear needs to be editable
-        return true
-    }
-    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        // you need to implement this method too or you can't swipe to display the actions
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            let index = getIndexForIndexPath(indexPath)
+            items.removeAtIndex(index)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return indexPath.row != notBoughtItems.count
     }
     
     private func getIndexForIndexPath(indexPath: NSIndexPath) -> Int {
