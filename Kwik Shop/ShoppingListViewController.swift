@@ -63,9 +63,12 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         let location = sender.locationInView(shoppingListTableView)
         if let indexPath = shoppingListTableView.indexPathForRowAtPoint(location) {
             if let index =  getIndexForIndexPath(indexPath) {
-                println("Swiped the following item: \(items[index].name)")
+                let bought = items[index].bought
+                shoppingList.markItemWithIndex(index, asBought: !bought)
+                shoppingListTableView.reloadData()
             } else {
-                println("Swiped the shoppinglist separator")
+                // Swiped the shoppinglist separator
+                return
             }
         }
     }

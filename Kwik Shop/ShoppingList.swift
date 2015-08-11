@@ -50,4 +50,30 @@ class ShoppingList {
     convenience init (name: String) {
         self.init(id: nil, name: name, sortType: nil)
     }
+    
+    func markItemWithIndex(index: Int, asBought bought: Bool) {
+        if items[index].bought == bought {
+            return
+        }
+        let item = items.removeAtIndex(index)
+        item.bought = bought
+        if bought {
+            boughtItems.append(item)
+        } else {
+            notBoughtItems.append(item)
+        }
+    }
+    
+    func markItem(item: Item, asBought bought: Bool) {
+        if item.bought == bought {
+            return
+        }
+        if let index = find(items, item) {
+            markItemWithIndex(index, asBought: bought)
+        } else {
+            assertionFailure("Item not contained in shopping list")
+        }
+    }
 }
+
+

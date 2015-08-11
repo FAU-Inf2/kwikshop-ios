@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Item {
+class Item  : Equatable {
     var/*let*/ id : Int?
     var order : Int?
     var bought = false
@@ -48,6 +48,14 @@ class Item {
         }
         self.group = group
     }
-    
-    
 }
+    
+    func == (left: Item, right: Item) -> Bool {
+        if left === right {
+            return true
+        }
+        if left.id != nil && left.id == right.id {
+            return true
+        }
+        return left.name == right.name && left.amount == right.amount /*&& left.unit == right.unit*/ && left.isHighlited == right.isHighlited && left.brand == right.brand && left.comment == right.comment /*&& left.group == right.group*/
+    }
