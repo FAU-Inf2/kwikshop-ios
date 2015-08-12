@@ -158,11 +158,16 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
         if sender === deleteButton {
-            var refreshAlert = UIAlertController(title: nil, message: "Are you sure you want to delete this item?", preferredStyle: UIAlertControllerStyle.Alert)
+            var refreshAlert = UIAlertController(title: nil, message: "Are you sure you want to delete this item?", preferredStyle: UIAlertControllerStyle.ActionSheet)
             
             refreshAlert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
                 self.performSegueWithIdentifier("unwindToShoppingList", sender: deleteButton)
             }))
+            
+            /*refreshAlert.addAction(UIAlertAction(title: "Continue and don't ask again", style: .Default, handler: { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
+                // TODO: Perform logic to avoid asking again
+                self.performSegueWithIdentifier("unwindToShoppingList", sender: deleteButton)
+            }))*/
             
             refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
                 return
