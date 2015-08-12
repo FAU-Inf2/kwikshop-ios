@@ -115,12 +115,18 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let shoppingListViewController = segue.destinationViewController as? ShoppingListViewController {
             // navigating to shopping list
+            let indexPath : NSIndexPath
             if let selectedShoppingListCell = sender as? ShoppingListTableViewCell {
-                let indexPath = shoppingListsTableView.indexPathForCell(selectedShoppingListCell)!
-                let selectedShoppingList = shoppingLists[indexPath.row]
-                shoppingListViewController.shoppingList = selectedShoppingList
-                shoppingListViewController.returnToListOfShoppingListsDelegateMethod = unwindToListOfShoppingLists
+                // a cell was tapped
+                indexPath = shoppingListsTableView.indexPathForCell(selectedShoppingListCell)!
+            } else {
+                // a new shopping list has just been created
+                indexPath = NSIndexPath(forRow: shoppingLists.count - 1, inSection: 0)
             }
+            let selectedShoppingList = shoppingLists[indexPath.row]
+            shoppingListViewController.shoppingList = selectedShoppingList
+            shoppingListViewController.returnToListOfShoppingListsDelegateMethod = unwindToListOfShoppingLists
+
         }
     }
         
@@ -150,6 +156,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
                     let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
                     shoppingLists.append(shoppingList)
                     shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    self.performSegueWithIdentifier("ShowShoppingList", sender: self)                    
                 }
             } else {
                 let indexPath = lastIndexPath!

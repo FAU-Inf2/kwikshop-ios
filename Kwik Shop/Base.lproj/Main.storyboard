@@ -132,7 +132,7 @@
                                             <outlet property="lastModifiedLabel" destination="9a5-Pg-A0H" id="bbl-wp-l7N"/>
                                             <outlet property="nameLabel" destination="7QY-MN-QjS" id="sxR-oo-H9w"/>
                                             <outlet property="numberOfItemsLabel" destination="VvP-R0-xNX" id="QQ2-e5-cSo"/>
-                                            <segue destination="0cd-0w-Imx" kind="show" id="uem-kT-DXj"/>
+                                            <segue destination="0cd-0w-Imx" kind="show" identifier="ShowShoppingList" id="uem-kT-DXj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
