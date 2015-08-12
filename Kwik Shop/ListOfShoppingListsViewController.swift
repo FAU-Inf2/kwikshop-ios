@@ -96,6 +96,20 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
 
         return cell
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            deleteShoppingListAtIndexPath(indexPath)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
 
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -141,6 +155,16 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     
     
     // MARK: Actions
+    
+    private func deleteShoppingListAtIndexPath(indexPath: NSIndexPath) {
+        
+        let index = indexPath.row
+        shoppingLists.removeAtIndex(index)
+        
+        shoppingListsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
+    
+    
     func handleGesture(gestureRecognizer: UIGestureRecognizer) {
         
         let point = gestureRecognizer.locationInView(shoppingListsTableView)
