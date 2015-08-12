@@ -218,6 +218,19 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         }
     }
 
+    @IBAction func quickAddPressed(sender: UIButton) {
+        let item = Item(name: quickAddTextField.text)
+        quickAddTextField.text = ""
+        addItem(item)
+    }
+    
+    func addItem(item: Item) {
+        let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
+        notBoughtItems.append(item)
+        shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+    }
+    
+    
     // MARK: Navigaton
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -254,9 +267,10 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                 }
             } else {
                 let item = sourceViewController.currentItem! // item can only be nil if delete was pressed
-                let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
-                notBoughtItems.append(item)
-                shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                addItem(item)
+                //let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
+                //notBoughtItems.append(item)
+                //shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
         }
     }
