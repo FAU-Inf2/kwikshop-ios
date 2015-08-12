@@ -137,18 +137,23 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     private var lastIndexPath : NSIndexPath?
     
     @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? ShoppingListDetailsViewController, shoppingList = sourceViewController.shoppingList {
-            if !sourceViewController.newList {
-                if let selectedIndexPath = lastIndexPath {
-                    shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList!
-                    shoppingListsTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+        if let sourceViewController = sender.sourceViewController as? ShoppingListDetailsViewController {
+            if let shoppingList = sourceViewController.shoppingList {
+                if !sourceViewController.newList {
+                    if let selectedIndexPath = lastIndexPath {
+                        shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList!
+                        shoppingListsTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                    } else {
+                        assertionFailure("Returning from shopping list details for an existing item allthough no table row was selected")
+                    }
                 } else {
-                    assertionFailure("Returning from shopping list details for an existing item allthough no table row was selected")
+                    let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
+                    shoppingLists.append(shoppingList)
+                    shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
                 }
             } else {
-                let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
-                shoppingLists.append(shoppingList)
-                shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                let indexPath = lastIndexPath!
+                deleteShoppingListAtIndexPath(indexPath)
             }
         }
     }
