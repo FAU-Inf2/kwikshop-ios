@@ -86,9 +86,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     let newIndexPaths = getIndexAndIndexPathsForIndexPath(newIndexPath).indexPaths
                     shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
                 }
-                
-                let now = NSDate()
-                shoppingList.lastModifiedDate = now
+                updateModifyDate()
             } else {
                 // Swiped the shoppinglist separator
                 return
