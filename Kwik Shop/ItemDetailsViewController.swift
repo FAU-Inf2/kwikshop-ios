@@ -57,7 +57,9 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         self.hideToolbar(newItem)
         
         if newItem {
-            // do nothing (yet)
+            if let item = currentItem {
+                itemNameTextField.text = item.name
+            }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
             amountTextField.text = "\(item.amount)"

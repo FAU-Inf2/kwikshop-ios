@@ -245,7 +245,15 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             }
         }
         else if segue.identifier == "AddItem" {
-            //print("Adding new item.")
+            if !quickAddTextField.text.isEmpty {
+                let navigationController = segue.destinationViewController as! NavigationController
+                let itemDetailsViewController = navigationController.topViewController as! ItemDetailsViewController
+                let item = Item(name: quickAddTextField.text)
+                itemDetailsViewController.currentItem = item
+                itemDetailsViewController.newItem = true
+                quickAddTextField.text = ""
+                closeKeyboard()
+            }
         }
     }
     
