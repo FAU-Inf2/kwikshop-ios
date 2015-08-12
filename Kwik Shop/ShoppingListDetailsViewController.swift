@@ -37,6 +37,12 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
         view.addGestureRecognizer(tapGesture)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        if newList {
+            nameTextField.becomeFirstResponder()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

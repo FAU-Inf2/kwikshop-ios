@@ -89,6 +89,11 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if (newItem && currentItem == nil) {
+            itemNameTextField.becomeFirstResponder()
+        }
+    }
     
     func checkValidItemName(text: String) {
         // Disable the Save button if the text field is empty.
