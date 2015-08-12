@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
@@ -16,6 +16,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var shoppingListTableView: UITableView!
     
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
+    var closeKeyboardTapGestureRecognizer : UITapGestureRecognizer?
     
     var shoppingList : ShoppingList!
     var items : [Item] {
@@ -56,6 +57,9 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedView:")
         shoppingListTableView.addGestureRecognizer(swipeGestureRecognizer)
+        
+        quickAddTextField.delegate = self
+        
     }
     
     // MARK: Swipe Gesture
@@ -266,4 +270,38 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             }
         }
     }
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        closeKeyboard()
+        return true
+    }
+    
+    func closeKeyboard() {
+        quickAddTextField.resignFirstResponder()
+        if let tap = closeKeyboardTapGestureRecognizer {
+            view.removeGestureRecognizer(tap)
+        }
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        checkValidItemName(text)
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        // close keyboard when user taps on the view
+        if closeKeyboardTapGestureRecognizer == nil {
+            closeKeyboardTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+        }
+        view.addGestureRecognizer(closeKeyboardTapGestureRecognizer!)
+    }
+    
+    func checkValidItemName(text: String) {
+        // Disable the Save button if the text field is empty.
+        quickAddButton.enabled = !text.isEmpty
+    }
+
 }
