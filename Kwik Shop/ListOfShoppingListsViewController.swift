@@ -23,7 +23,10 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         shoppingListsTableView.delegate = self
         shoppingListsTableView.dataSource = self
-        loadSampleData()
+        
+        if shoppingLists.isEmpty {
+            loadSampleData()
+        }
     }
     
     private var goToShoppingList = false
@@ -35,27 +38,33 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     }
     
     func loadSampleData() {
-        let list1 = ShoppingList(id: 0, name: "asdf", sortType: 0)
-        let item1 = Item(id: 0, order: 0, name: "asdf")
-        item1.comment = "bla"
-        let item2 = Item(id: 1, order: 1, name: "qwerty")
-        item2.brand = "blub"
-        item2.bought = true
-        let item3 = Item(id: 2, order: 2, name: "qwertz")
-        item3.brand = "a"
-        item3.comment = "b"
-        item3.bought = true
-        let item4 = Item(id: 3, order: 3, name: "item")
-        item4.bought = true
-        list1.items = [item1, item2, item3, item4]
+        let item1 = Item(name: "Apple")
+        item1.comment = "Type in the box above to add items"
         
-       
-        let list2 = ShoppingList(id: 1, name: "qwerty", sortType: 0)
+        let item2 =  Item(name: "Sweets")
+        //item2.comment = "Click a bit longer and then move your item to sort your list as you want" // not working yet
         
-        let list3 = ShoppingList(id: 2, name: "qwertz", sortType: 0)
-        list3.items = [Item(id: 4, order: 0, name: "qwert")]
+        let item3 = Item(name: "Coke")
+        item3.amount = 5
+        item3.unit = Unit.BOTTLE
+        item3.comment = "Swipe items to the right to mark them as bought"
         
-        shoppingLists += [list1, list2, list3]
+        let item4 = Item(name: "Spaghettis")
+        item4.amount = 5
+        item4.comment = "You can add detailed items with the navigation bar button on the right"
+        
+        let item5 = Item(name: "Toilet paper")
+        item5.comment = "For example you can highlight important items like toilet paper"
+        item5.isHighlited = true
+        
+        let item6 = Item(name: "This item is already bought")
+        item6.bought = true
+        item6.comment = "At least it used to be; swipe it again to mark it as bought again"
+        
+        let list = ShoppingList(name: "My first shopping list")
+        list.items = [item1, item2, item3, item4, item5, item6]
+        
+        shoppingLists = [list]
     }
     
     override func didReceiveMemoryWarning() {

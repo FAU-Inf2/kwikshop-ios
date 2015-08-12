@@ -28,9 +28,9 @@ class Unit {
     var shortName : String {
         get {
             if short != nil {
-                return short!
+                return short!.localized
             }
-            return name
+            return name.localized
         }
     }
     
