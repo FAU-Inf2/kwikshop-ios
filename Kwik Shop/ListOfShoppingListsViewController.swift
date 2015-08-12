@@ -26,6 +26,14 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         loadSampleData()
     }
     
+    private var goToShoppingList = false
+    override func viewWillAppear(animated: Bool) {
+        if goToShoppingList {
+            goToShoppingList = false
+            self.performSegueWithIdentifier("ShowShoppingList", sender: self)
+        }
+    }
+    
     func loadSampleData() {
         let list1 = ShoppingList(id: 0, name: "asdf", sortType: 0)
         let item1 = Item(id: 0, order: 0, name: "asdf")
@@ -156,7 +164,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
                     let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
                     shoppingLists.append(shoppingList)
                     shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                    self.performSegueWithIdentifier("ShowShoppingList", sender: self)                    
+                    self.goToShoppingList = true
                 }
             } else {
                 let indexPath = lastIndexPath!
