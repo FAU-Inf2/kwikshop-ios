@@ -221,6 +221,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     @IBAction func quickAddPressed(sender: UIButton) {
         let item = Item(name: quickAddTextField.text)
         quickAddTextField.text = ""
+        quickAddButton.enabled = false
         addItem(item)
     }
     
@@ -296,7 +297,11 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
-        closeKeyboard()
+        if quickAddTextField.text.isEmpty {
+            closeKeyboard()
+        } else {
+            quickAddPressed(quickAddButton)
+        }
         return true
     }
     
