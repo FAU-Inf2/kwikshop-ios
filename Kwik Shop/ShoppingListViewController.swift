@@ -86,6 +86,9 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     let newIndexPaths = getIndexAndIndexPathsForIndexPath(newIndexPath).indexPaths
                     shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
                 }
+                
+                let now = NSDate()
+                shoppingList.lastModifiedDate = now
             } else {
                 // Swiped the shoppinglist separator
                 return
@@ -184,12 +187,18 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     // MARK: Actions
     
+    func updateModifyDate () {
+        let now = NSDate()
+        shoppingList.lastModifiedDate = now
+    }
+    
     private func deleteItemAtIndexPath(indexPath: NSIndexPath) {
         let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
         let index = indexAndIndexPaths.index! // index != nil because the separator can't be swiped or edited
         let indexPaths = indexAndIndexPaths.indexPaths
         
         items.removeAtIndex(index)
+        updateModifyDate()
         shoppingListTableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
     }
     
@@ -229,6 +238,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
         notBoughtItems.append(item)
         shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+        updateModifyDate()
     }
     
     
@@ -267,6 +277,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                         // item was changed
                         items[index] = sourceViewController.currentItem!
                         shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                        updateModifyDate()
                     } else {
                         // item is to be deleted
                         deleteItemAtIndexPath(selectedIndexPath)
