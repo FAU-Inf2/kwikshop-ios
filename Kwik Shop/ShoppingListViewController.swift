@@ -60,14 +60,17 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
         quickAddTextField.delegate = self
         
+        let screenSize = UIScreen.mainScreen().bounds.size
+        println("width: \(screenSize.width) \t height: \(screenSize.height)")
+        println("scale: \(screenSize.width * UIScreen.mainScreen().scale) \t \t \(screenSize.height * UIScreen.mainScreen().scale)")
     }
+    
     
     override func viewDidAppear(animated: Bool) {
         let indexPath1 = NSIndexPath(forRow: 3, inSection: 0)
         let indexPath2 = NSIndexPath(forRow: 4, inSection: 0)
         let indexPaths = [indexPath1, indexPath2]
         shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
-        
     }
     
     // MARK: Swipe Gesture
@@ -179,8 +182,20 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                 cell.nameLabel.highlighted = true
             }
 
+            let text = brandCommentText as NSString
+            
+            println("Item: \(cell.nameLabel.text), width of brand/comment: \(text.sizeWithAttributes([NSFontAttributeName:cell.brandCommentLabel.font]))")
+                
+                
+         /*       boundingRectWithSize:labelSize
+                options:NSStringDrawingUsesLineFragmentOrigin
+                attributes:@{
+                    NSFontAttributeName : [UIFont systemFontOfSize:14]
+            }
+            context:nil];)")
+            */
         }
-        
+    
         cell.sizeToFit()
         return cell
     }
