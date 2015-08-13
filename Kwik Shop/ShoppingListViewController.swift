@@ -62,6 +62,14 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        let indexPath1 = NSIndexPath(forRow: 3, inSection: 0)
+        let indexPath2 = NSIndexPath(forRow: 4, inSection: 0)
+        let indexPaths = [indexPath1, indexPath2]
+        shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
+        
+    }
+    
     // MARK: Swipe Gesture
     func swipedView(sender : UISwipeGestureRecognizer) {
         let location = sender.locationInView(shoppingListTableView)
@@ -141,11 +149,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             cell.brandCommentLabel.text = ""
             cell.amountLabel.text = ""
         } else {
-            cell.nameLabel.text = item.name
-            if item.isHighlited {
-                cell.nameLabel.highlightedTextColor = UIColor.redColor()
-                cell.nameLabel.highlighted = true
-            }
             
             let brand = item.brand ?? ""
             let comment = item.comment ?? ""
@@ -157,6 +160,10 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             brandCommentText += comment
             
             cell.brandCommentLabel.text = brandCommentText
+            cell.brandCommentLabel.numberOfLines = 0
+            cell.brandCommentLabel.lineBreakMode = .ByWordWrapping
+            cell.brandCommentLabel.sizeToFit()
+            
 
             var amountText = ""
             if item.amount != 1 && item.unit == nil{
@@ -165,8 +172,16 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                 amountText = "\(item.amount) \(unit.shortName)"
             }
             cell.amountLabel.text = amountText
-        }
+            
+            cell.nameLabel.text = item.name
+            if item.isHighlited {
+                cell.nameLabel.highlightedTextColor = UIColor.redColor()
+                cell.nameLabel.highlighted = true
+            }
 
+        }
+        
+        cell.sizeToFit()
         return cell
     }
     
