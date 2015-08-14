@@ -52,6 +52,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         let item4 = Item(name: "Spaghettis")
         item4.amount = 5
         item4.comment = "You can add detailed items with the navigation bar button on the right"
+        item4.comment! += " You can add detailed items with the navigation 1 2 3 4 5 6 7 8 9 0 1 2"
         
         let item5 = Item(name: "Toilet paper")
         item5.comment = "For example you can highlight important items like toilet paper"
