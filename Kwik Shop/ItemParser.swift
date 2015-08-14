@@ -74,7 +74,10 @@ class ItemParser {
             }
         }
         
-        let item = Item(name: output)
+        let string = NSMutableString(string: output)
+        CFStringTrimWhitespace(string)
+        
+        let item = Item(name: string as String)
         if let itemAmount = foundAmount {
             item.amount = itemAmount
         }
