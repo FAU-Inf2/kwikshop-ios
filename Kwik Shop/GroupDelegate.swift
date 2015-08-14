@@ -11,12 +11,7 @@ import UIKit
 
 class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var data : [String]
-    
-    override init() {
-        data = ["group_other", "group_babyFoods", "group_beverages", "group_breakPastries", "group_dairy", "group_frozenAndConvenience", "group_fruitsAndVegetables", "group_healthAndHygiene", "group_household", "group_ingredientsAndSpices", "group_meatAndFish", "group_pasta", "group_petSupplies", "group_sweetsAndSnacks", "group_tobacco", "group_coffeeAndTea"]
-        super.init()
-    }
+    var data = [Group.OTHER, Group.BABY_FOODS, Group.BEVERAGES, Group.BREAK_PASTRIES, Group.DAIRY, Group.FROZEN_AND_CONVENIENCE, Group.FRUITS_AND_VEGETABLES, Group.HEALTH_AND_HYGIENE, Group.HOUSEHOLD, Group.INGREDIENTS_AND_SPICES, Group.MEAT_AND_FISH, Group.PASTA, Group.PET_SUPPLIES, Group.SWEETS_AND_SNACKS, Group.TOBACCO, Group.COFFEE_AND_TEA]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -28,6 +23,6 @@ class GroupDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         //return NSLocalizedString(data[row], tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
-        return data[row].localized
+        return data[row].name.localized
     }
 }

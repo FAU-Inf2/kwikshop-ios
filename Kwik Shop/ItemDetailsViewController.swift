@@ -36,6 +36,9 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     var currentItem : Item?
     var newItem = true
     
+    private var unitHasChanged = false
+    private var groupHasChanged = false
+    
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,13 +201,28 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             } else {
                 amount = 1
             }
-            // TODO: Unit has to be stored
-            let unit : Unit? = nil
+            
+            let unit : Unit?
+            if unitHasChanged {
+                let unitIndex = unitPicker.selectedRowInComponent(0)
+                unit = unitDelegate.data[unitIndex]
+            } else {
+                unit = currentItem?.unit
+            }
+            
             let highlight = highlightSwitch.on
             let brand = brandTextField.text
             let comment = commentTextField.text
             // TODO: Group has to be stored
-            let group : Group? = nil
+            let group : Group?
+            if groupHasChanged {
+                let groupIndex = groupPicker.selectedRowInComponent(0)
+                group = groupDelegate.data[groupIndex]
+            } else {
+                group = currentItem?.group
+            }
+
+            
             if newItem {
                 currentItem = Item(name: name, amount: amount, unit: unit, highlight: highlight, brand: brand, comment: comment, group: group)
             } else {
@@ -260,6 +278,11 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView === unitPicker {
+            unitHasChanged = true
+        } else if pickerView === groupPicker {
+            groupHasChanged = true
+        }
         closeKeyboard()
     }
     
