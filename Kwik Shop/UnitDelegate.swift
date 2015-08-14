@@ -11,7 +11,6 @@ import UIKit
 
 class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    //var data = ["unit_bag", "unit_bottle", "unit_box", "unit_dozen", "unit_gram", "unit_kilogram", "unit_litre", "unit_millilitre",  "unit_pack", "unit_piece"]
     var data = [Unit.BAG, Unit.BOTTLE, Unit.BOX, Unit.DOZEN, Unit.GRAM, Unit.KILOGRAM, Unit.LITRE, Unit.MILLILITRE, Unit.PACK, Unit.PIECE]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

@@ -12,6 +12,7 @@
 		3A6ABDBD1B64F492009FD7BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6ABDBB1B64F492009FD7BE /* Main.storyboard */; };
 		3A6ABDBF1B64F492009FD7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6ABDBE1B64F492009FD7BE /* Assets.xcassets */; };
 		3A6ABDCD1B64F492009FD7BE /* Kwik_ShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6ABDCC1B64F492009FD7BE /* Kwik_ShopTests.swift */; };
+		3A6F95E01B7E520300E262BB /* ItemParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F95DF1B7E520300E262BB /* ItemParser.swift */; };
 		3A790C0E1B6BD1E6003F11A2 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A790C0D1B6BD1E6003F11A2 /* Launch Screen.xib */; };
 		3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD01B663237000B5396 /* ShoppingList.swift */; };
 		3ADA6FD41B663498000B5396 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD31B663498000B5396 /* Item.swift */; };
@@ -53,6 +54,7 @@
 		3A6ABDC81B64F492009FD7BE /* Kwik ShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kwik ShopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6ABDCC1B64F492009FD7BE /* Kwik_ShopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kwik_ShopTests.swift; sourceTree = "<group>"; };
 		3A6ABDCE1B64F492009FD7BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A6F95DF1B7E520300E262BB /* ItemParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemParser.swift; sourceTree = "<group>"; };
 		3A790C0D1B6BD1E6003F11A2 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		3ADA6FD01B663237000B5396 /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		3ADA6FD31B663498000B5396 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */,
 				3AE90B691B6E714600470729 /* UnitDelegate.swift */,
 				3AE594DC1B6F9ED1007A52DA /* Resources */,
+				3A6F95DF1B7E520300E262BB /* ItemParser.swift */,
 			);
 			path = "Kwik Shop";
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				3A56D9021B7372B000D536C8 /* ItemTableViewCell.swift in Sources */,
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
+				3A6F95E01B7E520300E262BB /* ItemParser.swift in Sources */,
 				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
 				3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */,
 				3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */,
