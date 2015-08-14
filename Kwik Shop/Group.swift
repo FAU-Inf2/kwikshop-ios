@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Group {
+class Group : Equatable {
 
     static let OTHER = Group(id: 0, name: "group_other")
     static let BABY_FOODS = Group(id: 1, name: "group_babyFoods")
@@ -35,4 +35,11 @@ class Group {
         self.name = name
     }
     
+}
+
+func == (left : Group, right : Group) -> Bool {
+    if left.id == right.id {
+        return true
+    }
+    return left.name == right.name
 }

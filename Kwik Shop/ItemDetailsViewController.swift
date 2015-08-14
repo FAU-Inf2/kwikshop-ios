@@ -66,7 +66,11 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         } else if let item = currentItem {
             itemNameTextField.text = item.name
             amountTextField.text = "\(item.amount)"
-            //unitPicker has to select unit
+            
+            if let unit = item.unit, row = find(unitDelegate.data, unit) {
+                unitPicker.selectRow(row, inComponent: 0, animated: false)
+            }
+            
             highlightSwitch.setOn(item.isHighlited, animated: false)
             if let brand = item.brand {
                 brandTextField.text = brand
@@ -74,7 +78,11 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             if let comment = item.comment {
                 commentTextField.text = comment
             }
-            //groupPicker has to select group
+            
+            if let group = item.group, row = find(groupDelegate.data, group) {
+                groupPicker.selectRow(row, inComponent: 0, animated: false)
+            }
+
         } else {
             assertionFailure("Item details was loaded with newItem set to false but currentItem set to nil")
         }
@@ -89,7 +97,6 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
         view.addGestureRecognizer(tapGesture)
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
-
     }
     
     override func viewDidAppear(animated: Bool) {

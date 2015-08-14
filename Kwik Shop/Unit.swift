@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Unit {
+class Unit : Equatable{
     
     static let BAG = Unit(id: 0, name: "unit_bag")
     static let BOTTLE = Unit(id: 1, name: "unit_bottle")
@@ -43,5 +43,14 @@ class Unit {
     convenience init (id : Int, name : String) {
         self.init(id: id, name: name, shortName: nil)
     }
-    
+}
+
+func == (left: Unit, right: Unit) -> Bool {
+    if left.id == right.id {
+        return true
+    }
+    if left.name != right.name {
+        return false
+    }
+    return left.shortName == right.shortName
 }
