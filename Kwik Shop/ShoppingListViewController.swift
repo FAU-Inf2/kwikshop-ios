@@ -352,5 +352,9 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         // Disable the Save button if the text field is empty.
         quickAddButton.enabled = !text.isEmpty
     }
+    
+    deinit {
+        shoppingListTableView.editing = false
+    }
 
 }
