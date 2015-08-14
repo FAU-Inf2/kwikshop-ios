@@ -61,6 +61,17 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         quickAddTextField.delegate = self
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition(
+            { (context) -> () in
+                if let indexPaths = self.shoppingListTableView.indexPathsForVisibleRows() {
+                    self.shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
+                }
+            },
+            completion: nil)
+    }
+    
+    
     // MARK: Swipe Gesture
     func swipedView(sender : UISwipeGestureRecognizer) {
         let location = sender.locationInView(shoppingListTableView)
@@ -150,9 +161,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             }
             brandCommentText += comment
             
-            let screenSize = UIScreen.mainScreen().bounds.size
-            
-            cell.brandCommentLabel.preferredMaxLayoutWidth = screenSize.width - 16
+            cell.brandCommentLabel.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds)
             
             cell.brandCommentLabel.text = brandCommentText
             cell.brandCommentLabel.numberOfLines = 0
@@ -293,9 +302,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             } else {
                 let item = sourceViewController.currentItem! // item can only be nil if delete was pressed
                 addItem(item)
-                //let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
-                //notBoughtItems.append(item)
-                //shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
         }
     }
