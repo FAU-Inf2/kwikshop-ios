@@ -258,10 +258,14 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     // MARK: Navigaton
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    private var selectedIndexPath : NSIndexPath?
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowItemDetails" {
             let itemDetailsViewController = segue.destinationViewController as! ItemDetailsViewController
             if let selectedItemCell = sender as? ItemTableViewCell {
+                selectedIndexPath = shoppingListTableView.indexPathForSelectedRow()
+                
                 let indexPath = shoppingListTableView.indexPathForCell(selectedItemCell)!
                 let index = getIndexForIndexPath(indexPath)
                 let selectedItem = items[index!] // index can't be nil because otherwise the as? cast would fail
@@ -285,7 +289,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     @IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? ItemDetailsViewController {
             if !sourceViewController.newItem {
-                if let selectedIndexPath = shoppingListTableView.indexPathForSelectedRow() {
+                if let selectedIndexPath = self.selectedIndexPath {
                     let index = getIndexForIndexPath(selectedIndexPath)!
                     if let item = sourceViewController.currentItem {
                         // item was changed
