@@ -11,5 +11,27 @@ import CoreData
 
 class DatabaseHelper: NSObject {
     
+    private static var managedObjectContext : NSManagedObjectContext?
+    
+    static func getManagedObjectContext(appDelegate : AppDelegate?) -> NSManagedObjectContext?{
+        if let context = managedObjectContext {
+            return context
+        }
+        if let delegate = appDelegate {
+            managedObjectContext = delegate.managedObjectContext
+            return managedObjectContext
+        }
+        return nil
+    }
+    
+    static func getManagedObjectContext() -> NSManagedObjectContext?{
+        return managedObjectContext
+    }
+
+    static func initWithAppDelegate(appDelegate : AppDelegate) {
+        if managedObjectContext == nil {
+            managedObjectContext = appDelegate.managedObjectContext
+        }
+    }
     
 }
