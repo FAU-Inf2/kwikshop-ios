@@ -21,7 +21,7 @@ class Unit : Equatable{
     static let PACK = Unit(id: 8, name: "unit_pack")
     static let PIECE = Unit(id: 9, name: "unit_piece", shortName: "unit_piece_short")
     
-    let id : Int
+    let id : Int?
     let name : String
     private let short : String?
     
@@ -34,19 +34,25 @@ class Unit : Equatable{
         }
     }
     
-    init(id : Int, name : String, shortName short : String?){
+    init(id : Int?, name : String, shortName short : String?){
         self.id = id
         self.name = name
         self.short = short
     }
     
-    convenience init (id : Int, name : String) {
+    convenience init(id : Int?, name : String) {
         self.init(id: id, name: name, shortName: nil)
+    }
+    
+    convenience init(managedUnit: ManagedUnit) {
+        let name = managedUnit.valueForKey("name") as! String
+        let shortName = managedUnit.valueForKey("shortName") as? String
+        self.init(id: nil, name: name, shortName: shortName)
     }
 }
 
 func == (left: Unit, right: Unit) -> Bool {
-    if left.id == right.id {
+    if left.id != nil && left.id == right.id {
         return true
     }
     if left.name != right.name {

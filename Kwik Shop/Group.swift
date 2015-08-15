@@ -27,18 +27,23 @@ class Group : Equatable {
     static let TOBACCO = Group(id: 14, name: "group_tobacco")
     static let COFFEE_AND_TEA = Group(id: 15, name: "group_coffeeAndTea")
 
-    let id : Int
+    let id : Int?
     let name : String
     
-    init(id : Int, name : String){
+    init(id : Int?, name : String){
         self.id = id
         self.name = name
+    }
+    
+    convenience init (managedGroup: ManagedGroup) {
+        let name = managedGroup.valueForKey("name") as! String
+        self.init(id: nil, name: name)
     }
     
 }
 
 func == (left : Group, right : Group) -> Bool {
-    if left.id == right.id {
+    if left.id != nil && left.id == right.id {
         return true
     }
     return left.name == right.name

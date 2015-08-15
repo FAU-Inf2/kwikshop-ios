@@ -55,8 +55,11 @@ class ShoppingList {
         let name = sl.valueForKey("name") as! String
         let sortType = sl.valueForKey("sortType") as? Int
         let lastModifiedDate = sl.valueForKey("lastModifiedDate") as! NSDate
-        let items = sl.mutableSetValueForKey("items").allObjects as! [Item]
-        
+        let managedItems = sl.mutableSetValueForKey("items").allObjects as! [ManagedItem]
+        var items = [Item]()
+        for item in managedItems {
+            items.append(Item(managedItem: item))
+        }        
         self.init(id: nil, name: name, sortType: sortType)
         self.lastModifiedDate = lastModifiedDate
         self.items = items
