@@ -17,6 +17,7 @@
 		3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD01B663237000B5396 /* ShoppingList.swift */; };
 		3ADA6FD41B663498000B5396 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD31B663498000B5396 /* Item.swift */; };
 		3ADAFCDC1B7F32450035A040 /* Kwik_Shop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCDA1B7F32450035A040 /* Kwik_Shop.xcdatamodeld */; };
+		3ADAFCDE1B7F42260035A040 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */; };
 		3ADCB0171B68D89B00BA963C /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADCB0161B68D89B00BA963C /* ItemDetailsViewController.swift */; };
 		3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08561B6BF35D0060D2AC /* Group.swift */; };
 		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
@@ -60,6 +61,7 @@
 		3ADA6FD01B663237000B5396 /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		3ADA6FD31B663498000B5396 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3ADAFCDB1B7F32450035A040 /* Kwik_Shop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kwik_Shop.xcdatamodel; sourceTree = "<group>"; };
+		3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		3ADCB0161B68D89B00BA963C /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		3ADD08561B6BF35D0060D2AC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		3A6ABDAB1B64F492009FD7BE = {
 			isa = PBXGroup;
 			children = (
+				3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */,
 				3A6ABDB61B64F492009FD7BE /* Kwik Shop */,
 				3A6ABDCB1B64F492009FD7BE /* Kwik ShopTests */,
 				3A6ABDB51B64F492009FD7BE /* Products */,
@@ -312,6 +315,7 @@
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
 				3A6F95E01B7E520300E262BB /* ItemParser.swift in Sources */,
+				3ADAFCDE1B7F42260035A040 /* DatabaseHelper.swift in Sources */,
 				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
 				3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */,
 				3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */,
