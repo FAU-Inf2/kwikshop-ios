@@ -50,6 +50,17 @@ class ShoppingList {
     convenience init (name: String) {
         self.init(id: nil, name: name, sortType: nil)
     }
+    
+    convenience init (managedShoppingList sl: ManagedShoppingList) {
+        let name = sl.valueForKey("name") as! String
+        let sortType = sl.valueForKey("sortType") as? Int
+        let lastModifiedDate = sl.valueForKey("lastModifiedDate") as! NSDate
+        let items = sl.mutableSetValueForKey("items").allObjects as! [Item]
+        
+        self.init(id: nil, name: name, sortType: sortType)
+        self.lastModifiedDate = lastModifiedDate
+        self.items = items
+    }
 }
 
 
