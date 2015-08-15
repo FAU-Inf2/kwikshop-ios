@@ -71,7 +71,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                 unitPicker.selectRow(row, inComponent: 0, animated: false)
             }
             
-            highlightSwitch.setOn(item.isHighlited, animated: false)
+            highlightSwitch.setOn(item.highlited, animated: false)
             if let brand = item.brand {
                 brandTextField.text = brand
             }
@@ -217,7 +217,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                 unit = currentItem?.unit
             }
             
-            let highlight = highlightSwitch.on
+            let highlighted = highlightSwitch.on
             let brand = brandTextField.text
             let comment = commentTextField.text
             // TODO: Group has to be stored
@@ -231,12 +231,12 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
 
             
             if newItem {
-                currentItem = Item(name: name, amount: amount, unit: unit, highlight: highlight, brand: brand, comment: comment, group: group)
+                currentItem = Item(name: name, amount: amount, unit: unit, highlighted: highlighted, brand: brand, comment: comment, group: group)
             } else {
                 currentItem!.name = name
                 currentItem!.amount = amount
                 currentItem!.unit = unit
-                currentItem!.isHighlited = highlight
+                currentItem!.highlited = highlighted
                 currentItem!.brand = brand
                 currentItem!.comment = comment
                 currentItem!.group = group

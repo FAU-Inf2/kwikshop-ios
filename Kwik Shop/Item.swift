@@ -15,7 +15,7 @@ class Item  : Equatable {
     var name : String
     var amount = 1
     var unit : Unit?
-    var isHighlited = false
+    var highlited = false
     var brand : String?
     var comment : String?
     var group : Group?
@@ -30,12 +30,12 @@ class Item  : Equatable {
         self.init(id: nil, order: nil, name: name)
     }
     
-    convenience init (name: String, amount: Int, unit: Unit?, highlight: Bool, brand: String?, comment: String?, group: Group?) {
+    convenience init (name: String, amount: Int, unit: Unit?, highlighted: Bool, brand: String?, comment: String?, group: Group?) {
         self.init(name: name)
         
         self.amount = amount
         self.unit = unit
-        self.isHighlited = highlight
+        self.highlited = highlighted
         if let brandText = brand {
             if !brandText.isEmpty {
                 self.brand = brandText
@@ -57,5 +57,5 @@ class Item  : Equatable {
         if left.id != nil && left.id == right.id {
             return true
         }
-        return left.name == right.name && left.amount == right.amount /*&& left.unit == right.unit*/ && left.isHighlited == right.isHighlited && left.brand == right.brand && left.comment == right.comment /*&& left.group == right.group*/
+        return left.name == right.name && left.amount == right.amount /*&& left.unit == right.unit*/ && left.highlited == right.highlited && left.brand == right.brand && left.comment == right.comment /*&& left.group == right.group*/
     }

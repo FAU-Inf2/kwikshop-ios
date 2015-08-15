@@ -55,7 +55,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         let item5 = Item(name: "Toilet paper")
         item5.comment = "For example you can highlight important items like toilet paper"
-        item5.isHighlited = true
+        item5.highlited = true
         
         let item6 = Item(name: "This item is already bought")
         item6.bought = true
