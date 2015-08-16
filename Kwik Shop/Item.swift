@@ -35,7 +35,6 @@ class Item  : Equatable {
     
     var bought : Bool {
         get {
-            println(managedItem.bought)
             return managedItem.bought as Bool
         }
         set {

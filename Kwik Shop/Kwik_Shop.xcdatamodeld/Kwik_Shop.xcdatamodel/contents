@@ -6,8 +6,8 @@
     <entity name="Item" representedClassName="Kwik_Shop.ManagedItem" syncable="YES">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="1" syncable="YES"/>
         <attribute name="bought" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="brand" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
-        <attribute name="comment" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="brand" attributeType="String" defaultValueString="" syncable="YES"/>
+        <attribute name="comment" attributeType="String" defaultValueString="" syncable="YES"/>
         <attribute name="highlighted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
         <attribute name="order" attributeType="Integer 64" defaultValueString="-1" syncable="YES"/>
@@ -22,7 +22,7 @@
     </entity>
     <entity name="Unit" representedClassName="Kwik_Shop.ManagedUnit" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="shortName" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="shortName" attributeType="String" defaultValueString="" syncable="YES"/>
     </entity>
     <elements>
         <element name="Group" positionX="-36" positionY="72" width="128" height="60"/>
