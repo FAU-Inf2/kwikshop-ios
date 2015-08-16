@@ -7,44 +7,52 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 class Group : Equatable {
 
-    static let OTHER = Group(id: 0, name: "group_other")
-    static let BABY_FOODS = Group(id: 1, name: "group_babyFoods")
-    static let BEVERAGES = Group(id: 2, name: "group_beverages")
-    static let BREAK_PASTRIES = Group(id: 3, name: "group_breakPastries")
-    static let DAIRY = Group(id: 4, name: "group_dairy")
-    static let FROZEN_AND_CONVENIENCE = Group(id: 5, name: "group_frozenAndConvenience")
-    static let FRUITS_AND_VEGETABLES = Group(id: 6, name: "group_fruitsAndVegetables")
-    static let HEALTH_AND_HYGIENE = Group(id: 7, name: "group_healthAndHygiene")
-    static let HOUSEHOLD = Group(id: 8, name: "group_household")
-    static let INGREDIENTS_AND_SPICES = Group(id: 9, name: "group_ingredientsAndSpices")
-    static let MEAT_AND_FISH = Group(id: 10, name: "group_meatAndFish")
-    static let PASTA = Group(id: 11, name: "group_pasta")
-    static let PET_SUPPLIES = Group(id: 12, name: "group_petSupplies")
-    static let SWEETS_AND_SNACKS = Group(id: 13, name: "group_sweetsAndSnacks")
-    static let TOBACCO = Group(id: 14, name: "group_tobacco")
-    static let COFFEE_AND_TEA = Group(id: 15, name: "group_coffeeAndTea")
+    static let OTHER =                  Group(name: "group_other")
+    static let BABY_FOODS =             Group(name: "group_babyFoods")
+    static let BEVERAGES =              Group(name: "group_beverages")
+    static let BREAK_PASTRIES =         Group(name: "group_breakPastries")
+    static let DAIRY =                  Group(name: "group_dairy")
+    static let FROZEN_AND_CONVENIENCE = Group(name: "group_frozenAndConvenience")
+    static let FRUITS_AND_VEGETABLES =  Group(name: "group_fruitsAndVegetables")
+    static let HEALTH_AND_HYGIENE =     Group(name: "group_healthAndHygiene")
+    static let HOUSEHOLD =              Group(name: "group_household")
+    static let INGREDIENTS_AND_SPICES = Group(name: "group_ingredientsAndSpices")
+    static let MEAT_AND_FISH =          Group(name: "group_meatAndFish")
+    static let PASTA =                  Group(name: "group_pasta")
+    static let PET_SUPPLIES =           Group(name: "group_petSupplies")
+    static let SWEETS_AND_SNACKS =      Group(name: "group_sweetsAndSnacks")
+    static let TOBACCO =                Group(name: "group_tobacco")
+    static let COFFEE_AND_TEA =         Group(name: "group_coffeeAndTea")
 
-    let id : Int?
-    let name : String
-    
-    init(id : Int?, name : String){
-        self.id = id
-        self.name = name
+    var name : String {
+        get {
+            return managedGroup.name
+        }
     }
     
-    convenience init (managedGroup: ManagedGroup) {
-        let name = managedGroup.valueForKey("name") as! String
-        self.init(id: nil, name: name)
+    private let managedGroup : ManagedGroup
+    
+    init(name : String){
+        //managedGroup = managedGroup(name: name)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = appDelegate.managedObjectContext
+        
+        managedGroup = NSEntityDescription.insertNewObjectForEntityForName("Group", inManagedObjectContext: managedObjectContext!) as! ManagedGroup
+        
+        managedGroup.name = name
+    }
+    
+    init (managedGroup: ManagedGroup) {
+        self.managedGroup = managedGroup
     }
     
 }
 
 func == (left : Group, right : Group) -> Bool {
-    if left.id != nil && left.id == right.id {
-        return true
-    }
     return left.name == right.name
 }
