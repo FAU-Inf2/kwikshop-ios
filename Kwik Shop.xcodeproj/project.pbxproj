@@ -18,7 +18,6 @@
 		3ADA6FD41B663498000B5396 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA6FD31B663498000B5396 /* Item.swift */; };
 		3ADAFCDC1B7F32450035A040 /* Kwik_Shop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCDA1B7F32450035A040 /* Kwik_Shop.xcdatamodeld */; };
 		3ADAFCDE1B7F42260035A040 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */; };
-		3ADAFCE61B7FA12B0035A040 /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCE51B7FA12B0035A040 /* ManagedItem.swift */; };
 		3ADAFCE81B7FA12C0035A040 /* ManagedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCE71B7FA12C0035A040 /* ManagedUnit.swift */; };
 		3ADAFCEA1B7FA12C0035A040 /* ManagedShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCE91B7FA12C0035A040 /* ManagedShoppingList.swift */; };
 		3ADAFCEC1B7FA12C0035A040 /* ManagedGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCEB1B7FA12C0035A040 /* ManagedGroup.swift */; };
@@ -35,6 +34,7 @@
 		3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */; };
 		3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
+		3AF0CE2E1B808BE400D0BC48 /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */; };
 		3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */; };
 		3AF5966F1B74E97F00B7D05F /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966E1B74E97F00B7D05F /* ShoppingListTableViewCell.swift */; };
 		3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF596701B7525FC00B7D05F /* NSDateExtension.swift */; };
@@ -66,7 +66,6 @@
 		3ADA6FD31B663498000B5396 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3ADAFCDB1B7F32450035A040 /* Kwik_Shop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kwik_Shop.xcdatamodel; sourceTree = "<group>"; };
 		3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
-		3ADAFCE51B7FA12B0035A040 /* ManagedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
 		3ADAFCE71B7FA12C0035A040 /* ManagedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedUnit.swift; sourceTree = "<group>"; };
 		3ADAFCE91B7FA12C0035A040 /* ManagedShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedShoppingList.swift; sourceTree = "<group>"; };
 		3ADAFCEB1B7FA12C0035A040 /* ManagedGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedGroup.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListDetailsViewController.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AEB66511B72306900F5A89F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
 		3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfShoppingListsViewController.swift; sourceTree = "<group>"; };
 		3AF5966E1B74E97F00B7D05F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
 		3AF596701B7525FC00B7D05F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
@@ -171,10 +171,10 @@
 		3ADAFCED1B7FA1BC0035A040 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */,
 				3ADAFCEB1B7FA12C0035A040 /* ManagedGroup.swift */,
 				3ADAFCE91B7FA12C0035A040 /* ManagedShoppingList.swift */,
 				3ADAFCE71B7FA12C0035A040 /* ManagedUnit.swift */,
-				3ADAFCE51B7FA12B0035A040 /* ManagedItem.swift */,
 				3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */,
 			);
 			name = Persistence;
@@ -331,10 +331,10 @@
 				3ADA6FD41B663498000B5396 /* Item.swift in Sources */,
 				3ADAFCEC1B7FA12C0035A040 /* ManagedGroup.swift in Sources */,
 				3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */,
+				3AF0CE2E1B808BE400D0BC48 /* ManagedItem.swift in Sources */,
 				3AE21DFB1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift in Sources */,
 				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
 				3ADAFCDC1B7F32450035A040 /* Kwik_Shop.xcdatamodeld in Sources */,
-				3ADAFCE61B7FA12B0035A040 /* ManagedItem.swift in Sources */,
 				3A56D9021B7372B000D536C8 /* ItemTableViewCell.swift in Sources */,
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,

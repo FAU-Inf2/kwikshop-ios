@@ -4,7 +4,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="PRODUCT_MODULE_NAME.Item" syncable="YES">
-        <attribute name="amout" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="amount" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="bought" attributeType="Boolean" syncable="YES"/>
         <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,9 +25,9 @@
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Group" positionX="-36" positionY="72" width="128" height="60"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="180"/>
         <element name="ShoppingList" positionX="-54" positionY="36" width="128" height="105"/>
         <element name="Unit" positionX="-45" positionY="63" width="128" height="75"/>
-        <element name="Group" positionX="-36" positionY="72" width="128" height="60"/>
     </elements>
 </model>
