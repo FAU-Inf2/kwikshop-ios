@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 class Unit : Equatable{
     
@@ -21,31 +23,44 @@ class Unit : Equatable{
     static let PACK =       Unit(name: "unit_pack")
     static let PIECE =      Unit(name: "unit_piece", shortName: "unit_piece_short")
     
-    let name : String
-    private let short : String?
+    private static var managedObjectContext : NSManagedObjectContext?
+    
+    private let managedUnit : ManagedUnit
+    
+    var name : String {
+        get {
+            return managedUnit.name
+        }
+    }
     
     var shortName : String {
         get {
-            if short != nil {
-                return short!.localized
+            if managedUnit.shortName != "" {
+                return managedUnit.shortName.localized
             }
             return name.localized
         }
     }
     
-    init(name : String, shortName short : String?){
-        self.name = name
-        self.short = short
+    convenience init(name : String, shortName : String){
+        self.init(name: name)
+        managedUnit.shortName = shortName
     }
     
-    convenience init(name : String) {
-        self.init(name: name, shortName: nil)
+    init(name : String) {
+        if Unit.managedObjectContext == nil {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            Unit.managedObjectContext = appDelegate.managedObjectContext
+        }
+        
+        managedUnit = NSEntityDescription.insertNewObjectForEntityForName("Unit", inManagedObjectContext: Unit.managedObjectContext!) as! ManagedUnit
+        
+        managedUnit.name = name
+
     }
     
-    convenience init(managedUnit: ManagedUnit) {
-        let name = managedUnit.valueForKey("name") as! String
-        let shortName = managedUnit.valueForKey("shortName") as? String
-        self.init(name: name, shortName: shortName)
+    init(managedUnit: ManagedUnit) {
+        self.managedUnit = managedUnit
     }
 }
 

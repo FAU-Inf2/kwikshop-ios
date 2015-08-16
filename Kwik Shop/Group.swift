@@ -29,7 +29,7 @@ class Group : Equatable {
     static let TOBACCO =                Group(name: "group_tobacco")
     static let COFFEE_AND_TEA =         Group(name: "group_coffeeAndTea")
 
-    static var managedObjectContext : NSManagedObjectContext?
+    private static var managedObjectContext : NSManagedObjectContext?
     
     var name : String {
         get {
