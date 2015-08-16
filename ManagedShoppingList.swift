@@ -14,8 +14,8 @@ class ManagedShoppingList: NSManagedObject {
     @NSManaged var lastModifiedDate: NSDate
     @NSManaged var name: String
     @NSManaged var sortType: NSNumber
-    @NSManaged var boughtItems: NSSet
-    @NSManaged var notBoughtItems: NSSet
+    @NSManaged var boughtItems: NSOrderedSet
+    @NSManaged var notBoughtItems: NSOrderedSet
 
     var shoppingList : ShoppingList?
 }

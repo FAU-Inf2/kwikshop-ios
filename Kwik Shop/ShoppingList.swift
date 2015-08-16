@@ -42,7 +42,7 @@ class ShoppingList : NSObject {
     
     var notBoughtItems : [Item] {
         get {
-            let managedItems = managedShoppingList.notBoughtItems.allObjects as! [ManagedItem]
+            let managedItems = managedShoppingList.notBoughtItems.array as! [ManagedItem]
             var items = [Item]()
             for managedItem in managedItems {
                 if let item = managedItem.item {
@@ -54,7 +54,7 @@ class ShoppingList : NSObject {
             return items
         }
         set {
-            let items = NSMutableSet()
+            let items = NSMutableOrderedSet()
             for item in newValue {
                 items.addObject(item.managedItem)
             }
@@ -63,7 +63,7 @@ class ShoppingList : NSObject {
     }
     var boughtItems : [Item] {
         get {
-            let managedItems = managedShoppingList.boughtItems.allObjects as! [ManagedItem]
+            let managedItems = managedShoppingList.boughtItems.array as! [ManagedItem]
             var items = [Item]()
             for managedItem in managedItems {
                 if let item = managedItem.item {
@@ -75,7 +75,7 @@ class ShoppingList : NSObject {
             return items
         }
         set {
-            let items = NSMutableSet()
+            let items = NSMutableOrderedSet()
             for item in newValue {
                 items.addObject(item.managedItem)
             }
