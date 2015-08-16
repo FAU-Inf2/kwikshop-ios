@@ -29,6 +29,8 @@ class Group : Equatable {
     static let TOBACCO =                Group(name: "group_tobacco")
     static let COFFEE_AND_TEA =         Group(name: "group_coffeeAndTea")
 
+    static var managedObjectContext : NSManagedObjectContext?
+    
     var name : String {
         get {
             return managedGroup.name
@@ -38,11 +40,12 @@ class Group : Equatable {
     private let managedGroup : ManagedGroup
     
     init(name : String){
-        //managedGroup = managedGroup(name: name)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = appDelegate.managedObjectContext
+        if Group.managedObjectContext == nil {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            Group.managedObjectContext = appDelegate.managedObjectContext
+        }
         
-        managedGroup = NSEntityDescription.insertNewObjectForEntityForName("Group", inManagedObjectContext: managedObjectContext!) as! ManagedGroup
+        managedGroup = NSEntityDescription.insertNewObjectForEntityForName("Group", inManagedObjectContext: Group.managedObjectContext!) as! ManagedGroup
         
         managedGroup.name = name
     }
