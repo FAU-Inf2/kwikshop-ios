@@ -42,19 +42,46 @@ class ShoppingList : NSObject {
     
     var notBoughtItems : [Item] {
         get {
-            return managedShoppingList.notBoughtItems.allObjects as! [Item]
+            let managedItems = managedShoppingList.notBoughtItems.allObjects as! [ManagedItem]
+            var items = [Item]()
+            for managedItem in managedItems {
+                if let item = managedItem.item {
+                    items.append(item)
+                } else {
+                    items.append(Item(managedItem: managedItem))
+                }
+            }
+            return items
         }
         set {
-            //managedShoppingList.notBoughtItems = NSSet(array: newValue)
+            let items = NSMutableSet()
+            for item in newValue {
+                items.addObject(item.managedItem)
+            }
+            managedShoppingList.notBoughtItems = items
         }
     }
     var boughtItems : [Item] {
         get {
-            return managedShoppingList.boughtItems.allObjects as! [Item]
+            let managedItems = managedShoppingList.boughtItems.allObjects as! [ManagedItem]
+            var items = [Item]()
+            for managedItem in managedItems {
+                if let item = managedItem.item {
+                    items.append(item)
+                } else {
+                    items.append(Item(managedItem: managedItem))
+                }
+            }
+            return items
         }
         set {
-            //managedShoppingList.boughtItems = NSSet(array: newValue)
+            let items = NSMutableSet()
+            for item in newValue {
+                items.addObject(item.managedItem)
+            }
+            managedShoppingList.boughtItems = items
         }
+
     }
     
     var items : [Item] {
