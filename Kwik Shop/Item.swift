@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 class Item  : Equatable {
-    var/*let*/ id : Int?
-    var order : Int?
+    /*var order : Int?
     var bought = false
     var name : String
     var amount = 1
@@ -18,16 +19,149 @@ class Item  : Equatable {
     var highlited = false
     var brand : String?
     var comment : String?
-    var group : Group?
+    var group : Group?*/
     
-    init(id : Int?, order : Int?, name : String) {
-        self.id = id
-        self.order = order
-        self.name = name
+    let managedItem : ManagedItem
+    private static var managedObjectContext : NSManagedObjectContext?
+    
+    var amount : Int {
+        get {
+            return managedItem.amount as Int
+        }
+        set {
+            managedItem.amount = newValue
+        }
     }
     
-    convenience init (name: String) {
-        self.init(id: nil, order: nil, name: name)
+    var bought : Bool {
+        get {
+            println(managedItem.bought)
+            return managedItem.bought as Bool
+        }
+        set {
+            managedItem.bought = newValue
+        }
+    }
+    
+    var brand : String? {
+        get {
+            let managedBrand = managedItem.brand
+            if managedBrand.isEmpty {
+                return nil
+            }
+            return managedBrand
+        }
+        set {
+            if newValue == nil {
+                managedItem.brand = ""
+            } else {
+                managedItem.brand = newValue!
+            }
+        }
+    }
+    
+    var comment : String?{
+        get {
+            let managedComment = managedItem.comment
+            if managedComment.isEmpty {
+                return nil
+            }
+            return managedComment
+        }
+        set {
+            if newValue == nil {
+                managedItem.comment = ""
+            } else {
+                managedItem.comment = newValue!
+            }
+        }
+    }
+    
+    var highlighted : Bool {
+        get {
+            return managedItem.highlighted as Bool
+        }
+        set {
+            managedItem.highlighted = newValue
+        }
+    }
+    
+    var name : String {
+        get {
+            return managedItem.name
+        }
+        set {
+            managedItem.name = newValue
+        }
+    }
+
+    var order : Int? {
+        get {
+            let managedOrder = managedItem.order as Int
+            if managedOrder < 0 {
+                return nil
+            }
+            return managedOrder
+        }
+        set {
+            if newValue == nil {
+                managedItem.order = -1
+            } else {
+                managedItem.order = newValue!
+            }
+        }
+    }
+    
+    var group : Group? {
+        get {
+            if let managedItemGroup = managedItem.group as? ManagedGroup{
+                if let group = managedItemGroup.group {
+                    return group
+                }
+                return Group(managedGroup: managedItemGroup)
+            }
+            return nil
+        }
+        set {
+            if newValue == nil {
+                managedItem.group = nil
+            }
+            let managedGroup = newValue!.managedGroup
+            managedItem.group = managedGroup
+        }
+    }
+    
+    var unit : Unit? {
+        get {
+            if let managedItemUnit = managedItem.unit as? ManagedUnit{
+                if let unit = managedItemUnit.unit {
+                    return unit
+                }
+                return Unit(managedUnit: managedItemUnit)
+            }
+            return nil
+        }
+        set {
+            if newValue == nil {
+                managedItem.unit = nil
+            }
+            let managedUnit = newValue!.managedUnit
+            managedItem.unit = managedUnit
+        }
+    }
+    
+    
+    
+    convenience init(name : String) {
+        if Item.managedObjectContext == nil {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            Item.managedObjectContext = appDelegate.managedObjectContext
+        }
+        
+        let managedItem = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: Item.managedObjectContext!) as! ManagedItem
+        
+        self.init(managedItem: managedItem)
+        self.name = name
     }
     
     convenience init (name: String, amount: Int, unit: Unit?, highlighted: Bool, brand: String?, comment: String?, group: Group?) {
@@ -35,10 +169,10 @@ class Item  : Equatable {
     }
     
     convenience init (name: String, amount: Int, highlighted: Bool, brand: String?, comment: String?, bought: Bool, order: Int?, group: Group?, unit: Unit?) {
-        self.init(id: nil, order: order, name: name)
+        self.init(name: name)
         
         self.amount = amount
-        self.highlited = highlighted
+        self.highlighted = highlighted
         if let brandText = brand {
             if !brandText.isEmpty {
                 self.brand = brandText
@@ -55,32 +189,9 @@ class Item  : Equatable {
         self.unit = unit
     }
     
-    
-    
-    
-    convenience init (managedItem item : ManagedItem) {
-        let name = item.valueForKey("name") as! String
-        let amount = item.valueForKey("amount") as! Int
-        let highlighted = item.valueForKey("highlighted") as! Bool
-        let brand = item.valueForKey("brand") as? String
-        let comment = item.valueForKey("comment") as? String
-        let bought = item.valueForKey("bought") as! Bool
-        let order = item.valueForKey("order") as? Int
-        let group : Group?
-        if let managedGroup = item.valueForKey("group") as? ManagedGroup {
-            group = Group(managedGroup: managedGroup)
-        } else {
-            group = nil
-        }
-        let unit: Unit?
-        if let managedUnit = item.valueForKey("unit") as? ManagedUnit {
-            unit = Unit(managedUnit: managedUnit)
-        } else {
-            unit = nil
-        }
-        
-        
-        self.init (name: name, amount: amount, highlighted: highlighted, brand: brand, comment: comment, bought: bought, order: order, group: group, unit: unit)
+    init (managedItem : ManagedItem) {
+        self.managedItem = managedItem
+        self.managedItem.item = self
     }
 }
     
@@ -88,8 +199,5 @@ class Item  : Equatable {
         if left === right {
             return true
         }
-        if left.id != nil && left.id == right.id {
-            return true
-        }
-        return left.name == right.name && left.amount == right.amount /*&& left.unit == right.unit*/ && left.highlited == right.highlited && left.brand == right.brand && left.comment == right.comment /*&& left.group == right.group*/
+        return left.name == right.name && left.amount == right.amount && left.unit == right.unit && left.highlighted == right.highlighted && left.brand == right.brand && left.comment == right.comment && left.group == right.group
     }

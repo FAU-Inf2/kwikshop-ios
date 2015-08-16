@@ -71,7 +71,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                 unitPicker.selectRow(row, inComponent: 0, animated: false)
             }
             
-            highlightSwitch.setOn(item.highlited, animated: false)
+            highlightSwitch.setOn(item.highlighted, animated: false)
             if let brand = item.brand {
                 brandTextField.text = brand
             }
@@ -236,7 +236,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                 currentItem!.name = name
                 currentItem!.amount = amount
                 currentItem!.unit = unit
-                currentItem!.highlited = highlighted
+                currentItem!.highlighted = highlighted
                 currentItem!.brand = brand
                 currentItem!.comment = comment
                 currentItem!.group = group

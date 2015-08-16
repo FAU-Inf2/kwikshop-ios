@@ -25,7 +25,7 @@ class Unit : Equatable{
     
     private static var managedObjectContext : NSManagedObjectContext?
     
-    private let managedUnit : ManagedUnit
+    let managedUnit : ManagedUnit
     
     var name : String {
         get {
@@ -47,24 +47,30 @@ class Unit : Equatable{
         managedUnit.shortName = shortName
     }
     
-    init(name : String) {
+    convenience init(name : String) {
         if Unit.managedObjectContext == nil {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             Unit.managedObjectContext = appDelegate.managedObjectContext
         }
         
-        managedUnit = NSEntityDescription.insertNewObjectForEntityForName("Unit", inManagedObjectContext: Unit.managedObjectContext!) as! ManagedUnit
+        let managedUnit = NSEntityDescription.insertNewObjectForEntityForName("Unit", inManagedObjectContext: Unit.managedObjectContext!) as! ManagedUnit
         
-        managedUnit.name = name
+        self.init(managedUnit: managedUnit)
+        
+        self.managedUnit.name = name
 
     }
     
     init(managedUnit: ManagedUnit) {
         self.managedUnit = managedUnit
+        self.managedUnit.unit = self
     }
 }
 
 func == (left: Unit, right: Unit) -> Bool {
+    if left === right {
+        return true
+    }
     if left.name != right.name {
         return false
     }

@@ -37,25 +37,31 @@ class Group : Equatable {
         }
     }
     
-    private let managedGroup : ManagedGroup
+    let managedGroup : ManagedGroup
     
-    init(name : String){
+    convenience init(name : String){
         if Group.managedObjectContext == nil {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             Group.managedObjectContext = appDelegate.managedObjectContext
         }
         
-        managedGroup = NSEntityDescription.insertNewObjectForEntityForName("Group", inManagedObjectContext: Group.managedObjectContext!) as! ManagedGroup
+        let managedGroup = NSEntityDescription.insertNewObjectForEntityForName("Group", inManagedObjectContext: Group.managedObjectContext!) as! ManagedGroup
         
-        managedGroup.name = name
+        self.init(managedGroup: managedGroup)
+        
+        self.managedGroup.name = name
     }
     
     init (managedGroup: ManagedGroup) {
         self.managedGroup = managedGroup
+        self.managedGroup.group = self
     }
     
 }
 
 func == (left : Group, right : Group) -> Bool {
+    if left === right {
+        return true
+    }
     return left.name == right.name
 }

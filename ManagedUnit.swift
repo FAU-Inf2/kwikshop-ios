@@ -14,4 +14,5 @@ class ManagedUnit: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var shortName: String
 
+    weak var unit : Unit?
 }

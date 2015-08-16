@@ -4,13 +4,13 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Kwik_Shop.ManagedItem" syncable="YES">
-        <attribute name="amount" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="bought" attributeType="Boolean" syncable="YES"/>
-        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="highlighted" attributeType="Boolean" syncable="YES"/>
+        <attribute name="amount" attributeType="Integer 64" defaultValueString="1" syncable="YES"/>
+        <attribute name="bought" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="brand" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="comment" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="highlighted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="order" attributeType="Integer 64" defaultValueString="-1" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
         <relationship name="unit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Unit" syncable="YES"/>
     </entity>

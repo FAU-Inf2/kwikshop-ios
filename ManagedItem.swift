@@ -18,7 +18,9 @@ class ManagedItem: NSManagedObject {
     @NSManaged var highlighted: NSNumber
     @NSManaged var name: String
     @NSManaged var order: NSNumber
-    @NSManaged var group: NSManagedObject
-    @NSManaged var unit: NSManagedObject
+    @NSManaged var group: NSManagedObject?
+    @NSManaged var unit: NSManagedObject?
+    
+    var item : Item?
 
 }

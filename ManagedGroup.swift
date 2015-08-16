@@ -13,4 +13,5 @@ class ManagedGroup: NSManagedObject {
 
     @NSManaged var name: String
 
+    weak var group : Group?
 }
