@@ -10,16 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
-class Item  : Equatable {
-    /*var order : Int?
-    var bought = false
-    var name : String
-    var amount = 1
-    var unit : Unit?
-    var highlited = false
-    var brand : String?
-    var comment : String?
-    var group : Group?*/
+class Item : NSObject, Equatable {
+
     
     let managedItem : ManagedItem
     private static var managedObjectContext : NSManagedObjectContext?
@@ -190,6 +182,9 @@ class Item  : Equatable {
     
     init (managedItem : ManagedItem) {
         self.managedItem = managedItem
+        
+        super.init()
+        
         self.managedItem.item = self
     }
 }

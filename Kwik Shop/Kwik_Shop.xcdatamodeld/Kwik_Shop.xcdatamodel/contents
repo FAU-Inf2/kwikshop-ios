@@ -17,8 +17,9 @@
     <entity name="ShoppingList" representedClassName="Kwik_Shop.ManagedShoppingList" syncable="YES">
         <attribute name="lastModifiedDate" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
-        <attribute name="sortType" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="items" toMany="YES" deletionRule="Nullify" destinationEntity="Item" syncable="YES"/>
+        <attribute name="sortType" attributeType="Integer 64" defaultValueString="-1" syncable="YES"/>
+        <relationship name="boughtItems" toMany="YES" deletionRule="Nullify" destinationEntity="Item" syncable="YES"/>
+        <relationship name="notBoughtItems" toMany="YES" deletionRule="Nullify" destinationEntity="Item" syncable="YES"/>
     </entity>
     <entity name="Unit" representedClassName="Kwik_Shop.ManagedUnit" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -27,7 +28,7 @@
     <elements>
         <element name="Group" positionX="-36" positionY="72" width="128" height="60"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="180"/>
-        <element name="ShoppingList" positionX="-54" positionY="36" width="128" height="105"/>
+        <element name="ShoppingList" positionX="-54" positionY="36" width="128" height="120"/>
         <element name="Unit" positionX="-45" positionY="63" width="128" height="75"/>
     </elements>
 </model>

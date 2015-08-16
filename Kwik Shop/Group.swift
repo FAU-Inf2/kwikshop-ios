@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class Group : Equatable {
+class Group : NSObject, Equatable {
 
     static let OTHER =                  Group(name: "group_other")
     static let BABY_FOODS =             Group(name: "group_babyFoods")
@@ -54,6 +54,9 @@ class Group : Equatable {
     
     init (managedGroup: ManagedGroup) {
         self.managedGroup = managedGroup
+        
+        super.init()
+        
         self.managedGroup.group = self
     }
     

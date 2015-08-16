@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class Unit : Equatable{
+class Unit : NSObject, Equatable{
     
     static let BAG =        Unit(name: "unit_bag")
     static let BOTTLE =     Unit(name: "unit_bottle")
@@ -63,6 +63,9 @@ class Unit : Equatable{
     
     init(managedUnit: ManagedUnit) {
         self.managedUnit = managedUnit
+        
+        super.init()
+        
         self.managedUnit.unit = self
     }
 }
