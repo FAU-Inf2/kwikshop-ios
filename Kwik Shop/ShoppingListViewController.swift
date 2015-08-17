@@ -18,6 +18,8 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
     var closeKeyboardTapGestureRecognizer : UITapGestureRecognizer?
     
+    let dbHelper = DatabaseHelper.instance
+    
     var shoppingList : ShoppingList!
     var items : [Item] {
         get {
@@ -97,6 +99,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                     shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
                 }
                 updateModifyDate()
+                saveToDatabase()
             } else {
                 // Swiped the shoppinglist separator
                 return
@@ -206,6 +209,10 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         shoppingList.lastModifiedDate = now
     }
     
+    func saveToDatabase() {
+        dbHelper.saveData()
+    }
+    
     private func deleteItemAtIndexPath(indexPath: NSIndexPath) {
         let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
         let index = indexAndIndexPaths.index! // index != nil because the separator can't be swiped or edited
@@ -254,6 +261,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         notBoughtItems.append(item)
         shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
         updateModifyDate()
+        saveToDatabase()
     }
     
     
@@ -297,6 +305,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                         items[index] = sourceViewController.currentItem!
                         shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                         updateModifyDate()
+                        saveToDatabase()
                     } else {
                         // item is to be deleted
                         deleteItemAtIndexPath(selectedIndexPath)
