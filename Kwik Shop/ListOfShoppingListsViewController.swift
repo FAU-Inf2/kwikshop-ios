@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -38,6 +39,21 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     }
     
     func loadSampleData() {
+        
+        let fetchRequest = NSFetchRequest(entityName: "ShoppingList")
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = appDelegate.managedObjectContext
+        
+        // Execute the fetch request, and cast the results to an array of LogItem objects
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ManagedShoppingList] {
+            
+            if fetchResults.count > 0 {
+                // Create an Alert, and set it's message to whatever the itemText is
+                println(fetchResults.count)
+            }
+        }
+        
         let item1 = Item(name: "Apple")
         item1.comment = "Type in the box above to add items"
         
@@ -65,6 +81,8 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         list.items = [item1, item2, item3, item4, item5, item6]
         
         shoppingLists = [list]
+        
+        managedObjectContext?.save(nil)
     }
     
     override func didReceiveMemoryWarning() {
