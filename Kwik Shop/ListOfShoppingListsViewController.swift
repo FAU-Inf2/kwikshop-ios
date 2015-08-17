@@ -17,6 +17,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     @IBOutlet weak var shoppingListsTableView: UITableView!
     
     var shoppingLists = [ShoppingList]()
+    let dbHelper = DatabaseHelper.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     }
     
     func loadFromDatabase() {
-        let dbHelper = DatabaseHelper.instance
         if let shoppingLists = dbHelper.loadShoppingLists() {
             self.shoppingLists = shoppingLists
         }
@@ -80,7 +80,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         shoppingLists = [list]
         
-        DatabaseHelper.instance.saveData()
+        dbHelper.saveData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -182,6 +182,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
                     if let selectedIndexPath = lastIndexPath {
                         shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList!
                         shoppingListsTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                        dbHelper.saveData()
                     } else {
                         assertionFailure("Returning from shopping list details for an existing item allthough no table row was selected")
                     }
@@ -189,6 +190,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
                     let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
                     shoppingLists.append(shoppingList)
                     shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    dbHelper.saveData()
                     self.goToShoppingList = true
                 }
             } else {
