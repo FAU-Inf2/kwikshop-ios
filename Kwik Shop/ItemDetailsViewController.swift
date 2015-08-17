@@ -230,7 +230,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             }
 
             
-            if newItem {
+            if currentItem == nil {
                 currentItem = Item(name: name, amount: amount, unit: unit, highlighted: highlighted, brand: brand, comment: comment, group: group)
             } else {
                 currentItem!.name = name
