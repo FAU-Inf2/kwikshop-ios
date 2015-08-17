@@ -38,21 +38,17 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         }
     }
     
+    func loadFromDatabase() {
+        if let shoppingLists = DatabaseHelper.loadShoppingLists() {
+            self.shoppingLists = shoppingLists
+        }
+    }
+    
     func loadSampleData() {
         
-        let fetchRequest = NSFetchRequest(entityName: "ShoppingList")
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = appDelegate.managedObjectContext
-        
-        // Execute the fetch request, and cast the results to an array of LogItem objects
-        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ManagedShoppingList] {
-            let shoppingLists = ShoppingList.getShoppingListsFromManagedShoppingLists(fetchResults)
-            if shoppingLists.count > 0 {
-                self.shoppingLists = shoppingLists
-                println("Data loaded")
-                return
-            }
+        loadFromDatabase()
+        if !shoppingLists.isEmpty {
+            return
         }
         
         let item1 = Item(name: "Apple")
@@ -83,7 +79,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         shoppingLists = [list]
         
-        managedObjectContext?.save(nil)
+        DatabaseHelper.saveData()
     }
     
     override func didReceiveMemoryWarning() {

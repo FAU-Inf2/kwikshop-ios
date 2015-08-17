@@ -14,7 +14,7 @@ class DatabaseHelper: NSObject {
     
     private static var managedObjectContext : NSManagedObjectContext?
     
-    static func getManagedObjectContext(appDelegate : AppDelegate?) -> NSManagedObjectContext?{
+    /*static func getManagedObjectContext(appDelegate : AppDelegate?) -> NSManagedObjectContext?{
         if let context = managedObjectContext {
             return context
         }
@@ -28,9 +28,9 @@ class DatabaseHelper: NSObject {
             self.managedObjectContext = managedObjectContext
         }
         return self.managedObjectContext
-    }
+    }*/
     
-    static func getManagedObjectContext() -> NSManagedObjectContext?{
+    private static func getManagedObjectContext() -> NSManagedObjectContext?{
         if let context = managedObjectContext {
             return context
         }
@@ -41,25 +41,29 @@ class DatabaseHelper: NSObject {
         return self.managedObjectContext
     }
 
-    static func initWithAppDelegate(appDelegate : AppDelegate) {
+    /*static func initWithAppDelegate(appDelegate : AppDelegate) {
         if managedObjectContext == nil {
             managedObjectContext = appDelegate.managedObjectContext
         }
-    }
+    }*/
     
-    static func loadShoppingLists() -> [ShoppingList] {
+    static func loadShoppingLists() -> [ShoppingList]? {
         let fetchRequest = NSFetchRequest(entityName: "ShoppingList")
         let managedObjectContext = DatabaseHelper.getManagedObjectContext()
-        var result = [ShoppingList]()
+        var result : [ShoppingList]? = nil
         
         // Execute the fetch request, and cast the results to an array of ShoppingList objects
-        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ManagedShoppingList] {
+        if let fetchResults = managedObjectContext?.executeFetchRequest(fetchRequest, error: nil) as? [ManagedShoppingList] {
             let shoppingLists = ShoppingList.getShoppingListsFromManagedShoppingLists(fetchResults)
-            if shoppingLists.count > 0 {
-                result = shoppingLists
-            }
+            result = shoppingLists
         }
         return result
     }
     
+    static func saveData() -> Bool {
+        if let managedObjectContext = getManagedObjectContext() {
+            return managedObjectContext.save(nil)
+        }
+        return false
+    }
 }
