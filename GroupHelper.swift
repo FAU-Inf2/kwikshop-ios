@@ -27,11 +27,11 @@ class GroupHelper{
     let TOBACCO : Group
     let COFFEE_AND_TEA : Group
     
-    let instance = GroupHelper()
+    static let instance = GroupHelper()
     private let dbHelper = DatabaseHelper.instance
     private var otherGroups : [Group]?
     
-    init() {
+    private init() {
         let loadedGroups = dbHelper.loadGroups()
             
         if let groups = loadedGroups {
