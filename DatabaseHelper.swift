@@ -23,8 +23,8 @@ class DatabaseHelper: NSObject {
         super.init()
         
         //printNumberOfItemsInDB()
-        printNumberOfUnitsInDB()
-        printNumberOfGroupsInDB()
+        //printNumberOfUnitsInDB()
+        //printNumberOfGroupsInDB()
     }
     
     private func printNumberOfItemsInDB() {
