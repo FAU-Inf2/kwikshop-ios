@@ -38,4 +38,18 @@ class DatabaseHelper: NSObject {
     func saveData() -> Bool {
         return managedObjectContext.save(nil)
     }
+    
+    func deleteItem(item : Item) {
+        let managedItem = item.managedItem
+        delete(managedItem)
+    }
+    
+    func deleteShoppingList(shoppingList: ShoppingList) {
+        let managedShoppingList = shoppingList.managedShoppingList
+        delete(managedShoppingList)
+    }
+    
+    private func delete(managedObject: NSManagedObject) {
+        managedObjectContext.deleteObject(managedObject)
+    }
 }
