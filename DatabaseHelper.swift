@@ -93,6 +93,24 @@ class DatabaseHelper: NSObject {
         return result
     }
     
+    func loadGroups() -> [Group]? {
+        let fetchRequest = NSFetchRequest(entityName: "Group")
+        var result : [Group]? = nil
+        
+        // Execute the fetch request, and cast the results to an array of Group objects
+        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedGroup] {
+            result = [Group]()
+            for managedGroup in fetchResults {
+                if let group = managedGroup.group {
+                    result!.append(group)
+                } else {
+                    result!.append(Group(managedGroup: managedGroup))
+                }
+            }
+        }
+        return result
+    }
+    
     func saveData() -> Bool {
         return managedObjectContext.save(nil)
     }
