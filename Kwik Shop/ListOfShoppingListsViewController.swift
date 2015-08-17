@@ -39,7 +39,8 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     }
     
     func loadFromDatabase() {
-        if let shoppingLists = DatabaseHelper.loadShoppingLists() {
+        let dbHelper = DatabaseHelper.instance
+        if let shoppingLists = dbHelper.loadShoppingLists() {
             self.shoppingLists = shoppingLists
         }
     }
@@ -79,7 +80,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         shoppingLists = [list]
         
-        DatabaseHelper.saveData()
+        DatabaseHelper.instance.saveData()
     }
     
     override func didReceiveMemoryWarning() {
