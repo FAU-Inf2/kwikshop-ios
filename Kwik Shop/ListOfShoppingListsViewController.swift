@@ -47,10 +47,11 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         // Execute the fetch request, and cast the results to an array of LogItem objects
         if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ManagedShoppingList] {
-            
-            if fetchResults.count > 0 {
-                // Create an Alert, and set it's message to whatever the itemText is
-                println(fetchResults.count)
+            let shoppingLists = ShoppingList.getShoppingListsFromManagedShoppingLists(fetchResults)
+            if shoppingLists.count > 0 {
+                self.shoppingLists = shoppingLists
+                println("Data loaded")
+                return
             }
         }
         

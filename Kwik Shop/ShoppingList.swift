@@ -117,6 +117,18 @@ class ShoppingList : NSObject {
     
     let managedShoppingList : ManagedShoppingList
     
+    static func getShoppingListsFromManagedShoppingLists(managedShoppingLists: [ManagedShoppingList]) -> [ShoppingList] {
+        var lists = [ShoppingList]()
+        for managed in managedShoppingLists {
+            if let list = managed.shoppingList {
+                lists.append(list)
+            } else {
+                lists.append(ShoppingList(managedShoppingList: managed))
+            }
+        }
+        return lists
+    }
+    
     convenience init (name : String, sortType : Int?) {
         if ShoppingList.managedObjectContext == nil {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

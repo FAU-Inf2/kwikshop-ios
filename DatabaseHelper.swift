@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class DatabaseHelper: NSObject {
     
@@ -21,17 +22,44 @@ class DatabaseHelper: NSObject {
             managedObjectContext = delegate.managedObjectContext
             return managedObjectContext
         }
-        return nil
+        
+        if let myAppDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            let managedObjectContext = myAppDelegate.managedObjectContext
+            self.managedObjectContext = managedObjectContext
+        }
+        return self.managedObjectContext
     }
     
     static func getManagedObjectContext() -> NSManagedObjectContext?{
-        return managedObjectContext
+        if let context = managedObjectContext {
+            return context
+        }
+        if let myAppDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            let managedObjectContext = myAppDelegate.managedObjectContext
+            self.managedObjectContext = managedObjectContext
+        }
+        return self.managedObjectContext
     }
 
     static func initWithAppDelegate(appDelegate : AppDelegate) {
         if managedObjectContext == nil {
             managedObjectContext = appDelegate.managedObjectContext
         }
+    }
+    
+    static func loadShoppingLists() -> [ShoppingList] {
+        let fetchRequest = NSFetchRequest(entityName: "ShoppingList")
+        let managedObjectContext = DatabaseHelper.getManagedObjectContext()
+        var result = [ShoppingList]()
+        
+        // Execute the fetch request, and cast the results to an array of ShoppingList objects
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ManagedShoppingList] {
+            let shoppingLists = ShoppingList.getShoppingListsFromManagedShoppingLists(fetchResults)
+            if shoppingLists.count > 0 {
+                result = shoppingLists
+            }
+        }
+        return result
     }
     
 }

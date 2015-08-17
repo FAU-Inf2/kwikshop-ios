@@ -116,6 +116,7 @@ class Item : NSObject, Equatable {
         set {
             if newValue == nil {
                 managedItem.group = nil
+                return
             }
             let managedGroup = newValue!.managedGroup
             managedItem.group = managedGroup
@@ -135,6 +136,7 @@ class Item : NSObject, Equatable {
         set {
             if newValue == nil {
                 managedItem.unit = nil
+                return
             }
             let managedUnit = newValue!.managedUnit
             managedItem.unit = managedUnit
