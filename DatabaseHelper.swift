@@ -111,6 +111,25 @@ class DatabaseHelper: NSObject {
         return result
     }
     
+    func loadUnits() -> [Unit]? {
+        let fetchRequest = NSFetchRequest(entityName: "Unit")
+        var result : [Unit]? = nil
+        
+        // Execute the fetch request, and cast the results to an array of Group objects
+        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedUnit] {
+            result = [Unit]()
+            for managedUnit in fetchResults {
+                if let unit = managedUnit.unit {
+                    result!.append(unit)
+                } else {
+                    result!.append(Unit(managedUnit: managedUnit))
+                }
+            }
+        }
+        return result
+    }
+
+    
     func saveData() -> Bool {
         return managedObjectContext.save(nil)
     }

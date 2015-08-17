@@ -60,7 +60,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         
         let item3 = Item(name: "Coke")
         item3.amount = 5
-        item3.unit = Unit.BOTTLE
+        item3.unit = UnitHelper.instance.BOTTLE
         item3.comment = "Swipe items to the right to mark them as bought"
         
         let item4 = Item(name: "Spaghettis")

@@ -34,6 +34,7 @@
 		3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 		3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B381B821D50001B1365 /* GroupHelper.swift */; };
+		3AE93B3B1B822891001B1365 /* UnitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B3A1B822891001B1365 /* UnitHelper.swift */; };
 		3AF0CE2E1B808BE400D0BC48 /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */; };
 		3AF0CE301B80D37E00D0BC48 /* ManagedShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */; };
 		3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */; };
@@ -84,6 +85,7 @@
 		3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListDetailsViewController.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
+		3AE93B3A1B822891001B1365 /* UnitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitHelper.swift; sourceTree = "<group>"; };
 		3AEB66511B72306900F5A89F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
 		3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedShoppingList.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				3ADAFCE71B7FA12C0035A040 /* ManagedUnit.swift */,
 				3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */,
 				3AE93B381B821D50001B1365 /* GroupHelper.swift */,
+				3AE93B3A1B822891001B1365 /* UnitHelper.swift */,
 			);
 			name = Persistence;
 			path = ..;
@@ -348,6 +351,7 @@
 				3ADAFCE81B7FA12C0035A040 /* ManagedUnit.swift in Sources */,
 				3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */,
 				3AE10D8C1B7122BE00E644D1 /* NavigationController.swift in Sources */,
+				3AE93B3B1B822891001B1365 /* UnitHelper.swift in Sources */,
 				3AE10D851B711A1C00E644D1 /* ShoppingListViewController.swift in Sources */,
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
 				3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */,

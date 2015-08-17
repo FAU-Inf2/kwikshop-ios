@@ -11,7 +11,13 @@ import UIKit
 
 class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var data = [Unit.BAG, Unit.BOTTLE, Unit.BOX, Unit.DOZEN, Unit.GRAM, Unit.KILOGRAM, Unit.LITRE, Unit.MILLILITRE, Unit.PACK, Unit.PIECE]
+    var data : [Unit] //= [Unit.BAG, Unit.BOTTLE, Unit.BOX, Unit.DOZEN, Unit.GRAM, Unit.KILOGRAM, Unit.LITRE, Unit.MILLILITRE, Unit.PACK, Unit.PIECE]
+    
+    override init() {
+        let unitHelper = UnitHelper.instance
+        data = [unitHelper.BAG, unitHelper.BOTTLE, unitHelper.BOX, unitHelper.DOZEN, unitHelper.GRAM, unitHelper.KILOGRAM, unitHelper.LITRE, unitHelper.MILLILITRE, unitHelper.PACK, unitHelper.PIECE]
+        super.init()
+    }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1

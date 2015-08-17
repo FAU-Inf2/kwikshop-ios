@@ -12,17 +12,6 @@ import UIKit
 
 class Unit : NSObject, Equatable{
     
-    static let BAG =        Unit(name: "unit_bag")
-    static let BOTTLE =     Unit(name: "unit_bottle")
-    static let BOX =        Unit(name: "unit_box")
-    static let DOZEN =      Unit(name: "unit_dozen")
-    static let GRAM =       Unit(name: "unit_gram", shortName: "unit_gram_short")
-    static let KILOGRAM =   Unit(name: "unit_kilogram", shortName: "unit_kilogram_short")
-    static let LITRE =      Unit(name: "unit_litre", shortName: "unit_litre_short")
-    static let MILLILITRE = Unit(name: "unit_millilitre", shortName: "unit_millilitre_short")
-    static let PACK =       Unit(name: "unit_pack")
-    static let PIECE =      Unit(name: "unit_piece", shortName: "unit_piece_short")
-    
     private static var managedObjectContext : NSManagedObjectContext?
     
     let managedUnit : ManagedUnit
