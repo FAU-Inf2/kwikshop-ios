@@ -23,6 +23,8 @@ class DatabaseHelper: NSObject {
         super.init()
         
         //printNumberOfItemsInDB()
+        printNumberOfUnitsInDB()
+        printNumberOfGroupsInDB()
     }
     
     private func printNumberOfItemsInDB() {
@@ -41,6 +43,42 @@ class DatabaseHelper: NSObject {
         }
         
         println("Number of items in DB: \(result.count)")
+    }
+    
+    private func printNumberOfUnitsInDB() {
+        let fetchRequest = NSFetchRequest(entityName: "Unit")
+        var result = [Unit]()
+        
+        if let fetchResults = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedUnit] {
+            for managed in fetchResults {
+                if let unit = managed.unit {
+                    result.append(unit)
+                } else {
+                    let unit = Unit(managedUnit: managed)
+                    result.append(unit)
+                }
+            }
+        }
+        
+        println("Number of units in DB: \(result.count)")
+    }
+    
+    private func printNumberOfGroupsInDB() {
+        let fetchRequest = NSFetchRequest(entityName: "Group")
+        var result = [Group]()
+        
+        if let fetchResults = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedGroup] {
+            for managed in fetchResults {
+                if let group = managed.group {
+                    result.append(group)
+                } else {
+                    let group = Group(managedGroup: managed)
+                    result.append(group)
+                }
+            }
+        }
+        
+        println("Number of groups in DB: \(result.count)")
     }
     
     func loadShoppingLists() -> [ShoppingList]? {
