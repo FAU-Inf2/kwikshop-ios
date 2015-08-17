@@ -21,6 +21,26 @@ class DatabaseHelper: NSObject {
         let managedObjectContext = myAppDelegate.managedObjectContext
         self.managedObjectContext = managedObjectContext!
         super.init()
+        
+        //printNumberOfItemsInDB()
+    }
+    
+    private func printNumberOfItemsInDB() {
+        let fetchRequest = NSFetchRequest(entityName: "Item")
+        var result = [Item]()
+        
+        if let fetchResults = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedItem] {
+            for managed in fetchResults {
+                if let item = managed.item {
+                    result.append(item)
+                } else {
+                    let item = Item(managedItem: managed)
+                    result.append(item)
+                }
+            }
+        }
+        
+        println("Number of items in DB: \(result.count)")
     }
     
     func loadShoppingLists() -> [ShoppingList]? {
@@ -48,6 +68,7 @@ class DatabaseHelper: NSObject {
     func deleteShoppingList(shoppingList: ShoppingList) {
         let managedShoppingList = shoppingList.managedShoppingList
         delete(managedShoppingList)
+        saveData()
     }
     
     private func delete(managedObject: NSManagedObject) {

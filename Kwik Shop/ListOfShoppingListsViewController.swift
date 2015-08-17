@@ -206,7 +206,9 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     private func deleteShoppingListAtIndexPath(indexPath: NSIndexPath) {
         
         let index = indexPath.row
-        shoppingLists.removeAtIndex(index)
+        let shoppingList = shoppingLists.removeAtIndex(index)
+        
+        dbHelper.deleteShoppingList(shoppingList)
         
         shoppingListsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
