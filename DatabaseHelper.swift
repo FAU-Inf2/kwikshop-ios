@@ -42,6 +42,7 @@ class DatabaseHelper: NSObject {
     func deleteItem(item : Item) {
         let managedItem = item.managedItem
         delete(managedItem)
+        saveData()
     }
     
     func deleteShoppingList(shoppingList: ShoppingList) {

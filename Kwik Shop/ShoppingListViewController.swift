@@ -218,8 +218,9 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         let index = indexAndIndexPaths.index! // index != nil because the separator can't be swiped or edited
         let indexPaths = indexAndIndexPaths.indexPaths
         
-        items.removeAtIndex(index)
+        let item = items.removeAtIndex(index)
         updateModifyDate()
+        dbHelper.deleteItem(item)
         shoppingListTableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
     }
     
