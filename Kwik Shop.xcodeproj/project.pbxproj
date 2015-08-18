@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A52D73F1B83821400E44206 /* AutoCompletionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52D73E1B83821400E44206 /* AutoCompletionData.swift */; };
+		3A52D7411B8383BC00E44206 /* AutoCompletionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */; };
 		3A56D9021B7372B000D536C8 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56D9011B7372B000D536C8 /* ItemTableViewCell.swift */; };
 		3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6ABDB71B64F492009FD7BE /* AppDelegate.swift */; };
 		3A6ABDBD1B64F492009FD7BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6ABDBB1B64F492009FD7BE /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		3A52D73E1B83821400E44206 /* AutoCompletionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionData.swift; sourceTree = "<group>"; };
+		3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionHelper.swift; sourceTree = "<group>"; };
 		3A56D9011B7372B000D536C8 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		3A6ABDB41B64F492009FD7BE /* Kwik Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kwik Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6ABDB71B64F492009FD7BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				3ADA6FD31B663498000B5396 /* Item.swift */,
 				3ADD08581B6BF3C70060D2AC /* Unit.swift */,
 				3ADD08561B6BF35D0060D2AC /* Group.swift */,
+				3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
 				3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */,
+				3A52D7411B8383BC00E44206 /* AutoCompletionHelper.swift in Sources */,
 				3A6F95E01B7E520300E262BB /* ItemParser.swift in Sources */,
 				3ADAFCDE1B7F42260035A040 /* DatabaseHelper.swift in Sources */,
 				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
