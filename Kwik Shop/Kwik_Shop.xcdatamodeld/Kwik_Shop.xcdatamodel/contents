@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AutoCompletionData" representedClassName="PRODUCT_MODULE_NAME.AutoCompletionData" syncable="YES">
+        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
+        <relationship name="unit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Unit" syncable="YES"/>
+    </entity>
     <entity name="Group" representedClassName="Kwik_Shop.ManagedGroup" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
@@ -26,6 +31,7 @@
         <attribute name="shortName" attributeType="String" defaultValueString="" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AutoCompletionData" positionX="-54" positionY="54" width="128" height="90"/>
         <element name="Group" positionX="-36" positionY="72" width="128" height="60"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="180"/>
         <element name="ShoppingList" positionX="-54" positionY="36" width="128" height="120"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A52D73F1B83821400E44206 /* AutoCompletionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52D73E1B83821400E44206 /* AutoCompletionData.swift */; };
 		3A56D9021B7372B000D536C8 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56D9011B7372B000D536C8 /* ItemTableViewCell.swift */; };
 		3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6ABDB71B64F492009FD7BE /* AppDelegate.swift */; };
 		3A6ABDBD1B64F492009FD7BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6ABDBB1B64F492009FD7BE /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A52D73E1B83821400E44206 /* AutoCompletionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionData.swift; sourceTree = "<group>"; };
 		3A56D9011B7372B000D536C8 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		3A6ABDB41B64F492009FD7BE /* Kwik Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kwik Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6ABDB71B64F492009FD7BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		3ADAFCED1B7FA1BC0035A040 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				3A52D73E1B83821400E44206 /* AutoCompletionData.swift */,
 				3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */,
 				3ADAFCEB1B7FA12C0035A040 /* ManagedGroup.swift */,
 				3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */,
@@ -340,6 +343,7 @@
 				3AE21DFB1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift in Sources */,
 				3ADA6FD11B663237000B5396 /* ShoppingList.swift in Sources */,
 				3ADAFCDC1B7F32450035A040 /* Kwik_Shop.xcdatamodeld in Sources */,
+				3A52D73F1B83821400E44206 /* AutoCompletionData.swift in Sources */,
 				3A56D9021B7372B000D536C8 /* ItemTableViewCell.swift in Sources */,
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
