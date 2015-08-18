@@ -10,6 +10,8 @@ import Foundation
 
 class ItemParser {
     
+    let autoCompletionHelper = AutoCompletionHelper.instance
+    
     func parseAmountAndUnit(input : String) -> Item {
         var output = ""
         var amount = ""
@@ -83,7 +85,12 @@ class ItemParser {
         }
         if let itemUnit = foundUnit {
             item.unit = foundUnit
-        }
+        }/* else {
+            // not a good idea because no unit might be intended behavior 
+            item.unit = autoCompletionHelper.getUnitForItem(item)
+        }*/
+        
+        item.group = autoCompletionHelper.getGroupForItem(item)
         
         return item
     }
