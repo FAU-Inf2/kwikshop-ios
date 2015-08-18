@@ -19,6 +19,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     var closeKeyboardTapGestureRecognizer : UITapGestureRecognizer?
     
     let dbHelper = DatabaseHelper.instance
+    let autoCompletionHelper = AutoCompletionHelper.instance
     
     var shoppingList : ShoppingList!
     var items : [Item] {
@@ -262,6 +263,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         notBoughtItems.append(item)
         shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
         updateModifyDate()
+        autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
         saveToDatabase()
     }
     
@@ -306,6 +308,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                         items[index] = sourceViewController.currentItem!
                         shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                         updateModifyDate()
+                        autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
                         saveToDatabase()
                     } else {
                         // item is to be deleted

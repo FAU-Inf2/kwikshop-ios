@@ -16,19 +16,23 @@ class AutoCompletionHelper {
         // private initalizer to prevent other classes to use the default initalizer
     }
     
-    func createAutoCompletionDataForName(name: String) {
-        createAutoCompletionDataForName(name, unit: nil, group: nil)
+    func createOrUpdateAutoCompletionDataForName(name: String) {
+        createOrUpdateAutoCompletionDataForName(name, unit: nil, group: nil)
     }
     
-    func createAutoCompletionDataForName(name: String, unit: Unit?) {
-        createAutoCompletionDataForName(name, unit: unit, group: nil)
+    func createOrUpdateAutoCompletionDataForName(name: String, unit: Unit?) {
+        createOrUpdateAutoCompletionDataForName(name, unit: unit, group: nil)
     }
     
-    func createAutoCompletionDataForName(name: String, group: Group?) {
-        createAutoCompletionDataForName(name, unit: nil, group: group)
+    func createOrUpdateAutoCompletionDataForName(name: String, group: Group?) {
+        createOrUpdateAutoCompletionDataForName(name, unit: nil, group: group)
     }
     
-    func createAutoCompletionDataForName(name: String, unit: Unit?, group: Group?) {
+    func createOrUpdateAutoCompletionDataForItem(item: Item) {
+        createOrUpdateAutoCompletionDataForName(item.name, unit: item.unit, group: item.group)
+    }
+    
+    func createOrUpdateAutoCompletionDataForName(name: String, unit: Unit?, group: Group?) {
         
     }
 }
