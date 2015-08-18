@@ -35,4 +35,20 @@ class AutoCompletionHelper {
     func createOrUpdateAutoCompletionDataForName(name: String, unit: Unit?, group: Group?) {
         
     }
+    
+    func getGroupForItem(item: Item) -> Group? {
+        return getGroupForName(item.name)
+    }
+    
+    func getGroupForName(name: String) -> Group? {
+        return nil
+    }
+    
+    func getUnitForItem(item: Item) -> Unit? {
+        return getUnitForName(item.name)
+    }
+    
+    func getUnitForName(name: String) -> Unit? {
+        return nil
+    }
 }
