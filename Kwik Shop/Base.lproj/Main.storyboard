@@ -241,7 +241,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8x-lI-rzB">
-                                        <rect key="frame" x="192" y="54" width="392" height="162"/>
+                                        <rect key="frame" x="192" y="54" width="320" height="162"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="Eez-A3-gMw"/>
+                                        </constraints>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highlight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfQ-9p-b7A">
                                         <rect key="frame" x="16" y="184" width="68" height="21"/>
@@ -253,7 +256,10 @@
                                         <rect key="frame" x="92" y="179" width="51" height="31"/>
                                     </switch>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aT-am-HOh">
-                                        <rect key="frame" x="80" y="363" width="504" height="162"/>
+                                        <rect key="frame" x="80" y="363" width="320" height="162"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="iU3-zg-Ikv"/>
+                                        </constraints>
                                     </pickerView>
                                 </subviews>
                                 <constraints>
@@ -285,9 +291,9 @@
                                     <constraint firstItem="PRf-98-Brc" firstAttribute="leading" secondItem="gfQ-9p-b7A" secondAttribute="trailing" constant="8" id="cpV-vm-xyG"/>
                                     <constraint firstItem="M8x-lI-rzB" firstAttribute="top" secondItem="Psa-ch-ant" secondAttribute="bottom" constant="8" id="dAZ-00-Hel"/>
                                     <constraint firstItem="7fw-u7-GiG" firstAttribute="leading" secondItem="fAQ-jh-chq" secondAttribute="leading" id="duu-6B-q0o"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="M8x-lI-rzB" secondAttribute="trailing" constant="8" id="fJe-4b-3Yr"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="M8x-lI-rzB" secondAttribute="trailing" constant="8" id="fJe-4b-3Yr"/>
                                     <constraint firstItem="WGT-hs-Tq3" firstAttribute="trailing" secondItem="Psa-ch-ant" secondAttribute="trailing" id="jDa-SN-Xr8"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="9aT-am-HOh" secondAttribute="trailing" constant="8" id="mbX-Wo-HRw"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="9aT-am-HOh" secondAttribute="trailing" constant="8" id="mbX-Wo-HRw"/>
                                     <constraint firstItem="lxV-9J-WfT" firstAttribute="top" secondItem="Psa-ch-ant" secondAttribute="bottom" constant="74" id="pNT-sP-0Fq"/>
                                     <constraint firstItem="WGT-hs-Tq3" firstAttribute="leading" secondItem="URK-dd-hwd" secondAttribute="leading" id="qMr-lj-LdY"/>
                                     <constraint firstItem="Psa-ch-ant" firstAttribute="leading" secondItem="TPV-7C-344" secondAttribute="leading" constant="16" id="t5Q-es-1DV"/>
