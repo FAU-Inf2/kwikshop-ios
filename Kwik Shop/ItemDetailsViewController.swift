@@ -39,6 +39,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     private var unitHasChanged = false
     private var groupHasChanged = false
     
+    private let autoCompletionHelper = AutoCompletionHelper.instance
+    
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,14 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         if newItem {
             if let item = currentItem {
                 itemNameTextField.text = item.name
+                
+                if let unit = autoCompletionHelper.getUnitForItem(item), row = find(unitDelegate.data, unit) {
+                    unitPicker.selectRow(row, inComponent: 0, animated: false)
+                }
+                
+                if let group = autoCompletionHelper.getGroupForItem(item), row = find(groupDelegate.data, group) {
+                    groupPicker.selectRow(row, inComponent: 0, animated: false)
+                }
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
