@@ -10,6 +10,11 @@ import Foundation
 
 class AutoCompletionHelper {
     
+    static let instance = AutoCompletionHelper()
+    
+    private init() {
+        // private initalizer to prevent other classes to use the default initalizer
+    }
     
     func createAutoCompletionDataForName(name: String) {
         createAutoCompletionDataForName(name, unit: nil, group: nil)
