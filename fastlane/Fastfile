@@ -55,7 +55,7 @@ platform :ios do
       )
     end
 
-    xctool "-project Kwik\\ Shop.xcworkspace \
+    xctool "-workspace Kwik\\ Shop.xcworkspace \
         -scheme 'Kwik Shop' \
         -configuration Release \
         -sdk iphonesimulator \
@@ -65,7 +65,7 @@ platform :ios do
   desc "Build project with xctool"
   lane :build do
     cocoapods
-    xctool "-project Kwik\\ Shop.xcworkspace \
+    xctool "-workspace Kwik\\ Shop.xcworkspace \
         -scheme 'Kwik Shop' \
         -configuration Release \
         -sdk iphonesimulator \
