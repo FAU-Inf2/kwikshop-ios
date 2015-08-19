@@ -112,12 +112,14 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     private func selectUnit(unit: Unit, animated: Bool) {
         if let row = find(unitDelegate.data, unit) {
             unitPicker.selectRow(row, inComponent: 0, animated: animated)
+            unitHasChanged = true
         }
     }
     
     private func selectGroup(group: Group, animated: Bool) {
         if let row = find(groupDelegate.data, group) {
             groupPicker.selectRow(row, inComponent: 0, animated: animated)
+            groupHasChanged = true
         }
     }
    
