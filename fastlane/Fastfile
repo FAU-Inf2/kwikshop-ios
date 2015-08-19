@@ -55,7 +55,7 @@ platform :ios do
       )
     end
 
-    xctool "-project Kwik\\ Shop.xcodeproj \
+    xctool "-project Kwik\\ Shop.xcworkspace \
         -scheme 'Kwik Shop' \
         -configuration Release \
         -sdk iphonesimulator \
@@ -64,11 +64,8 @@ platform :ios do
 
   desc "Build project with xctool"
   lane :build do
-    #TODO enable carthage when required
-    #carthageverbose(
-    #  verbose: true
-    #)
-    xctool "-project Kwik\\ Shop.xcodeproj \
+    cocoapods
+    xctool "-project Kwik\\ Shop.xcworkspace \
         -scheme 'Kwik Shop' \
         -configuration Release \
         -sdk iphonesimulator \
@@ -77,7 +74,7 @@ platform :ios do
 
   desc "Run tests for project with xctool"
   lane :test do
-    xctool "-project Kwik\\ Shop.xcodeproj \
+    xctool "-project Kwik\\ Shop.xcworkspace \
         -scheme 'Kwik Shop' \
         -configuration Release \
         -sdk iphonesimulator \
