@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MLPAutoCompleteTextFieldDataSource {
     // MARK: Properties
-    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var itemNameTextField: MLPAutoCompleteTextField!
     @IBOutlet weak var amountLabel: UILabel!    
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var unitPicker: UIPickerView!
@@ -98,6 +98,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         }
         
         itemNameTextField.delegate = self
+        itemNameTextField.autoCompleteDataSource = self
         checkValidItemName(itemNameTextField.text)
         amountTextField.delegate = self
         commentTextField.delegate = self
@@ -199,6 +200,19 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             return true
         }
     }
+    
+    // MARK: MLP Autocompletion
+    func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
+        return [AnyObject]()
+    }
+    
+    /*/*
+    Like the above, this method should return an NSArray of strings or objects implementing the MLPAutoCompletionObject protocol
+    that could be used as possible completions for the given string in textField.
+    This method will be called asynchronously, so an immediate return is not necessary.
+    */
+    - (NSArray *)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
+    possibleCompletionsForString:(NSString *)string;*/
     
     // MARK: Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {

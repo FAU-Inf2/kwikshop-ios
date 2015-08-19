@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A4C29A01B8486FA0013D5E9 /* KwikShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KwikShop-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A52D73E1B83821400E44206 /* AutoCompletionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionData.swift; sourceTree = "<group>"; };
 		3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionHelper.swift; sourceTree = "<group>"; };
 		3A56D9011B7372B000D536C8 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 		3A6ABDAB1B64F492009FD7BE = {
 			isa = PBXGroup;
 			children = (
+				3A4C29A01B8486FA0013D5E9 /* KwikShop-Bridging-Header.h */,
 				3A6ABDB61B64F492009FD7BE /* Kwik Shop */,
 				3A6ABDCB1B64F492009FD7BE /* Kwik ShopTests */,
 				3A6ABDB51B64F492009FD7BE /* Products */,
@@ -509,6 +511,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "KwikShop-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -547,6 +550,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "KwikShop-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
