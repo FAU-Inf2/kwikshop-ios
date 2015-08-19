@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		022FF0A07FE4648101AF2C3F804A0F9E /* MLPAutoCompleteTextFieldDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 355F3A8BF54AB22B1E17FF1271324366 /* MLPAutoCompleteTextFieldDelegate.h */; };
+		057FB960420A949D24AA5D5F73DC7FA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0B4C7CE16C158CE3BAA6A80D7533FB /* Foundation.framework */; };
+		265FB1160C84DB4B4C2A6F1B3B886DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0B4C7CE16C158CE3BAA6A80D7533FB /* Foundation.framework */; };
+		4CA4397CA30C51609E56845D3BAEC6FE /* MLPAutoCompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB9118E895357F27C3FA236BE6B2353 /* MLPAutoCompleteTextField.h */; };
+		529064B8419FED5A733EEFD9C747E735 /* NSString+Levenshtein.h in Headers */ = {isa = PBXBuildFile; fileRef = DADFAB468739A43CCE1F57EC0235D5A3 /* NSString+Levenshtein.h */; };
+		56909132ADB11398160ABD9A2D12464B /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7BFB66BDEF88F0196919F0F95005B1 /* MLPAutoCompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6683739CB6D1AC2316A685BDD790B404 /* MLPAutoCompleteTextFieldDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 3259B5A5A177EB57C1478C1B67D8943F /* MLPAutoCompleteTextFieldDataSource.h */; };
+		698F533A060358A8A7EDF952DCD96497 /* MLPAutoCompletionObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F04F4EDA5ED32AB069F81E5945BABE6 /* MLPAutoCompletionObject.h */; };
+		B30F396DC75CCFF80794866339E60FC6 /* MLPAutoCompleteTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C1EE3CCC6C023953F54C26DA84718 /* MLPAutoCompleteTextField-dummy.m */; };
+		EB8E45856A83E189FD6FE96FBF0D7BCE /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = 59405F8C1D27204731BFE0172649F039 /* NSString+Levenshtein.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F374BDD6A8B9A18C967325B8AA8968BD /* Pods-Kwik Shop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA29712CB347B7015A0FE2342254C41 /* Pods-Kwik Shop-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11CCE9FA45EB6F6722472949D8CEA7BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE9902679AE3CF71C311285BC7F60CCC;
+			remoteInfo = MLPAutoCompleteTextField;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		039E6636EFA9111356C668132743911A /* Pods-Kwik Shop-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Kwik Shop-resources.sh"; sourceTree = "<group>"; };
+		09560FED9E8CE3D729897524AD2382E0 /* MLPAutoCompleteTextField-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "MLPAutoCompleteTextField-Private.xcconfig"; sourceTree = "<group>"; };
+		1F04F4EDA5ED32AB069F81E5945BABE6 /* MLPAutoCompletionObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MLPAutoCompletionObject.h; path = MLPAutoCompleteTextField/MLPAutoCompletionObject.h; sourceTree = "<group>"; };
+		2254B2FDBC83F74898DAD9C564B042FB /* Pods-Kwik Shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kwik Shop.release.xcconfig"; sourceTree = "<group>"; };
+		2E2C1EE3CCC6C023953F54C26DA84718 /* MLPAutoCompleteTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MLPAutoCompleteTextField-dummy.m"; sourceTree = "<group>"; };
+		3259B5A5A177EB57C1478C1B67D8943F /* MLPAutoCompleteTextFieldDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MLPAutoCompleteTextFieldDataSource.h; path = MLPAutoCompleteTextField/MLPAutoCompleteTextFieldDataSource.h; sourceTree = "<group>"; };
+		355F3A8BF54AB22B1E17FF1271324366 /* MLPAutoCompleteTextFieldDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MLPAutoCompleteTextFieldDelegate.h; path = MLPAutoCompleteTextField/MLPAutoCompleteTextFieldDelegate.h; sourceTree = "<group>"; };
+		3AB9118E895357F27C3FA236BE6B2353 /* MLPAutoCompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MLPAutoCompleteTextField.h; path = MLPAutoCompleteTextField/MLPAutoCompleteTextField.h; sourceTree = "<group>"; };
+		59405F8C1D27204731BFE0172649F039 /* NSString+Levenshtein.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+Levenshtein.m"; path = "MLPAutoCompleteTextField/NSString+Levenshtein.m"; sourceTree = "<group>"; };
+		5E14BA45BB922DDE3B6308AD596456AD /* MLPAutoCompleteTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLPAutoCompleteTextField.xcconfig; sourceTree = "<group>"; };
+		95AB2B5489A321B148AF68B4D56AEA27 /* Pods-Kwik Shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kwik Shop.debug.xcconfig"; sourceTree = "<group>"; };
+		9BD9AC94C36CC14EFE56683478D7C903 /* MLPAutoCompleteTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MLPAutoCompleteTextField-prefix.pch"; sourceTree = "<group>"; };
+		9D64DC3980E996C7E9A02F57DB65B316 /* Pods-Kwik Shop-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Kwik Shop-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A44159F740888ED94A2E286973E41361 /* libPods-Kwik Shop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kwik Shop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D7CBBAA7AEAFE8F3639ED14E5DC3863F /* Pods-Kwik Shop-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Kwik Shop-acknowledgements.plist"; sourceTree = "<group>"; };
+		DADFAB468739A43CCE1F57EC0235D5A3 /* NSString+Levenshtein.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+Levenshtein.h"; path = "MLPAutoCompleteTextField/NSString+Levenshtein.h"; sourceTree = "<group>"; };
+		EA0B4C7CE16C158CE3BAA6A80D7533FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EBA29712CB347B7015A0FE2342254C41 /* Pods-Kwik Shop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kwik Shop-dummy.m"; sourceTree = "<group>"; };
+		ED19966EB8B9FB7D3F6E8A0B05F7D697 /* libMLPAutoCompleteTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMLPAutoCompleteTextField.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7BFB66BDEF88F0196919F0F95005B1 /* MLPAutoCompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MLPAutoCompleteTextField.m; path = MLPAutoCompleteTextField/MLPAutoCompleteTextField.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		29459B7AF55CDC876340D1FFAB22EE71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057FB960420A949D24AA5D5F73DC7FA7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9323F04D6DA55B03B07F8FB4B752C0E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265FB1160C84DB4B4C2A6F1B3B886DEC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05E7F5B71317F63B887DD17CA536A74A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8514370DEFF41B050CECF0A2F0742EBC /* Pods-Kwik Shop */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EA0B4C7CE16C158CE3BAA6A80D7533FB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5F31F404A0AF5471D23E13FE473AB324 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5E14BA45BB922DDE3B6308AD596456AD /* MLPAutoCompleteTextField.xcconfig */,
+				09560FED9E8CE3D729897524AD2382E0 /* MLPAutoCompleteTextField-Private.xcconfig */,
+				2E2C1EE3CCC6C023953F54C26DA84718 /* MLPAutoCompleteTextField-dummy.m */,
+				9BD9AC94C36CC14EFE56683478D7C903 /* MLPAutoCompleteTextField-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MLPAutoCompleteTextField";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				AD72095C9CB0B7B979BB5BD86893AB43 /* Pods */,
+				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
+				05E7F5B71317F63B887DD17CA536A74A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8514370DEFF41B050CECF0A2F0742EBC /* Pods-Kwik Shop */ = {
+			isa = PBXGroup;
+			children = (
+				9D64DC3980E996C7E9A02F57DB65B316 /* Pods-Kwik Shop-acknowledgements.markdown */,
+				D7CBBAA7AEAFE8F3639ED14E5DC3863F /* Pods-Kwik Shop-acknowledgements.plist */,
+				EBA29712CB347B7015A0FE2342254C41 /* Pods-Kwik Shop-dummy.m */,
+				039E6636EFA9111356C668132743911A /* Pods-Kwik Shop-resources.sh */,
+				95AB2B5489A321B148AF68B4D56AEA27 /* Pods-Kwik Shop.debug.xcconfig */,
+				2254B2FDBC83F74898DAD9C564B042FB /* Pods-Kwik Shop.release.xcconfig */,
+			);
+			name = "Pods-Kwik Shop";
+			path = "Target Support Files/Pods-Kwik Shop";
+			sourceTree = "<group>";
+		};
+		AD72095C9CB0B7B979BB5BD86893AB43 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7273040D96837F7BA2D6EA509B2A484 /* MLPAutoCompleteTextField */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53F661C0CA7190D2CF05023FB33D61E4 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C7273040D96837F7BA2D6EA509B2A484 /* MLPAutoCompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				3AB9118E895357F27C3FA236BE6B2353 /* MLPAutoCompleteTextField.h */,
+				ED7BFB66BDEF88F0196919F0F95005B1 /* MLPAutoCompleteTextField.m */,
+				3259B5A5A177EB57C1478C1B67D8943F /* MLPAutoCompleteTextFieldDataSource.h */,
+				355F3A8BF54AB22B1E17FF1271324366 /* MLPAutoCompleteTextFieldDelegate.h */,
+				1F04F4EDA5ED32AB069F81E5945BABE6 /* MLPAutoCompletionObject.h */,
+				DADFAB468739A43CCE1F57EC0235D5A3 /* NSString+Levenshtein.h */,
+				59405F8C1D27204731BFE0172649F039 /* NSString+Levenshtein.m */,
+				5F31F404A0AF5471D23E13FE473AB324 /* Support Files */,
+			);
+			path = MLPAutoCompleteTextField;
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED19966EB8B9FB7D3F6E8A0B05F7D697 /* libMLPAutoCompleteTextField.a */,
+				A44159F740888ED94A2E286973E41361 /* libPods-Kwik Shop.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C0E5982B90CE4BDCEE4F5FDFF83532E6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CA4397CA30C51609E56845D3BAEC6FE /* MLPAutoCompleteTextField.h in Headers */,
+				6683739CB6D1AC2316A685BDD790B404 /* MLPAutoCompleteTextFieldDataSource.h in Headers */,
+				022FF0A07FE4648101AF2C3F804A0F9E /* MLPAutoCompleteTextFieldDelegate.h in Headers */,
+				698F533A060358A8A7EDF952DCD96497 /* MLPAutoCompletionObject.h in Headers */,
+				529064B8419FED5A733EEFD9C747E735 /* NSString+Levenshtein.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A427AC36CE50BE9BED2CBF591BE6CD40 /* Pods-Kwik Shop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB24EE6C4B1C6FF8C0854D657124213F /* Build configuration list for PBXNativeTarget "Pods-Kwik Shop" */;
+			buildPhases = (
+				2E41B78DB6F63F72A90C7353A8990E4F /* Sources */,
+				9323F04D6DA55B03B07F8FB4B752C0E4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				540D9134A868DF045D3727E8BBCE1FC6 /* PBXTargetDependency */,
+			);
+			name = "Pods-Kwik Shop";
+			productName = "Pods-Kwik Shop";
+			productReference = A44159F740888ED94A2E286973E41361 /* libPods-Kwik Shop.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FE9902679AE3CF71C311285BC7F60CCC /* MLPAutoCompleteTextField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40C88E737632F53DD34B11C7CF699C50 /* Build configuration list for PBXNativeTarget "MLPAutoCompleteTextField" */;
+			buildPhases = (
+				C35718481C91D66EFB88C516DAA9663C /* Sources */,
+				29459B7AF55CDC876340D1FFAB22EE71 /* Frameworks */,
+				C0E5982B90CE4BDCEE4F5FDFF83532E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MLPAutoCompleteTextField;
+			productName = MLPAutoCompleteTextField;
+			productReference = ED19966EB8B9FB7D3F6E8A0B05F7D697 /* libMLPAutoCompleteTextField.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = CCA510CFBEA2D207524CDA0D73C3B561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE9902679AE3CF71C311285BC7F60CCC /* MLPAutoCompleteTextField */,
+				A427AC36CE50BE9BED2CBF591BE6CD40 /* Pods-Kwik Shop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2E41B78DB6F63F72A90C7353A8990E4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F374BDD6A8B9A18C967325B8AA8968BD /* Pods-Kwik Shop-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C35718481C91D66EFB88C516DAA9663C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B30F396DC75CCFF80794866339E60FC6 /* MLPAutoCompleteTextField-dummy.m in Sources */,
+				56909132ADB11398160ABD9A2D12464B /* MLPAutoCompleteTextField.m in Sources */,
+				EB8E45856A83E189FD6FE96FBF0D7BCE /* NSString+Levenshtein.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		540D9134A868DF045D3727E8BBCE1FC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MLPAutoCompleteTextField;
+			target = FE9902679AE3CF71C311285BC7F60CCC /* MLPAutoCompleteTextField */;
+			targetProxy = 11CCE9FA45EB6F6722472949D8CEA7BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7055AC931F0530C141E55415BCEF774A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09560FED9E8CE3D729897524AD2382E0 /* MLPAutoCompleteTextField-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MLPAutoCompleteTextField/MLPAutoCompleteTextField-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		77B9FBD6A208096D6FD679D3113187AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09560FED9E8CE3D729897524AD2382E0 /* MLPAutoCompleteTextField-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MLPAutoCompleteTextField/MLPAutoCompleteTextField-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A2B79EC16F77C8936E76576C1A436E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2254B2FDBC83F74898DAD9C564B042FB /* Pods-Kwik Shop.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C1BE84C855C5135D607F37E7D18B32EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95AB2B5489A321B148AF68B4D56AEA27 /* Pods-Kwik Shop.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
+				FB45FFD90572718D82AB9092B750F0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40C88E737632F53DD34B11C7CF699C50 /* Build configuration list for PBXNativeTarget "MLPAutoCompleteTextField" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77B9FBD6A208096D6FD679D3113187AF /* Debug */,
+				7055AC931F0530C141E55415BCEF774A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB24EE6C4B1C6FF8C0854D657124213F /* Build configuration list for PBXNativeTarget "Pods-Kwik Shop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1BE84C855C5135D607F37E7D18B32EA /* Debug */,
+				A2B79EC16F77C8936E76576C1A436E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
