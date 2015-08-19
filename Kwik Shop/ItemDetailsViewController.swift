@@ -115,8 +115,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         brandTextField.delegate = self
         
         // close keyboard when user taps on the view
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
-        view.addGestureRecognizer(tapGesture)
+        //let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+        //view.addGestureRecognizer(tapGesture)
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
     }
     
@@ -227,8 +227,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     
     // MARK: MLP Autocompletion
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
-        //return [AnyObject]()
-        return ["Milk", "Butter", "Toilet paper", "Bread", "Apple", "Banana"]
+        return autoCompletionHelper.possibleCompletionsForString(string)
     }
     
     /*/*

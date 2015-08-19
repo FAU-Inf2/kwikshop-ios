@@ -11,6 +11,7 @@ import Foundation
 class AutoCompletionHelper {
     
     static let instance = AutoCompletionHelper()
+    private var cache = [String]()
     
     private init() {
         // private initalizer to prevent other classes to use the default initalizer
@@ -33,7 +34,9 @@ class AutoCompletionHelper {
     }
     
     func createOrUpdateAutoCompletionDataForName(name: String, unit: Unit?, group: Group?) {
-        
+        if !contains(cache, name) {
+            cache.append(name)
+        }
     }
     
     func getGroupForItem(item: Item) -> Group? {
@@ -50,5 +53,9 @@ class AutoCompletionHelper {
     
     func getUnitForName(name: String) -> Unit? {
         return nil
+    }
+    
+    func possibleCompletionsForString(string: String) -> [String] {
+        return cache
     }
 }
