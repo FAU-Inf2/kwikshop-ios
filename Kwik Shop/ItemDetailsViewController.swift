@@ -99,6 +99,16 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         
         itemNameTextField.delegate = self
         itemNameTextField.autoCompleteDataSource = self
+        itemNameTextField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
+        
+        
+        let orientation = UIApplication.sharedApplication().statusBarOrientation
+        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
+            itemNameTextField.maximumNumberOfAutoCompleteRows = 3
+        } else {
+            itemNameTextField.maximumNumberOfAutoCompleteRows = 5
+        }
+        
         checkValidItemName(itemNameTextField.text)
         amountTextField.delegate = self
         commentTextField.delegate = self
@@ -108,6 +118,20 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
         view.addGestureRecognizer(tapGesture)
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        let orientation = toInterfaceOrientation
+        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
+            itemNameTextField.maximumNumberOfAutoCompleteRows = 3
+        } else {
+            itemNameTextField.maximumNumberOfAutoCompleteRows = 5
+        }
+        itemNameTextField.autoCompleteTableViewHidden = true
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        itemNameTextField.autoCompleteTableViewHidden = false
     }
     
     private func selectUnit(unit: Unit, animated: Bool) {
@@ -203,7 +227,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     
     // MARK: MLP Autocompletion
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
-        return [AnyObject]()
+        //return [AnyObject]()
+        return ["Milk", "Butter", "Toilet paper", "Bread", "Apple", "Banana"]
     }
     
     /*/*
