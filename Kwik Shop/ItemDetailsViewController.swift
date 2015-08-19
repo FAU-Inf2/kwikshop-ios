@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MLPAutoCompleteTextFieldDataSource {
+class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: MLPAutoCompleteTextField!
     @IBOutlet weak var amountLabel: UILabel!    
@@ -115,8 +115,9 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         brandTextField.delegate = self
         
         // close keyboard when user taps on the view
-        //let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
-        //view.addGestureRecognizer(tapGesture)
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+        tapGesture.delegate = self
+        view.addGestureRecognizer(tapGesture)
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
     }
     
@@ -230,13 +231,15 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         return autoCompletionHelper.possibleCompletionsForString(string)
     }
     
-    /*/*
-    Like the above, this method should return an NSArray of strings or objects implementing the MLPAutoCompletionObject protocol
-    that could be used as possible completions for the given string in textField.
-    This method will be called asynchronously, so an immediate return is not necessary.
-    */
-    - (NSArray *)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
-    possibleCompletionsForString:(NSString *)string;*/
+    // MARK: UIGestureRecognizerDelegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if touch.view.isDescendantOfView(itemNameTextField.autoCompleteTableView) {
+            // autocomplete suggestion was tapped
+            return false;
+        }
+        // somewhere else was tapped
+        return true;
+    }
     
     // MARK: Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {
