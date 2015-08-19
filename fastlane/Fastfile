@@ -74,7 +74,7 @@ platform :ios do
 
   desc "Run tests for project with xctool"
   lane :test do
-    xctool "-project Kwik\\ Shop.xcworkspace \
+    xctool "-workspace Kwik\\ Shop.xcworkspace \
         -scheme 'Kwik Shop' \
         -configuration Release \
         -sdk iphonesimulator \

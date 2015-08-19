@@ -56,7 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A4C29A01B8486FA0013D5E9 /* KwikShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KwikShop-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A4C29A01B8486FA0013D5E9 /* Kwik_Shop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kwik_Shop-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A52D73E1B83821400E44206 /* AutoCompletionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionData.swift; sourceTree = "<group>"; };
 		3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionHelper.swift; sourceTree = "<group>"; };
 		3A56D9011B7372B000D536C8 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		3A6ABDAB1B64F492009FD7BE = {
 			isa = PBXGroup;
 			children = (
-				3A4C29A01B8486FA0013D5E9 /* KwikShop-Bridging-Header.h */,
+				3A4C29A01B8486FA0013D5E9 /* Kwik_Shop-Bridging-Header.h */,
 				3A6ABDB61B64F492009FD7BE /* Kwik Shop */,
 				3A6ABDCB1B64F492009FD7BE /* Kwik ShopTests */,
 				3A6ABDB51B64F492009FD7BE /* Products */,
@@ -507,11 +507,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers/Public/\"",
+					"\"${PODS_ROOT}/Headers/Public/MLPAutoCompleteTextField\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "KwikShop-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -547,10 +553,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers/Public/\"",
+					"\"${PODS_ROOT}/Headers/Public/MLPAutoCompleteTextField\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "KwikShop-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -564,8 +576,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Kwik Shop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
 		};
@@ -577,32 +592,55 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Kwik Shop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Release;
 		};
 		3A6ABDD51B64F492009FD7BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5EBFE4FA19FDA67A368C34A /* Pods-Kwik Shop.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/MLPAutoCompleteTextField\"",
+				);
 				INFOPLIST_FILE = "Kwik ShopTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-ShopTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kwik Shop.app/Kwik Shop";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
 		};
 		3A6ABDD61B64F492009FD7BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95603EF0CAB567AF30E20A65 /* Pods-Kwik Shop.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/MLPAutoCompleteTextField\"",
+				);
 				INFOPLIST_FILE = "Kwik ShopTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-ShopTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kwik Shop.app/Kwik Shop";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Release;
 		};
