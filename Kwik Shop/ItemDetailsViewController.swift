@@ -65,12 +65,12 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             if let item = currentItem {
                 itemNameTextField.text = item.name
                 
-                if let unit = autoCompletionHelper.getUnitForItem(item), row = find(unitDelegate.data, unit) {
-                    unitPicker.selectRow(row, inComponent: 0, animated: false)
+                if let unit = autoCompletionHelper.getUnitForItem(item) {
+                    selectUnit(unit, animated: false)
                 }
                 
-                if let group = autoCompletionHelper.getGroupForItem(item), row = find(groupDelegate.data, group) {
-                    groupPicker.selectRow(row, inComponent: 0, animated: false)
+                if let group = autoCompletionHelper.getGroupForItem(item) {
+                    selectGroup(group, animated: false)
                 }
             }
         } else if let item = currentItem {
@@ -109,6 +109,18 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
     }
     
+    private func selectUnit(unit: Unit, animated: Bool) {
+        if let row = find(unitDelegate.data, unit) {
+            unitPicker.selectRow(row, inComponent: 0, animated: animated)
+        }
+    }
+    
+    private func selectGroup(group: Group, animated: Bool) {
+        if let row = find(groupDelegate.data, group) {
+            groupPicker.selectRow(row, inComponent: 0, animated: animated)
+        }
+    }
+   
     override func viewDidAppear(animated: Bool) {
         if (newItem && currentItem == nil) {
             itemNameTextField.becomeFirstResponder()
@@ -150,8 +162,21 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     
     func textFieldDidEndEditing(textField: UITextField) {
         if (textField === itemNameTextField) {
-            checkValidItemName(itemNameTextField.text)
-            navigationItem.title = textField.text
+            let name = itemNameTextField.text
+            checkValidItemName(name)
+            navigationItem.title = name
+            if newItem {
+                if !unitHasChanged {
+                    if let unit = autoCompletionHelper.getUnitForName(name) {
+                        selectUnit(unit, animated: true)
+                    }
+                }
+                if !groupHasChanged {
+                    if let group = autoCompletionHelper.getGroupForName(name) {
+                        selectGroup(group, animated: true)
+                    }
+                }
+            }
         }
     }
     
