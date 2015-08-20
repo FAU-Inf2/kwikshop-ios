@@ -115,7 +115,7 @@ class DatabaseHelper: NSObject {
         let fetchRequest = NSFetchRequest(entityName: "Unit")
         var result : [Unit]? = nil
         
-        // Execute the fetch request, and cast the results to an array of Group objects
+        // Execute the fetch request, and cast the results to an array of Unit objects
         if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedUnit] {
             result = [Unit]()
             for managedUnit in fetchResults {
@@ -129,6 +129,10 @@ class DatabaseHelper: NSObject {
         return result
     }
 
+    func loadAutoCompletionData() -> [AutoCompletionData]? {
+        let fetchRequest = NSFetchRequest(entityName: "AutoCompletionData")
+        return managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [AutoCompletionData]
+    }
     
     func saveData() -> Bool {
         return managedObjectContext.save(nil)
