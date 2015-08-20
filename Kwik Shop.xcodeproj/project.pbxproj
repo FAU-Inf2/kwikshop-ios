@@ -34,6 +34,7 @@
 		3AE594E21B6FDAA9007A52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594E41B6FDAA9007A52DA /* Localizable.strings */; };
 		3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */; };
 		3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */; };
+		3AE89FF61B85DD1600FA1B19 /* AutoCompletionBrandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 		3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B381B821D50001B1365 /* GroupHelper.swift */; };
 		3AE93B3B1B822891001B1365 /* UnitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B3A1B822891001B1365 /* UnitHelper.swift */; };
@@ -57,7 +58,7 @@
 
 /* Begin PBXFileReference section */
 		3A4C29A01B8486FA0013D5E9 /* Kwik_Shop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kwik_Shop-Bridging-Header.h"; sourceTree = "<group>"; };
-		3A52D73E1B83821400E44206 /* AutoCompletionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionData.swift; sourceTree = "<group>"; };
+		3A52D73E1B83821400E44206 /* AutoCompletionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompletionData.swift; path = ../AutoCompletionData.swift; sourceTree = "<group>"; };
 		3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionHelper.swift; sourceTree = "<group>"; };
 		3A56D9011B7372B000D536C8 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		3A6ABDB41B64F492009FD7BE /* Kwik Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kwik Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +90,7 @@
 		3AE594E51B6FDAAE007A52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLocalizationExtension.swift; sourceTree = "<group>"; };
 		3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListDetailsViewController.swift; sourceTree = "<group>"; };
+		3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionBrandData.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
 		3AE93B3A1B822891001B1365 /* UnitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitHelper.swift; sourceTree = "<group>"; };
@@ -176,12 +178,12 @@
 		3ADA6FD21B663256000B5396 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3AE89FF71B85DD4100FA1B19 /* Auto Completion */,
 				3ADAFCED1B7FA1BC0035A040 /* Persistence */,
 				3ADA6FD01B663237000B5396 /* ShoppingList.swift */,
 				3ADA6FD31B663498000B5396 /* Item.swift */,
 				3ADD08581B6BF3C70060D2AC /* Unit.swift */,
 				3ADD08561B6BF35D0060D2AC /* Group.swift */,
-				3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -189,7 +191,6 @@
 		3ADAFCED1B7FA1BC0035A040 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				3A52D73E1B83821400E44206 /* AutoCompletionData.swift */,
 				3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */,
 				3ADAFCEB1B7FA12C0035A040 /* ManagedGroup.swift */,
 				3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */,
@@ -241,6 +242,16 @@
 				3AF596701B7525FC00B7D05F /* NSDateExtension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		3AE89FF71B85DD4100FA1B19 /* Auto Completion */ = {
+			isa = PBXGroup;
+			children = (
+				3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */,
+				3A52D73E1B83821400E44206 /* AutoCompletionData.swift */,
+				3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */,
+			);
+			name = "Auto Completion";
 			sourceTree = "<group>";
 		};
 		BE14752F429065AE1EB8B813 /* Frameworks */ = {
@@ -425,6 +436,7 @@
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
 				3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
+				3AE89FF61B85DD1600FA1B19 /* AutoCompletionBrandData.swift in Sources */,
 				3AF0CE301B80D37E00D0BC48 /* ManagedShoppingList.swift in Sources */,
 				3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */,
 				3ADCB0171B68D89B00BA963C /* ItemDetailsViewController.swift in Sources */,
