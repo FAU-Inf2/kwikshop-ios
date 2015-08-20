@@ -17,7 +17,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     @IBOutlet weak var highlightLabel: UILabel!
     @IBOutlet weak var highlightSwitch: UISwitch!
     @IBOutlet weak var brandLabel: UILabel!
-    @IBOutlet weak var brandTextField: UITextField!
+    @IBOutlet weak var brandTextField: MLPAutoCompleteTextField!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -98,27 +98,33 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         }
         
         itemNameTextField.delegate = self
-        itemNameTextField.autoCompleteDataSource = self
-        itemNameTextField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
-        
-        
-        let orientation = UIApplication.sharedApplication().statusBarOrientation
-        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
-            itemNameTextField.maximumNumberOfAutoCompleteRows = 3
-        } else {
-            itemNameTextField.maximumNumberOfAutoCompleteRows = 5
-        }
+        initializeAutoCompletionTextField(itemNameTextField)
         
         checkValidItemName(itemNameTextField.text)
         amountTextField.delegate = self
         commentTextField.delegate = self
+        
         brandTextField.delegate = self
+        initializeAutoCompletionTextField(brandTextField)
         
         // close keyboard when user taps on the view
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
         tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    private func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField) {
+        textField.autoCompleteDataSource = self
+        textField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
+        
+        let orientation = UIApplication.sharedApplication().statusBarOrientation
+        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
+            textField.maximumNumberOfAutoCompleteRows = 3
+        } else {
+            textField.maximumNumberOfAutoCompleteRows = 5
+        }
+
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
