@@ -383,7 +383,7 @@
                                     <action selector="quickAddPressed:" destination="0cd-0w-Imx" eventType="touchUpInside" id="rHQ-kC-wmZ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hjd-bk-bHL" customClass="MLPAutoCompleteTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hjd-bk-bHL" customClass="AutoCompleteQuickAddTextField" customModule="Kwik_Shop" customModuleProvider="target">
                                 <rect key="frame" x="24" y="72" width="522" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>

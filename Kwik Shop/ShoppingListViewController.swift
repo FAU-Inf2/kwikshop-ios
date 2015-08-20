@@ -12,7 +12,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
-    @IBOutlet weak var quickAddTextField: MLPAutoCompleteTextField!
+    @IBOutlet weak var quickAddTextField: AutoCompleteQuickAddTextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
     
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?

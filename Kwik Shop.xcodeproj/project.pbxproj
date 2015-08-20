@@ -35,6 +35,7 @@
 		3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */; };
 		3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */; };
 		3AE89FF61B85DD1600FA1B19 /* AutoCompletionBrandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */; };
+		3AE89FF91B85F76A00FA1B19 /* AutoCompleteQuickAddTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE89FF81B85F76A00FA1B19 /* AutoCompleteQuickAddTextField.swift */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 		3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B381B821D50001B1365 /* GroupHelper.swift */; };
 		3AE93B3B1B822891001B1365 /* UnitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B3A1B822891001B1365 /* UnitHelper.swift */; };
@@ -91,6 +92,7 @@
 		3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLocalizationExtension.swift; sourceTree = "<group>"; };
 		3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListDetailsViewController.swift; sourceTree = "<group>"; };
 		3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionBrandData.swift; sourceTree = "<group>"; };
+		3AE89FF81B85F76A00FA1B19 /* AutoCompleteQuickAddTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteQuickAddTextField.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
 		3AE93B3A1B822891001B1365 /* UnitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitHelper.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				3A52D7401B8383BC00E44206 /* AutoCompletionHelper.swift */,
 				3A52D73E1B83821400E44206 /* AutoCompletionData.swift */,
 				3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */,
+				3AE89FF81B85F76A00FA1B19 /* AutoCompleteQuickAddTextField.swift */,
 			);
 			name = "Auto Completion";
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */,
 				3AE10D8C1B7122BE00E644D1 /* NavigationController.swift in Sources */,
 				3AE93B3B1B822891001B1365 /* UnitHelper.swift in Sources */,
+				3AE89FF91B85F76A00FA1B19 /* AutoCompleteQuickAddTextField.swift in Sources */,
 				3AE10D851B711A1C00E644D1 /* ShoppingListViewController.swift in Sources */,
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
 				3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */,
