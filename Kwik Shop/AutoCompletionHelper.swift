@@ -11,7 +11,8 @@ import Foundation
 class AutoCompletionHelper {
     
     static let instance = AutoCompletionHelper()
-    private var cache = [String]()
+    private var itemNames = [String]()
+    private var unitsAndGroups = [String : (Unit?, Group?)]()
     
     private init() {
         // private initalizer to prevent other classes to use the default initalizer
@@ -34,8 +35,15 @@ class AutoCompletionHelper {
     }
     
     func createOrUpdateAutoCompletionDataForName(name: String, unit: Unit?, group: Group?) {
-        if !contains(cache, name) {
-            cache.append(name)
+        var newValue = false
+        if !contains(itemNames, name) {
+            itemNames.append(name)
+            newValue = true
+        }
+        if unit != nil || group != nil {
+            unitsAndGroups.updateValue((unit, group), forKey: name)
+        } else if !newValue {
+            unitsAndGroups.removeValueForKey(name)
         }
     }
     
@@ -44,7 +52,11 @@ class AutoCompletionHelper {
     }
     
     func getGroupForName(name: String) -> Group? {
-        return nil
+        if let unitAndGroup = unitsAndGroups[name] {
+            return unitAndGroup.1
+        } else {
+            return nil
+        }
     }
     
     func getUnitForItem(item: Item) -> Unit? {
@@ -52,10 +64,14 @@ class AutoCompletionHelper {
     }
     
     func getUnitForName(name: String) -> Unit? {
-        return nil
+        if let unitAndGroup = unitsAndGroups[name] {
+            return unitAndGroup.0
+        } else {
+            return nil
+        }
     }
     
     func possibleCompletionsForString(string: String) -> [String] {
-        return cache
+        return itemNames
     }
 }
