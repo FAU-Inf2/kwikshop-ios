@@ -131,14 +131,18 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         let orientation = toInterfaceOrientation
         if orientation == .LandscapeLeft || orientation == .LandscapeRight {
             itemNameTextField.maximumNumberOfAutoCompleteRows = 3
+            brandTextField.maximumNumberOfAutoCompleteRows = 3
         } else {
             itemNameTextField.maximumNumberOfAutoCompleteRows = 5
+            brandTextField.maximumNumberOfAutoCompleteRows = 5
         }
         itemNameTextField.autoCompleteTableViewHidden = true
+        brandTextField.autoCompleteTableViewHidden = true
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         itemNameTextField.autoCompleteTableViewHidden = false
+        brandTextField.autoCompleteTableViewHidden = false
     }
     
     private func selectUnit(unit: Unit, animated: Bool) {
@@ -245,7 +249,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     
     // MARK: UIGestureRecognizerDelegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if touch.view.isDescendantOfView(itemNameTextField.autoCompleteTableView) {
+        if touch.view.isDescendantOfView(itemNameTextField.autoCompleteTableView) || touch.view.isDescendantOfView(brandTextField.autoCompleteTableView) {
             // autocomplete suggestion was tapped
             return false;
         }

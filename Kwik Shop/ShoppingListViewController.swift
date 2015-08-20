@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
-    @IBOutlet weak var quickAddTextField: UITextField!
+    @IBOutlet weak var quickAddTextField: MLPAutoCompleteTextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
     
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
@@ -62,6 +62,34 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         shoppingListTableView.addGestureRecognizer(swipeGestureRecognizer)
         
         quickAddTextField.delegate = self
+        initializeAutoCompletionTextField(quickAddTextField)
+    }
+    
+    private func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField) {
+        textField.autoCompleteDataSource = self
+        textField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
+        
+        let orientation = UIApplication.sharedApplication().statusBarOrientation
+        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
+            textField.maximumNumberOfAutoCompleteRows = 3
+        } else {
+            textField.maximumNumberOfAutoCompleteRows = 5
+        }
+        
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        let orientation = toInterfaceOrientation
+        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
+            quickAddTextField.maximumNumberOfAutoCompleteRows = 3
+        } else {
+            quickAddTextField.maximumNumberOfAutoCompleteRows = 5
+        }
+        quickAddTextField.autoCompleteTableViewHidden = true
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        quickAddTextField.autoCompleteTableViewHidden = false
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -201,6 +229,24 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return indexPath.row != notBoughtItems.count
+    }
+    
+    // MARK: MLP Autocompletion
+    func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
+        if textField === self.quickAddTextField {
+            return autoCompletionHelper.possibleCompletionsForItemName(string)
+        }
+        return [AnyObject]()
+    }
+
+    // MARK: UIGestureRecognizerDelegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if gestureRecognizer === closeKeyboardTapGestureRecognizer && touch.view.isDescendantOfView(quickAddTextField.autoCompleteTableView) {
+            // autocomplete suggestion was tapped
+            return false;
+        }
+        // somewhere else was tapped
+        return true;
     }
     
     // MARK: Actions
@@ -362,6 +408,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         // close keyboard when user taps on the view
         if closeKeyboardTapGestureRecognizer == nil {
             closeKeyboardTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+            closeKeyboardTapGestureRecognizer!.delegate = self
         }
         view.addGestureRecognizer(closeKeyboardTapGestureRecognizer!)
     }
