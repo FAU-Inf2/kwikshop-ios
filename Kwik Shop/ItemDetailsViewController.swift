@@ -228,7 +228,10 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     
     // MARK: MLP Autocompletion
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
-        return autoCompletionHelper.possibleCompletionsForString(string)
+        if textField === self.itemNameTextField {
+            return autoCompletionHelper.possibleCompletionsForString(string)
+        }
+        return [AnyObject]()
     }
     
     // MARK: UIGestureRecognizerDelegate
