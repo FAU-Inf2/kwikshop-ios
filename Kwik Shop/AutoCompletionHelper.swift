@@ -87,13 +87,18 @@ class AutoCompletionHelper {
             // unit and group are nil
             unitsAndGroups.removeValueForKey(name)
         }
-        if let data = autoCompletionData[name] {
-            autoCompletionData.updateValue(data, forKey: name)
-            dbHelper.saveData()
+        let data : AutoCompletionData
+        if let dat = autoCompletionData[name] {
+            data = dat
         } else {
-            let data = NSEntityDescription.insertNewObjectForEntityForName("AutoCompletionData", inManagedObjectContext: managedObjectContext) as! AutoCompletionData
-            autoCompletionData.updateValue(data, forKey: name)
+            data = NSEntityDescription.insertNewObjectForEntityForName("AutoCompletionData", inManagedObjectContext: managedObjectContext) as! AutoCompletionData
         }
+        
+        data.name = name
+        data.unit = unit?.managedUnit
+        data.group = group?.managedGroup
+        
+        dbHelper.saveData()
     }
     
     func getGroupForItem(item: Item) -> Group? {
