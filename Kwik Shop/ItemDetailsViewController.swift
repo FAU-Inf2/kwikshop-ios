@@ -237,6 +237,9 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         if textField === self.itemNameTextField {
             return autoCompletionHelper.possibleCompletionsForItemName(string)
         }
+        if textField === self.brandTextField {
+            return autoCompletionHelper.possibleCompletionsForBrand(string)
+        }
         return [AnyObject]()
     }
     

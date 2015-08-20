@@ -83,6 +83,9 @@ class AutoCompletionHelper {
     
     func createOrUpdateAutoCompletionDataForItem(item: Item) {
         createOrUpdateAutoCompletionDataForName(item.name, unit: item.unit, group: item.group)
+        if let brand = item.brand {
+            createOrUpdateAutoCompletionBrandDataForBrand(brand)
+        }
     }
     
     func createOrUpdateAutoCompletionDataForName(name: String, unit: Unit?, group: Group?) {
