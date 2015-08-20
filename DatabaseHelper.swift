@@ -134,6 +134,11 @@ class DatabaseHelper: NSObject {
         return managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [AutoCompletionData]
     }
     
+    func loadAutoCompletionBrandData() -> [AutoCompletionBrandData]? {
+        let fetchRequest = NSFetchRequest(entityName: "AutoCompletionBrandData")
+        return managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [AutoCompletionBrandData]
+    }
+    
     func saveData() -> Bool {
         return managedObjectContext.save(nil)
     }

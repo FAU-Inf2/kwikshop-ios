@@ -229,7 +229,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     // MARK: MLP Autocompletion
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
         if textField === self.itemNameTextField {
-            return autoCompletionHelper.possibleCompletionsForString(string)
+            return autoCompletionHelper.possibleCompletionsForItemName(string)
         }
         return [AnyObject]()
     }

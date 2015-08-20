@@ -14,12 +14,14 @@ class AutoCompletionHelper {
     
     static let instance = AutoCompletionHelper()
     private var itemNames = [String]()
+    private var brandNames = [String]()
     private var unitsAndGroups = [String : (Unit?, Group?)]()
     
     private let dbHelper = DatabaseHelper.instance
     private let managedObjectContext : NSManagedObjectContext
     
     private var autoCompletionData = [String : AutoCompletionData]()
+    private var autoCompletionBrandData = [String : AutoCompletionBrandData]()
     
     private init() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -55,6 +57,14 @@ class AutoCompletionHelper {
                     unitsAndGroups.updateValue((unit, group), forKey: name)
                 }
                 
+            }
+        }
+        
+        if let brandCompletion = dbHelper.loadAutoCompletionBrandData() {
+            for data in brandCompletion {
+                let brand = data.brand
+                autoCompletionBrandData.updateValue(data, forKey: brand)
+                brandNames.append(brand)
             }
         }
     }
@@ -101,6 +111,19 @@ class AutoCompletionHelper {
         dbHelper.saveData()
     }
     
+    func createOrUpdateAutoCompletionBrandDataForBrand(brand: String) {
+        let data : AutoCompletionBrandData
+        if !contains(brandNames, brand) {
+            brandNames.append(brand)
+            data = NSEntityDescription.insertNewObjectForEntityForName("AutoCompletionBrandData", inManagedObjectContext: managedObjectContext) as! AutoCompletionBrandData
+        } else {
+            data = autoCompletionBrandData[brand]!
+        }
+        
+        data.brand = brand
+        dbHelper.saveData()
+    }
+    
     func getGroupForItem(item: Item) -> Group? {
         return getGroupForName(item.name)
     }
@@ -125,7 +148,11 @@ class AutoCompletionHelper {
         }
     }
     
-    func possibleCompletionsForString(string: String) -> [String] {
+    func possibleCompletionsForItemName(string: String) -> [String] {
         return itemNames
+    }
+    
+    func possibleCompletionsForBrand(string: String) -> [String] {
+        return brandNames
     }
 }
