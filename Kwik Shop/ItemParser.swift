@@ -12,7 +12,7 @@ class ItemParser {
     
     let autoCompletionHelper = AutoCompletionHelper.instance
     
-    func getItemWithParsedAmountAndUnitForInput(input : String) -> Item {
+    func getNameAmountAndUnitForInput(input: String) -> (name: String, amount: Int?, unit: Unit?) {
         var output = ""
         var amount = ""
         var thisCanBeUnitOrName = ""
@@ -79,12 +79,20 @@ class ItemParser {
         let string = NSMutableString(string: output)
         CFStringTrimWhitespace(string)
         
-        let item = Item(name: string as String)
-        if let itemAmount = foundAmount {
+        let name = string as String
+        
+        return (name, foundAmount, foundUnit)
+    }
+    
+    func getItemWithParsedAmountAndUnitForInput(input : String) -> Item {
+        let nameAmountAndUnit = getNameAmountAndUnitForInput(input)
+        
+        let item = Item(name: nameAmountAndUnit.name)
+        if let itemAmount = nameAmountAndUnit.amount {
             item.amount = itemAmount
         }
-        if let itemUnit = foundUnit {
-            item.unit = foundUnit
+        if let itemUnit = nameAmountAndUnit.unit {
+            item.unit = itemUnit
         }/* else {
             // not a good idea because no unit might be intended behavior 
             item.unit = autoCompletionHelper.getUnitForItem(item)
