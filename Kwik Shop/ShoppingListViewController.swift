@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource, MLPAutoCompleteTextFieldDelegate {
+class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
@@ -48,8 +48,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    private var textOfQuickAddTextFieldBeforeAutoCompletion : String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +69,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     private func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField) {
         textField.autoCompleteDataSource = self
         textField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
-        textField.autoCompleteDelegate = self
         textField.showAutoCompleteTableWhenEditingBegins = true
         
         let orientation = UIApplication.sharedApplication().statusBarOrientation
@@ -244,38 +241,10 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         return [AnyObject]()
     }
     
-    func autoCompleteTextField(textField: MLPAutoCompleteTextField, didSelectAutoCompleteString selectedString: String, withAutoCompleteObject selectedObject: MLPAutoCompletionObject, forRowAtIndexPath indexPath: NSIndexPath) {
-        let textBefore = self.textOfQuickAddTextFieldBeforeAutoCompletion!
-        self.textOfQuickAddTextFieldBeforeAutoCompletion = nil
-        
-        let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(textBefore + " a")
-            // the imput for the item parser has to be modified in order to make sure the item name is not empty, otherwise amount and unit recognition might not work as intended
-        
-        var newQuickAddText = ""
-        
-        if let amount = nameAmountAndUnit.amount {
-            newQuickAddText += "\(amount) "
-            
-            if let unit = nameAmountAndUnit.unit {
-                newQuickAddText += "\(unit.name.localized) "
-            }
-        }
-        
-        newQuickAddText += selectedString
-        textField.text = newQuickAddText
-    }
-
-    
     // MARK: UIGestureRecognizerDelegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if gestureRecognizer === closeKeyboardTapGestureRecognizer && touch.view.isDescendantOfView(quickAddTextField.autoCompleteTableView) {
             // autocomplete suggestion was tapped
-            
-            if self.textOfQuickAddTextFieldBeforeAutoCompletion == nil {
-                // store the current text of the quick add text box
-                self.textOfQuickAddTextFieldBeforeAutoCompletion = quickAddTextField.text
-            }
-            
             return false;
         }
         // somewhere else was tapped
