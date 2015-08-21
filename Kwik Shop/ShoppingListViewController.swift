@@ -316,7 +316,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
 
     @IBAction func quickAddPressed(sender: UIButton) {
         let itemParser = ItemParser()
-        let item = itemParser.parseAmountAndUnit(quickAddTextField.text)
+        let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text)
         quickAddTextField.text = ""
         quickAddButton.enabled = false
         addItem(item)

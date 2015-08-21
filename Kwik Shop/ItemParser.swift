@@ -12,7 +12,7 @@ class ItemParser {
     
     let autoCompletionHelper = AutoCompletionHelper.instance
     
-    func parseAmountAndUnit(input : String) -> Item {
+    func getItemWithParsedAmountAndUnitForInput(input : String) -> Item {
         var output = ""
         var amount = ""
         var thisCanBeUnitOrName = ""
