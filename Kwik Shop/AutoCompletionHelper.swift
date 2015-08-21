@@ -170,6 +170,9 @@ class AutoCompletionHelper {
                 
                 for unit in unitDelegate.data {
                     unitNames.append("\(unit.name) ")
+                    if let short = unit.shortName {
+                        unitNames.append("\(short) ")
+                    }
                 }
                 
                 let unitSuggestions = filteredCompletionsForSuggestions(unitNames, andString: name)
