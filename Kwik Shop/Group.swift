@@ -16,6 +16,12 @@ class Group : NSObject, Equatable {
     
     var name : String {
         get {
+            return managedGroup.name.localized
+        }
+    }
+    
+    var notLocalizedName : String {
+        get {
             return managedGroup.name
         }
     }

@@ -28,6 +28,6 @@ class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row].name.localized
+        return data[row].name
     }
 }

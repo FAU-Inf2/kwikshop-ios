@@ -160,7 +160,7 @@ class AutoCompletionHelper {
         if amount != nil {
             let prefix : String
             if unit != nil {
-                prefix = "\(amount!) \(unit!.name.localized) "
+                prefix = "\(amount!) \(unit!.name) "
             } else {
                 prefix = "\(amount!) "
             
@@ -169,7 +169,7 @@ class AutoCompletionHelper {
                 var unitNames = [String]()
                 
                 for unit in unitDelegate.data {
-                    unitNames.append("\(unit.name.localized) ")
+                    unitNames.append("\(unit.name) ")
                 }
                 
                 let unitSuggestions = filteredCompletionsForSuggestions(unitNames, andString: name)

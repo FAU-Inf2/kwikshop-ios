@@ -45,7 +45,7 @@ class UnitHelper{
                 var otherUnits : [Unit]?
                 
                 for unit in units {
-                    switch unit.name {
+                    switch unit.notLocalizedName {
                     case "unit_bag":
                         BAG = unit
                     case "unit_bottle":

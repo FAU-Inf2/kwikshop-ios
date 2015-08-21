@@ -16,18 +16,30 @@ class Unit : NSObject, Equatable{
     
     let managedUnit : ManagedUnit
     
-    var name : String {
+    var notLocalizedName : String {
         get {
             return managedUnit.name
         }
     }
     
-    var shortName : String {
+    var name : String {
+        get {
+            return managedUnit.name.localized
+        }
+    }
+    
+    var shortestPossibleDescription : String {
         get {
             if managedUnit.shortName != "" {
                 return managedUnit.shortName.localized
             }
             return name.localized
+        }
+    }
+    
+    var shortName : String? {
+        get {
+            return managedUnit.shortName.localized
         }
     }
     

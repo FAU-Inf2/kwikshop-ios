@@ -57,7 +57,7 @@ class GroupHelper{
                 var otherGroups : [Group]?
                 
                 for group in groups {
-                    switch group.name {
+                    switch group.notLocalizedName {
                     case "group_other":
                         OTHER = group
                     case "group_babyFoods":
