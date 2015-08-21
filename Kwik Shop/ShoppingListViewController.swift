@@ -12,7 +12,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
-    @IBOutlet weak var quickAddTextField: MLPAutoCompleteTextField!
+    @IBOutlet weak var quickAddTextField: AutoCompleteTextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
     
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
@@ -409,6 +409,10 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
         checkValidItemName(text)
         return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        checkValidItemName(textField.text)
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
