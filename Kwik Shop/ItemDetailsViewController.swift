@@ -117,6 +117,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     private func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField) {
         textField.autoCompleteDataSource = self
         textField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
+        textField.showAutoCompleteTableWhenEditingBegins = true
         
         let orientation = UIApplication.sharedApplication().statusBarOrientation
         if orientation == .LandscapeLeft || orientation == .LandscapeRight {
@@ -124,7 +125,6 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         } else {
             textField.maximumNumberOfAutoCompleteRows = 5
         }
-
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {

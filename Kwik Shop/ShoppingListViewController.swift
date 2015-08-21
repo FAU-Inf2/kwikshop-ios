@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
+class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource, MLPAutoCompleteTextFieldDelegate {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
-    @IBOutlet weak var quickAddTextField: AutoCompleteQuickAddTextField!
+    @IBOutlet weak var quickAddTextField: MLPAutoCompleteTextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
     
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
@@ -47,6 +47,8 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    private var textOfQuickAddTextFieldBeforeAutoCompletion : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +70,8 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     private func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField) {
         textField.autoCompleteDataSource = self
         textField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
+        textField.autoCompleteDelegate = self
+        textField.showAutoCompleteTableWhenEditingBegins = true
         
         let orientation = UIApplication.sharedApplication().statusBarOrientation
         if orientation == .LandscapeLeft || orientation == .LandscapeRight {
@@ -238,11 +242,25 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         }
         return [AnyObject]()
     }
+    
+    func autoCompleteTextField(textField: MLPAutoCompleteTextField, didSelectAutoCompleteString selectedString: String, withAutoCompleteObject selectedObject: MLPAutoCompletionObject, forRowAtIndexPath indexPath: NSIndexPath) {
+        let textBefore = self.textOfQuickAddTextFieldBeforeAutoCompletion!
+        self.textOfQuickAddTextFieldBeforeAutoCompletion = nil
+        
+        
+    }
 
+    
     // MARK: UIGestureRecognizerDelegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if gestureRecognizer === closeKeyboardTapGestureRecognizer && touch.view.isDescendantOfView(quickAddTextField.autoCompleteTableView) {
             // autocomplete suggestion was tapped
+            
+            if self.textOfQuickAddTextFieldBeforeAutoCompletion == nil {
+                // store the current text of the quick add text box
+                self.textOfQuickAddTextFieldBeforeAutoCompletion = quickAddTextField.text
+            }
+            
             return false;
         }
         // somewhere else was tapped
