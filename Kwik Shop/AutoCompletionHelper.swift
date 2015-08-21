@@ -101,12 +101,13 @@ class AutoCompletionHelper {
             unitsAndGroups.removeValueForKey(name)
         }
         let data : AutoCompletionData
-        if let dat = autoCompletionData[name] {
-            data = dat
-        } else {
+        if newValue {
             data = NSEntityDescription.insertNewObjectForEntityForName("AutoCompletionData", inManagedObjectContext: managedObjectContext) as! AutoCompletionData
+        } else {
+            data = autoCompletionData[name]!
         }
-        
+        autoCompletionData.updateValue(data, forKey: name)
+            
         data.name = name
         data.unit = unit?.managedUnit
         data.group = group?.managedGroup
@@ -122,6 +123,7 @@ class AutoCompletionHelper {
         } else {
             data = autoCompletionBrandData[brand]!
         }
+        autoCompletionBrandData.updateValue(data, forKey: brand)
         
         data.brand = brand
         dbHelper.saveData()
