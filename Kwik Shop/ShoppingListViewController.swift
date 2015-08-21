@@ -20,6 +20,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     let dbHelper = DatabaseHelper.instance
     let autoCompletionHelper = AutoCompletionHelper.instance
+    let itemParser = ItemParser()
     
     var shoppingList : ShoppingList!
     var items : [Item] {
@@ -247,7 +248,21 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         let textBefore = self.textOfQuickAddTextFieldBeforeAutoCompletion!
         self.textOfQuickAddTextFieldBeforeAutoCompletion = nil
         
+        let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(textBefore + " a")
+            // the imput for the item parser has to be modified in order to make sure the item name is not empty, otherwise amount and unit recognition might not work as intended
         
+        var newQuickAddText = ""
+        
+        if let amount = nameAmountAndUnit.amount {
+            newQuickAddText += "\(amount) "
+            
+            if let unit = nameAmountAndUnit.unit {
+                newQuickAddText += "\(unit.name.localized) "
+            }
+        }
+        
+        newQuickAddText += selectedString
+        textField.text = newQuickAddText
     }
 
     
@@ -315,7 +330,6 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     }
 
     @IBAction func quickAddPressed(sender: UIButton) {
-        let itemParser = ItemParser()
         let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text)
         quickAddTextField.text = ""
         quickAddButton.enabled = false
