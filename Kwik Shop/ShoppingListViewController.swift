@@ -237,12 +237,16 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
         if textField === self.quickAddTextField {
             var nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(string + " a")
-            dropLast(nameAmountAndUnit.name) // drop the "a"
-            if !nameAmountAndUnit.name.isEmpty {
-                dropLast(nameAmountAndUnit.name) // drop the " "
+            
+            var name = nameAmountAndUnit.name
+            
+            name = name.substringToIndex(name.endIndex.predecessor()) // drop the "a"
+            if !name.isEmpty {
+                name = name.substringToIndex(name.endIndex.predecessor()) // drop the " "
             }
             
-            return autoCompletionHelper.possibleCompletionsForQuickAddTextWithNameAmountAndUnit(nameAmountAndUnit)
+            //return autoCompletionHelper.possibleCompletionsForQuickAddTextWithNameAmountAndUnit(nameAmountAndUnit)
+            return autoCompletionHelper.possibleCompletionsForQuickAddTextWithName(name, amount: nameAmountAndUnit.amount, andUnit: nameAmountAndUnit.unit)
         }
         return [AnyObject]()
     }

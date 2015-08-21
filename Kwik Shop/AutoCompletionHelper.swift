@@ -175,7 +175,13 @@ class AutoCompletionHelper {
     }
     
     func possibleCompletionsForItemName(string: String) -> [String] {
-        return itemNames
+        
+        let completions = itemNames.filter(
+            { suggestion -> Bool in
+                return suggestion.hasPrefix(string)
+        })
+        
+        return completions
     }
     
     func possibleCompletionsForBrand(string: String) -> [String] {
