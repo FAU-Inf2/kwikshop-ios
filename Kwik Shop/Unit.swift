@@ -75,8 +75,10 @@ func == (left: Unit, right: Unit) -> Bool {
     if left === right {
         return true
     }
-    if left.name != right.name {
+    
+    if left.shortestPossibleDescription != right.shortestPossibleDescription {
         return false
     }
-    return left.shortName == right.shortName
+    
+    return left.name == right.name
 }

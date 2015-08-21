@@ -54,7 +54,7 @@ class ItemParser {
         let unitDelegate = UnitDelegate()
         
         for unit in unitDelegate.data {
-            if unit.name.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame || unit.shortName?.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame {
+            if unit.shortestPossibleDescription.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame || unit.name.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame {
                 foundUnit = unit
                 unitMatchFound = true
                 break
