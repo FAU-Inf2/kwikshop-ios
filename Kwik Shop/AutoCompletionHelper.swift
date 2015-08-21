@@ -163,13 +163,26 @@ class AutoCompletionHelper {
                 prefix = "\(amount!) \(unit!.name.localized) "
             } else {
                 prefix = "\(amount!) "
+            
+                // also units should be suggested
+                let unitDelegate = UnitDelegate()
+                var unitNames = [String]()
+                
+                for unit in unitDelegate.data {
+                    unitNames.append("\(unit.name.localized) ")
+                }
+                
+                let unitSuggestions = filteredCompletionsForSuggestions(unitNames, andString: name)
+                completions += unitSuggestions
             }
+
             
             let numberOfCompletions = completions.count
             
             for index in 0 ..< numberOfCompletions {
                 completions[index] = prefix + completions[index]
             }
+            
         }
         return completions
     }
