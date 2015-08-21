@@ -43,12 +43,18 @@ class Unit : NSObject, Equatable{
         }
     }
     
-    convenience init(name : String, shortName : String){
-        self.init(name: name)
+    var singularName : String {
+        get {
+            return managedUnit.singularName.localized
+        }
+    }
+    
+    convenience init(name: String, singularName: String, shortName: String){
+        self.init(name: name, singularName: singularName)
         managedUnit.shortName = shortName
     }
     
-    convenience init(name : String) {
+    convenience init(name: String, singularName: String) {
         if Unit.managedObjectContext == nil {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             Unit.managedObjectContext = appDelegate.managedObjectContext
@@ -59,6 +65,7 @@ class Unit : NSObject, Equatable{
         self.init(managedUnit: managedUnit)
         
         self.managedUnit.name = name
+        self.managedUnit.singularName = singularName
 
     }
     

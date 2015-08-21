@@ -32,13 +32,14 @@
     <entity name="Unit" representedClassName="Kwik_Shop.ManagedUnit" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="shortName" attributeType="String" defaultValueString="" syncable="YES"/>
+        <attribute name="singularName" attributeType="String" minValueString="1" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AutoCompletionBrandData" positionX="-290" positionY="378" width="128" height="58"/>
         <element name="AutoCompletionData" positionX="-477" positionY="378" width="128" height="90"/>
         <element name="Group" positionX="-378" positionY="264" width="128" height="60"/>
         <element name="Item" positionX="-504" positionY="54" width="128" height="180"/>
         <element name="ShoppingList" positionX="-209" positionY="42" width="128" height="120"/>
-        <element name="Unit" positionX="-612" positionY="285" width="128" height="75"/>
-        <element name="AutoCompletionBrandData" positionX="-290" positionY="378" width="128" height="58"/>
+        <element name="Unit" positionX="-612" positionY="285" width="128" height="90"/>
     </elements>
 </model>

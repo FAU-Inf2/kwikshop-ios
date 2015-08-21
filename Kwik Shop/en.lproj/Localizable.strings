@@ -6,7 +6,7 @@
   Copyright (c) 2015 FAU-Inf2. All rights reserved.
 */
 
-//Groups
+// MARK: Groups
 group_other="Other";
 group_babyFoods="Baby Foods";
 group_beverages="Beverages";
@@ -24,19 +24,33 @@ group_sweetsAndSnacks="Sweets & Snacks";
 group_tobacco="Tobacco";
 group_coffeeAndTea="Coffee & Tea";
 
-//Units
+// MARK: Units
 unit_bag="bags";
 unit_bottle="bottles";
 unit_box="boxes";
 unit_dozen="dozen";
 unit_gram="grams";
-unit_gram_short="g";
 unit_kilogram="kilograms";
-unit_kilogram_short="kg";
 unit_litre="litres";
-unit_litre_short="l";
 unit_millilitre="mililitres";
-unit_millilitre_short="ml";
 unit_pack="packs";
 unit_piece="pieces";
+
+// Short names
+unit_gram_short="g";
+unit_kilogram_short="kg";
+unit_litre_short="l";
+unit_millilitre_short="ml";
 unit_piece_short="pc";
+
+// Singulars
+unit_bag_singular="bag";
+unit_bottle_singular="bottle";
+unit_box_singular="box";
+unit_dozen_singular="dozen";
+unit_gram_singular="gram";
+unit_kilogram_singular="kilogram";
+unit_litre_singular="litre";
+unit_millilitre_singular="mililitre";
+unit_pack_singular="pack";
+unit_piece_singular="piece";

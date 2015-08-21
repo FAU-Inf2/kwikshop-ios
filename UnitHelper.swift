@@ -93,16 +93,16 @@ class UnitHelper{
         }
         
         // init groups
-        BAG =        Unit(name: "unit_bag")
-        BOTTLE =     Unit(name: "unit_bottle")
-        BOX =        Unit(name: "unit_box")
-        DOZEN =      Unit(name: "unit_dozen")
-        GRAM =       Unit(name: "unit_gram", shortName: "unit_gram_short")
-        KILOGRAM =   Unit(name: "unit_kilogram", shortName: "unit_kilogram_short")
-        LITRE =      Unit(name: "unit_litre", shortName: "unit_litre_short")
-        MILLILITRE = Unit(name: "unit_millilitre", shortName: "unit_millilitre_short")
-        PACK =       Unit(name: "unit_pack")
-        PIECE =      Unit(name: "unit_piece", shortName: "unit_piece_short")
+        BAG =        Unit(name: "unit_bag", singularName: "unit_bag_singular")
+        BOTTLE =     Unit(name: "unit_bottle", singularName: "unit_bottle_singular")
+        BOX =        Unit(name: "unit_box", singularName: "unit_box_singular")
+        DOZEN =      Unit(name: "unit_dozen", singularName: "unit_dozen_singular")
+        GRAM =       Unit(name: "unit_gram", singularName: "unit_gram_singular", shortName: "unit_gram_short")
+        KILOGRAM =   Unit(name: "unit_kilogram", singularName: "unit_kilogram_singular", shortName: "unit_kilogram_short")
+        LITRE =      Unit(name: "unit_litre", singularName: "unit_litre_singular", shortName: "unit_litre_short")
+        MILLILITRE = Unit(name: "unit_millilitre", singularName: "unit_millilitre_singular", shortName: "unit_millilitre_short")
+        PACK =       Unit(name: "unit_pack", singularName: "unit_pack_singular")
+        PIECE =      Unit(name: "unit_piece", singularName: "unit_piece_singular", shortName: "unit_piece_short")
 
         
         
