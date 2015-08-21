@@ -198,7 +198,7 @@ class AutoCompletionHelper {
     private func filteredCompletionsForSuggestions(suggestions: [String], andString string: String) -> [String] {
         let completions = suggestions.filter(
             { suggestion -> Bool in
-                return suggestion.hasPrefix(string)
+                return suggestion.lowercaseString.hasPrefix(string.lowercaseString)
         })
         return completions
     }
