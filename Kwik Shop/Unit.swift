@@ -33,9 +33,19 @@ class Unit : NSObject, Equatable{
             if managedUnit.shortName != "" {
                 return managedUnit.shortName.localized
             }
-            return name.localized
+            return managedUnit.name.localized
         }
     }
+    
+    var shortestPossibleSingularDescription : String {
+        get {
+            if managedUnit.shortName != "" {
+                return managedUnit.shortName.localized
+            }
+            return managedUnit.singularName.localized
+        }
+    }
+
     
     var shortName : String? {
         get {
