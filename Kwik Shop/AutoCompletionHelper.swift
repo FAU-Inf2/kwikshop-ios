@@ -151,6 +151,29 @@ class AutoCompletionHelper {
         }
     }
     
+    func possibleCompletionsForQuickAddTextWithNameAmountAndUnit(nameAmountAndUnit : (String, Int?, Unit?)) -> [String] {
+        return possibleCompletionsForQuickAddTextWithName(nameAmountAndUnit.0, amount: nameAmountAndUnit.1, andUnit: nameAmountAndUnit.2)
+    }
+    
+    func possibleCompletionsForQuickAddTextWithName(name: String, amount: Int?, andUnit unit: Unit?) -> [String] {
+        var completions = possibleCompletionsForItemName(name)
+        if amount != nil {
+            let prefix : String
+            if unit != nil {
+                prefix = "\(amount!) \(unit!.name.localized) "
+            } else {
+                prefix = "\(amount!) "
+            }
+            
+            let numberOfCompletions = completions.count
+            
+            for index in 0 ..< numberOfCompletions {
+                completions[index] = prefix + completions[index]
+            }
+        }
+        return completions
+    }
+    
     func possibleCompletionsForItemName(string: String) -> [String] {
         return itemNames
     }
