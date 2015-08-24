@@ -16,20 +16,26 @@ class ItemParser {
         var output = ""
         var amount = ""
         var thisCanBeUnitOrName = ""
+        var amountWasSpecified = false
         var lastCharWasANumber = false
         var charWasReadAfterAmount = false
         var emptyStringOrWhiteSpace = true
+        var possibleUnitWasSpecifiedBeforeName = false
         
         for char in input {
             // only parse the first number found to amount
             if char >= "0" && char <= "9" && (lastCharWasANumber || amount.isEmpty) && emptyStringOrWhiteSpace {
                 amount.append(char)
+                amountWasSpecified = true
                 lastCharWasANumber = true
             } else if lastCharWasANumber && char == " " {
                 // ignore all white spaces between the amount and the next char
                 emptyStringOrWhiteSpace = true
             } else if lastCharWasANumber || charWasReadAfterAmount && char != " " {
                 //String from amount to next whitespace, this should be unit or name
+                if !possibleUnitWasSpecifiedBeforeName && output.isEmpty {
+                    possibleUnitWasSpecifiedBeforeName = true
+                }
                 thisCanBeUnitOrName.append(char)
                 lastCharWasANumber = false
                 charWasReadAfterAmount = true
@@ -61,17 +67,32 @@ class ItemParser {
             }
         }
         
-        if !unitMatchFound && !thisCanBeUnitOrName.isEmpty {
+        /*if !unitMatchFound && !thisCanBeUnitOrName.isEmpty {
             //if no unit was found complete string has to be restored
             if output.isEmpty {
                 output = thisCanBeUnitOrName;
             } else {
                 output = thisCanBeUnitOrName + " " + output;
             }
+        }*/
+        if !unitMatchFound && !thisCanBeUnitOrName.isEmpty {
+            //if no unit was found complete string has to be restored
+            if output != "" {
+                //if both output and thisCanBeUnitOrName are not empty there was a number between them which has to be restored
+                if possibleUnitWasSpecifiedBeforeName {
+                    output = amount + " " + thisCanBeUnitOrName + " " + output
+                } else {
+                    output = output + amount + " " + thisCanBeUnitOrName
+                }
+                amountWasSpecified = false
+            }
+            else {
+                output = thisCanBeUnitOrName
+            }
         }
         
         if !(output.isEmpty || emptyStringOrWhiteSpace) {
-            if amount != "" {
+            if amountWasSpecified {
                 foundAmount = amount.toInt()
             }
         }
