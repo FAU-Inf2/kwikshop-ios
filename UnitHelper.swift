@@ -96,21 +96,20 @@ class UnitHelper{
             }
         }
         
+        let typicalAmountIndices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 600, 700, 750, 800, 900, 1000]
+        
         // init groups
-        NONE =       Unit(name: "unit_none", singularName: "unit_none")
-        BAG =        Unit(name: "unit_bag", singularName: "unit_bag_singular")
-        BOTTLE =     Unit(name: "unit_bottle", singularName: "unit_bottle_singular")
-        BOX =        Unit(name: "unit_box", singularName: "unit_box_singular")
-        DOZEN =      Unit(name: "unit_dozen", singularName: "unit_dozen_singular")
-        GRAM =       Unit(name: "unit_gram", singularName: "unit_gram_singular", shortName: "unit_gram_short")
-        KILOGRAM =   Unit(name: "unit_kilogram", singularName: "unit_kilogram_singular", shortName: "unit_kilogram_short")
-        LITRE =      Unit(name: "unit_litre", singularName: "unit_litre_singular", shortName: "unit_litre_short")
-        MILLILITRE = Unit(name: "unit_millilitre", singularName: "unit_millilitre_singular", shortName: "unit_millilitre_short")
-        PACK =       Unit(name: "unit_pack", singularName: "unit_pack_singular")
-        PIECE =      Unit(name: "unit_piece", singularName: "unit_piece_singular", shortName: "unit_piece_short")
-
-        
-        
+        NONE =       Unit(name: "unit_none", singularName: "unit_none", allowedPickerIndices: typicalAmountIndices)
+        BAG =        Unit(name: "unit_bag", singularName: "unit_bag_singular", allowedPickerIndices: typicalAmountIndices)
+        BOTTLE =     Unit(name: "unit_bottle", singularName: "unit_bottle_singular", allowedPickerIndices: typicalAmountIndices)
+        BOX =        Unit(name: "unit_box", singularName: "unit_box_singular", allowedPickerIndices: typicalAmountIndices)
+        DOZEN =      Unit(name: "unit_dozen", singularName: "unit_dozen_singular", allowedPickerIndices: typicalAmountIndices)
+        GRAM =       Unit(name: "unit_gram", singularName: "unit_gram_singular", shortName: "unit_gram_short", allowedPickerIndices: typicalAmountIndices)
+        KILOGRAM =   Unit(name: "unit_kilogram", singularName: "unit_kilogram_singular", shortName: "unit_kilogram_short", allowedPickerIndices: typicalAmountIndices)
+        LITRE =      Unit(name: "unit_litre", singularName: "unit_litre_singular", shortName: "unit_litre_short", allowedPickerIndices: typicalAmountIndices)
+        MILLILITRE = Unit(name: "unit_millilitre", singularName: "unit_millilitre_singular", shortName: "unit_millilitre_short", allowedPickerIndices: typicalAmountIndices)
+        PACK =       Unit(name: "unit_pack", singularName: "unit_pack_singular", allowedPickerIndices: typicalAmountIndices)
+        PIECE =      Unit(name: "unit_piece", singularName: "unit_piece_singular", shortName: "unit_piece_short", allowedPickerIndices: typicalAmountIndices)
     }
     
 }

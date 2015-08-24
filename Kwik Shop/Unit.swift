@@ -84,9 +84,25 @@ class Unit : NSObject, Equatable{
         }
     }
     
-    convenience init(name: String, singularName: String, shortName: String){
+    convenience init(name: String, singularName: String, shortName: String?){
         self.init(name: name, singularName: singularName)
-        managedUnit.shortName = shortName
+        managedUnit.shortName = shortName ?? ""
+    }
+    
+    convenience init(name: String, singularName: String, allowedPickerIndices: [Int]?) {
+        self.init(name: name, singularName: singularName, shortName: nil, allowedPickerIndices: allowedPickerIndices)
+    }
+    
+    convenience init(name: String, singularName: String, shortName: String?, allowedPickerIndices: [Int]?) {
+        self.init(name: name, singularName: singularName, shortName: shortName)
+        if let indices = allowedPickerIndices {
+            var managedIndices = [ManagedPickerIndex]()
+            let pickerIndexHelper = PickerIndexHelper.instance
+            for index in indices {
+                managedIndices.append(pickerIndexHelper[index])
+            }
+            self.managedUnit.allowedPickerIndices = NSOrderedSet(array: managedIndices)
+        }
     }
     
     convenience init(name: String, singularName: String) {

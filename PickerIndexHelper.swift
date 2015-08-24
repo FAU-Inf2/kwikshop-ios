@@ -27,7 +27,7 @@ class PickerIndexHelper {
         managedObjectContext = appDelegate.managedObjectContext!
     }
     
-    subscript (index: Int) -> ManagedPickerIndex? {
+    subscript (index: Int) -> ManagedPickerIndex {
         get {
             if let storedIndex = storedPickerIndices[index] {
                 return storedIndex
