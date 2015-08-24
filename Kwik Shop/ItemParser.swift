@@ -31,7 +31,7 @@ class ItemParser {
             } else if lastCharWasANumber && char == " " {
                 // ignore all white spaces between the amount and the next char
                 emptyStringOrWhiteSpace = true
-            } else if lastCharWasANumber || charWasReadAfterAmount && char != " " {
+            } else if lastCharWasANumber || (charWasReadAfterAmount && char != " ") {
                 //String from amount to next whitespace, this should be unit or name
                 if !possibleUnitWasSpecifiedBeforeName && output.isEmpty {
                     possibleUnitWasSpecifiedBeforeName = true
