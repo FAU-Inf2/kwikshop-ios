@@ -22,9 +22,6 @@
         <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
         <relationship name="unit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Unit" syncable="YES"/>
     </entity>
-    <entity name="PickerIndex" representedClassName="Kwik_Shop.ManagedPickerIndex" syncable="YES">
-        <attribute name="index" attributeType="Integer 64" syncable="YES"/>
-    </entity>
     <entity name="ShoppingList" representedClassName="Kwik_Shop.ManagedShoppingList" syncable="YES">
         <attribute name="lastModifiedDate" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
@@ -33,10 +30,10 @@
         <relationship name="notBoughtItems" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Item" syncable="YES"/>
     </entity>
     <entity name="Unit" representedClassName="Kwik_Shop.ManagedUnit" syncable="YES">
+        <attribute name="allowedPickerIndexType" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="shortName" attributeType="String" defaultValueString="" syncable="YES"/>
         <attribute name="singularName" attributeType="String" minValueString="1" syncable="YES"/>
-        <relationship name="allowedPickerIndices" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PickerIndex" syncable="YES"/>
     </entity>
     <elements>
         <element name="AutoCompletionBrandData" positionX="-290" positionY="378" width="128" height="58"/>
@@ -45,6 +42,5 @@
         <element name="Item" positionX="-504" positionY="54" width="128" height="180"/>
         <element name="ShoppingList" positionX="-209" positionY="42" width="128" height="120"/>
         <element name="Unit" positionX="-612" positionY="285" width="128" height="105"/>
-        <element name="PickerIndex" positionX="-414" positionY="189" width="128" height="60"/>
     </elements>
 </model>

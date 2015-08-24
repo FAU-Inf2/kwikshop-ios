@@ -61,26 +61,28 @@ class Unit : NSObject, Equatable{
     
     var allowedPickerIndices : [Int]? {
         get {
-            if let managedIndices = managedUnit.allowedPickerIndices?.array as? [ManagedPickerIndex] {
-                var indices = [Int]()
-                for index in managedIndices {
-                    indices.append(index.index.integerValue)
-                }
-                return indices
+            if let typeNumber = managedUnit.allowedPickerIndexType?.integerValue {
+                return AmountIndexType(rawValue: typeNumber)!.indices
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    var allowedPickerIndexType : AmountIndexType? {
+        get {
+            if let typeNumber = managedUnit.allowedPickerIndexType?.integerValue {
+                return AmountIndexType(rawValue: typeNumber)
             } else {
                 return nil
             }
         }
         set {
-            if newValue == nil {
-                managedUnit.allowedPickerIndices = nil
-                return
+            if let type = newValue {
+                managedUnit.allowedPickerIndexType = type.rawValue
+            } else {
+                managedUnit.allowedPickerIndexType = nil
             }
-            let indices = NSMutableOrderedSet()
-            for index in newValue! {
-                indices.addObject(index)
-            }
-            managedUnit.allowedPickerIndices = indices
         }
     }
     
@@ -89,20 +91,13 @@ class Unit : NSObject, Equatable{
         managedUnit.shortName = shortName ?? ""
     }
     
-    convenience init(name: String, singularName: String, allowedPickerIndices: [Int]?) {
-        self.init(name: name, singularName: singularName, shortName: nil, allowedPickerIndices: allowedPickerIndices)
+    convenience init(name: String, singularName: String, allowedPickerIndexType: AmountIndexType?) {
+        self.init(name: name, singularName: singularName, shortName: nil, allowedPickerIndexType: allowedPickerIndexType)
     }
     
-    convenience init(name: String, singularName: String, shortName: String?, allowedPickerIndices: [Int]?) {
+    convenience init(name: String, singularName: String, shortName: String?, allowedPickerIndexType: AmountIndexType?) {
         self.init(name: name, singularName: singularName, shortName: shortName)
-        if let indices = allowedPickerIndices {
-            var managedIndices = [ManagedPickerIndex]()
-            let pickerIndexHelper = PickerIndexHelper.instance
-            for index in indices {
-                managedIndices.append(pickerIndexHelper[index])
-            }
-            self.managedUnit.allowedPickerIndices = NSOrderedSet(array: managedIndices)
-        }
+        managedUnit.allowedPickerIndexType = allowedPickerIndexType?.rawValue
     }
     
     convenience init(name: String, singularName: String) {

@@ -139,11 +139,6 @@ class DatabaseHelper: NSObject {
         return managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [AutoCompletionBrandData]
     }
     
-    func loadManagedPickerIndices() -> [ManagedPickerIndex]? {
-        let fetchRequest = NSFetchRequest(entityName: "PickerIndex")
-        return managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedPickerIndex]
-    }
-    
     func saveData() -> Bool {
         return managedObjectContext.save(nil)
     }
