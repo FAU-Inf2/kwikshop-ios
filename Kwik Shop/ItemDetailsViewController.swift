@@ -31,7 +31,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     
     var groupDelegate : GroupDelegate!
-    var unitDelegate : UnitDelegate!
+    var unitDelegate : UnitAndAmountDelegate!
     
     var currentItem : Item?
     var newItem = true
@@ -75,6 +75,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                 
                 if let unit = item.unit {
                     selectUnit(unit, animated: false)
+                    unitDelegate.updateSelectedUnitInPickerView(unitPicker)
                 } else if let unit = autoCompletionHelper.getUnitForItem(item) {
                     selectUnit(unit, animated: false)
                 }
@@ -91,6 +92,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             
             if let unit = item.unit, row = find(unitDelegate.data, unit) {
                 unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: false)
+                unitDelegate.updateSelectedUnitInPickerView(unitPicker)
             }
             
             highlightSwitch.setOn(item.highlighted, animated: false)

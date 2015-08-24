@@ -54,6 +54,12 @@ class UnitAndAmountDelegate: UnitDelegate {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == UNIT_COMPONENT {
             selectedUnit = super.data[row]
+            pickerView.reloadAllComponents()
         }
+    }
+    
+    func updateSelectedUnitInPickerView(pickerView: UIPickerView) {
+        selectedUnit = super.data[pickerView.selectedRowInComponent(UNIT_COMPONENT)]
+        pickerView.reloadAllComponents()
     }
 }
