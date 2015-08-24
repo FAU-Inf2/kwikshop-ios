@@ -59,6 +59,31 @@ class Unit : NSObject, Equatable{
         }
     }
     
+    var allowedPickerIndices : [Int]? {
+        get {
+            if let managedIndices = managedUnit.allowedPickerIndices?.array as? [ManagedPickerIndex] {
+                var indices = [Int]()
+                for index in managedIndices {
+                    indices.append(index.index as Int)
+                }
+                return indices
+            } else {
+                return nil
+            }
+        }
+        set {
+            if newValue == nil {
+                managedUnit.allowedPickerIndices = nil
+                return
+            }
+            let indices = NSMutableOrderedSet()
+            for index in newValue! {
+                indices.addObject(index)
+            }
+            managedUnit.allowedPickerIndices = indices
+        }
+    }
+    
     convenience init(name: String, singularName: String, shortName: String){
         self.init(name: name, singularName: singularName)
         managedUnit.shortName = shortName

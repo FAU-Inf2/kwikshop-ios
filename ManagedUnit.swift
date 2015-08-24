@@ -14,6 +14,7 @@ class ManagedUnit: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var shortName: String
     @NSManaged var singularName: String
+    @NSManaged var allowedPickerIndices: NSOrderedSet?
     
     weak var unit : Unit?
 }
