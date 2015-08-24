@@ -25,6 +25,7 @@ group_tobacco="Tobacco";
 group_coffeeAndTea="Coffee & Tea";
 
 // MARK: Units
+unit_none="";
 unit_bag="bags";
 unit_bottle="bottles";
 unit_box="boxes";

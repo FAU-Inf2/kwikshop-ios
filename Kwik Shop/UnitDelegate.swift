@@ -40,7 +40,7 @@ class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     init(pickerView: UIPickerView?) {
         self.pickerView = pickerView
         let unitHelper = UnitHelper.instance
-        data = [unitHelper.BAG, unitHelper.BOTTLE, unitHelper.BOX, unitHelper.DOZEN, unitHelper.GRAM, unitHelper.KILOGRAM, unitHelper.LITRE, unitHelper.MILLILITRE, unitHelper.PACK, unitHelper.PIECE]
+        data = [unitHelper.NONE, unitHelper.BAG, unitHelper.BOTTLE, unitHelper.BOX, unitHelper.DOZEN, unitHelper.GRAM, unitHelper.KILOGRAM, unitHelper.LITRE, unitHelper.MILLILITRE, unitHelper.PACK, unitHelper.PIECE]
         super.init()
     }
     

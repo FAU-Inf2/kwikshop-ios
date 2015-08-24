@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 class UnitHelper{
+    let NONE : Unit
     let BAG : Unit
     let BOTTLE : Unit
     let BOX : Unit
@@ -30,7 +31,7 @@ class UnitHelper{
         
         if let units = loadedUnits {
             if !units.isEmpty {
-                
+                var NONE : Unit? = nil
                 var BAG : Unit? = nil
                 var BOTTLE : Unit? = nil
                 var BOX : Unit? = nil
@@ -46,6 +47,8 @@ class UnitHelper{
                 
                 for unit in units {
                     switch unit.notLocalizedName {
+                    case "unit_none":
+                        NONE = unit
                     case "unit_bag":
                         BAG = unit
                     case "unit_bottle":
@@ -75,6 +78,7 @@ class UnitHelper{
                         }
                     }
                 }
+                self.NONE = NONE!
                 self.BAG = BAG!
                 self.BOTTLE = BOTTLE!
                 self.BOX = BOX!
@@ -93,6 +97,7 @@ class UnitHelper{
         }
         
         // init groups
+        NONE =       Unit(name: "unit_none", singularName: "unit_none")
         BAG =        Unit(name: "unit_bag", singularName: "unit_bag_singular")
         BOTTLE =     Unit(name: "unit_bottle", singularName: "unit_bottle_singular")
         BOX =        Unit(name: "unit_box", singularName: "unit_box_singular")

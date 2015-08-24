@@ -25,6 +25,7 @@ group_tobacco="Tabak";
 group_coffeeAndTea="Kaffee und Tee";
 
 // MARK: Units
+unit_none="";
 unit_bag="Säcke";
 unit_bottle="Flaschen";
 unit_box="Kisten";
