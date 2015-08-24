@@ -76,9 +76,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                     selectUnit(unit, animated: false)
                 }
                 
-                if let group = autoCompletionHelper.getGroupForItem(item) {
-                    selectGroup(group, animated: false)
-                }
+                let group = autoCompletionHelper.getGroupForItem(item)
+                selectGroup(group, animated: false)
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
@@ -99,7 +98,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                 commentTextField.text = comment
             }
             
-            if let group = item.group, row = find(groupDelegate.data, group) {
+            let group = item.group
+            if let row = find(groupDelegate.data, group) {
                 groupPicker.selectRow(row, inComponent: 0, animated: false)
             }
 
@@ -220,9 +220,8 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                     }
                 }
                 if !groupHasChanged {
-                    if let group = autoCompletionHelper.getGroupForName(name) {
-                        selectGroup(group, animated: true)
-                    }
+                    let group = autoCompletionHelper.getGroupForName(name)
+                    selectGroup(group, animated: true)
                 }
             }
         }
@@ -332,16 +331,10 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             let highlighted = highlightSwitch.on
             let brand = brandTextField.text
             let comment = commentTextField.text
-            // TODO: Group has to be stored
-            let group : Group?
-            if groupHasChanged {
-                let groupIndex = groupPicker.selectedRowInComponent(0)
-                group = groupDelegate.data[groupIndex]
-            } else {
-                group = currentItem?.group
-            }
-
             
+            let groupIndex = groupPicker.selectedRowInComponent(0)
+            let group = groupDelegate.data[groupIndex]
+
             if currentItem == nil {
                 currentItem = Item(name: name, amount: amount, unit: unit, highlighted: highlighted, brand: brand, comment: comment, group: group)
             } else {

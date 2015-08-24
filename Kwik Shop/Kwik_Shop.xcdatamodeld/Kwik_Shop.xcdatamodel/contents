@@ -19,7 +19,7 @@
         <attribute name="highlighted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
         <attribute name="order" attributeType="Integer 64" defaultValueString="-1" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
+        <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
         <relationship name="unit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Unit" syncable="YES"/>
     </entity>
     <entity name="ShoppingList" representedClassName="Kwik_Shop.ManagedShoppingList" syncable="YES">

@@ -103,22 +103,17 @@ class Item : NSObject, Equatable {
         }
     }
     
-    var group : Group? {
+    var group : Group {
         get {
-            if let managedItemGroup = managedItem.group as? ManagedGroup{
-                if let group = managedItemGroup.group {
-                    return group
-                }
-                return Group(managedGroup: managedItemGroup)
+            let managedItemGroup = managedItem.group as! ManagedGroup
+            
+            if let group = managedItemGroup.group {
+                return group
             }
-            return nil
+            return Group(managedGroup: managedItemGroup)
         }
         set {
-            if newValue == nil {
-                managedItem.group = nil
-                return
-            }
-            let managedGroup = newValue!.managedGroup
+            let managedGroup = newValue.managedGroup
             managedItem.group = managedGroup
         }
     }
@@ -155,13 +150,14 @@ class Item : NSObject, Equatable {
         
         self.init(managedItem: managedItem)
         self.name = name
+        self.group = GroupHelper.instance.OTHER
     }
     
-    convenience init (name: String, amount: Int?, unit: Unit?, highlighted: Bool, brand: String?, comment: String?, group: Group?) {
+    convenience init (name: String, amount: Int?, unit: Unit?, highlighted: Bool, brand: String?, comment: String?, group: Group) {
         self.init (name: name, amount: amount, highlighted: highlighted, brand: brand, comment: comment, bought: false, order: nil, group: group, unit: unit)
     }
     
-    convenience init (name: String, amount: Int?, highlighted: Bool, brand: String?, comment: String?, bought: Bool, order: Int?, group: Group?, unit: Unit?) {
+    convenience init (name: String, amount: Int?, highlighted: Bool, brand: String?, comment: String?, bought: Bool, order: Int?, group: Group, unit: Unit?) {
         self.init(name: name)
         
         self.amount = amount

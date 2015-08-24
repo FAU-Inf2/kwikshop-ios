@@ -129,16 +129,17 @@ class AutoCompletionHelper {
         dbHelper.saveData()
     }
     
-    func getGroupForItem(item: Item) -> Group? {
+    func getGroupForItem(item: Item) -> Group {
         return getGroupForName(item.name)
     }
     
-    func getGroupForName(name: String) -> Group? {
+    func getGroupForName(name: String) -> Group {
         if let unitAndGroup = unitsAndGroups[name] {
-            return unitAndGroup.1
-        } else {
-            return nil
+            if let group = unitAndGroup.1 {
+                return group
+            }
         }
+        return GroupHelper.instance.OTHER
     }
     
     func getUnitForItem(item: Item) -> Unit? {
