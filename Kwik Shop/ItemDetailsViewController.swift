@@ -12,7 +12,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: MLPAutoCompleteTextField!
     @IBOutlet weak var amountLabel: UILabel!    
-    @IBOutlet weak var amountTextField: UITextField!
+    //@IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var unitPicker: UIPickerView!
     @IBOutlet weak var highlightLabel: UILabel!
     @IBOutlet weak var highlightSwitch: UISwitch!
@@ -41,6 +41,10 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     private let autoCompletionHelper = AutoCompletionHelper.instance
     
+    private let AMOUNT_COMPONENT = 0
+    private let UNIT_COMPONENT = 1
+    private let GROUP_COMPONENT = 0
+    
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +54,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             groupPicker.dataSource = self
         }
         if unitDelegate == nil {
-            unitDelegate = UnitDelegate(pickerView: unitPicker)
+            unitDelegate = UnitAndAmountDelegate(pickerView: unitPicker)
             unitPicker.delegate = self
             unitPicker.dataSource = self
         }
@@ -65,10 +69,9 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             if let item = currentItem {
                 itemNameTextField.text = item.name
                 
-                if let amount = item.amount {
-                    amountTextField.text = "\(amount)"
-                }
-                unitDelegate.displayUnitNamesInSingular = isThisSingular(amountTextField.text)
+                selectAmount(item.amount, animated: false)
+                
+                unitDelegate.displayUnitNamesInSingular = isThisSingular(""/*amountTextField.text*/)
                 
                 if let unit = item.unit {
                     selectUnit(unit, animated: false)
@@ -81,13 +84,13 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
-            if let amount = item.amount {
-                amountTextField.text = "\(amount)"
-            }
-            unitDelegate.displayUnitNamesInSingular = isThisSingular(amountTextField.text)
+            
+            selectAmount(item.amount, animated: false)
+            
+            unitDelegate.displayUnitNamesInSingular = isThisSingular(""/*amountTextField.text*/)
             
             if let unit = item.unit, row = find(unitDelegate.data, unit) {
-                unitPicker.selectRow(row, inComponent: 0, animated: false)
+                unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: false)
             }
             
             highlightSwitch.setOn(item.highlighted, animated: false)
@@ -100,7 +103,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             
             let group = item.group
             if let row = find(groupDelegate.data, group) {
-                groupPicker.selectRow(row, inComponent: 0, animated: false)
+                groupPicker.selectRow(row, inComponent: GROUP_COMPONENT, animated: false)
             }
 
         } else {
@@ -111,7 +114,6 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         initializeAutoCompletionTextField(itemNameTextField, withDataSource: self)
         
         checkValidItemName(itemNameTextField.text)
-        amountTextField.delegate = self
         commentTextField.delegate = self
         
         brandTextField.delegate = self
@@ -126,15 +128,28 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     private func selectUnit(unit: Unit, animated: Bool) {
         if let row = find(unitDelegate.data, unit) {
-            unitPicker.selectRow(row, inComponent: 0, animated: animated)
+            unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: animated)
             unitHasChanged = true
         }
     }
     
     private func selectGroup(group: Group, animated: Bool) {
         if let row = find(groupDelegate.data, group) {
-            groupPicker.selectRow(row, inComponent: 0, animated: animated)
+            groupPicker.selectRow(row, inComponent: GROUP_COMPONENT, animated: animated)
             groupHasChanged = true
+        }
+    }
+    
+    private func selectAmount(amount: Int?, animated: Bool) {
+        let row : Int
+        if amount == nil {
+            row = AMOUNT_COMPONENT
+        } else {
+            row = amount!
+        }
+        
+        if row < UnitAndAmountDelegate.MAX_AMOUNT {
+            unitPicker.selectRow(row, inComponent: AMOUNT_COMPONENT, animated: animated)
         }
     }
    
@@ -158,7 +173,6 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     func closeKeyboard() {
         itemNameTextField.resignFirstResponder()
-        amountTextField.resignFirstResponder()
         brandTextField.resignFirstResponder()
         commentTextField.resignFirstResponder()
     }
@@ -169,13 +183,6 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         textField.resignFirstResponder()
         return true
     }
-    
-    /*func textFieldDidBeginEditing(textField: UITextField) {
-        if (textField === itemNameTextField) {
-            // Disable the Save button while editing.
-            saveButton.enabled = false
-        }
-    }*/
     
     func textFieldDidEndEditing(textField: UITextField) {
         if (textField === itemNameTextField) {
@@ -197,19 +204,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if textField === amountTextField {
-            let digits : [Character] = ["0","1","2","3","4","5","6","7","8","9"]
-            for char in string {
-                if !contains(digits, char) {
-                    return false
-                }
-            }
-            let newText = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
-            
-            unitDelegate.displayUnitNamesInSingular = isThisSingular(newText)
-            
-            return true
-        } else if textField === itemNameTextField {
+        if textField === itemNameTextField {
             let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
             checkValidItemName(text)
             return true
@@ -283,15 +278,15 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         if saveButton === sender {
             let name = itemNameTextField.text
             let amount : Int?
-            if let convertedAmount = amountTextField.text.toInt() {
-                amount = convertedAmount
-            } else {
+            if unitPicker.selectedRowInComponent(AMOUNT_COMPONENT) == 0 {
                 amount = nil
+            } else {
+                amount = unitPicker.selectedRowInComponent(AMOUNT_COMPONENT)
             }
             
             let unit : Unit?
             if unitHasChanged {
-                let unitIndex = unitPicker.selectedRowInComponent(0)
+                let unitIndex = unitPicker.selectedRowInComponent(UNIT_COMPONENT)
                 unit = unitDelegate.data[unitIndex]
             } else {
                 unit = currentItem?.unit
@@ -301,7 +296,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             let brand = brandTextField.text
             let comment = commentTextField.text
             
-            let groupIndex = groupPicker.selectedRowInComponent(0)
+            let groupIndex = groupPicker.selectedRowInComponent(GROUP_COMPONENT)
             let group = groupDelegate.data[groupIndex]
 
             if currentItem == nil {
