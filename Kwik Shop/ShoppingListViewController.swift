@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
+class ShoppingListViewController : AutoCompletionViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var quickAddButton: UIButton!
@@ -63,35 +63,8 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
         shoppingListTableView.addGestureRecognizer(swipeGestureRecognizer)
         
         quickAddTextField.delegate = self
-        initializeAutoCompletionTextField(quickAddTextField)
-    }
-    
-    private func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField) {
-        textField.autoCompleteDataSource = self
-        textField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
-        textField.showAutoCompleteTableWhenEditingBegins = true
         
-        let orientation = UIApplication.sharedApplication().statusBarOrientation
-        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
-            textField.maximumNumberOfAutoCompleteRows = 3
-        } else {
-            textField.maximumNumberOfAutoCompleteRows = 5
-        }
-        
-    }
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        let orientation = toInterfaceOrientation
-        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
-            quickAddTextField.maximumNumberOfAutoCompleteRows = 3
-        } else {
-            quickAddTextField.maximumNumberOfAutoCompleteRows = 5
-        }
-        quickAddTextField.autoCompleteTableViewHidden = true
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        quickAddTextField.autoCompleteTableViewHidden = false
+        initializeAutoCompletionTextField(quickAddTextField, withDataSource: self)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -102,6 +75,7 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
                 }
             },
             completion: nil)
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     

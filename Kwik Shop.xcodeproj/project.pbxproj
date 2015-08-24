@@ -39,6 +39,7 @@
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 		3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B381B821D50001B1365 /* GroupHelper.swift */; };
 		3AE93B3B1B822891001B1365 /* UnitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B3A1B822891001B1365 /* UnitHelper.swift */; };
+		3AEC4A101B8B314900CF87AD /* AutoCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */; };
 		3AF0CE2E1B808BE400D0BC48 /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */; };
 		3AF0CE301B80D37E00D0BC48 /* ManagedShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */; };
 		3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */; };
@@ -97,6 +98,7 @@
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
 		3AE93B3A1B822891001B1365 /* UnitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitHelper.swift; sourceTree = "<group>"; };
 		3AEB66511B72306900F5A89F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionViewController.swift; sourceTree = "<group>"; };
 		3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
 		3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedShoppingList.swift; sourceTree = "<group>"; };
 		3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfShoppingListsViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */,
 				3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */,
 				3ADCB0161B68D89B00BA963C /* ItemDetailsViewController.swift */,
+				3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				3AE6EEFF1B875DC00061F1A6 /* AutoCompleteTextField.swift in Sources */,
 				3A52D73F1B83821400E44206 /* AutoCompletionData.swift in Sources */,
 				3A56D9021B7372B000D536C8 /* ItemTableViewCell.swift in Sources */,
+				3AEC4A101B8B314900CF87AD /* AutoCompletionViewController.swift in Sources */,
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
 				3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */,

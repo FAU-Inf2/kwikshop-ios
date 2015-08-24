@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
+class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: MLPAutoCompleteTextField!
     @IBOutlet weak var amountLabel: UILabel!    
@@ -108,51 +108,20 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         }
         
         itemNameTextField.delegate = self
-        initializeAutoCompletionTextField(itemNameTextField)
+        initializeAutoCompletionTextField(itemNameTextField, withDataSource: self)
         
         checkValidItemName(itemNameTextField.text)
         amountTextField.delegate = self
         commentTextField.delegate = self
         
         brandTextField.delegate = self
-        initializeAutoCompletionTextField(brandTextField)
+        initializeAutoCompletionTextField(brandTextField, withDataSource: self)
         
         // close keyboard when user taps on the view
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
         tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
-    }
-    
-    private func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField) {
-        textField.autoCompleteDataSource = self
-        textField.autoCompleteTableBackgroundColor = UIColor.whiteColor()
-        textField.showAutoCompleteTableWhenEditingBegins = true
-        
-        let orientation = UIApplication.sharedApplication().statusBarOrientation
-        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
-            textField.maximumNumberOfAutoCompleteRows = 3
-        } else {
-            textField.maximumNumberOfAutoCompleteRows = 5
-        }
-    }
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        let orientation = toInterfaceOrientation
-        if orientation == .LandscapeLeft || orientation == .LandscapeRight {
-            itemNameTextField.maximumNumberOfAutoCompleteRows = 3
-            brandTextField.maximumNumberOfAutoCompleteRows = 3
-        } else {
-            itemNameTextField.maximumNumberOfAutoCompleteRows = 5
-            brandTextField.maximumNumberOfAutoCompleteRows = 5
-        }
-        itemNameTextField.autoCompleteTableViewHidden = true
-        brandTextField.autoCompleteTableViewHidden = true
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        itemNameTextField.autoCompleteTableViewHidden = false
-        brandTextField.autoCompleteTableViewHidden = false
     }
     
     private func selectUnit(unit: Unit, animated: Bool) {
