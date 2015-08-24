@@ -51,7 +51,7 @@ class ItemParser {
         var unitMatchFound = false
         var foundUnit : Unit? = nil
         var foundAmount : Int? = nil
-        let unitDelegate = UnitDelegate()
+        let unitDelegate = UnitDelegate(pickerView: nil)
         
         for unit in unitDelegate.data {
             if unit.shortestPossibleDescription.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame || unit.name.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame {

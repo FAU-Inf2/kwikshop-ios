@@ -50,7 +50,7 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             groupPicker.dataSource = self
         }
         if unitDelegate == nil {
-            unitDelegate = UnitDelegate()
+            unitDelegate = UnitDelegate(pickerView: unitPicker)
             unitPicker.delegate = self
             unitPicker.dataSource = self
         }
@@ -75,7 +75,9 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
-            amountTextField.text = "\(item.amount)"
+            let amountText = "\(item.amount)"
+            amountTextField.text = amountText
+            unitDelegate.displayUnitNamesInSingular = isThisSingular(amountText)
             
             if let unit = item.unit, row = find(unitDelegate.data, unit) {
                 unitPicker.selectRow(row, inComponent: 0, animated: false)
@@ -226,6 +228,10 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
                     return false
                 }
             }
+            let newText = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            
+            unitDelegate.displayUnitNamesInSingular = isThisSingular(newText)
+            
             return true
         } else if textField === itemNameTextField {
             let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
@@ -234,6 +240,10 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
         } else {
             return true
         }
+    }
+    
+    private func isThisSingular (text: String) -> Bool {
+        return text.isEmpty || text == "1"
     }
     
     // MARK: MLP Autocompletion

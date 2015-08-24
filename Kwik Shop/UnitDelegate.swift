@@ -11,9 +11,34 @@ import UIKit
 
 class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var data : [Unit] //= [Unit.BAG, Unit.BOTTLE, Unit.BOX, Unit.DOZEN, Unit.GRAM, Unit.KILOGRAM, Unit.LITRE, Unit.MILLILITRE, Unit.PACK, Unit.PIECE]
+    var data : [Unit]
     
-    override init() {
+    private weak var pickerView : UIPickerView?
+    private var plural = true
+    var displayUnitNamesInPlural : Bool {
+        get {
+            return plural
+        }
+        set {
+            let oldValue = plural
+            plural = newValue
+            if oldValue != newValue {
+                pickerView?.reloadAllComponents()
+            }
+        }
+    }
+    
+    var displayUnitNamesInSingular : Bool {
+        get {
+            return !plural
+        }
+        set {
+            displayUnitNamesInPlural = !newValue
+        }
+    }
+    
+    init(pickerView: UIPickerView?) {
+        self.pickerView = pickerView
         let unitHelper = UnitHelper.instance
         data = [unitHelper.BAG, unitHelper.BOTTLE, unitHelper.BOX, unitHelper.DOZEN, unitHelper.GRAM, unitHelper.KILOGRAM, unitHelper.LITRE, unitHelper.MILLILITRE, unitHelper.PACK, unitHelper.PIECE]
         super.init()
@@ -28,6 +53,19 @@ class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row].name
+        if plural {
+            return data[row].name
+        } else {
+            return data[row].singularName
+        }
     }
+    
+    /*func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int, inPlural: Bool) -> String? {
+        if inPlural {
+            return data[row].name
+        } else {
+            return data[row].singularName
+        }
+    }*/
+
 }
