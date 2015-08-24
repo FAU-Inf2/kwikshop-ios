@@ -39,9 +39,6 @@ class UnitAndAmountDelegate: UnitDelegate {
                 return ""
             }
             if let indices = selectedUnit.allowedPickerIndices {
-                println("NAME: "+selectedUnit.notLocalizedName)
-                let n = self.pickerView(pickerView, numberOfRowsInComponent: component)
-                println("\(n)")
                 return "\(indices[row - 1])"
             } else {
                 return "\(row)"
@@ -52,7 +49,18 @@ class UnitAndAmountDelegate: UnitDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if component == UNIT_COMPONENT {
+        if component == AMOUNT_COMPONENT {
+            if let indices = selectedUnit.allowedPickerIndices {
+                if row == 0 {
+                    self.displayUnitNamesInSingular = true
+                } else {
+                    self.displayUnitNamesInPlural = indices[row - 1] > 1
+                }
+            } else {
+                self.displayUnitNamesInPlural = row > 1
+            }
+
+        } else if component == UNIT_COMPONENT {
             selectedUnit = super.data[row]
             pickerView.reloadAllComponents()
         }

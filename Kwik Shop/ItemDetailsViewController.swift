@@ -71,7 +71,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                 
                 selectAmount(item.amount, animated: false)
                 
-                unitDelegate.displayUnitNamesInSingular = isThisSingular(""/*amountTextField.text*/)
+                unitDelegate.displayUnitNamesInSingular = isThisSingular(item.amount)
                 
                 if let unit = item.unit {
                     selectUnit(unit, animated: false)
@@ -88,7 +88,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             
             selectAmount(item.amount, animated: false)
             
-            unitDelegate.displayUnitNamesInSingular = isThisSingular(""/*amountTextField.text*/)
+            unitDelegate.displayUnitNamesInSingular = isThisSingular(item.amount)
             
             if let unit = item.unit, row = find(unitDelegate.data, unit) {
                 unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: false)
@@ -145,7 +145,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     private func selectAmount(amount: Int?, animated: Bool) {
         let row : Int
         if amount == nil {
-            row = AMOUNT_COMPONENT
+            row = 0
         } else {
             row = amount!
         }
@@ -215,8 +215,8 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         }
     }
     
-    private func isThisSingular (text: String) -> Bool {
-        return text.isEmpty || text == "1"
+    private func isThisSingular (amount: Int?) -> Bool {
+        return amount == nil || amount == 1
     }
     
     // MARK: MLP Autocompletion
