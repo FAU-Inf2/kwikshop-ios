@@ -64,7 +64,7 @@ class Unit : NSObject, Equatable{
             if let managedIndices = managedUnit.allowedPickerIndices?.array as? [ManagedPickerIndex] {
                 var indices = [Int]()
                 for index in managedIndices {
-                    indices.append(index.index as Int)
+                    indices.append(index.index.integerValue)
                 }
                 return indices
             } else {

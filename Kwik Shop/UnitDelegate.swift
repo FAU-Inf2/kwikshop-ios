@@ -59,13 +59,4 @@ class UnitDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
             return data[row].singularName
         }
     }
-    
-    /*func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int, inPlural: Bool) -> String? {
-        if inPlural {
-            return data[row].name
-        } else {
-            return data[row].singularName
-        }
-    }*/
-
 }

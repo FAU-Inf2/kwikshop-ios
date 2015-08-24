@@ -16,10 +16,10 @@ class PickerIndex {
     
     var index : Int {
         get {
-            return managedPickerIndex.index as Int
+            return managedPickerIndex.index.integerValue
         }
         set {
-            managedPickerIndex.index = newValue
+            managedPickerIndex.index = NSNumber(integer: newValue)
         }
     }
     

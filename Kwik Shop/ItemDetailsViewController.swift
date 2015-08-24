@@ -41,8 +41,8 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     private let autoCompletionHelper = AutoCompletionHelper.instance
     
-    private let AMOUNT_COMPONENT = 0
-    private let UNIT_COMPONENT = 1
+    private let AMOUNT_COMPONENT = UnitAndAmountDelegate.AMOUNT_COMPONENT
+    private let UNIT_COMPONENT = UnitAndAmountDelegate.UNIT_COMPONENT
     private let GROUP_COMPONENT = 0
     
     // MARK: UIViewController
@@ -354,12 +354,18 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let delegate : UIPickerViewDelegate
         if pickerView === unitPicker {
             unitHasChanged = true
+            delegate = self.unitDelegate
         } else if pickerView === groupPicker {
             groupHasChanged = true
+            delegate = self.groupDelegate
+        } else {
+            return
         }
         closeKeyboard()
+        delegate.pickerView?(pickerView, didSelectRow: row, inComponent: component)
     }
     
     // MARK: Actions
