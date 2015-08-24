@@ -65,7 +65,12 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             if let item = currentItem {
                 itemNameTextField.text = item.name
                 
-                if let unit = autoCompletionHelper.getUnitForItem(item) {
+                amountTextField.text = "\(item.amount)"
+                unitDelegate.displayUnitNamesInSingular = isThisSingular(amountTextField.text)
+                
+                if let unit = item.unit {
+                    selectUnit(unit, animated: false)
+                } else if let unit = autoCompletionHelper.getUnitForItem(item) {
                     selectUnit(unit, animated: false)
                 }
                 

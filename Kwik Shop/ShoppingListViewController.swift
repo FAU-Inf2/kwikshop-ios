@@ -351,8 +351,20 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             if !quickAddTextField.text.isEmpty {
                 let navigationController = segue.destinationViewController as! NavigationController
                 let itemDetailsViewController = navigationController.topViewController as! ItemDetailsViewController
-                let item = Item(name: quickAddTextField.text)
-                itemDetailsViewController.currentItem = item
+                if !quickAddTextField.text.isEmpty {
+                    let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text)
+                    let name = nameAmountAndUnit.name
+                    if !name.isEmpty {
+                        let item = Item(name: name)
+                        if let amount = nameAmountAndUnit.amount {
+                            item.amount = amount
+                            if let unit = nameAmountAndUnit.unit {
+                                item.unit = unit
+                            }
+                        }
+                        itemDetailsViewController.currentItem = item
+                    }
+                }
                 itemDetailsViewController.newItem = true
                 quickAddTextField.text = ""
                 closeKeyboard()
