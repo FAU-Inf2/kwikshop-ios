@@ -178,6 +178,12 @@ class Item : NSObject, Equatable {
         self.unit = unit
     }
     
+    convenience init (name: String, amount: Int?, unit: Unit?) {
+        self.init(name: name)
+        self.amount = amount
+        self.unit = unit
+    }
+    
     init (managedItem : ManagedItem) {
         self.managedItem = managedItem
         

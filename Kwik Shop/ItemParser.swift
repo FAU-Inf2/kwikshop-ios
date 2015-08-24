@@ -84,10 +84,16 @@ class ItemParser {
         return (name, foundAmount, foundUnit)
     }
     
-    func getItemWithParsedAmountAndUnitForInput(input : String) -> Item {
+    func getItemWithParsedAmountAndUnitForInput(input : String) -> Item? {
         let nameAmountAndUnit = getNameAmountAndUnitForInput(input)
         
-        let item = Item(name: nameAmountAndUnit.name)
+        let name = nameAmountAndUnit.name
+        
+        if name.isEmpty {
+            return nil
+        }
+        
+        let item = Item(name: name)
         if let itemAmount = nameAmountAndUnit.amount {
             item.amount = itemAmount
         }

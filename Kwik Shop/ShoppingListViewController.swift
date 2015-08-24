@@ -320,10 +320,37 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     }
 
     @IBAction func quickAddPressed(sender: UIButton) {
-        let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text)
-        quickAddTextField.text = ""
-        quickAddButton.enabled = false
-        addItem(item)
+        
+        // TODO: Change this as soon as the item parser is fixed
+        /*let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text + " a")
+        
+        var name = nameAmountAndUnit.name
+        
+        name = name.substringToIndex(name.endIndex.predecessor()) // drop the "a"
+        if !name.isEmpty {
+            name = name.substringToIndex(name.endIndex.predecessor()) // drop the " "
+        }*/
+        
+        /**/let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text)
+        var name = nameAmountAndUnit.name/**/
+        
+        let amount = nameAmountAndUnit.amount
+        var unit = nameAmountAndUnit.unit
+        
+        println("\(name)    \(amount) \(unit?.name)")
+        
+        if name.isEmpty && unit != nil{
+            name = unit!.name
+            unit = nil
+        }
+        
+        if !name.isEmpty {
+            let item = Item(name: name, amount: amount, unit: unit)
+            quickAddTextField.text = ""
+            quickAddButton.enabled = false
+            addItem(item)
+
+        }
     }
     
     func addItem(item: Item) {
@@ -453,7 +480,19 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
     
     func checkValidItemName(text: String) {
         // Disable the Save button if the text field is empty.
-        quickAddButton.enabled = !text.isEmpty
+        var valid = true
+        if text.isEmpty {
+            valid = false
+        } else {
+            var digitsAndSpaces = NSMutableCharacterSet.decimalDigitCharacterSet()
+            digitsAndSpaces.formUnionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
+            let textCharSet = NSCharacterSet(charactersInString: text)
+            if digitsAndSpaces.isSupersetOfSet(textCharSet) {
+                // the entered text only contains digits
+                valid = false
+            }
+        }
+        quickAddButton.enabled = valid
     }
     
     deinit {
