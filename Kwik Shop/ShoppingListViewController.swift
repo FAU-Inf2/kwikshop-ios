@@ -204,16 +204,22 @@ class ShoppingListViewController : UIViewController, UITableViewDataSource, UITa
             
 
             var amountText = ""
-            if item.amount != 1 && item.unit == nil{
-                amountText = "\(item.amount)"
-            } else if let unit = item.unit {
-                if item.amount == 1 {
-                    amountText = "\(item.amount) \(unit.shortestPossibleSingularDescription)"
+            
+            if let amount = item.amount {
+                if let unit = item.unit {
+                    if amount == 1 {
+                        amountText = "\(amount) \(unit.shortestPossibleSingularDescription)"
+                    } else {
+                        amountText = "\(amount) \(unit.shortestPossibleDescription)"
+                    }
                 } else {
-                    amountText = "\(item.amount) \(unit.shortestPossibleDescription)"
+                    amountText = "\(amount)"
                 }
-                
+            } else if let unit = item.unit {
+                // if no amount was specified, display unit name in singular
+                amountText = "\(unit.shortestPossibleSingularDescription)"
             }
+            
             cell.amountLabel.text = amountText
             
             cell.nameLabel.text = item.name

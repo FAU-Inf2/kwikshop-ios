@@ -65,7 +65,9 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             if let item = currentItem {
                 itemNameTextField.text = item.name
                 
-                amountTextField.text = "\(item.amount)"
+                if let amount = item.amount {
+                    amountTextField.text = "\(amount)"
+                }
                 unitDelegate.displayUnitNamesInSingular = isThisSingular(amountTextField.text)
                 
                 if let unit = item.unit {
@@ -80,9 +82,10 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
-            let amountText = "\(item.amount)"
-            amountTextField.text = amountText
-            unitDelegate.displayUnitNamesInSingular = isThisSingular(amountText)
+            if let amount = item.amount {
+                amountTextField.text = "\(amount)"
+            }
+            unitDelegate.displayUnitNamesInSingular = isThisSingular(amountTextField.text)
             
             if let unit = item.unit, row = find(unitDelegate.data, unit) {
                 unitPicker.selectRow(row, inComponent: 0, animated: false)
@@ -311,11 +314,11 @@ class ItemDetailsViewController : UIViewController, UITextFieldDelegate, UIPicke
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
             let name = itemNameTextField.text
-            let amount : Int
+            let amount : Int?
             if let convertedAmount = amountTextField.text.toInt() {
                 amount = convertedAmount
             } else {
-                amount = 1
+                amount = nil
             }
             
             let unit : Unit?

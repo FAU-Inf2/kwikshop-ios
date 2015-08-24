@@ -16,9 +16,9 @@ class Item : NSObject, Equatable {
     let managedItem : ManagedItem
     private static var managedObjectContext : NSManagedObjectContext?
     
-    var amount : Int {
+    var amount : Int? {
         get {
-            return managedItem.amount as Int
+            return managedItem.amount as Int?
         }
         set {
             managedItem.amount = newValue
@@ -157,11 +157,11 @@ class Item : NSObject, Equatable {
         self.name = name
     }
     
-    convenience init (name: String, amount: Int, unit: Unit?, highlighted: Bool, brand: String?, comment: String?, group: Group?) {
+    convenience init (name: String, amount: Int?, unit: Unit?, highlighted: Bool, brand: String?, comment: String?, group: Group?) {
         self.init (name: name, amount: amount, highlighted: highlighted, brand: brand, comment: comment, bought: false, order: nil, group: group, unit: unit)
     }
     
-    convenience init (name: String, amount: Int, highlighted: Bool, brand: String?, comment: String?, bought: Bool, order: Int?, group: Group?, unit: Unit?) {
+    convenience init (name: String, amount: Int?, highlighted: Bool, brand: String?, comment: String?, bought: Bool, order: Int?, group: Group?, unit: Unit?) {
         self.init(name: name)
         
         self.amount = amount

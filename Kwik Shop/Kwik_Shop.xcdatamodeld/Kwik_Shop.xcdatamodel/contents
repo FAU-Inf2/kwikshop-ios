@@ -12,7 +12,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Kwik_Shop.ManagedItem" syncable="YES">
-        <attribute name="amount" attributeType="Integer 64" defaultValueString="1" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="bought" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="brand" attributeType="String" defaultValueString="" syncable="YES"/>
         <attribute name="comment" attributeType="String" defaultValueString="" syncable="YES"/>

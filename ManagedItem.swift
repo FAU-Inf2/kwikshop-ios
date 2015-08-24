@@ -11,7 +11,7 @@ import CoreData
 
 class ManagedItem: NSManagedObject {
 
-    @NSManaged var amount: NSNumber
+    @NSManaged var amount: NSNumber?
     @NSManaged var bought: NSNumber
     @NSManaged var brand: String
     @NSManaged var comment: String
