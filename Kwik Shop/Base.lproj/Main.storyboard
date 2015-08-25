@@ -597,6 +597,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="0Y2-IF-NOY"/>
+                    <connections>
+                        <outlet property="languageLabel" destination="IeR-d4-Qkp" id="J2e-Xq-0WW"/>
+                        <outlet property="languagePicker" destination="vsL-iR-TQT" id="js6-aJ-gxr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZi-Ke-6Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

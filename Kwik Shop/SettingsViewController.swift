@@ -8,10 +8,20 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    // MARK: Properties
+    @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var languagePicker: UIPickerView!
+    
+    private let languageStrings = ["Default", "English", "German", "Portuguese"]
+    private var selectedLanguageIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        languagePicker.delegate = self
+        languagePicker.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -32,4 +42,33 @@ class SettingsViewController: UIViewController {
     }
     */
 
+    
+    // MARK: UIPickerview Data Source and Delegate
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return languageStrings.count
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return languageStrings[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let alert = UIAlertController(title: nil, message: "Would you like to change the application language to \(languageStrings[row])?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Change to \(languageStrings[row])", style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
+            self.selectedLanguageIndex = row
+            // TODO: Change the language
+            return
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { [unowned self] (action: UIAlertAction!) in
+            pickerView.selectRow(self.selectedLanguageIndex, inComponent: 0, animated: true)
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
 }
