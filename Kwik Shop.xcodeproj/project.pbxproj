@@ -37,6 +37,7 @@
 		3AE6EEFF1B875DC00061F1A6 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6EEFE1B875DC00061F1A6 /* AutoCompleteTextField.swift */; };
 		3AE802EC1B8C490B00533D83 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE802EB1B8C490B00533D83 /* SettingsViewController.swift */; };
 		3AE802EE1B8C4DC700533D83 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */; };
+		3AE802F01B8C6DD800533D83 /* StringHTMLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE802EF1B8C6DD800533D83 /* StringHTMLExtension.swift */; };
 		3AE89FF61B85DD1600FA1B19 /* AutoCompletionBrandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */; };
 		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 		3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B381B821D50001B1365 /* GroupHelper.swift */; };
@@ -98,6 +99,7 @@
 		3AE6EEFE1B875DC00061F1A6 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		3AE802EB1B8C490B00533D83 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		3AE802EF1B8C6DD800533D83 /* StringHTMLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHTMLExtension.swift; sourceTree = "<group>"; };
 		3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionBrandData.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */,
 				3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */,
 				3AF596701B7525FC00B7D05F /* NSDateExtension.swift */,
+				3AE802EF1B8C6DD800533D83 /* StringHTMLExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF5966F1B74E97F00B7D05F /* ShoppingListTableViewCell.swift in Sources */,
+				3AE802F01B8C6DD800533D83 /* StringHTMLExtension.swift in Sources */,
 				3ADA6FD41B663498000B5396 /* Item.swift in Sources */,
 				3ADAFCEC1B7FA12C0035A040 /* ManagedGroup.swift in Sources */,
 				3AE802EE1B8C4DC700533D83 /* AboutViewController.swift in Sources */,

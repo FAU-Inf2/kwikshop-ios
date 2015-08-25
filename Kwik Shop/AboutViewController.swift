@@ -8,11 +8,42 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
-
+class AboutViewController: UIViewController, UIScrollViewDelegate, UIWebViewDelegate {
+    
+    @IBOutlet weak var aboutWebView: UIWebView!
+    private var initialLinkIntercepted = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        aboutWebView.delegate = self
+        aboutWebView.scrollView.delegate = self
+        aboutWebView.scrollView.showsHorizontalScrollIndicator = false
+        
+        let kwikShopHeading = "Kwik Shop"
+        let gitHubLink = "https://github.com/FAU-Inf2/kwikshop-ios"
+        let gitHubLinkDescription = "View on GitHub"
+        
+        let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as? String
+        let versionDescription = "Version"
+        
+        let acknowledgementsHeading = "Acknowledgements"
+        
+        let htmlHeader = "<!DOCTYPE html>\n<html>\n<body>\n"
+        let htmlFooter = "</body>\n</html>"
+        
+        var aboutText = htmlHeader
+        aboutText += kwikShopHeading.htmlH1
+        aboutText += gitHubLink.htmlLinkWithDescription(gitHubLinkDescription).htmlParagraph
+        aboutText += versionDescription.htmlH3
+        aboutText += version!.htmlParagraph
+        aboutText += acknowledgementsHeading.htmlH2
+        
+        
+        aboutText += htmlFooter
+        
+        aboutWebView.loadHTMLString(aboutText, baseURL: nil)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -32,4 +63,22 @@ class AboutViewController: UIViewController {
     }
     */
 
+    // MARK UIWebViewDelegate
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if (self.initialLinkIntercepted) {
+            UIApplication.sharedApplication().openURL(request.URL!)
+            return false
+        } else {
+            self.initialLinkIntercepted = true;
+            return true;
+        }
+    }
+    
+    // MARK UIScrollViewDelegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (scrollView.contentOffset.x > 0) {
+            scrollView.contentOffset = CGPointMake(0, scrollView.contentOffset.y)
+        }
+    }
+    
 }

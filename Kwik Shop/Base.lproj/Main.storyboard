@@ -533,7 +533,7 @@
         <!--About-->
         <scene sceneID="Gx8-w1-Vb3">
             <objects>
-                <viewController id="PXb-kN-ZGO" sceneMemberID="viewController">
+                <viewController id="PXb-kN-ZGO" customClass="AboutViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rPS-r2-bvG"/>
                         <viewControllerLayoutGuide type="bottom" id="ur1-ud-vIG"/>
@@ -541,9 +541,25 @@
                     <view key="view" contentMode="scaleToFill" id="QNi-ST-IWl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJJ-nu-jnp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vJJ-nu-jnp" firstAttribute="leading" secondItem="QNi-ST-IWl" secondAttribute="leadingMargin" constant="-16" id="PZn-dc-ms2"/>
+                            <constraint firstItem="vJJ-nu-jnp" firstAttribute="top" secondItem="QNi-ST-IWl" secondAttribute="topMargin" id="eo4-yl-2Le"/>
+                            <constraint firstItem="vJJ-nu-jnp" firstAttribute="bottom" secondItem="QNi-ST-IWl" secondAttribute="bottomMargin" id="ycR-F2-Jhn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vJJ-nu-jnp" secondAttribute="trailing" constant="-16" id="zRe-gL-eQJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="dbR-Jk-cmZ"/>
+                    <connections>
+                        <outlet property="aboutWebView" destination="vJJ-nu-jnp" id="heF-RU-NJw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4A-aM-RCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
