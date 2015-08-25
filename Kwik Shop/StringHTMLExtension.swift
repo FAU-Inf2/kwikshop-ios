@@ -10,19 +10,23 @@ import Foundation
 
 extension String {
     var htmlParagraph: String {
-        return "<p>\(self)</p>\n"
+        return "<p>\(self)</p>"
     }
     
     var htmlH1: String {
-        return "<h1>\(self)</h1>\n"
+        return "<h1>\(self)</h1>"
     }
     
     var htmlH2: String {
-        return "<h2>\(self)</h2>\n"
+        return "<h2>\(self)</h2>"
     }
     
     var htmlH3: String {
-        return "<h3>\(self)</h3>\n"
+        return "<h3>\(self)</h3>"
+    }
+    
+    var htmlBold: String {
+        return "<b>\(self)</b>"
     }
     
     func htmlLinkWithDescription(description: String) -> String {
