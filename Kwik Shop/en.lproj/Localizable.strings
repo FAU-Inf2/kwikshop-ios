@@ -60,16 +60,16 @@ group_coffeeAndTea="Coffee & Tea";
 
 // MARK: Units
 unit_none="";
-unit_bag="bags";
-unit_bottle="bottles";
-unit_box="boxes";
-unit_dozen="dozen";
-unit_gram="grams";
-unit_kilogram="kilograms";
-unit_litre="litres";
-unit_millilitre="mililitres";
-unit_pack="packs";
-unit_piece="pieces";
+unit_bag="Bags";
+unit_bottle="Bottles";
+unit_box="Boxes";
+unit_dozen="Dozen";
+unit_gram="Grams";
+unit_kilogram="Kilograms";
+unit_litre="Litres";
+unit_millilitre="Mililitres";
+unit_pack="Packs";
+unit_piece="Pieces";
 
 // Short names
 unit_gram_short="g";
@@ -79,16 +79,16 @@ unit_millilitre_short="ml";
 unit_piece_short="pc";
 
 // Singulars
-unit_bag_singular="bag";
-unit_bottle_singular="bottle";
-unit_box_singular="box";
-unit_dozen_singular="dozen";
-unit_gram_singular="gram";
-unit_kilogram_singular="kilogram";
-unit_litre_singular="litre";
-unit_millilitre_singular="mililitre";
-unit_pack_singular="pack";
-unit_piece_singular="piece";
+unit_bag_singular="Bag";
+unit_bottle_singular="Bottle";
+unit_box_singular="Box";
+unit_dozen_singular="Dozen";
+unit_gram_singular="Gram";
+unit_kilogram_singular="Kilogram";
+unit_litre_singular="Litre";
+unit_millilitre_singular="Mililitre";
+unit_pack_singular="Pack";
+unit_piece_singular="Piece";
 
 // MARK: Example Shopping List
 example_shopping_list_title="My first shopping list";

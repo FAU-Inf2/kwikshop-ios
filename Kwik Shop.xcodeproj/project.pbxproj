@@ -102,6 +102,7 @@
 		3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3AE802EF1B8C6DD800533D83 /* StringHTMLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHTMLExtension.swift; sourceTree = "<group>"; };
 		3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3AE802F31B8CD20A00533D83 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionBrandData.swift; sourceTree = "<group>"; };
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
@@ -358,6 +359,7 @@
 				en,
 				Base,
 				de,
+				pt,
 			);
 			mainGroup = 3A6ABDAB1B64F492009FD7BE;
 			productRefGroup = 3A6ABDB51B64F492009FD7BE /* Products */;
@@ -502,6 +504,7 @@
 			children = (
 				3AE594E31B6FDAA9007A52DA /* de */,
 				3AE594E51B6FDAAE007A52DA /* en */,
+				3AE802F31B8CD20A00533D83 /* pt */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

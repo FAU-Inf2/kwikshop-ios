@@ -1,0 +1,106 @@
+/* 
+  Localizable.strings
+  Kwik Shop
+
+  Created by Adrian Kretschmer on 03.08.15.
+  Copyright (c) 2015 FAU-Inf2. All rights reserved.
+*/
+
+// MARK: Navigation bar titles
+navigation_bar_shopping_lists="Shopping Lists"; //TODO: translate
+navigation_bar_about="Sobre";
+navigation_bar_settings="Configurações";
+
+// MARK: Shopping List View
+shopping_list_seperator="Carro de compras";
+shopping_list_quick_add_button="Add";
+
+// MARK: List of Shopping Lists View
+list_of_shopping_lists_item="Item";
+list_of_shopping_lists_items="Itens";
+
+// MARK: Item Details View
+item_details_amount="Quantidade";
+item_details_highlight="Ressaltar";
+item_details_brand="Marca";
+item_details_comment="Comentário";
+item_details_group="Grupo";
+
+// MARK: Settings View
+settings_language="Language";
+settings_english="Inglês";
+settings_german="Alemão";
+settings_portuguese="Português";
+
+// MARK: Alert Box Dialogs
+alert_box_cancel="Cancelar";
+alert_box_delete="Apagar";
+alert_box_change_language_confirmation_beginning="Would you like to change the application language to ";
+alert_box_change_language_confirmation_end="";
+alert_box_change_language_confirmation_yes_beginning="Mudar para ";
+alert_box_change_language_confirmation_yes_end="";
+
+// MARK: Groups
+group_other="Outros";
+group_babyFoods="Comidas de bebê";
+group_beverages="Bebidas";
+group_breakPastries="Pães e doces";
+group_dairy="Láticinios";
+group_frozenAndConvenience="Congelados";
+group_fruitsAndVegetables="Frutas & Vegetais";
+group_healthAndHygiene="Saúde & Higiene";
+group_household="Produtos domésticos";
+group_ingredientsAndSpices="Ingredientes & temperos";
+group_meatAndFish="Carnes & Peixes";
+group_pasta="Massas & Arroz";
+group_petSupplies="Pet Shop";
+group_sweetsAndSnacks="Doces & Lanches";
+group_tobacco="Tabaco";
+group_coffeeAndTea="Café & chá";
+
+// MARK: Units
+unit_none="";
+unit_bag="Sacolas";
+unit_bottle="Garrafas";
+unit_box="Caixas";
+unit_dozen="Dúzias";
+unit_gram="Gramas";
+unit_kilogram="Kilogramas";
+unit_litre="Litros";
+unit_millilitre="Mililitros";
+unit_pack="Pacotes";
+unit_piece="Pedaços";
+
+// Short names
+unit_gram_short="g";
+unit_kilogram_short="kg";
+unit_litre_short="l";
+unit_millilitre_short="ml";
+unit_piece_short="pc";
+
+// Singulars
+unit_bag_singular="Bag";
+unit_bottle_singular="Bottle";
+unit_box_singular="Box";
+unit_dozen_singular="Dozen";
+unit_gram_singular="Gram";
+unit_kilogram_singular="Kilogram";
+unit_litre_singular="Litre";
+unit_millilitre_singular="Mililitre";
+unit_pack_singular="Pack";
+unit_piece_singular="Piece";
+
+// MARK: Example Shopping List
+example_shopping_list_title="Minha primeira lista de compras";
+example_item_1="Maçã";
+example_item_1_comment="Escreva na caixa acima para adicionar itens";
+example_item_2="Doces";
+example_item_2_comment=""; //"Click por mais tempo e então mova seu item para ordenar a lista da sua forma"
+example_item_3="Coca";
+example_item_3_comment="Swipe items to the right to mark them as bought";
+example_item_4="Spaghetti";
+example_item_4_comment="You can add detailed items with the navigation bar button on the right";
+example_item_5="Papel higiênico";
+example_item_5_comment="Por exemplo você pode ressaltar itens importantes como papel higiênico";
+example_item_6="O item já foi comprado";
+example_item_6_comment="At least it used to be; swipe it again to mark it as bought again";
