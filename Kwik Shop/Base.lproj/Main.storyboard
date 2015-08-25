@@ -543,17 +543,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJJ-nu-jnp">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="8" y="0.0" width="584" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vJJ-nu-jnp" firstAttribute="leading" secondItem="QNi-ST-IWl" secondAttribute="leadingMargin" constant="-16" id="PZn-dc-ms2"/>
+                            <constraint firstItem="vJJ-nu-jnp" firstAttribute="leading" secondItem="QNi-ST-IWl" secondAttribute="leadingMargin" constant="-8" id="PZn-dc-ms2"/>
                             <constraint firstItem="vJJ-nu-jnp" firstAttribute="top" secondItem="QNi-ST-IWl" secondAttribute="topMargin" id="eo4-yl-2Le"/>
                             <constraint firstItem="vJJ-nu-jnp" firstAttribute="bottom" secondItem="QNi-ST-IWl" secondAttribute="bottomMargin" id="ycR-F2-Jhn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vJJ-nu-jnp" secondAttribute="trailing" constant="-16" id="zRe-gL-eQJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vJJ-nu-jnp" secondAttribute="trailing" constant="-8" id="zRe-gL-eQJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="dbR-Jk-cmZ"/>
