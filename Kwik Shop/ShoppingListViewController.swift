@@ -61,6 +61,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        quickAddButton.setTitle("shopping_list_quick_add_button".localized, forState: UIControlState.Normal)
+        
         shoppingListTableView.delegate = self
         shoppingListTableView.dataSource = self
         

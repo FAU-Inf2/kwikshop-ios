@@ -114,9 +114,9 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         let numberOfItems = shoppingList.items.count
         var numberOfItemsText = "\(numberOfItems) "
         if (numberOfItems == 1) {
-            numberOfItemsText += "Item"
+            numberOfItemsText += "list_of_shopping_lists_item".localized
         } else {
-            numberOfItemsText += "Items"
+            numberOfItemsText += "list_of_shopping_lists_items".localized
         }
         
         cell.numberOfItemsLabel.text = numberOfItemsText

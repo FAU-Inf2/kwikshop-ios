@@ -13,6 +13,11 @@ navigation_bar_settings="Settings";
 
 // MARK: Shopping List View
 shopping_list_seperator="Shopping cart";
+shopping_list_quick_add_button="Add";
+
+// MARK: List of Shopping Lists View
+list_of_shopping_lists_item="Item";
+list_of_shopping_lists_items="Items";
 
 // MARK: Item Details View
 item_details_amount="Amount";
