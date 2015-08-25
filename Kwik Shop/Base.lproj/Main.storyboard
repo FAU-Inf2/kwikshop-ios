@@ -609,7 +609,7 @@
         <scene sceneID="QZy-9o-wRh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jpl-u5-a5C" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="m2a-iY-ZSZ"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="m2a-iY-ZSZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ggh-Un-tS4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -628,7 +628,7 @@
         <scene sceneID="kff-Gb-H0b">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bTD-t6-NiE" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping Lists" id="bXR-q1-EUe"/>
+                    <tabBarItem key="tabBarItem" title="Shopping Lists" image="List" id="bXR-q1-EUe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FIy-84-kEy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -647,7 +647,7 @@
         <scene sceneID="P5p-MU-lcO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l97-3g-oQB" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" id="UiP-M5-EAa"/>
+                    <tabBarItem key="tabBarItem" title="About" image="About" id="UiP-M5-EAa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sa1-DG-VTH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -663,6 +663,11 @@
             <point key="canvasLocation" x="1154" y="-1220"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="About" width="25" height="25"/>
+        <image name="List" width="25" height="25"/>
+        <image name="Settings" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="W5s-hE-GpY"/>
     </inferredMetricsTieBreakers>
