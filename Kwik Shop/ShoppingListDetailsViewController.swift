@@ -19,6 +19,15 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
     
     var shoppingList : ShoppingList?
     var newList = true
+    
+    override var hidesBottomBarWhenPushed : Bool {
+        get {
+            return true
+        }
+        set {
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,6 +142,5 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
 
 }

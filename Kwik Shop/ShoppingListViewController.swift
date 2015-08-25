@@ -48,6 +48,16 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         }
     }
     
+    override var hidesBottomBarWhenPushed : Bool {
+        get {
+            return true
+        }
+        set {
+            
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
