@@ -305,23 +305,19 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
 
     @IBAction func quickAddPressed(sender: UIButton) {
         
-        // TODO: Change this as soon as the item parser is fixed
-        /*let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text + " a")
+        let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text + " a")
         
         var name = nameAmountAndUnit.name
         
         name = name.substringToIndex(name.endIndex.predecessor()) // drop the "a"
         if !name.isEmpty {
             name = name.substringToIndex(name.endIndex.predecessor()) // drop the " "
-        }*/
-        
-        let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text)
-        var name = nameAmountAndUnit.name
+        }
         
         let amount = nameAmountAndUnit.amount
         var unit = nameAmountAndUnit.unit
         
-        println("\(name)    \(amount) \(unit?.name)")
+        //println("\(name)    \(amount) \(unit?.name)")
         
         if name.isEmpty && unit != nil{
             name = unit!.name
