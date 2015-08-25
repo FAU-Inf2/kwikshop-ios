@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var languagePicker: UIPickerView!
     
-    private let languageStrings = ["English", "German", "Portuguese"]
+    private var languageStrings : [String]!
     private let languageAbbreviations = ["en", "de", "pt"]
     private var selectedLanguageIndex : Int!
     private let languageIndexKey = "languageIndex"
@@ -23,6 +23,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         super.viewDidLoad()
         
         self.title = "navigation_bar_settings".localized
+        self.languageStrings = ["settings_english".localized, "settings_german".localized, "settings_portuguese".localized]
+        languageLabel.text = "settings_language".localized
         
         languagePicker.delegate = self
         languagePicker.dataSource = self
@@ -93,15 +95,19 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             return
         }
         
-        let alert = UIAlertController(title: nil, message: "Would you like to change the application language to \(languageStrings[row])?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let message = "alert_box_change_language_confirmation_beginning".localized + languageStrings[row] + "alert_box_change_language_confirmation_end".localized + "?"
         
-        alert.addAction(UIAlertAction(title: "Change to \(languageStrings[row])", style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let confirmationYesTitle = "alert_box_change_language_confirmation_yes_beginning".localized + languageStrings[row] + "alert_box_change_language_confirmation_yes_end".localized
+        
+        alert.addAction(UIAlertAction(title: confirmationYesTitle, style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
             self.selectedLanguageIndex = row
             let languageAbbreviation = self.languageAbbreviations[row]
             NSUserDefaults.standardUserDefaults().setObject(["\(languageAbbreviation)"], forKey: "AppleLanguages")
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { [unowned self] (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: { [unowned self] (action: UIAlertAction!) in
             pickerView.selectRow(self.selectedLanguageIndex, inComponent: 0, animated: true)
         }))
         

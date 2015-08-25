@@ -26,9 +26,19 @@ item_details_brand="Brand";
 item_details_comment="Comment";
 item_details_group="Group";
 
+// MARK: Settings View
+settings_language="Language";
+settings_english="English";
+settings_german="German";
+settings_portuguese="Portuguese";
+
 // MARK: Alert Box Dialogs
 alert_box_cancel="Cancel";
 alert_box_delete="Delete";
+alert_box_change_language_confirmation_beginning="Would you like to change the application language to ";
+alert_box_change_language_confirmation_end="";
+alert_box_change_language_confirmation_yes_beginning="Change to ";
+alert_box_change_language_confirmation_yes_end="";
 
 // MARK: Groups
 group_other="Other";
@@ -79,3 +89,18 @@ unit_litre_singular="litre";
 unit_millilitre_singular="mililitre";
 unit_pack_singular="pack";
 unit_piece_singular="piece";
+
+// MARK: Example Shopping List
+example_shopping_list_title="My first shopping list";
+example_item_1="Apple";
+example_item_1_comment="Type in the box above to add items";
+example_item_2="Sweets";
+example_item_2_comment=""; //"Click a bit longer and then move your item to sort your list as you want"
+example_item_3="Coke";
+example_item_3_comment="Swipe items to the right to mark them as bought";
+example_item_4="Spaghettis";
+example_item_4_comment="You can add detailed items with the navigation bar button on the right";
+example_item_5="Toilet paper";
+example_item_5_comment="For example you can highlight important items like toilet paper";
+example_item_6="This item is already bought";
+example_item_6_comment="At least it used to be; swipe it again to mark it as bought again";

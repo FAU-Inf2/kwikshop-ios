@@ -53,30 +53,30 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
             return
         }
         
-        let item1 = Item(name: "Apple")
-        item1.comment = "Type in the box above to add items"
+        let item1 = Item(name: "example_item_1".localized)
+        item1.comment = "example_item_1_comment".localized
         
-        let item2 =  Item(name: "Sweets")
-        //item2.comment = "Click a bit longer and then move your item to sort your list as you want" // not working yet
+        let item2 =  Item(name: "example_item_2".localized)
+        item2.comment = "example_item_2_comment".localized //Click a bit longer and then move your item to sort your list as you want; not working yet
         
-        let item3 = Item(name: "Coke")
+        let item3 = Item(name: "example_item_3".localized)
         item3.amount = 5
         item3.unit = UnitHelper.instance.BOTTLE
-        item3.comment = "Swipe items to the right to mark them as bought"
+        item3.comment = "example_item_3_comment".localized
         
-        let item4 = Item(name: "Spaghettis")
+        let item4 = Item(name: "example_item_4".localized)
         item4.amount = 5
-        item4.comment = "You can add detailed items with the navigation bar button on the right"
+        item4.comment = "example_item_4_comment".localized
         
-        let item5 = Item(name: "Toilet paper")
-        item5.comment = "For example you can highlight important items like toilet paper"
+        let item5 = Item(name: "example_item_5".localized)
+        item5.comment = "example_item_5_comment".localized
         item5.highlighted = true
         
-        let item6 = Item(name: "This item is already bought")
+        let item6 = Item(name: "example_item_6".localized)
         item6.bought = true
-        item6.comment = "At least it used to be; swipe it again to mark it as bought again"
+        item6.comment = "example_item_6_comment".localized
         
-        let list = ShoppingList(name: "My first shopping list")
+        let list = ShoppingList(name: "example_shopping_list_title".localized)
         list.items = [item1, item2, item3, item4, item5, item6]
         
         shoppingLists = [list]

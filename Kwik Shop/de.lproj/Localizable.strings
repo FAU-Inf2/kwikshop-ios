@@ -26,9 +26,19 @@ item_details_brand="Marke";
 item_details_comment="Kommentar";
 item_details_group="Gruppe";
 
+// MARK: Settings View
+settings_language="Sprache";
+settings_english="Englisch";
+settings_german="Deutsch";
+settings_portuguese="Portugiesisch";
+
 // MARK: Alert Box Dialogs
 alert_box_cancel="Abbrechen";
 alert_box_delete="Löschen";
+alert_box_change_language_confirmation_beginning="Möchtest du ";
+alert_box_change_language_confirmation_end=" als App-Sprache verwenden";
+alert_box_change_language_confirmation_yes_beginning="";
+alert_box_change_language_confirmation_yes_end=" verwenden";
 
 // MARK: Groups
 group_other="Sonstiges";
@@ -79,3 +89,18 @@ unit_litre_singular="Liter";
 unit_millilitre_singular="Milliliter";
 unit_pack_singular="Packung";
 unit_piece_singular="Stück";
+
+// MARK: Example Shopping List
+example_shopping_list_title="Meine erste Einkaufsliste";
+example_item_1="Apfel";
+example_item_1_comment="Schreibe in die Box, um Gegenstände hinzuzufügen";
+example_item_2="Süßigkeiten";
+example_item_2_comment=""; //"Drücke ein bisschen länger und bewege den Gegenstand, um deine Liste zu sortieren"
+example_item_3="Cola";
+example_item_3_comment="Wische über einen Gegenstand, um ihn als gekauft zu markieren";
+example_item_4="Spaghetti";
+example_item_4_comment="Du kannst Gegenstände mit Details durch den Knopf oben rechts in der Navigationsleiste hinzufügen";
+example_item_5="Toilettenpapier";
+example_item_5_comment="Zum Beispiel kannst du wichtige Gegenstände wie diesen hervorheben";
+example_item_6="Dieser Gegenstand wurde bereits gekauft";
+example_item_6_comment="Zumindest war das mal so; wische ihn erneut, um ihn wieder als gekauft zu markieren";
