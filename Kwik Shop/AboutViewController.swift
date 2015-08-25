@@ -41,6 +41,15 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
         let kwikShopAndroidLicense = ", licensed under the MIT License, "
         let somePortionsEnd = "were used in this application"
         
+        let tabBarIconsDescription = "The tab bar icons were licensed by "
+        let tabBarIconsLink = "https://icons8.com"
+        let tabBarIconsLinkDescription = "Icons8"
+        let tabBarIconsLicenseDescriptionBegining = " under the "
+        let tabBarIconsLicenseLink = "https://creativecommons.org/licenses/by-nd/3.0/"
+        let tabBarIconsLicenseLinkDescription = "CC BY-ND 3.0"
+        let tabBarIconsLicenseDescriptionEnd = " license."
+        
+        
         let htmlHeader = "<!DOCTYPE html>\n<html>\n<body>\n"
         let htmlFooter = "</body>\n</html>"
         
@@ -53,8 +62,9 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
         aboutText += acknowledgementsDescriptiveText.htmlParagraph
         aboutText += (mlpLink.htmlLinkWithDescription(mlpDescription).htmlBold + mlpLicense + mlpSubLibraryDescription).htmlParagraph
         aboutText += nsStringPlusLevenshteinLicense
-        aboutText += (somePortionsBeginning + kwikShopAndroidLink.htmlLinkWithDescription(kwikShopAndroidDescription).htmlBold + kwikShopAndroidLicense + somePortionsEnd).htmlParagraph
+        aboutText += (tabBarIconsDescription + tabBarIconsLink.htmlLinkWithDescription(tabBarIconsLinkDescription).htmlBold + tabBarIconsLicenseDescriptionBegining + tabBarIconsLicenseLink.htmlLinkWithDescription(tabBarIconsLicenseLinkDescription) + tabBarIconsLicenseDescriptionEnd).htmlParagraph
         
+        aboutText += (somePortionsBeginning + kwikShopAndroidLink.htmlLinkWithDescription(kwikShopAndroidDescription).htmlBold + kwikShopAndroidLicense + somePortionsEnd).htmlParagraph
         
         aboutText += htmlFooter
         
