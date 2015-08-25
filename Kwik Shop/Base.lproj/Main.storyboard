@@ -576,7 +576,25 @@
                     <view key="view" contentMode="scaleToFill" id="XCN-aV-AJb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsL-iR-TQT">
+                                <rect key="frame" x="100" y="72" width="320" height="162"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="Language" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeR-d4-Qkp">
+                                <rect key="frame" x="16" y="142" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vsL-iR-TQT" firstAttribute="leading" secondItem="IeR-d4-Qkp" secondAttribute="trailing" constant="8" id="CKA-fD-PEE"/>
+                            <constraint firstItem="IeR-d4-Qkp" firstAttribute="centerY" secondItem="vsL-iR-TQT" secondAttribute="centerY" id="Os2-OJ-ovd"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="vsL-iR-TQT" secondAttribute="trailing" id="Wnp-il-tI4"/>
+                            <constraint firstItem="IeR-d4-Qkp" firstAttribute="leading" secondItem="XCN-aV-AJb" secondAttribute="leadingMargin" id="lFQ-50-qWd"/>
+                            <constraint firstItem="vsL-iR-TQT" firstAttribute="top" secondItem="i3x-Rz-mhu" secondAttribute="bottom" constant="8" id="zUy-Fw-keZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="0Y2-IF-NOY"/>
                 </viewController>
