@@ -530,7 +530,7 @@
             </objects>
             <point key="canvasLocation" x="2738" y="418"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings-->
         <scene sceneID="4sY-sG-baa">
             <objects>
                 <viewController id="nhy-0s-tZj" sceneMemberID="viewController">
@@ -543,7 +543,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0Y2-IF-NOY"/>
+                    <navigationItem key="navigationItem" title="Settings" id="0Y2-IF-NOY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZi-Ke-6Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -569,11 +569,11 @@
             </objects>
             <point key="canvasLocation" x="342" y="418"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="QZy-9o-wRh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jpl-u5-a5C" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="m2a-iY-ZSZ"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="m2a-iY-ZSZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ggh-Un-tS4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -588,11 +588,11 @@
             </objects>
             <point key="canvasLocation" x="1146" y="1220"/>
         </scene>
-        <!--Item-->
+        <!--Shopping Lists-->
         <scene sceneID="kff-Gb-H0b">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bTD-t6-NiE" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="bXR-q1-EUe"/>
+                    <tabBarItem key="tabBarItem" title="Shopping Lists" id="bXR-q1-EUe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FIy-84-kEy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
