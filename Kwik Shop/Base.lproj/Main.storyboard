@@ -377,8 +377,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-WU-Hsc">
-                                <rect key="frame" x="0.0" y="110" width="600" height="482"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-WU-Hsc">
+                                <rect key="frame" x="0.0" y="110" width="600" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
@@ -472,7 +472,7 @@
                             <constraint firstItem="hjd-bk-bHL" firstAttribute="leading" secondItem="Nwc-ko-RFN" secondAttribute="leadingMargin" constant="8" id="WqI-4P-GI1"/>
                             <constraint firstItem="hjd-bk-bHL" firstAttribute="centerY" secondItem="Dot-8D-Xvw" secondAttribute="centerY" id="c4B-gx-2Y1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dot-8D-Xvw" secondAttribute="trailing" id="fxq-VP-AgS"/>
-                            <constraint firstItem="r7Q-I9-RKA" firstAttribute="top" secondItem="aD1-WU-Hsc" secondAttribute="bottom" constant="8" id="uHY-e7-i8d"/>
+                            <constraint firstItem="r7Q-I9-RKA" firstAttribute="top" secondItem="aD1-WU-Hsc" secondAttribute="bottom" id="uHY-e7-i8d"/>
                             <constraint firstItem="Dot-8D-Xvw" firstAttribute="leading" secondItem="hjd-bk-bHL" secondAttribute="trailing" constant="8" id="uQs-0a-7jn"/>
                         </constraints>
                     </view>
@@ -533,7 +533,7 @@
         <!--Settings-->
         <scene sceneID="4sY-sG-baa">
             <objects>
-                <viewController id="nhy-0s-tZj" sceneMemberID="viewController">
+                <viewController id="nhy-0s-tZj" customClass="SettingsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i3x-Rz-mhu"/>
                         <viewControllerLayoutGuide type="bottom" id="A1w-Ip-dc8"/>
