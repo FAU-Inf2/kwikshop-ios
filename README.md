@@ -11,7 +11,7 @@ Acknowledgements
 ----------------
 The project makes use of several third-party libraries:
 
-- [MLPAutoCompleteTextField](https://github.com/EddyBorja/MLPAutoCompleteTextField), licensed under the MIT License. This library uses the NSString+Levenshtein category, which uses this license
+- [MLPAutoCompleteTextField](https://github.com/EddyBorja/MLPAutoCompleteTextField), licensed under the MIT License. This library uses the NSString+Levenshtein category, which uses the following license:
 
 >NSString+Levenshtein
 
@@ -40,3 +40,5 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+- Some portions of the [Kwik Shop Android App](https://github.com/FAU-Inf2/kwikshop-android), licensed under the MIT License, were used in this application
