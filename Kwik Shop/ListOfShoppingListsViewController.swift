@@ -29,6 +29,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         if shoppingLists.isEmpty {
             loadSampleData()
         }
+        self.title = "navigation_bar_shopping_lists".localized
     }
     
     private var goToShoppingList = false

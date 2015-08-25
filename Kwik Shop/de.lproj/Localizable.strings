@@ -6,6 +6,13 @@
   Copyright (c) 2015 FAU-Inf2. All rights reserved.
 */
 
+// MARK: Navigation bar titles
+
+navigation_bar_shopping_lists="Einkaufslisten";
+navigation_bar_about="Über";
+navigation_bar_settings="Einstellungen";
+
+
 // MARK: Groups
 group_other="Sonstiges";
 group_babyFoods="Babynahrung";

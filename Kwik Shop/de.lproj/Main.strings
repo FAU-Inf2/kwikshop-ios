@@ -3,7 +3,7 @@
 "7fw-u7-GiG.text" = "Marke";
 
 /* Class = "UINavigationItem"; title = "Shopping Lists"; ObjectID = "FqU-Ny-ZM3"; */
-"FqU-Ny-ZM3.title" = "Einkaufslisten";
+//"FqU-Ny-ZM3.title" = "Einkaufslisten";
 
 /* Class = "UILabel"; text = "Comment"; ObjectID = "URK-dd-hwd"; */
 "URK-dd-hwd.text" = "Kommentar";

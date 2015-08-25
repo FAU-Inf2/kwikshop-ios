@@ -606,10 +606,10 @@
             </objects>
             <point key="canvasLocation" x="1956" y="-402"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="HxC-qk-qsm">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="okZ-i5-zfb" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="okZ-i5-zfb" customClass="TabBarViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="UY7-bv-v2f"/>
                     <nil key="simulatedBottomBarMetrics"/>

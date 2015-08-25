@@ -16,6 +16,8 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "navigation_bar_about".localized
+        
         aboutWebView.delegate = self
         aboutWebView.scrollView.showsHorizontalScrollIndicator = false
         

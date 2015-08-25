@@ -22,6 +22,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "navigation_bar_settings".localized
+        
         languagePicker.delegate = self
         languagePicker.dataSource = self
         
