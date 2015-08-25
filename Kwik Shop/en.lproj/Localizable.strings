@@ -11,6 +11,20 @@ navigation_bar_shopping_lists="Shopping Lists";
 navigation_bar_about="About";
 navigation_bar_settings="Settings";
 
+// MARK: Shopping List View
+shopping_list_seperator="Shopping cart";
+
+// MARK: Item Details View
+item_details_amount="Amount";
+item_details_highlight="Highlight";
+item_details_brand="Brand";
+item_details_comment="Comment";
+item_details_group="Group";
+
+// MARK: Alert Box Dialogs
+alert_box_cancel="Cancel";
+alert_box_delete="Delete";
+
 // MARK: Groups
 group_other="Other";
 group_babyFoods="Baby Foods";

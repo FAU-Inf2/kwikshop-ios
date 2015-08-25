@@ -146,7 +146,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         if indexPath.row == notBoughtItems.count {
             let cellIdentifier = "ShoppingListSeperatorTableViewCell"
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ShoppingListSeperatorTableViewCell
-            
+            cell.shoppingCartLabel.text = "shopping_list_seperator".localized
             return cell
         }
         

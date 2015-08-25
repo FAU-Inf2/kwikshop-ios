@@ -106,7 +106,6 @@
 		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
 		3AE93B3A1B822891001B1365 /* UnitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitHelper.swift; sourceTree = "<group>"; };
-		3AEB66511B72306900F5A89F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionViewController.swift; sourceTree = "<group>"; };
 		3AEC4A111B8B4DA400CF87AD /* UnitAndAmountDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitAndAmountDelegate.swift; sourceTree = "<group>"; };
 		3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
@@ -494,7 +493,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				3A6ABDBC1B64F492009FD7BE /* Base */,
-				3AEB66511B72306900F5A89F /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

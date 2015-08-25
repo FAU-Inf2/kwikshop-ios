@@ -48,6 +48,13 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        amountLabel.text = "item_details_amount".localized
+        highlightLabel.text = "item_details_highlight".localized
+        brandLabel.text = "item_details_brand".localized
+        commentLabel.text = "item_details_comment".localized
+        groupLabel.text = "item_details_group".localized
+        
         if groupDelegate == nil {
             groupDelegate = GroupDelegate()
             groupPicker.delegate = self
@@ -252,9 +259,9 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
         if sender === deleteButton {
-            var refreshAlert = UIAlertController(title: nil, message: "Are you sure you want to delete this item?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            var refreshAlert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
             
-            refreshAlert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: "alert_box_delete".localized, style: .Destructive, handler: { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
                 self.performSegueWithIdentifier("unwindToShoppingList", sender: deleteButton)
             }))
             
@@ -263,7 +270,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                 self.performSegueWithIdentifier("unwindToShoppingList", sender: deleteButton)
             }))*/
             
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: { (action: UIAlertAction!) in
                 return
             }))
             

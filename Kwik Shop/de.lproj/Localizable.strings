@@ -7,11 +7,23 @@
 */
 
 // MARK: Navigation bar titles
-
 navigation_bar_shopping_lists="Einkaufslisten";
 navigation_bar_about="Über";
 navigation_bar_settings="Einstellungen";
 
+// MARK: Shopping List View
+shopping_list_seperator="Einkaufswagen";
+
+// MARK: Item Details View
+item_details_amount="Menge";
+item_details_highlight="Hervorheben";
+item_details_brand="Marke";
+item_details_comment="Kommentar";
+item_details_group="Gruppe";
+
+// MARK: Alert Box Dialogs
+alert_box_cancel="Abbrechen";
+alert_box_delete="Löschen";
 
 // MARK: Groups
 group_other="Sonstiges";
