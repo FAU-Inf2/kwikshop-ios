@@ -15,13 +15,19 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var languagePicker: UIPickerView!
     
     private let languageStrings = ["Default", "English", "German", "Portuguese"]
-    private var selectedLanguageIndex = 0
+    private let languageAbbreviations = ["en", "de", "pt"]
+    private var selectedLanguageIndex : Int!
+    private let languageIndexKey = "languageIndex"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         languagePicker.delegate = self
         languagePicker.dataSource = self
+        
+        selectedLanguageIndex = NSUserDefaults.standardUserDefaults().integerForKey(languageIndexKey)
+        
+        languagePicker.selectRow(selectedLanguageIndex, inComponent: 0, animated: false)
 
         // Do any additional setup after loading the view.
     }
@@ -61,7 +67,34 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         alert.addAction(UIAlertAction(title: "Change to \(languageStrings[row])", style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
             self.selectedLanguageIndex = row
-            // TODO: Change the language
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setInteger(self.selectedLanguageIndex, forKey: self.languageIndexKey)
+            
+            // retrieve the language abbreviation for the selected language string or "en" if the default language isn't supported
+            let languageAbbreviation : String
+            if row > 0 {
+                languageAbbreviation = self.languageAbbreviations[row - 1]
+            } else {
+                let systemLanguages = NSLocale.preferredLanguages()
+                for language in systemLanguages {
+                    println(language)
+                }
+                
+                if let systemLanguage = NSLocale.preferredLanguages()[0] as? String {
+                    if contains(self.languageAbbreviations, systemLanguage) {
+                        languageAbbreviation = systemLanguage
+                    } else {
+                        languageAbbreviation = "en"
+                    }
+                } else {
+                    languageAbbreviation = "en"
+                }
+            }
+           
+            
+            userDefaults.setObject(["\(languageAbbreviation)"], forKey: "AppleLanguages")
+            
+            
             return
         }))
         
