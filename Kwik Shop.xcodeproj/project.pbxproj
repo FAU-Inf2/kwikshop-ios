@@ -26,6 +26,7 @@
 		3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08561B6BF35D0060D2AC /* Group.swift */; };
 		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
 		3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */; };
+		3ADF5E9A1B8DF5B8004767A5 /* ManageAutoCompletionHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryTableViewController.swift */; };
 		3AE10D851B711A1C00E644D1 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */; };
 		3AE10D8C1B7122BE00E644D1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */; };
 		3AE21DFB1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE21DFA1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift */; };
@@ -88,6 +89,7 @@
 		3ADD08561B6BF35D0060D2AC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
+		3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageAutoCompletionHistoryTableViewController.swift; sourceTree = "<group>"; };
 		3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3AE21DFA1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListSeperatorTableViewCell.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				3AE802EB1B8C490B00533D83 /* SettingsViewController.swift */,
 				3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */,
 				3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */,
+				3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
 				3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
+				3ADF5E9A1B8DF5B8004767A5 /* ManageAutoCompletionHistoryTableViewController.swift in Sources */,
 				3AE802EC1B8C490B00533D83 /* SettingsViewController.swift in Sources */,
 				3AE89FF61B85DD1600FA1B19 /* AutoCompletionBrandData.swift in Sources */,
 				3AF0CE301B80D37E00D0BC48 /* ManagedShoppingList.swift in Sources */,

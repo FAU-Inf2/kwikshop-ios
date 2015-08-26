@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // MARK: Properties
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var languagePicker: UIPickerView!
+    @IBOutlet weak var manageAutocomletionHistoryButton: UIButton!
     
     private var languageStrings : [String]!
     private let languageAbbreviations = ["en", "de", "pt"]
