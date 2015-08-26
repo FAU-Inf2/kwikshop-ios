@@ -309,13 +309,30 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 let shoppingListIndex = getIndexAndIndexPathsForIndexPath(indexPath!).index
                 let shoppingListInitialIndex = getIndexAndIndexPathsForIndexPath(Path.initialIndexPath!).index
                 
+                let numberOfBoughtItemsBeforeSwap = boughtItems.count
+                let numberOfNotBoughtItemsBeforeSwap = notBoughtItems.count
                 shoppingList.swapItemsAtIndices(initialIndex: shoppingListInitialIndex, newIndex: shoppingListIndex)
+                let numberOfBoughtItemsAfterSwap = boughtItems.count
+                
                 saveToDatabase()
                 
+                shoppingListTableView.beginUpdates()
                 shoppingListTableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
+                
+                if numberOfBoughtItemsAfterSwap == 0 && numberOfBoughtItemsBeforeSwap > 0 {
+                    // the last bought item has been moved up
+                    let indexPath = NSIndexPath(forRow: numberOfNotBoughtItemsBeforeSwap, inSection: 0)
+                    shoppingListTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                }
+                shoppingListTableView.endUpdates()
+                
                 Path.initialIndexPath = indexPath
             }
-            
+        case UIGestureRecognizerState.Ended:
+            if let indexPaths = shoppingListTableView.indexPathsForVisibleRows() {
+                shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
+            }
+            fallthrough
         default:
             let cell = shoppingListTableView.cellForRowAtIndexPath(Path.initialIndexPath!) as UITableViewCell!
             cell.hidden = false

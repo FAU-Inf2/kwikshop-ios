@@ -137,7 +137,7 @@ class ShoppingList : NSObject {
         return lists
     }
     
-    func swapItemsAtIndices(#initialIndex: Int?, newIndex: Int?) {
+    func swapItemsAtIndices(#initialIndex: Int?, newIndex: Int?){
         
         if let firstIndex = initialIndex {
             // moving an item
@@ -150,9 +150,7 @@ class ShoppingList : NSObject {
                     var notBoughtItems = self.notBoughtItems
                     swap(&notBoughtItems[firstIndex], &notBoughtItems[secondIndex])
                     self.notBoughtItems = notBoughtItems
-                    return
-                }
-                if first.bought && second.bought {
+                } else if first.bought && second.bought {
                     let numberOfNotBoughtItems = notBoughtItems.count
                     let firstBoughtIndex = firstIndex - numberOfNotBoughtItems
                     let secondBoughtIndex = secondIndex - numberOfNotBoughtItems
@@ -160,16 +158,26 @@ class ShoppingList : NSObject {
                     var boughtItems = self.boughtItems
                     swap(&boughtItems[firstBoughtIndex], &boughtItems[secondBoughtIndex])
                     self.boughtItems = boughtItems
-                    
-                    return
+                } else {
+                    assertionFailure("trying to swap two items, that can't be swapped")
                 }
-
             } else {
                 // swapping it with the shopping list separator
+                let item = items[firstIndex]
+                if item.bought {
+                    let boughtIndex = firstIndex - notBoughtItems.count
+                    boughtItems.removeAtIndex(boughtIndex)
+                    item.bought = false
+                    notBoughtItems.append(item)
+                } else {
+                    notBoughtItems.removeLast()
+                    item.bought = true
+                    boughtItems.insert(item, atIndex: 0)
+                }
             }
-            
         } else {
             // moving the separator
+            
         }
     }
     
