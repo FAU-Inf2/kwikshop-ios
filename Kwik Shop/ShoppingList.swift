@@ -138,7 +138,7 @@ class ShoppingList : NSObject {
     }
     
     func swapItemsAtIndices(#initialIndex: Int?, newIndex: Int?){
-        
+        var index : Int! = nil
         if let firstIndex = initialIndex {
             // moving an item
             if let secondIndex = newIndex {
@@ -161,23 +161,30 @@ class ShoppingList : NSObject {
                 } else {
                     assertionFailure("trying to swap two items, that can't be swapped")
                 }
+                return
             } else {
                 // swapping it with the shopping list separator
-                let item = items[firstIndex]
-                if item.bought {
-                    let boughtIndex = firstIndex - notBoughtItems.count
-                    boughtItems.removeAtIndex(boughtIndex)
-                    item.bought = false
-                    notBoughtItems.append(item)
-                } else {
-                    notBoughtItems.removeLast()
-                    item.bought = true
-                    boughtItems.insert(item, atIndex: 0)
-                }
+                index = firstIndex
             }
         } else {
             // moving the separator
-            
+            if let secondIndex = newIndex {
+                index = secondIndex
+            } else {
+                assertionFailure("trying to swap two items, while both indices are nil")
+            }
+        }
+        
+        let item = items[index]
+        if item.bought {
+            let boughtIndex = index - notBoughtItems.count
+            boughtItems.removeAtIndex(boughtIndex)
+            item.bought = false
+            notBoughtItems.append(item)
+        } else {
+            notBoughtItems.removeLast()
+            item.bought = true
+            boughtItems.insert(item, atIndex: 0)
         }
     }
     
