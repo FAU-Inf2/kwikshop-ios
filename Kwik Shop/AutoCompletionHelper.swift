@@ -23,6 +23,13 @@ class AutoCompletionHelper {
     private var autoCompletionData = [String : AutoCompletionData]()
     private var autoCompletionBrandData = [String : AutoCompletionBrandData]()
     
+    var allAutoCompletionItemNames : [String] {
+        return itemNames
+    }
+    var allAutoCompletionBrandNames : [String] {
+        return brandNames
+    }
+    
     private init() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext!
