@@ -137,6 +137,29 @@ class ShoppingList : NSObject {
         return lists
     }
     
+    func swapItemsAtIndices(firstIndex: Int, _ secondIndex: Int) {
+        let first = items[firstIndex]
+        let second = items[secondIndex]
+        
+        if !first.bought && !second.bought {
+            var notBoughtItems = self.notBoughtItems
+            swap(&notBoughtItems[firstIndex], &notBoughtItems[secondIndex])
+            self.notBoughtItems = notBoughtItems
+            return
+        }
+        if first.bought && second.bought {
+            let numberOfNotBoughtItems = notBoughtItems.count
+            let firstBoughtIndex = firstIndex - numberOfNotBoughtItems
+            let secondBoughtIndex = secondIndex - numberOfNotBoughtItems
+            
+            var boughtItems = self.boughtItems
+            swap(&boughtItems[firstBoughtIndex], &boughtItems[secondBoughtIndex])
+            self.boughtItems = boughtItems
+            
+            return
+        }
+    }
+    
     convenience init (name : String, sortType : Int?) {
         if ShoppingList.managedObjectContext == nil {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
