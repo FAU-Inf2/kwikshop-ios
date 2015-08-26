@@ -101,6 +101,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             if let index = indexAndIndexPaths.index {
                 let boughtBeforeSwipe = items[index].bought
                 let item = items.removeAtIndex(index)
+                saveToDatabase()
                 
                 shoppingListTableView.deleteRowsAtIndexPaths(indexAndIndexPaths.indexPaths, withRowAnimation: .Fade)
                 item.bought = !item.bought
@@ -444,6 +445,15 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
         checkValidItemName(text)
+        
+        for item in notBoughtItems {
+            println(item.name + " \(item.bought) \(item.managedItem)")
+        }
+        println("--- shopping cart ---")
+        for item in boughtItems {
+            println(item.name + " \(item.bought) \(item.managedItem)")
+        }
+        
         return true
     }
     
