@@ -309,7 +309,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 let shoppingListIndex = getIndexAndIndexPathsForIndexPath(indexPath!).index
                 let shoppingListInitialIndex = getIndexAndIndexPathsForIndexPath(Path.initialIndexPath!).index
                 
-                shoppingList.swapItemsAtIndices(shoppingListIndex!, shoppingListInitialIndex!)
+                shoppingList.swapItemsAtIndices(initialIndex: shoppingListInitialIndex, newIndex: shoppingListIndex)
                 saveToDatabase()
                 
                 shoppingListTableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)

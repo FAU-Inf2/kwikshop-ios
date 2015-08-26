@@ -137,26 +137,39 @@ class ShoppingList : NSObject {
         return lists
     }
     
-    func swapItemsAtIndices(firstIndex: Int, _ secondIndex: Int) {
-        let first = items[firstIndex]
-        let second = items[secondIndex]
+    func swapItemsAtIndices(#initialIndex: Int?, newIndex: Int?) {
         
-        if !first.bought && !second.bought {
-            var notBoughtItems = self.notBoughtItems
-            swap(&notBoughtItems[firstIndex], &notBoughtItems[secondIndex])
-            self.notBoughtItems = notBoughtItems
-            return
-        }
-        if first.bought && second.bought {
-            let numberOfNotBoughtItems = notBoughtItems.count
-            let firstBoughtIndex = firstIndex - numberOfNotBoughtItems
-            let secondBoughtIndex = secondIndex - numberOfNotBoughtItems
+        if let firstIndex = initialIndex {
+            // moving an item
+            if let secondIndex = newIndex {
+                // swapping it with another item
+                let first = items[firstIndex]
+                let second = items[secondIndex]
+                
+                if !first.bought && !second.bought {
+                    var notBoughtItems = self.notBoughtItems
+                    swap(&notBoughtItems[firstIndex], &notBoughtItems[secondIndex])
+                    self.notBoughtItems = notBoughtItems
+                    return
+                }
+                if first.bought && second.bought {
+                    let numberOfNotBoughtItems = notBoughtItems.count
+                    let firstBoughtIndex = firstIndex - numberOfNotBoughtItems
+                    let secondBoughtIndex = secondIndex - numberOfNotBoughtItems
+                    
+                    var boughtItems = self.boughtItems
+                    swap(&boughtItems[firstBoughtIndex], &boughtItems[secondBoughtIndex])
+                    self.boughtItems = boughtItems
+                    
+                    return
+                }
+
+            } else {
+                // swapping it with the shopping list separator
+            }
             
-            var boughtItems = self.boughtItems
-            swap(&boughtItems[firstBoughtIndex], &boughtItems[secondBoughtIndex])
-            self.boughtItems = boughtItems
-            
-            return
+        } else {
+            // moving the separator
         }
     }
     
