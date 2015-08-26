@@ -74,10 +74,14 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedView:")
         shoppingListTableView.addGestureRecognizer(swipeGestureRecognizer)
         
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
+        shoppingListTableView.addGestureRecognizer(longPressGestureRecognizer)
+        
         quickAddTextField.delegate = self
         
         initializeAutoCompletionTextField(quickAddTextField, withDataSource: self)
     }
+    
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition(
@@ -91,38 +95,6 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     
-    // MARK: Swipe Gesture
-    func swipedView(sender : UISwipeGestureRecognizer) {
-        let location = sender.locationInView(shoppingListTableView)
-        if let indexPath = shoppingListTableView.indexPathForRowAtPoint(location) {
-            
-            let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
-            
-            if let index = indexAndIndexPaths.index {
-                let boughtBeforeSwipe = items[index].bought
-                let item = items.removeAtIndex(index)
-                
-                shoppingListTableView.deleteRowsAtIndexPaths(indexAndIndexPaths.indexPaths, withRowAnimation: .Fade)
-                item.bought = !item.bought
-                
-                if boughtBeforeSwipe {
-                    notBoughtItems.append(item)
-                    let newIndexPath = NSIndexPath(forRow: notBoughtItems.count - 1, inSection: 0)
-                    shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                } else {
-                    boughtItems.append(item)
-                    let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
-                    let newIndexPaths = getIndexAndIndexPathsForIndexPath(newIndexPath).indexPaths
-                    shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
-                }
-                updateModifyDate()
-                saveToDatabase()
-            } else {
-                // Swiped the shoppinglist separator
-                return
-            }
-        }
-    }
     
     // MARK: - Table view data source
     
@@ -256,6 +228,125 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         }
         // somewhere else was tapped
         return true;
+    }
+    
+    // MARK: Swipe Gesture
+    func swipedView(sender : UISwipeGestureRecognizer) {
+        let location = sender.locationInView(shoppingListTableView)
+        if let indexPath = shoppingListTableView.indexPathForRowAtPoint(location) {
+            
+            let indexAndIndexPaths = getIndexAndIndexPathsForIndexPath(indexPath)
+            
+            if let index = indexAndIndexPaths.index {
+                let boughtBeforeSwipe = items[index].bought
+                let item = items.removeAtIndex(index)
+                
+                shoppingListTableView.deleteRowsAtIndexPaths(indexAndIndexPaths.indexPaths, withRowAnimation: .Fade)
+                item.bought = !item.bought
+                
+                if boughtBeforeSwipe {
+                    notBoughtItems.append(item)
+                    let newIndexPath = NSIndexPath(forRow: notBoughtItems.count - 1, inSection: 0)
+                    shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                } else {
+                    boughtItems.append(item)
+                    let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
+                    let newIndexPaths = getIndexAndIndexPathsForIndexPath(newIndexPath).indexPaths
+                    shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
+                }
+                updateModifyDate()
+                saveToDatabase()
+            } else {
+                // Swiped the shoppinglist separator
+                return
+            }
+        }
+    }
+    
+    // MARK: Drag and Drop
+    func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
+        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
+        let state = longPress.state
+        var locationInView = longPress.locationInView(shoppingListTableView)
+        var indexPath = shoppingListTableView.indexPathForRowAtPoint(locationInView)
+        
+        struct My {
+            static var cellSnapshot : UIView? = nil
+        }
+        struct Path {
+            static var initialIndexPath : NSIndexPath? = nil
+        }
+        
+        
+        switch state {
+        case UIGestureRecognizerState.Began:
+            if indexPath != nil {
+                Path.initialIndexPath = indexPath
+                let cell = shoppingListTableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
+                My.cellSnapshot  = snapshopOfCell(cell)
+                var center = cell.center
+                My.cellSnapshot!.center = center
+                My.cellSnapshot!.alpha = 0.0
+                shoppingListTableView.addSubview(My.cellSnapshot!)
+                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                    center.y = locationInView.y
+                    My.cellSnapshot!.center = center
+                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
+                    My.cellSnapshot!.alpha = 0.98
+                    cell.alpha = 0.0
+                    }, completion: { (finished) -> Void in
+                        if finished {
+                            cell.hidden = true
+                        }
+                })
+            }
+        case UIGestureRecognizerState.Changed:
+            var center = My.cellSnapshot!.center
+            center.y = locationInView.y
+            My.cellSnapshot!.center = center
+            if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
+                
+                let shoppingListIndex = getIndexAndIndexPathsForIndexPath(indexPath!).index
+                let shoppingListInitialIndex = getIndexAndIndexPathsForIndexPath(Path.initialIndexPath!).index
+                
+                // swap(&items[shoppingListIndex!], &items[shoppingListInitialIndex!])
+                
+                shoppingListTableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
+                Path.initialIndexPath = indexPath
+            }
+            
+        default:
+            let cell = shoppingListTableView.cellForRowAtIndexPath(Path.initialIndexPath!) as UITableViewCell!
+            cell.hidden = false
+            cell.alpha = 0.0
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                My.cellSnapshot!.center = cell.center
+                My.cellSnapshot!.transform = CGAffineTransformIdentity
+                My.cellSnapshot!.alpha = 0.0
+                cell.alpha = 1.0
+                }, completion: { (finished) -> Void in
+                    if finished {
+                        Path.initialIndexPath = nil
+                        My.cellSnapshot!.removeFromSuperview()
+                        My.cellSnapshot = nil
+                    }
+            })
+            
+        }
+    }
+    
+    func snapshopOfCell(inputView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
+        inputView.layer.renderInContext(UIGraphicsGetCurrentContext())
+        let image = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        UIGraphicsEndImageContext()
+        let cellSnapshot : UIView = UIImageView(image: image)
+        cellSnapshot.layer.masksToBounds = false
+        cellSnapshot.layer.cornerRadius = 0.0
+        cellSnapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0)
+        cellSnapshot.layer.shadowRadius = 5.0
+        cellSnapshot.layer.shadowOpacity = 0.4
+        return cellSnapshot
     }
     
     // MARK: Actions
