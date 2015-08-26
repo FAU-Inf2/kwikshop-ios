@@ -59,7 +59,7 @@ class ShoppingList : NSObject {
         set {
             let items = NSMutableOrderedSet()
             for item in newValue {
-                assert(!item.bought, "Tried to add a bought item to the not bought list")
+                assert(!item.bought, "Tried to add a bought item to the not bought list\n\(item)\n")
                 items.addObject(item.managedItem)
             }
             managedShoppingList.notBoughtItems = items
@@ -71,7 +71,7 @@ class ShoppingList : NSObject {
             var items = [Item]()
             for managedItem in managedItems {
                 
-                assert(managedItem.bought as Bool, "A not bought item appeared in the  bought list")
+                assert(managedItem.bought as Bool, "A not bought item appeared in the bought list\n\(managedItem)\n")
                 
                 if let item = managedItem.item {
                     items.append(item)
@@ -84,7 +84,7 @@ class ShoppingList : NSObject {
         set {
             let items = NSMutableOrderedSet()
             for item in newValue {
-                assert(item.bought, "Tried to add a not bought item to the bought list")
+                assert(item.bought, "Tried to add a not bought item to the bought list\n\(item)\n")
                 items.addObject(item.managedItem)
             }
             managedShoppingList.boughtItems = items
