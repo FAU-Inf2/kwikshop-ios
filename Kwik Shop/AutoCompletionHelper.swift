@@ -212,4 +212,10 @@ class AutoCompletionHelper {
         })
         return completions
     }
+    
+    func deleteAutocompletionDataAtIndex(index: Int) {
+        let name = itemNames.removeAtIndex(index)
+        let autoCompletionData = self.autoCompletionData.removeValueForKey(name)!
+        managedObjectContext.deleteObject(autoCompletionData)
+    }
 }
