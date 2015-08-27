@@ -628,7 +628,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7oH-N2-KGT">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="autoCompletionDataCell" id="fxi-3T-v64">
@@ -641,25 +641,26 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8u-jU-ffc">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Item" id="nzf-4M-wHu"/>
+                                    <barButtonItem systemItem="trash" id="nzf-4M-wHu"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="i8u-jU-ffc" firstAttribute="leading" secondItem="nfw-Aq-cca" secondAttribute="leadingMargin" constant="-16" id="1sR-af-xhG"/>
+                            <constraint firstItem="i8u-jU-ffc" firstAttribute="top" secondItem="7oH-N2-KGT" secondAttribute="bottom" id="05S-Gq-ive"/>
+                            <constraint firstItem="ZvM-WA-eTk" firstAttribute="top" secondItem="i8u-jU-ffc" secondAttribute="bottom" id="4AG-4f-zca"/>
                             <constraint firstItem="7oH-N2-KGT" firstAttribute="leading" secondItem="nfw-Aq-cca" secondAttribute="leadingMargin" constant="-16" id="Bzv-LJ-aQs"/>
-                            <constraint firstItem="i8u-jU-ffc" firstAttribute="top" secondItem="7oH-N2-KGT" secondAttribute="bottom" id="UoA-AA-SCd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i8u-jU-ffc" secondAttribute="trailing" constant="-16" id="atB-XB-SU4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7oH-N2-KGT" secondAttribute="trailing" constant="-16" id="izw-xe-W0w"/>
                             <constraint firstItem="7oH-N2-KGT" firstAttribute="top" secondItem="nfw-Aq-cca" secondAttribute="topMargin" id="paN-Q6-tSL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="i8u-jU-ffc" secondAttribute="trailing" constant="-16" id="sYh-b6-sHM"/>
-                            <constraint firstItem="i8u-jU-ffc" firstAttribute="bottom" secondItem="nfw-Aq-cca" secondAttribute="bottomMargin" id="v4I-1T-p3D"/>
+                            <constraint firstItem="i8u-jU-ffc" firstAttribute="leading" secondItem="nfw-Aq-cca" secondAttribute="leadingMargin" constant="-16" id="vLB-5u-I5k"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="autoCompletionTableView" destination="7oH-N2-KGT" id="v86-GR-YR9"/>
+                        <outlet property="deleteButton" destination="nzf-4M-wHu" id="PjW-mx-cNk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YC6-xt-P7X" userLabel="First Responder" sceneMemberID="firstResponder"/>

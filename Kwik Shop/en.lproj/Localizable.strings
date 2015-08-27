@@ -35,6 +35,7 @@ settings_portuguese="Portuguese";
 // MARK: Alert Box Dialogs
 alert_box_cancel="Cancel";
 alert_box_delete="Delete";
+alert_box_delete_plural="Delete all";
 alert_box_change_language_confirmation_beginning="Would you like to change the application language to ";
 alert_box_change_language_confirmation_end="";
 alert_box_change_language_confirmation_yes_beginning="Change to ";

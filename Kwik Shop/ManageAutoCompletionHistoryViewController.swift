@@ -12,6 +12,7 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     
     
     @IBOutlet weak var autoCompletionTableView: UITableView!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     override var hidesBottomBarWhenPushed : Bool {
         get {
@@ -30,7 +31,7 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
         let autoCompletionHelper = AutoCompletionHelper.instance
         autoCompletionTableView.dataSource = self
         autoCompletionTableView.delegate = self
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

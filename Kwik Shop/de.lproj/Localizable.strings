@@ -35,6 +35,7 @@ settings_portuguese="Portugiesisch";
 // MARK: Alert Box Dialogs
 alert_box_cancel="Abbrechen";
 alert_box_delete="Löschen";
+alert_box_delete_plural="Delete all";
 alert_box_change_language_confirmation_beginning="Möchtest du ";
 alert_box_change_language_confirmation_end=" als App-Sprache verwenden";
 alert_box_change_language_confirmation_yes_beginning="";

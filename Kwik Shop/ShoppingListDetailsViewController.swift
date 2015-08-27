@@ -104,23 +104,14 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
 
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
-        if sender === deleteButton {
-            var refreshAlert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        if sender === deleteButton {            
+            let alert = DeleteConfirmationAlertHelper.getDeleteConfirmationAlertWithDeleteHandler(
+                { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
+                    self.performSegueWithIdentifier("unwindToListOfShoppingLists", sender: deleteButton)
+                },
+                forASingularValue: true)
             
-            refreshAlert.addAction(UIAlertAction(title: "alert_box_delete".localized, style: .Destructive, handler: { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
-                self.performSegueWithIdentifier("unwindToListOfShoppingLists", sender: deleteButton)
-                }))
-            
-            /*refreshAlert.addAction(UIAlertAction(title: "Continue and don't ask again", style: .Default, handler: { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
-            // TODO: Perform logic to avoid asking again
-            self.performSegueWithIdentifier("unwindToShoppingList", sender: deleteButton)
-            }))*/
-            
-            refreshAlert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: { (action: UIAlertAction!) in
-                return
-            }))
-            
-            presentViewController(refreshAlert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
             
             return false
         }

@@ -51,6 +51,7 @@
 		3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */; };
 		3AF5966F1B74E97F00B7D05F /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966E1B74E97F00B7D05F /* ShoppingListTableViewCell.swift */; };
 		3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF596701B7525FC00B7D05F /* NSDateExtension.swift */; };
+		3AF5C5901B8F1FC800EAA051 /* DeleteConfirmationAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5C58F1B8F1FC800EAA051 /* DeleteConfirmationAlertHelper.swift */; };
 		3CD7D41C5BA6A41BC601CCEC /* libPods-Kwik Shop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCFA272AB591E1A8B6ED364 /* libPods-Kwik Shop.a */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfShoppingListsViewController.swift; sourceTree = "<group>"; };
 		3AF5966E1B74E97F00B7D05F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
 		3AF596701B7525FC00B7D05F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		3AF5C58F1B8F1FC800EAA051 /* DeleteConfirmationAlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationAlertHelper.swift; sourceTree = "<group>"; };
 		5FCFA272AB591E1A8B6ED364 /* libPods-Kwik Shop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kwik Shop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95603EF0CAB567AF30E20A65 /* Pods-Kwik Shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kwik Shop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kwik Shop/Pods-Kwik Shop.release.xcconfig"; sourceTree = "<group>"; };
 		C5EBFE4FA19FDA67A368C34A /* Pods-Kwik Shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kwik Shop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kwik Shop/Pods-Kwik Shop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				3A6ABDBB1B64F492009FD7BE /* Main.storyboard */,
 				3A790C0D1B6BD1E6003F11A2 /* Launch Screen.xib */,
 				3AE21DF91B78FF550015AEEC /* TableViewCells */,
+				3AF5C58F1B8F1FC800EAA051 /* DeleteConfirmationAlertHelper.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				3AE802F01B8C6DD800533D83 /* StringHTMLExtension.swift in Sources */,
 				3ADA6FD41B663498000B5396 /* Item.swift in Sources */,
 				3ADAFCEC1B7FA12C0035A040 /* ManagedGroup.swift in Sources */,
+				3AF5C5901B8F1FC800EAA051 /* DeleteConfirmationAlertHelper.swift in Sources */,
 				3AE802EE1B8C4DC700533D83 /* AboutViewController.swift in Sources */,
 				3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */,
 				3AF0CE2E1B808BE400D0BC48 /* ManagedItem.swift in Sources */,
