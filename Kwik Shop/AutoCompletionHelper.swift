@@ -232,4 +232,24 @@ class AutoCompletionHelper {
             dbHelper.saveData()
         }
     }
+    
+    func deleteAutocompletionBrandDataAtIndex(index: Int) {
+        deleteAutocompletionBrandDataAtIndex(index, andSave: true)
+    }
+    
+    func deleteAllAutoCompletionBrandData() {
+        while !brandNames.isEmpty {
+            deleteAutocompletionBrandDataAtIndex(0, andSave: false)
+        }
+        dbHelper.saveData()
+    }
+    
+    private func deleteAutocompletionBrandDataAtIndex(index: Int, andSave save: Bool) {
+        let brand = brandNames.removeAtIndex(index)
+        let autoCompletionBrandData = self.autoCompletionBrandData.removeValueForKey(brand)!
+        managedObjectContext.deleteObject(autoCompletionBrandData)
+        if save {
+            dbHelper.saveData()
+        }
+    }
 }

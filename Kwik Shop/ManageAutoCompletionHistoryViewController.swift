@@ -14,6 +14,8 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     @IBOutlet weak var autoCompletionTableView: UITableView!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
+    var manageItemNameCompletion : Bool!
+    
     override var hidesBottomBarWhenPushed : Bool {
         get {
             return true
@@ -55,14 +57,25 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return autoCompletionHelper.allAutoCompletionItemNames.count
+        if manageItemNameCompletion! {
+            return autoCompletionHelper.allAutoCompletionItemNames.count
+        } else {
+            return autoCompletionHelper.allAutoCompletionBrandNames.count
+        }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("autoCompletionDataCell", forIndexPath: indexPath) as! UITableViewCell
         
+        let text : String
+        if manageItemNameCompletion! {
+            text = autoCompletionHelper.allAutoCompletionItemNames[indexPath.row]
+        } else {
+            text = autoCompletionHelper.allAutoCompletionBrandNames[indexPath.row]
+        }
+        
         // Configure the cell...
-        cell.textLabel?.text = autoCompletionHelper.allAutoCompletionItemNames[indexPath.row]
+        cell.textLabel?.text = text
         
         return cell
     }
@@ -80,7 +93,11 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            autoCompletionHelper.deleteAutocompletionDataAtIndex(indexPath.row)
+            if manageItemNameCompletion! {
+                autoCompletionHelper.deleteAutocompletionDataAtIndex(indexPath.row)
+            } else {
+                autoCompletionHelper.deleteAutocompletionBrandDataAtIndex(indexPath.row)
+            }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

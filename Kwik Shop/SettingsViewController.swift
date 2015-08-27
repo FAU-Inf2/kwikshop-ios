@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var languagePicker: UIPickerView!
     @IBOutlet weak var manageAutocomletionHistoryButton: UIButton!
+    @IBOutlet weak var manageAutocompletionBrandHistoryButton: UIButton!
     
     private var languageStrings : [String]!
     private let languageAbbreviations = ["en", "de", "pt"]
@@ -70,19 +71,33 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     // MARK: - Navigation
 
-    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let destinationController = segue.destinationViewController as? ManageAutoCompletionHistoryViewController {
+            if sender === manageAutocomletionHistoryButton {
+                destinationController.manageItemNameCompletion = true
+            } else if sender === manageAutocompletionBrandHistoryButton {
+                destinationController.manageItemNameCompletion = false
+            }
+        }
     }
-    */
+
 
     @IBAction func unwindToSettings(sender: UIStoryboardSegue) {
         // this method is called, if a user selects "delete all" in the manage autocompletion history screen
         let autoCompletionHelper = AutoCompletionHelper.instance
-        autoCompletionHelper.deleteAllAutoCompletionData()
-        autoCompletionHelper
+        
+        if let sourceViewController = sender.sourceViewController as? ManageAutoCompletionHistoryViewController {
+            if sourceViewController.manageItemNameCompletion! {
+                autoCompletionHelper.deleteAllAutoCompletionData()
+            } else {
+                autoCompletionHelper.deleteAllAutoCompletionBrandData()
+            }
+        }
+        
+        
     }
     
     // MARK: UIPickerview Data Source and Delegate
