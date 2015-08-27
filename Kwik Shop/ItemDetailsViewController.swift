@@ -82,10 +82,10 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                 
                 if let unit = item.unit {
                     selectUnit(unit, animated: false)
-                    unitDelegate.updateSelectedUnitInPickerView(unitPicker)
                 } else if let unit = autoCompletionHelper.getUnitForItem(item) {
-                    selectUnit(unit, animated: false)
+                    selectUnit(unit, animated: true)
                 }
+                unitDelegate.updateSelectedUnitAndAmountInPickerView(unitPicker)
                 
                 let group = autoCompletionHelper.getGroupForItem(item)
                 selectGroup(group, animated: false)
@@ -99,8 +99,8 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             
             if let unit = item.unit, row = find(unitDelegate.data, unit) {
                 unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: false)
-                unitDelegate.updateSelectedUnitInPickerView(unitPicker)
             }
+            unitDelegate.updateSelectedUnitAndAmountInPickerView(unitPicker)
             
             highlightSwitch.setOn(item.highlighted, animated: false)
             if let brand = item.brand {

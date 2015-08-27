@@ -17,6 +17,7 @@ class UnitAndAmountDelegate: UnitDelegate {
     private let AMOUNT_COMPONENT : Int = UnitAndAmountDelegate.AMOUNT_COMPONENT
     private let UNIT_COMPONENT : Int = UnitAndAmountDelegate.UNIT_COMPONENT
     private var selectedUnit = UnitHelper.instance.NONE
+    private var selectedAmount : Int? = nil
     
     override func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2
@@ -35,13 +36,10 @@ class UnitAndAmountDelegate: UnitDelegate {
     
     override func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == AMOUNT_COMPONENT {
-            if row == 0 {
-                return ""
-            }
-            if let indices = selectedUnit.allowedPickerIndices {
-                return "\(indices[row - 1])"
+            if let amount = getAmountForPickerView(pickerView, forRow: row) {
+                return "\(amount)"
             } else {
-                return "\(row)"
+                return ""
             }
         } else {
             return super.pickerView(pickerView, titleForRow: row, forComponent: component)
@@ -50,6 +48,7 @@ class UnitAndAmountDelegate: UnitDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == AMOUNT_COMPONENT {
+            self.selectedAmount = getAmountForPickerView(pickerView, forRow: row)
             if let indices = selectedUnit.allowedPickerIndices {
                 if row == 0 {
                     self.displayUnitNamesInSingular = true
@@ -61,13 +60,46 @@ class UnitAndAmountDelegate: UnitDelegate {
             }
 
         } else if component == UNIT_COMPONENT {
+            let oldUnit = selectedUnit
             selectedUnit = super.data[row]
             pickerView.reloadAllComponents()
+            if let oldType = oldUnit.allowedPickerIndexType, newType = selectedUnit.allowedPickerIndexType {
+                if oldType.rawValue != newType.rawValue {
+                    // maybe the selected amount should be updated
+                    if let amountSelected = self.selectedAmount {
+                        if let amounts = selectedUnit.allowedPickerIndices {
+                            if let index = find(amounts, amountSelected) {
+                                pickerView.selectRow(index + 1, inComponent: AMOUNT_COMPONENT, animated: false)
+                            } else {
+                                // the amount that was selected before can't be selected for the current unit
+                                pickerView.selectRow(0, inComponent: AMOUNT_COMPONENT, animated: true)
+                            }
+                        } else {
+                            // every amount is allowed now
+                            pickerView.selectRow(amountSelected, inComponent: AMOUNT_COMPONENT, animated: false)
+                        }
+                    } else {
+                        // no amount was selelected before, so nothing should have changed
+                    }
+                }
+            }
         }
     }
     
-    func updateSelectedUnitInPickerView(pickerView: UIPickerView) {
+    func updateSelectedUnitAndAmountInPickerView(pickerView: UIPickerView) {
         selectedUnit = super.data[pickerView.selectedRowInComponent(UNIT_COMPONENT)]
+        selectedAmount = getAmountForPickerView(pickerView, forRow: pickerView.selectedRowInComponent(AMOUNT_COMPONENT))
         pickerView.reloadAllComponents()
+    }
+    
+    private func getAmountForPickerView(pickerView: UIPickerView, forRow row: Int) -> Int? {
+        if row == 0 {
+            return nil
+        }
+        if let indices = selectedUnit.allowedPickerIndices {
+            return indices[row - 1]
+        } else {
+            return row
+        }
     }
 }
