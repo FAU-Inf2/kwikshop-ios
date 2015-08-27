@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ManageAutoCompletionHistoryTableViewController: UITableViewController {
+class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    @IBOutlet weak var autoCompletionTableView: UITableView!
     
     override var hidesBottomBarWhenPushed : Bool {
         get {
@@ -25,7 +28,8 @@ class ManageAutoCompletionHistoryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let autoCompletionHelper = AutoCompletionHelper.instance
-        
+        autoCompletionTableView.dataSource = self
+        autoCompletionTableView.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,19 +45,19 @@ class ManageAutoCompletionHistoryTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return autoCompletionHelper.allAutoCompletionItemNames.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("autoCompletionDataCell", forIndexPath: indexPath) as! UITableViewCell
         
         // Configure the cell...
@@ -72,7 +76,7 @@ class ManageAutoCompletionHistoryTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             autoCompletionHelper.deleteAutocompletionDataAtIndex(indexPath.row)
