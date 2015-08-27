@@ -67,9 +67,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -77,6 +78,12 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     */
 
+    @IBAction func unwindToSettings(sender: UIStoryboardSegue) {
+        // this method is called, if a user selects "delete all" in the manage autocompletion history screen
+        let autoCompletionHelper = AutoCompletionHelper.instance
+        autoCompletionHelper.deleteAllAutoCompletionData()
+        autoCompletionHelper
+    }
     
     // MARK: UIPickerview Data Source and Delegate
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

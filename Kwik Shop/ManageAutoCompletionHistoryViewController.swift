@@ -102,9 +102,25 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     }
     */
 
-    /*
     // MARK: - Navigation
-
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
+        if sender === deleteButton {
+            let alert = DeleteConfirmationAlertHelper.getDeleteConfirmationAlertWithDeleteHandler(
+                { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
+                    self.performSegueWithIdentifier("unwindToSettings", sender: self)
+                },
+                forASingularValue: false)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        return true
+    }
+    
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].

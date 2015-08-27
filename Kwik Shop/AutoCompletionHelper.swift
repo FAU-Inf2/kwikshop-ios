@@ -214,8 +214,22 @@ class AutoCompletionHelper {
     }
     
     func deleteAutocompletionDataAtIndex(index: Int) {
+        deleteAutocompletionDataAtIndex(index, andSave: true)
+    }
+    
+    func deleteAllAutoCompletionData() {
+        while !itemNames.isEmpty {
+            deleteAutocompletionDataAtIndex(0, andSave: false)
+        }
+        dbHelper.saveData()
+    }
+    
+    private func deleteAutocompletionDataAtIndex(index: Int, andSave save: Bool) {
         let name = itemNames.removeAtIndex(index)
         let autoCompletionData = self.autoCompletionData.removeValueForKey(name)!
         managedObjectContext.deleteObject(autoCompletionData)
+        if save {
+            dbHelper.saveData()
+        }
     }
 }
