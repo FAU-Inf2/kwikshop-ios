@@ -592,7 +592,7 @@
                                     <segue destination="hwf-Xa-JuG" kind="show" id="Lnb-tZ-A5u"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-kq-VEr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-kq-VEr">
                                 <rect key="frame" x="16" y="280" width="267" height="30"/>
                                 <state key="normal" title="Manage Autocompletion Brand History">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -609,7 +609,9 @@
                             <constraint firstItem="vsL-iR-TQT" firstAttribute="leading" secondItem="IeR-d4-Qkp" secondAttribute="trailing" constant="8" id="CKA-fD-PEE"/>
                             <constraint firstItem="IeR-d4-Qkp" firstAttribute="centerY" secondItem="vsL-iR-TQT" secondAttribute="centerY" id="Os2-OJ-ovd"/>
                             <constraint firstItem="IeR-d4-Qkp" firstAttribute="leading" secondItem="3JY-mW-zha" secondAttribute="leading" id="PN5-JZ-hYo"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3JY-mW-zha" secondAttribute="trailing" id="VVB-hL-Kp6"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="vsL-iR-TQT" secondAttribute="trailing" id="Wnp-il-tI4"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Ip3-kq-VEr" secondAttribute="trailing" id="b3C-bI-gCE"/>
                             <constraint firstItem="IeR-d4-Qkp" firstAttribute="leading" secondItem="XCN-aV-AJb" secondAttribute="leadingMargin" id="lFQ-50-qWd"/>
                             <constraint firstItem="Ip3-kq-VEr" firstAttribute="leading" secondItem="XCN-aV-AJb" secondAttribute="leadingMargin" id="rGg-Y3-8X0"/>
                             <constraint firstItem="vsL-iR-TQT" firstAttribute="top" secondItem="i3x-Rz-mhu" secondAttribute="bottom" constant="8" id="zUy-Fw-keZ"/>

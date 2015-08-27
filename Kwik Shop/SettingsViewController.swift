@@ -27,6 +27,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         self.title = "navigation_bar_settings".localized
         self.languageStrings = ["settings_english".localized, "settings_german".localized, "settings_portuguese".localized]
         languageLabel.text = "settings_language".localized
+        manageAutocomletionHistoryButton.setTitle("settings_manage_autocompletion_history".localized, forState: UIControlState.Normal)
+        manageAutocompletionBrandHistoryButton.setTitle("settings_manage_autocompletion_brand_history".localized, forState: UIControlState.Normal)
         
         languagePicker.delegate = self
         languagePicker.dataSource = self
