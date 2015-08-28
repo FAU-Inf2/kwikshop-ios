@@ -207,17 +207,9 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     // MARK: MLP Autocompletion
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
         if textField === self.quickAddTextField {
-            var nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(string + " a")
-            
-            var name = nameAmountAndUnit.name
-            
-            name = name.substringToIndex(name.endIndex.predecessor()) // drop the "a"
-            if !name.isEmpty {
-                name = name.substringToIndex(name.endIndex.predecessor()) // drop the " "
+            if let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(string) {
+                return autoCompletionHelper.possibleCompletionsForQuickAddTextWithName(nameAmountAndUnit.name ?? "", amount: nameAmountAndUnit.amount, andUnit: nameAmountAndUnit.unit)
             }
-            
-            //return autoCompletionHelper.possibleCompletionsForQuickAddTextWithNameAmountAndUnit(nameAmountAndUnit)
-            return autoCompletionHelper.possibleCompletionsForQuickAddTextWithName(name, amount: nameAmountAndUnit.amount, andUnit: nameAmountAndUnit.unit)
         }
         return [AnyObject]()
     }
@@ -425,14 +417,21 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
 
     @IBAction func quickAddPressed(sender: UIButton) {
         
-        let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text + " a")
+        if let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text) {
+            quickAddTextField.text = ""
+            quickAddButton.enabled = false
+            addItem(item)
+        }
         
-        var name = nameAmountAndUnit.name
         
-        name = name.substringToIndex(name.endIndex.predecessor()) // drop the "a"
+        //let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text/* + " a"*/)
+        
+        /*var name = nameAmountAndUnit.name
+        
+        /*name = name.substringToIndex(name.endIndex.predecessor()) // drop the "a"
         if !name.isEmpty {
             name = name.substringToIndex(name.endIndex.predecessor()) // drop the " "
-        }
+        }*/
         
         let amount = nameAmountAndUnit.amount
         let none = UnitHelper.instance.NONE
@@ -451,7 +450,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             quickAddButton.enabled = false
             addItem(item)
 
-        }
+        }*/
     }
     
     func addItem(item: Item) {
@@ -504,16 +503,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 let navigationController = segue.destinationViewController as! NavigationController
                 let itemDetailsViewController = navigationController.topViewController as! ItemDetailsViewController
                 if !quickAddTextField.text.isEmpty {
-                    let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text)
-                    let name = nameAmountAndUnit.name
-                    if !name.isEmpty {
-                        let item = Item(name: name)
-                        if let amount = nameAmountAndUnit.amount {
-                            item.amount = amount
-                            if let unit = nameAmountAndUnit.unit {
-                                item.unit = unit
-                            }
-                        }
+                    if let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text) {
+                        let item = itemParser.getItemForParsedAmountAndUnit((nameAmountAndUnit.name ?? "", nameAmountAndUnit.amount, nameAmountAndUnit.unit))
                         itemDetailsViewController.currentItem = item
                     }
                 }

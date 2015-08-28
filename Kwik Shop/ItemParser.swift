@@ -12,113 +12,176 @@ class ItemParser {
     
     let autoCompletionHelper = AutoCompletionHelper.instance
     
-    func getNameAmountAndUnitForInput(input: String) -> (name: String, amount: Int?, unit: Unit?) {
-        var output = ""
-        var amount = ""
-        var thisCanBeUnitOrName = ""
-        var amountWasSpecified = false
-        var lastCharWasANumber = false
-        var charWasReadAfterAmount = false
-        var emptyStringOrWhiteSpace = true
-        var possibleUnitWasSpecifiedBeforeName = false
+    func getNameAmountAndUnitForInput(input: String) -> (name: String?, amount: Int?, unit: Unit?)? {
+        let wordsWithEmptyWords = input.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
-        for char in input {
-            // only parse the first number found to amount
-            if char >= "0" && char <= "9" && (lastCharWasANumber || amount.isEmpty) && emptyStringOrWhiteSpace {
-                amount.append(char)
-                amountWasSpecified = true
-                lastCharWasANumber = true
-            } else if lastCharWasANumber && char == " " {
-                // ignore all white spaces between the amount and the next char
-                emptyStringOrWhiteSpace = true
-            } else if lastCharWasANumber || (charWasReadAfterAmount && char != " ") {
-                //String from amount to next whitespace, this should be unit or name
-                if !possibleUnitWasSpecifiedBeforeName && output.isEmpty {
-                    possibleUnitWasSpecifiedBeforeName = true
-                }
-                thisCanBeUnitOrName.append(char)
-                lastCharWasANumber = false
-                charWasReadAfterAmount = true
-                emptyStringOrWhiteSpace = false
-            } else if charWasReadAfterAmount && char == " " {
-                //whitespace after possible unit
-                charWasReadAfterAmount = false
-                emptyStringOrWhiteSpace = true
-            } else if char == " " {
-                emptyStringOrWhiteSpace = true
-                output.append(char)
-            } else {
-                output.append(char)
-                lastCharWasANumber = false
-                emptyStringOrWhiteSpace = false
-            }
+        let words = wordsWithEmptyWords.filter({return !$0.isEmpty})
+        
+        let count = words.count
+        
+        if count == 0 {
+            return nil
         }
         
-        var unitMatchFound = false
-        var foundUnit : Unit? = nil
-        var foundAmount : Int? = nil
-        let unitDelegate = UnitDelegate(pickerView: nil)
-        
-        for unit in unitDelegate.data {
-            if unit.shortestPossibleDescription.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame || unit.name.caseInsensitiveCompare(thisCanBeUnitOrName) == .OrderedSame {
-                foundUnit = unit
-                unitMatchFound = true
-                break
+        let first = words.first!
+        if let amount = first.toInt() {
+            // amount found in the first word
+            if count == 1 {
+                return (nil, amount, nil) // only amount was entered
             }
-        }
-        
-        if !unitMatchFound && !thisCanBeUnitOrName.isEmpty {
-            //if no unit was found complete string has to be restored
-            if output != "" {
-                //if both output and thisCanBeUnitOrName are not empty there was a number between them which has to be restored
-                if possibleUnitWasSpecifiedBeforeName {
-                    output = thisCanBeUnitOrName + " " + output
+            let second = words[1] // this can be either the unit or no unit was specified and everything else is the item name
+            let unit = findUnitForString(second, withAmountSpecified: amount)
+            
+            if count == 2 {
+                if unit == nil {
+                    return (second, amount, nil)
                 } else {
-                    output = output + amount + " " + thisCanBeUnitOrName
-                    amountWasSpecified = false
+                    return (nil, amount, unit)
                 }
             }
-            else {
-                output = thisCanBeUnitOrName
+            
+            var itemName : String
+            if unit == nil {
+                itemName = "\(second) "
+            } else {
+                itemName = ""
+            }
+            
+            for index in 2 ..< count {
+                if index == count - 1 {
+                    // last word
+                    itemName += words[index]
+                } else {
+                    itemName += "\(words[index]) "
+                }
+            }
+            return (itemName, amount, unit)
+        }
+        
+        if count > 1 {
+            if let amount = words.last!.toInt() {
+                // amount found in the last word
+                var itemName = ""
+                for index in 0 ..< count - 1 {
+                    if index == count - 2 {
+                        // last word before amount
+                        itemName += words[index]
+                    } else {
+                        itemName += "\(words[index]) "
+                    }
+                }
+                return (itemName, amount, nil)
             }
         }
         
-        if !(output.isEmpty || emptyStringOrWhiteSpace) {
-            if amountWasSpecified {
-                foundAmount = amount.toInt()
+        if count > 2 {
+            if let amount = words[count - 2].toInt() {
+                // amount found in the second last word, if last word is unit, this is ok
+                if let unit = findUnitForString(words.last!, withAmountSpecified: amount) {
+                    // amount and unit are the last two words
+                    var itemName = ""
+                    for index in 0 ..< count - 2 {
+                        if index == count - 2 {
+                            // last word before amount
+                            itemName += words[index]
+                        } else {
+                            itemName += "\(words[index]) "
+                        }
+                    }
+                    return (itemName, amount, unit)
+                }
             }
         }
         
-        let string = NSMutableString(string: output)
-        CFStringTrimWhitespace(string)
+        // no amount found
         
-        let name = string as String
+        let unit = findUnitForString(first, withAmountSpecified: nil)
         
-        return (name, foundAmount, foundUnit)
+        if count == 1 {
+            if unit == nil {
+                return (first, nil, nil)
+            } else {
+                return (nil, nil, unit)
+            }
+        }
+        
+        var itemName : String
+        if unit == nil {
+            itemName = "\(first) "
+        } else {
+            itemName = ""
+        }
+        
+        for index in 1 ..< count {
+            if index == count - 1 {
+                // last word
+                itemName += words[index]
+            } else {
+                itemName += "\(words[index]) "
+            }
+        }
+        return (itemName, nil, unit)
+    }
+    
+    private func findUnitForString(possibleUnit: String, withAmountSpecified amountSpecified: Int?) -> Unit? {
+        let unitDelegate = UnitDelegate(pickerView: nil)
+        if let amount = amountSpecified {
+            if amount > 1 {
+                // the amount is plural
+                for unit in unitDelegate.data {
+                    if unit.shortestPossibleDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.name.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
+                        return unit
+                    }
+                }
+                return nil
+            } else {
+                // the amount is singular
+                for unit in unitDelegate.data {
+                    if unit.shortestPossibleSingularDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.singularName.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
+                        return unit
+                    }
+                }
+                return nil
+            }
+        } else {
+            // the amount is not specified
+            for unit in unitDelegate.data {
+                if unit.shortestPossibleDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.name.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.shortestPossibleSingularDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.singularName.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
+                    return unit
+                }
+            }
+            return nil
+        }
+    }
+    
+    func getItemForParsedAmountAndUnit(nameAmountAndUnit: (name: String?, amount: Int?, unit: Unit?)?) -> Item? {
+        if let name = nameAmountAndUnit?.name {
+            
+            if name.isEmpty {
+                return nil
+            }
+            
+            let item = Item(name: name)
+            if let itemAmount = nameAmountAndUnit!.amount {
+                item.amount = itemAmount
+            }
+            if let itemUnit = nameAmountAndUnit!.unit {
+                item.unit = itemUnit
+            } else {
+                item.unit = UnitHelper.instance.NONE
+            }
+            
+            item.group = autoCompletionHelper.getGroupForItem(item)
+            
+            return item
+        } else {
+            return nil
+        }
+
     }
     
     func getItemWithParsedAmountAndUnitForInput(input : String) -> Item? {
         let nameAmountAndUnit = getNameAmountAndUnitForInput(input)
-        
-        let name = nameAmountAndUnit.name
-        
-        if name.isEmpty {
-            return nil
-        }
-        
-        let item = Item(name: name)
-        if let itemAmount = nameAmountAndUnit.amount {
-            item.amount = itemAmount
-        }
-        if let itemUnit = nameAmountAndUnit.unit {
-            item.unit = itemUnit
-        } else {
-            item.unit = UnitHelper.instance.NONE
-        }
-        
-        item.group = autoCompletionHelper.getGroupForItem(item)
-        
-        return item
+        return getItemForParsedAmountAndUnit(nameAmountAndUnit)
     }
-    
 }
