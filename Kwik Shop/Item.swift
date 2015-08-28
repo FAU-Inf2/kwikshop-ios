@@ -191,6 +191,31 @@ class Item : NSObject, Equatable {
         
         self.managedItem.item = self
     }
+    
+    func isMergableWithOtherItem(other: Item) -> Bool {
+        if self.name != other.name {
+            return false
+        }
+        if self.unit != other.unit {
+            return false
+        }
+        if self.highlighted != other.highlighted {
+            return false
+        }
+        if self.comment != other.comment {
+            return false
+        }
+        if self.brand != other.brand {
+            return false
+        }
+        if self.bought != other.bought {
+            return false
+        }
+        if self.group != other.group {
+            return false
+        }
+        return true
+    }
 }
     
     func == (left: Item, right: Item) -> Bool {
