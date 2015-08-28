@@ -51,8 +51,8 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
         let tabBarIconsLicenseLinkDescription = "CC BY-ND 3.0"
         let tabBarIconsLicenseDescriptionEnd = " license."
         
-        
-        let htmlHeader = "<!DOCTYPE html>\n<html>\n<body>\n"
+        let defaultFont = UIFont.systemFontOfSize(CGFloat(14))
+        let htmlHeader = "<!DOCTYPE html>\n<html><head><style>p,h1,h2,h3,blockquote{font-family: \"\(defaultFont.familyName)\"}</style></head>\n<body>\n"
         let htmlFooter = "</body>\n</html>"
         
         var aboutText = htmlHeader
