@@ -143,7 +143,8 @@ class Item : NSObject, Equatable {
         let managedItem = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: Item.managedObjectContext!) as! ManagedItem
         
         self.init(managedItem: managedItem)
-        self.name = name
+        
+        self.name = name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         self.group = GroupHelper.instance.OTHER
         self.unit = UnitHelper.instance.NONE
     }
