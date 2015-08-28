@@ -80,10 +80,14 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                 
                 unitDelegate.displayUnitNamesInSingular = isThisSingular(item.amount)
                 
-                if let unit = item.unit {
+                let unit = item.unit
+                let none = UnitHelper.instance.NONE
+                if unit !== none {
                     selectUnit(unit, animated: false)
                 } else if let unit = autoCompletionHelper.getUnitForItem(item) {
                     selectUnit(unit, animated: true)
+                } else {
+                    selectUnit(none, animated: false)
                 }
                 unitDelegate.updateSelectedUnitAndAmountInPickerView(unitPicker)
                 
@@ -97,9 +101,9 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             
             unitDelegate.displayUnitNamesInSingular = isThisSingular(item.amount)
             
-            if let unit = item.unit, row = find(unitDelegate.data, unit) {
-                unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: false)
-            }
+            let unit = item.unit
+            let row = find(unitDelegate.data, unit)!
+            unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: false)
             unitDelegate.updateSelectedUnitAndAmountInPickerView(unitPicker)
             
             highlightSwitch.setOn(item.highlighted, animated: false)
@@ -284,13 +288,8 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                 amount = unitPicker.selectedRowInComponent(AMOUNT_COMPONENT)
             }
             
-            let unit : Unit?
-            if unitHasChanged {
-                let unitIndex = unitPicker.selectedRowInComponent(UNIT_COMPONENT)
-                unit = unitDelegate.data[unitIndex]
-            } else {
-                unit = currentItem?.unit
-            }
+            let unitIndex = unitPicker.selectedRowInComponent(UNIT_COMPONENT)
+            let unit = unitDelegate.data[unitIndex]
             
             let highlighted = highlightSwitch.on
             let brand = brandTextField.text

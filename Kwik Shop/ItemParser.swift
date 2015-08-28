@@ -112,10 +112,9 @@ class ItemParser {
         }
         if let itemUnit = nameAmountAndUnit.unit {
             item.unit = itemUnit
-        }/* else {
-            // not a good idea because no unit might be intended behavior 
-            item.unit = autoCompletionHelper.getUnitForItem(item)
-        }*/
+        } else {
+            item.unit = UnitHelper.instance.NONE
+        }
         
         item.group = autoCompletionHelper.getGroupForItem(item)
         

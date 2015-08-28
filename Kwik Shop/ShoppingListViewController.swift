@@ -163,8 +163,10 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
 
             var amountText = ""
             
+            let unit = item.unit
             if let amount = item.amount {
-                if let unit = item.unit {
+                let unit = item.unit
+                if !unit.shortestPossibleDescription.isEmpty {
                     if amount == 1 {
                         amountText = "\(amount) \(unit.shortestPossibleSingularDescription)"
                     } else {
@@ -173,7 +175,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 } else {
                     amountText = "\(amount)"
                 }
-            } else if let unit = item.unit {
+            } else if !unit.shortestPossibleDescription.isEmpty {
                 // if no amount was specified, display unit name in singular
                 amountText = "\(unit.shortestPossibleSingularDescription)"
             }
@@ -433,13 +435,14 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         }
         
         let amount = nameAmountAndUnit.amount
-        var unit = nameAmountAndUnit.unit
+        let none = UnitHelper.instance.NONE
+        var unit = nameAmountAndUnit.unit ?? none
         
         //println("\(name)    \(amount) \(unit?.name)")
         
-        if name.isEmpty && unit != nil{
-            name = unit!.name
-            unit = nil
+        if name.isEmpty && unit !== none{
+            name = unit.name
+            unit = none
         }
         
         if !name.isEmpty {
@@ -457,16 +460,16 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         for index in 0 ..< notBoughtItems.count {
             let otherItem = notBoughtItems[index]
             if item.isMergableWithOtherItem(otherItem) {
-                if otherItem.amount != nil {
-                    if item.amount != nil {
+                //if otherItem.amount != nil {
+                //    if item.amount != nil {
                         otherItem.amount! += item.amount!
                         dbHelper.deleteItem(item)
                         updateModifyDate()
                         saveToDatabase()
                         shoppingListTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Bottom)
                         return
-                    }
-                }
+                //    }
+                //}
             }
         }
         

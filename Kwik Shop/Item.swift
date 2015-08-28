@@ -118,22 +118,16 @@ class Item : NSObject, Equatable {
         }
     }
     
-    var unit : Unit? {
+    var unit : Unit {
         get {
-            if let managedItemUnit = managedItem.unit as? ManagedUnit{
-                if let unit = managedItemUnit.unit {
-                    return unit
-                }
-                return Unit(managedUnit: managedItemUnit)
+            let managedItemUnit = managedItem.unit as! ManagedUnit
+            if let unit = managedItemUnit.unit {
+                return unit
             }
-            return nil
+            return Unit(managedUnit: managedItemUnit)
         }
         set {
-            if newValue == nil {
-                managedItem.unit = nil
-                return
-            }
-            let managedUnit = newValue!.managedUnit
+            let managedUnit = newValue.managedUnit
             managedItem.unit = managedUnit
         }
     }
@@ -151,13 +145,14 @@ class Item : NSObject, Equatable {
         self.init(managedItem: managedItem)
         self.name = name
         self.group = GroupHelper.instance.OTHER
+        self.unit = UnitHelper.instance.NONE
     }
     
-    convenience init (name: String, amount: Int?, unit: Unit?, highlighted: Bool, brand: String?, comment: String?, group: Group) {
+    convenience init (name: String, amount: Int?, unit: Unit, highlighted: Bool, brand: String?, comment: String?, group: Group) {
         self.init (name: name, amount: amount, highlighted: highlighted, brand: brand, comment: comment, bought: false, order: nil, group: group, unit: unit)
     }
     
-    convenience init (name: String, amount: Int?, highlighted: Bool, brand: String?, comment: String?, bought: Bool, order: Int?, group: Group, unit: Unit?) {
+    convenience init (name: String, amount: Int?, highlighted: Bool, brand: String?, comment: String?, bought: Bool, order: Int?, group: Group, unit: Unit) {
         self.init(name: name)
         
         self.amount = amount
@@ -178,7 +173,7 @@ class Item : NSObject, Equatable {
         self.unit = unit
     }
     
-    convenience init (name: String, amount: Int?, unit: Unit?) {
+    convenience init (name: String, amount: Int?, unit: Unit) {
         self.init(name: name)
         self.amount = amount
         self.unit = unit
@@ -193,7 +188,11 @@ class Item : NSObject, Equatable {
     }
     
     func isMergableWithOtherItem(other: Item) -> Bool {
+        println("self: \(self.managedItem), other: \(other.managedItem)")
         if self.name != other.name {
+            return false
+        }
+        if self.amount == nil || other.amount == nil {
             return false
         }
         if self.unit != other.unit {

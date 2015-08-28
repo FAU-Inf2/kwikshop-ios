@@ -19,7 +19,7 @@ class ManagedItem: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var order: NSNumber
     @NSManaged var group: NSManagedObject
-    @NSManaged var unit: NSManagedObject?
+    @NSManaged var unit: NSManagedObject
     @NSManaged var shoppingListIfBought: NSManagedObject?
     @NSManaged var shoppingListIfNotBought: NSManagedObject?
     
