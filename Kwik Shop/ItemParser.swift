@@ -146,7 +146,7 @@ class ItemParser {
         } else {
             // the amount is not specified
             for unit in unitDelegate.data {
-                if unit.shortestPossibleDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.name.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.shortestPossibleSingularDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.singularName.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
+                if unit.shortestPossibleSingularDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.singularName.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
                     return unit
                 }
             }
@@ -167,6 +167,9 @@ class ItemParser {
             }
             if let itemUnit = nameAmountAndUnit!.unit {
                 item.unit = itemUnit
+                if item.amount == nil {
+                    item.amount = 1
+                }
             } else {
                 item.unit = UnitHelper.instance.NONE
             }
