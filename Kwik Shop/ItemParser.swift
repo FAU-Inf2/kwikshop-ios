@@ -81,7 +81,7 @@ class ItemParser {
                     // amount and unit are the last two words
                     var itemName = ""
                     for index in 0 ..< count - 2 {
-                        if index == count - 2 {
+                        if index == count - 3 {
                             // last word before amount
                             itemName += words[index]
                         } else {
