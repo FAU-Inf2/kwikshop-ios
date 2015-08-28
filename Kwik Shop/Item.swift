@@ -192,11 +192,13 @@ class Item : NSObject, Equatable {
         if self.name != other.name {
             return false
         }
-        if self.amount == nil || other.amount == nil {
-            return false
-        }
         if self.unit != other.unit {
             return false
+        }
+        if self.amount == nil || other.amount == nil {
+            if self.unit === UnitHelper.instance.NONE {
+                return false
+            }
         }
         if self.highlighted != other.highlighted {
             return false

@@ -416,41 +416,11 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
 
     @IBAction func quickAddPressed(sender: UIButton) {
-        
         if let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text) {
             quickAddTextField.text = ""
             quickAddButton.enabled = false
             addItem(item)
         }
-        
-        
-        //let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text/* + " a"*/)
-        
-        /*var name = nameAmountAndUnit.name
-        
-        /*name = name.substringToIndex(name.endIndex.predecessor()) // drop the "a"
-        if !name.isEmpty {
-            name = name.substringToIndex(name.endIndex.predecessor()) // drop the " "
-        }*/
-        
-        let amount = nameAmountAndUnit.amount
-        let none = UnitHelper.instance.NONE
-        var unit = nameAmountAndUnit.unit ?? none
-        
-        //println("\(name)    \(amount) \(unit?.name)")
-        
-        if name.isEmpty && unit !== none{
-            name = unit.name
-            unit = none
-        }
-        
-        if !name.isEmpty {
-            let item = Item(name: name, amount: amount, unit: unit)
-            quickAddTextField.text = ""
-            quickAddButton.enabled = false
-            addItem(item)
-
-        }*/
     }
     
     func addItem(item: Item) {
@@ -459,16 +429,21 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         for index in 0 ..< notBoughtItems.count {
             let otherItem = notBoughtItems[index]
             if item.isMergableWithOtherItem(otherItem) {
-                //if otherItem.amount != nil {
-                //    if item.amount != nil {
-                        otherItem.amount! += item.amount!
-                        dbHelper.deleteItem(item)
-                        updateModifyDate()
-                        saveToDatabase()
-                        shoppingListTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Bottom)
-                        return
-                //    }
-                //}
+                if otherItem.amount == nil {
+                    // other item has no amount. but a unit specified -> implicitly interpret as amount "1"
+                    otherItem.amount = 1
+                }
+                if item.amount != nil {
+                    otherItem.amount! += item.amount!
+                } else {
+                    // item has no amount. but a unit specified -> implicitly interpret as amount "1"
+                    otherItem.amount! += 1
+                }
+                dbHelper.deleteItem(item)
+                updateModifyDate()
+                saveToDatabase()
+                shoppingListTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Bottom)
+                return
             }
         }
         
@@ -478,8 +453,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         updateModifyDate()
         autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
         saveToDatabase()
-    }
-    
+    }    
     
     // MARK: Navigaton
     // In a storyboard-based application, you will often want to do a little preparation before navigation
