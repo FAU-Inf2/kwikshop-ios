@@ -12,6 +12,7 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var aboutWebView: UIWebView!
     private var initialLinkIntercepted = false
+    var aboutText : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,7 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
         let tabBarIconsLicenseDescriptionEnd = " license."
         
         let defaultFont = UIFont.systemFontOfSize(CGFloat(14))
+        let meta = "<meta name=\"viewport\" content=\"width=device-width\"/>"
         let htmlHeader = "<!DOCTYPE html>\n<html><head><style>p,h1,h2,h3,blockquote{font-family: \"\(defaultFont.familyName)\"}</style></head>\n<body>\n"
         let htmlFooter = "</body>\n</html>"
         
@@ -69,6 +71,7 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
         aboutText += (somePortionsBeginning + kwikShopAndroidLink.htmlLinkWithDescription(kwikShopAndroidDescription).htmlBold + kwikShopAndroidLicense + somePortionsEnd).htmlParagraph
         
         aboutText += htmlFooter
+        self.aboutText = aboutText
         
         aboutWebView.loadHTMLString(aboutText, baseURL: nil)
         
@@ -81,6 +84,21 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
     }
     
 
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        coordinator.animateAlongsideTransition(
+            { [unowned self] (context) -> () in
+                let orientation = UIApplication.sharedApplication().statusBarOrientation
+                if orientation.isLandscape {
+                    self.initialLinkIntercepted = false
+                    self.aboutWebView?.loadHTMLString(self.aboutText, baseURL: nil)
+                }
+            },
+            completion: nil)
+
+    }
+    
     /*
     // MARK: - Navigation
 

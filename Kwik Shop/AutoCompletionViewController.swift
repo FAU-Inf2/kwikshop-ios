@@ -46,8 +46,6 @@ class AutoCompletionViewController: UIViewController {
         coordinator.animateAlongsideTransition(
             { [unowned self] (context) -> () in
                 let orientation = UIApplication.sharedApplication().statusBarOrientation
-                println(orientation.isPortrait)
-
                 let maximumNumberOfAutoCompleteRows : Int
                 if orientation.isLandscape {
                     maximumNumberOfAutoCompleteRows = 3
