@@ -93,6 +93,8 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                 
                 let group = autoCompletionHelper.getGroupForItem(item)
                 selectGroup(group, animated: false)
+            } else {
+                unitDelegate.displayUnitNamesInSingular = isThisSingular(nil)
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name

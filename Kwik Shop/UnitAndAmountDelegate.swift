@@ -16,6 +16,9 @@ class UnitAndAmountDelegate: UnitDelegate {
     static let UNIT_COMPONENT = 1
     private let AMOUNT_COMPONENT : Int = UnitAndAmountDelegate.AMOUNT_COMPONENT
     private let UNIT_COMPONENT : Int = UnitAndAmountDelegate.UNIT_COMPONENT
+    private var UNIT_NONE : Unit {
+        return UnitHelper.instance.NONE
+    }
     private var selectedUnit = UnitHelper.instance.NONE
     private var selectedAmount : Int? = nil
     
@@ -26,7 +29,11 @@ class UnitAndAmountDelegate: UnitDelegate {
     override func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == AMOUNT_COMPONENT {
             if let indices = selectedUnit.allowedPickerIndices {
-                return indices.count + 1
+                if selectedUnit !== UNIT_NONE {
+                    return indices.count
+                } else {
+                    return indices.count + 1
+                }
             }
             return UnitAndAmountDelegate.MAX_AMOUNT
         } else {
@@ -62,8 +69,13 @@ class UnitAndAmountDelegate: UnitDelegate {
         } else if component == UNIT_COMPONENT {
             let oldUnit = selectedUnit
             selectedUnit = super.data[row]
-            pickerView.reloadAllComponents()
-            if let oldType = oldUnit.allowedPickerIndexType, newType = selectedUnit.allowedPickerIndexType {
+            
+            if oldUnit === UNIT_NONE && selectedUnit !== UNIT_NONE && selectedAmount == nil {
+                pickerView.selectRow(1, inComponent: AMOUNT_COMPONENT, animated: true)
+                pickerView.reloadAllComponents()
+                pickerView.selectRow(0, inComponent: AMOUNT_COMPONENT, animated: false)
+            } else if let oldType = oldUnit.allowedPickerIndexType, newType = selectedUnit.allowedPickerIndexType {
+                pickerView.reloadAllComponents()
                 if oldType.rawValue != newType.rawValue {
                     // maybe the selected amount should be updated
                     if let amountSelected = self.selectedAmount {
@@ -93,6 +105,13 @@ class UnitAndAmountDelegate: UnitDelegate {
     }
     
     private func getAmountForPickerView(pickerView: UIPickerView, forRow row: Int) -> Int? {
+        if selectedUnit !== UNIT_NONE {
+            if let indices = selectedUnit.allowedPickerIndices {
+                return indices[row]
+            } else {
+                return row
+            }
+        }
         if row == 0 {
             return nil
         }
