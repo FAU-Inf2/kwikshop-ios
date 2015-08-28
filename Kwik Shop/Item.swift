@@ -188,7 +188,6 @@ class Item : NSObject, Equatable {
     }
     
     func isMergableWithOtherItem(other: Item) -> Bool {
-        println("self: \(self.managedItem), other: \(other.managedItem)")
         if self.name != other.name {
             return false
         }
