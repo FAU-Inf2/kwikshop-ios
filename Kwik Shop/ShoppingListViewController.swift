@@ -452,6 +452,24 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     func addItem(item: Item) {
+        
+        //for otherItem in notBoughtItems {
+        for index in 0 ..< notBoughtItems.count {
+            let otherItem = notBoughtItems[index]
+            if item.isMergableWithOtherItem(otherItem) {
+                if otherItem.amount != nil {
+                    if item.amount != nil {
+                        otherItem.amount! += item.amount!
+                        dbHelper.deleteItem(item)
+                        updateModifyDate()
+                        saveToDatabase()
+                        shoppingListTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Bottom)
+                        return
+                    }
+                }
+            }
+        }
+        
         let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
         notBoughtItems.append(item)
         shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
