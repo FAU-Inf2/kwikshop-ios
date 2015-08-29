@@ -175,10 +175,10 @@ class AutoCompletionHelper {
                 prefix = "\(amount!) "
             
                 // also units should be suggested
-                let unitDelegate = UnitDelegate(pickerView: nil)
+                let unitDelegate = AmountAndUnitDelegate()
                 var unitNames = [String]()
                 
-                for unit in unitDelegate.data {
+                for unit in unitDelegate.unitData {
                     unitNames.append("\(unit.name) ")
                 }
                 

@@ -59,30 +59,21 @@ class Unit : NSObject, Equatable{
         }
     }
     
-    var allowedPickerIndices : [Int]? {
+    var allowedPickerAmounts : [Int?] {
         get {
-            if let typeNumber = managedUnit.allowedPickerIndexType?.integerValue {
-                return AmountIndexType(rawValue: typeNumber)!.indices
-            } else {
-                return nil
-            }
+            let typeNumber = managedUnit.allowedPickerIndexType.integerValue
+            return AmountIndexType(rawValue: typeNumber)!.indices
         }
     }
     
-    var allowedPickerIndexType : AmountIndexType? {
+    var allowedPickerIndexType : AmountIndexType {
         get {
-            if let typeNumber = managedUnit.allowedPickerIndexType?.integerValue {
-                return AmountIndexType(rawValue: typeNumber)
-            } else {
-                return nil
-            }
+            let typeNumber = managedUnit.allowedPickerIndexType.integerValue
+            return AmountIndexType(rawValue: typeNumber)!
         }
         set {
-            if let type = newValue {
-                managedUnit.allowedPickerIndexType = type.rawValue
-            } else {
-                managedUnit.allowedPickerIndexType = nil
-            }
+            let type = newValue
+            managedUnit.allowedPickerIndexType = type.rawValue
         }
     }
     
@@ -91,13 +82,13 @@ class Unit : NSObject, Equatable{
         managedUnit.shortName = shortName ?? ""
     }
     
-    convenience init(name: String, singularName: String, allowedPickerIndexType: AmountIndexType?) {
+    convenience init(name: String, singularName: String, allowedPickerIndexType: AmountIndexType) {
         self.init(name: name, singularName: singularName, shortName: nil, allowedPickerIndexType: allowedPickerIndexType)
     }
     
-    convenience init(name: String, singularName: String, shortName: String?, allowedPickerIndexType: AmountIndexType?) {
+    convenience init(name: String, singularName: String, shortName: String?, allowedPickerIndexType: AmountIndexType) {
         self.init(name: name, singularName: singularName, shortName: shortName)
-        managedUnit.allowedPickerIndexType = allowedPickerIndexType?.rawValue
+        managedUnit.allowedPickerIndexType = allowedPickerIndexType.rawValue
     }
     
     convenience init(name: String, singularName: String) {

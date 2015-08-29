@@ -41,11 +41,10 @@
 		3AE802F01B8C6DD800533D83 /* StringHTMLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE802EF1B8C6DD800533D83 /* StringHTMLExtension.swift */; };
 		3AE802F21B8CBD1D00533D83 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */; };
 		3AE89FF61B85DD1600FA1B19 /* AutoCompletionBrandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */; };
-		3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE90B691B6E714600470729 /* UnitDelegate.swift */; };
 		3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B381B821D50001B1365 /* GroupHelper.swift */; };
 		3AE93B3B1B822891001B1365 /* UnitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE93B3A1B822891001B1365 /* UnitHelper.swift */; };
 		3AEC4A101B8B314900CF87AD /* AutoCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */; };
-		3AEC4A121B8B4DA400CF87AD /* UnitAndAmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC4A111B8B4DA400CF87AD /* UnitAndAmountDelegate.swift */; };
+		3AEF86BE1B91C48900665EE9 /* AmountAndUnitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF86BD1B91C48900665EE9 /* AmountAndUnitDelegate.swift */; };
 		3AF0CE2E1B808BE400D0BC48 /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */; };
 		3AF0CE301B80D37E00D0BC48 /* ManagedShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */; };
 		3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */; };
@@ -107,11 +106,10 @@
 		3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3AE802F31B8CD20A00533D83 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE89FF51B85DD1600FA1B19 /* AutoCompletionBrandData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionBrandData.swift; sourceTree = "<group>"; };
-		3AE90B691B6E714600470729 /* UnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitDelegate.swift; sourceTree = "<group>"; };
 		3AE93B381B821D50001B1365 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
 		3AE93B3A1B822891001B1365 /* UnitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitHelper.swift; sourceTree = "<group>"; };
 		3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionViewController.swift; sourceTree = "<group>"; };
-		3AEC4A111B8B4DA400CF87AD /* UnitAndAmountDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitAndAmountDelegate.swift; sourceTree = "<group>"; };
+		3AEF86BD1B91C48900665EE9 /* AmountAndUnitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountAndUnitDelegate.swift; sourceTree = "<group>"; };
 		3AF0CE2D1B808BE400D0BC48 /* ManagedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
 		3AF0CE2F1B80D37E00D0BC48 /* ManagedShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedShoppingList.swift; sourceTree = "<group>"; };
 		3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfShoppingListsViewController.swift; sourceTree = "<group>"; };
@@ -227,8 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */,
-				3AE90B691B6E714600470729 /* UnitDelegate.swift */,
-				3AEC4A111B8B4DA400CF87AD /* UnitAndAmountDelegate.swift */,
+				3AEF86BD1B91C48900665EE9 /* AmountAndUnitDelegate.swift */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -485,7 +482,6 @@
 				3AE6EEFF1B875DC00061F1A6 /* AutoCompleteTextField.swift in Sources */,
 				3A52D73F1B83821400E44206 /* AutoCompletionData.swift in Sources */,
 				3A56D9021B7372B000D536C8 /* ItemTableViewCell.swift in Sources */,
-				3AEC4A121B8B4DA400CF87AD /* UnitAndAmountDelegate.swift in Sources */,
 				3AEC4A101B8B314900CF87AD /* AutoCompletionViewController.swift in Sources */,
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
@@ -493,7 +489,7 @@
 				3A52D7411B8383BC00E44206 /* AutoCompletionHelper.swift in Sources */,
 				3A6F95E01B7E520300E262BB /* ItemParser.swift in Sources */,
 				3ADAFCDE1B7F42260035A040 /* DatabaseHelper.swift in Sources */,
-				3AE90B6A1B6E714600470729 /* UnitDelegate.swift in Sources */,
+				3AEF86BE1B91C48900665EE9 /* AmountAndUnitDelegate.swift in Sources */,
 				3AF5966B1B74E61600B7D05F /* ListOfShoppingListsViewController.swift in Sources */,
 				3ADAFCE81B7FA12C0035A040 /* ManagedUnit.swift in Sources */,
 				3AF596711B7525FC00B7D05F /* NSDateExtension.swift in Sources */,

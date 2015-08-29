@@ -31,7 +31,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     
     var groupDelegate : GroupDelegate!
-    var unitDelegate : UnitAndAmountDelegate!
+    var amountAndUnitDelegate : AmountAndUnitDelegate!
     
     var currentItem : Item?
     var newItem = true
@@ -41,8 +41,8 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     private let autoCompletionHelper = AutoCompletionHelper.instance
     
-    private let AMOUNT_COMPONENT = UnitAndAmountDelegate.AMOUNT_COMPONENT
-    private let UNIT_COMPONENT = UnitAndAmountDelegate.UNIT_COMPONENT
+    private let AMOUNT_COMPONENT = AmountAndUnitDelegate.AMOUNT_COMPONENT
+    private let UNIT_COMPONENT = AmountAndUnitDelegate.UNIT_COMPONENT
     private let GROUP_COMPONENT = 0
     
     // MARK: UIViewController
@@ -60,8 +60,8 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             groupPicker.delegate = self
             groupPicker.dataSource = self
         }
-        if unitDelegate == nil {
-            unitDelegate = UnitAndAmountDelegate(pickerView: unitPicker)
+        if amountAndUnitDelegate == nil {
+            amountAndUnitDelegate = AmountAndUnitDelegate()
             unitPicker.delegate = self
             unitPicker.dataSource = self
         }
@@ -76,37 +76,31 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             if let item = currentItem {
                 itemNameTextField.text = item.name
                 
-                selectAmount(item.amount, animated: false)
-                
-                unitDelegate.displayUnitNamesInSingular = isThisSingular(item.amount)
-                
                 let unit = item.unit
                 let none = UnitHelper.instance.NONE
+                let unitToSelect : Unit
+                let animated : Bool
                 if unit !== none {
-                    selectUnit(unit, animated: false)
+                    unitToSelect = unit
+                    animated = false
                 } else if let unit = autoCompletionHelper.getUnitForItem(item) {
-                    selectUnit(unit, animated: true)
+                    unitToSelect = unit
+                    animated = true
                 } else {
-                    selectUnit(none, animated: false)
+                    unitToSelect = none
+                    animated = false
                 }
-                unitDelegate.updateSelectedUnitAndAmountInPickerView(unitPicker)
+                amountAndUnitDelegate.selectAmount(item.amount, andUnit: unitToSelect, forPickerView: unitPicker, animated: animated)
                 
                 let group = autoCompletionHelper.getGroupForItem(item)
                 selectGroup(group, animated: false)
             } else {
-                unitDelegate.displayUnitNamesInSingular = isThisSingular(nil)
+                //unitDelegate.displayUnitNamesInSingular = isThisSingular(nil)
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
-            
-            selectAmount(item.amount, animated: false)
-            
-            unitDelegate.displayUnitNamesInSingular = isThisSingular(item.amount)
-            
-            let unit = item.unit
-            let row = find(unitDelegate.data, unit)!
-            unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: false)
-            unitDelegate.updateSelectedUnitAndAmountInPickerView(unitPicker)
+
+            amountAndUnitDelegate.selectAmount(item.amount, andUnit: item.unit, forPickerView: unitPicker, animated: false)
             
             highlightSwitch.setOn(item.highlighted, animated: false)
             if let brand = item.brand {
@@ -141,13 +135,6 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    private func selectUnit(unit: Unit, animated: Bool) {
-        if let row = find(unitDelegate.data, unit) {
-            unitPicker.selectRow(row, inComponent: UNIT_COMPONENT, animated: animated)
-            unitHasChanged = true
-        }
-    }
-    
     private func selectGroup(group: Group, animated: Bool) {
         if let row = find(groupDelegate.data, group) {
             groupPicker.selectRow(row, inComponent: GROUP_COMPONENT, animated: animated)
@@ -155,19 +142,6 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         }
     }
     
-    private func selectAmount(amount: Int?, animated: Bool) {
-        let row : Int
-        if amount == nil {
-            row = 0
-        } else {
-            row = amount!
-        }
-        
-        if row < UnitAndAmountDelegate.MAX_AMOUNT {
-            unitPicker.selectRow(row, inComponent: AMOUNT_COMPONENT, animated: animated)
-        }
-    }
-   
     override func viewDidAppear(animated: Bool) {
         if (newItem && currentItem == nil) {
             itemNameTextField.becomeFirstResponder()
@@ -207,7 +181,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             if newItem {
                 if !unitHasChanged {
                     if let unit = autoCompletionHelper.getUnitForName(name) {
-                        selectUnit(unit, animated: true)
+                        amountAndUnitDelegate.selectUnit(unit, forPickerView: unitPicker, animated: true)
                     }
                 }
                 if !groupHasChanged {
@@ -283,15 +257,9 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
             let name = itemNameTextField.text
-            let amount : Int?
-            if unitPicker.selectedRowInComponent(AMOUNT_COMPONENT) == 0 {
-                amount = nil
-            } else {
-                amount = unitPicker.selectedRowInComponent(AMOUNT_COMPONENT)
-            }
-            
+            let amount = amountAndUnitDelegate.getSelectedAmount()
             let unitIndex = unitPicker.selectedRowInComponent(UNIT_COMPONENT)
-            let unit = unitDelegate.data[unitIndex]
+            let unit = amountAndUnitDelegate.unitData[unitIndex]
             
             let highlighted = highlightSwitch.on
             let brand = brandTextField.text
@@ -320,7 +288,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         let delegate : UIPickerViewDataSource
         if pickerView === unitPicker {
-            delegate = self.unitDelegate
+            delegate = self.amountAndUnitDelegate
         } else if pickerView === groupPicker {
             delegate = self.groupDelegate
         } else {
@@ -332,7 +300,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let delegate : UIPickerViewDataSource
         if pickerView === unitPicker {
-            delegate = self.unitDelegate
+            delegate = self.amountAndUnitDelegate
         } else if pickerView === groupPicker {
             delegate = self.groupDelegate
         } else {
@@ -345,7 +313,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let delegate : UIPickerViewDelegate
         if pickerView === unitPicker {
-            delegate = self.unitDelegate
+            delegate = self.amountAndUnitDelegate
         } else if pickerView === groupPicker {
             delegate = self.groupDelegate
         } else {
@@ -358,7 +326,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         let delegate : UIPickerViewDelegate
         if pickerView === unitPicker {
             unitHasChanged = true
-            delegate = self.unitDelegate
+            delegate = self.amountAndUnitDelegate
         } else if pickerView === groupPicker {
             groupHasChanged = true
             delegate = self.groupDelegate

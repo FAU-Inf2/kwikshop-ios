@@ -124,11 +124,11 @@ class ItemParser {
     }
     
     private func findUnitForString(possibleUnit: String, withAmountSpecified amountSpecified: Int?) -> Unit? {
-        let unitDelegate = UnitDelegate(pickerView: nil)
+        let unitDelegate = AmountAndUnitDelegate()
         if let amount = amountSpecified {
             if amount > 1 {
                 // the amount is plural
-                for unit in unitDelegate.data {
+                for unit in unitDelegate.unitData {
                     if unit.shortestPossibleDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.name.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
                         return unit
                     }
@@ -136,7 +136,7 @@ class ItemParser {
                 return nil
             } else {
                 // the amount is singular
-                for unit in unitDelegate.data {
+                for unit in unitDelegate.unitData {
                     if unit.shortestPossibleSingularDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.singularName.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
                         return unit
                     }
@@ -145,7 +145,7 @@ class ItemParser {
             }
         } else {
             // the amount is not specified
-            for unit in unitDelegate.data {
+            for unit in unitDelegate.unitData {
                 if unit.shortestPossibleSingularDescription.caseInsensitiveCompare(possibleUnit) == .OrderedSame || unit.singularName.caseInsensitiveCompare(possibleUnit) == .OrderedSame {
                     return unit
                 }
