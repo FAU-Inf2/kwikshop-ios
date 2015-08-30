@@ -57,6 +57,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         }
     }
 
+    private var viewHeight : CGFloat!
+    private var keyboardIsOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,20 +82,50 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         quickAddTextField.delegate = self
         
         initializeAutoCompletionTextField(quickAddTextField, withDataSource: self)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        viewHeight = self.view.frame.height
     }
     
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        let keyboardWasOpen : Bool
+        if self.keyboardIsOpen {
+            self.quickAddTextField.resignFirstResponder()
+            keyboardWasOpen = true
+        } else {
+            keyboardWasOpen = false
+        }
         coordinator.animateAlongsideTransition(
-            { (context) -> () in
+            { [unowned self] (context) -> () in
                 if let indexPaths = self.shoppingListTableView.indexPathsForVisibleRows() {
                     self.shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
                 }
             },
-            completion: nil)
+            completion:
+            { [unowned self] (context) -> () in
+                self.viewHeight = self.view.frame.height
+                if keyboardWasOpen {
+                    self.quickAddTextField.becomeFirstResponder()
+                }
+            })
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, viewHeight - keyboardSize.height)
+        }
+        keyboardIsOpen = true
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, viewHeight)
+        }
+        keyboardIsOpen = false
+    }
     
     
     // MARK: - Table view data source
@@ -590,6 +622,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     
     deinit {
         shoppingListTableView.editing = false
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
 }
