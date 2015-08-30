@@ -257,8 +257,9 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         }
     }
     
-    private var dragAndDropCell : UITableViewCell?
     // MARK: Drag and Drop
+    private var dragAndDropCell : UITableViewCell?
+    
     func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         let state = longPress.state
@@ -307,7 +308,9 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 let numberOfBoughtItemsBeforeSwap = boughtItems.count
                 let numberOfNotBoughtItemsBeforeSwap = notBoughtItems.count
                 self.dragAndDropCell = shoppingListTableView.cellForRowAtIndexPath(Path.initialIndexPath!)
-                shoppingList.swapItemsAtIndices(initialIndex: shoppingListInitialIndex, newIndex: shoppingListIndex)
+                if !(shoppingListInitialIndex == nil && numberOfBoughtItemsBeforeSwap == 0) {
+                    shoppingList.swapItemsAtIndices(initialIndex: shoppingListInitialIndex, newIndex: shoppingListIndex)
+                }
                 let numberOfBoughtItemsAfterSwap = boughtItems.count
                 
                 saveToDatabase()
@@ -317,7 +320,11 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 if shoppingListInitialIndex != nil || numberOfBoughtItemsAfterSwap > 0 {
                     shoppingListTableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
                 }
-                if numberOfBoughtItemsAfterSwap == 0 && numberOfBoughtItemsBeforeSwap > 0 {
+                if shoppingListInitialIndex == nil && numberOfBoughtItemsBeforeSwap == 0 {
+                    // shopping list separator is at the very bottom and moving up again
+                    shoppingList.swapItemsAtIndices(initialIndex: nil, newIndex: items.count - 1)
+                    shoppingListTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: items.count, inSection: 0)], withRowAnimation: .None)
+                } else if numberOfBoughtItemsAfterSwap == 0 && numberOfBoughtItemsBeforeSwap > 0 {
                     // the last bought item has been moved up
                     let indexPath = NSIndexPath(forRow: numberOfNotBoughtItemsBeforeSwap, inSection: 0)
                     shoppingListTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
