@@ -419,6 +419,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         if let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text) {
             quickAddTextField.text = ""
             quickAddButton.enabled = false
+            quickAddTextField.autoCompleteTableViewHidden = true
             addItem(item)
         }
     }
@@ -544,6 +545,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        quickAddTextField.autoCompleteTableViewHidden = false
         let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
         checkValidItemName(text)
         return true
