@@ -482,6 +482,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="Dxp-Wi-ZoL" id="MY8-8n-5YS"/>
+                        <outlet property="bottomTableViewLayoutConstraint" destination="uHY-e7-i8d" id="Q6I-N2-yOw"/>
                         <outlet property="quickAddButton" destination="Dot-8D-Xvw" id="8ZV-pY-vDM"/>
                         <outlet property="quickAddTextField" destination="hjd-bk-bHL" id="Qa8-Wf-HR4"/>
                         <outlet property="shoppingListTableView" destination="aD1-WU-Hsc" id="Rtm-xz-w2U"/>
