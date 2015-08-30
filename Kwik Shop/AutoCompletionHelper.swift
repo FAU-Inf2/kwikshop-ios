@@ -170,7 +170,11 @@ class AutoCompletionHelper {
         if amount != nil {
             let prefix : String
             if unit != nil {
-                prefix = "\(amount!) \(unit!.name) "
+                if amount != 1 {
+                    prefix = "\(amount!) \(unit!.name) "
+                } else {
+                    prefix = "\(amount!) \(unit!.singularName) "
+                }
             } else {
                 prefix = "\(amount!) "
             
@@ -179,7 +183,11 @@ class AutoCompletionHelper {
                 var unitNames = [String]()
                 
                 for unit in unitDelegate.unitData {
-                    unitNames.append("\(unit.name) ")
+                    if amount != 1 {
+                        unitNames.append("\(unit.name) ")
+                    } else {
+                        unitNames.append("\(unit.singularName) ")
+                    }
                 }
                 
                 let unitSuggestions = filteredCompletionsForSuggestions(unitNames, andString: name)
@@ -192,8 +200,14 @@ class AutoCompletionHelper {
             for index in 0 ..< numberOfCompletions {
                 completions[index] = prefix + completions[index]
             }
+        } else if unit != nil {
+            let numberOfCompletions = completions.count
             
+            for index in 0 ..< numberOfCompletions {
+                completions[index] = "\(unit!.singularName) " + completions[index]
+            }
         }
+        
         return completions
     }
     
