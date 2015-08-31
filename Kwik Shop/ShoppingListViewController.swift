@@ -219,10 +219,10 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         
         if showGroup {
             cell.groupLabel.text = item.group.name
-            cell.groupLabel.backgroundColor = UIColor(resourceName: "divider_color")
+            cell.groupBackgroundLabel.backgroundColor = UIColor(resourceName: "divider_color")
         } else {
             cell.groupLabel.text = ""
-            cell.groupLabel.backgroundColor = nil
+            cell.groupBackgroundLabel.backgroundColor = nil
         }
         return cell
     }

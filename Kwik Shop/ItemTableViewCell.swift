@@ -15,6 +15,7 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var brandCommentLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var groupLabel: UILabel!
+    @IBOutlet weak var groupBackgroundLabel: UILabel!
     
     
     override func awakeFromNib() {

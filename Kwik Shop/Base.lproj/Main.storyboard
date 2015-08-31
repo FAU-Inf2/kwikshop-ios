@@ -404,6 +404,12 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJp-Qk-mvE">
+                                                    <rect key="frame" x="-8" y="0.0" width="616" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4r-EJ-vKi">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -413,11 +419,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="COL-iC-W0q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tRT-M5-G6u" secondAttribute="topMargin" constant="3" id="5Aq-cO-3d9"/>
+                                                <constraint firstItem="LJp-Qk-mvE" firstAttribute="leading" secondItem="tRT-M5-G6u" secondAttribute="leadingMargin" constant="-16" id="Ome-gw-vMy"/>
                                                 <constraint firstItem="b23-L1-lCU" firstAttribute="leading" secondItem="COL-iC-W0q" secondAttribute="trailing" constant="8" id="Sav-S5-qu3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LJp-Qk-mvE" secondAttribute="trailing" constant="-16" id="WWb-uN-5n5"/>
                                                 <constraint firstItem="b23-L1-lCU" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="XTI-mY-95Y"/>
                                                 <constraint firstItem="COL-iC-W0q" firstAttribute="top" secondItem="Q4r-EJ-vKi" secondAttribute="bottom" constant="3" id="YZf-fU-Oiq"/>
                                                 <constraint firstItem="bg7-W0-qS6" firstAttribute="trailing" secondItem="tRT-M5-G6u" secondAttribute="trailingMargin" id="bN3-Sl-EHv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Q4r-EJ-vKi" secondAttribute="trailing" id="cdD-fk-8Cu"/>
+                                                <constraint firstItem="LJp-Qk-mvE" firstAttribute="centerY" secondItem="Q4r-EJ-vKi" secondAttribute="centerY" id="dYJ-y8-b6g"/>
+                                                <constraint firstItem="LJp-Qk-mvE" firstAttribute="height" secondItem="Q4r-EJ-vKi" secondAttribute="height" id="e7r-yD-FKz"/>
                                                 <constraint firstItem="bg7-W0-qS6" firstAttribute="leading" secondItem="tRT-M5-G6u" secondAttribute="leadingMargin" id="g5L-4B-31r"/>
                                                 <constraint firstItem="b23-L1-lCU" firstAttribute="centerY" secondItem="COL-iC-W0q" secondAttribute="centerY" id="hHd-bv-f1g"/>
                                                 <constraint firstItem="Q4r-EJ-vKi" firstAttribute="top" secondItem="tRT-M5-G6u" secondAttribute="topMargin" constant="-8" id="jh3-5U-0Yr"/>
@@ -441,6 +451,7 @@
                                         <connections>
                                             <outlet property="amountLabel" destination="b23-L1-lCU" id="0RF-dl-kle"/>
                                             <outlet property="brandCommentLabel" destination="bg7-W0-qS6" id="SDp-UD-ACg"/>
+                                            <outlet property="groupBackgroundLabel" destination="LJp-Qk-mvE" id="Hgh-cb-owj"/>
                                             <outlet property="groupLabel" destination="Q4r-EJ-vKi" id="e7t-FX-XUF"/>
                                             <outlet property="nameLabel" destination="COL-iC-W0q" id="R49-SI-Pw1"/>
                                             <segue destination="XS2-JU-sfC" kind="show" identifier="ShowItemDetails" id="W5s-hE-GpY"/>
