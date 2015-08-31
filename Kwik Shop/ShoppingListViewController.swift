@@ -482,7 +482,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     
     @IBAction func sortButtonPressed(sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Sort by", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        alert.addAction(UIAlertAction(title: "Group", style: .Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Group", style: .Default, handler: sortShoppingListByGroup))
         alert.addAction(UIAlertAction(title: "Alphabet", style: .Default, handler: sortShoppingListByAlphabet))
         alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -499,6 +499,19 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows()!, withRowAnimation: UITableViewRowAnimation.Automatic)
         saveToDatabase()
     }
+    
+    func sortShoppingListByGroup(action: UIAlertAction!) {
+        var notBoughtItems = shoppingList.notBoughtItems
+        notBoughtItems.sort { (first: Item, second: Item) -> Bool in
+            let firstGroup = first.group
+            let secondGroup = second.group
+            return firstGroup.name < secondGroup.name
+        }
+        shoppingList.notBoughtItems = notBoughtItems
+        shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows()!, withRowAnimation: UITableViewRowAnimation.Automatic)
+        saveToDatabase()
+    }
+
     
     // MARK: Navigaton
     // In a storyboard-based application, you will often want to do a little preparation before navigation
