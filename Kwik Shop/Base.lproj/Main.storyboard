@@ -463,7 +463,12 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3m-QK-7ug">
                                 <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Item" id="vOD-8N-ZtF"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xgJ-Qf-FkH"/>
+                                    <barButtonItem title="Sort" id="4lk-Ro-Chl">
+                                        <connections>
+                                            <action selector="sortButtonPressed:" destination="0cd-0w-Imx" id="3Pq-V4-k7E"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -496,6 +501,7 @@
                         <outlet property="quickAddButton" destination="Dot-8D-Xvw" id="8ZV-pY-vDM"/>
                         <outlet property="quickAddTextField" destination="hjd-bk-bHL" id="Qa8-Wf-HR4"/>
                         <outlet property="shoppingListTableView" destination="aD1-WU-Hsc" id="Rtm-xz-w2U"/>
+                        <outlet property="sortButton" destination="4lk-Ro-Chl" id="fgy-8p-dx7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtS-8f-aqh" userLabel="First Responder" sceneMemberID="firstResponder"/>

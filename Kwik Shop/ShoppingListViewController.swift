@@ -15,6 +15,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     @IBOutlet weak var quickAddTextField: AutoCompleteTextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
     @IBOutlet weak var bottomToolbarLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sortButton: UIBarButtonItem!
     
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
     var closeKeyboardTapGestureRecognizer : UITapGestureRecognizer?
@@ -478,6 +479,26 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
         saveToDatabase()
     }    
+    
+    @IBAction func sortButtonPressed(sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Sort by", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        alert.addAction(UIAlertAction(title: "Group", style: .Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Alphabet", style: .Default, handler: sortShoppingListByAlphabet))
+        alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func sortShoppingListByAlphabet(action: UIAlertAction!) {
+        var notBoughtItems = shoppingList.notBoughtItems
+        notBoughtItems.sort { (first: Item, second: Item) -> Bool in
+            let firstName = first.name
+            let secondName = second.name
+            return firstName < secondName
+        }
+        shoppingList.notBoughtItems = notBoughtItems
+        shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows()!, withRowAnimation: UITableViewRowAnimation.Automatic)
+        saveToDatabase()
+    }
     
     // MARK: Navigaton
     // In a storyboard-based application, you will often want to do a little preparation before navigation
