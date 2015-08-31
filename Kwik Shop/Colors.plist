@@ -14,5 +14,11 @@
 		<integer>213</integer>
 		<integer>79</integer>
 	</array>
+	<key>divider_color</key>
+	<array>
+		<integer>182</integer>
+		<integer>182</integer>
+		<integer>182</integer>
+	</array>
 </dict>
 </plist>
