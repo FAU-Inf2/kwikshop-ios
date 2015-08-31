@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AutoCompletionViewController: UIViewController {
+class AutoCompletionViewController: ResizingViewController {
     
     private var autoCompleteTextFields = [MLPAutoCompleteTextField]()
 

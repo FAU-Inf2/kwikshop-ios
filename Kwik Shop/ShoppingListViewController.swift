@@ -81,8 +81,11 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         
         initializeAutoCompletionTextField(quickAddTextField, withDataSource: self)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        self.bottomViewLayoutConstraint = self.bottomTableViewLayoutConstraint
+        self.bottomViewLayoutConstraintDefaultConstant = 0
+        
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -96,7 +99,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    /*func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
             self.bottomTableViewLayoutConstraint.constant = keyboardSize.height
         }
@@ -106,7 +109,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
             self.bottomTableViewLayoutConstraint.constant = 0
         }
-    }
+    }*/
     
     // MARK: - Table view data source
     

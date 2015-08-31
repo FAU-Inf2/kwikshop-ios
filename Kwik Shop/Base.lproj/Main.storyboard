@@ -289,7 +289,7 @@
                                     <constraint firstItem="fAQ-jh-chq" firstAttribute="leading" secondItem="gfQ-9p-b7A" secondAttribute="leading" id="v1Q-LE-gdh"/>
                                     <constraint firstItem="M8x-lI-rzB" firstAttribute="centerY" secondItem="fAQ-jh-chq" secondAttribute="centerY" id="w6P-UY-GRa"/>
                                     <constraint firstItem="9aT-am-HOh" firstAttribute="top" secondItem="STt-D3-GV2" secondAttribute="bottom" constant="8" id="xFq-gJ-8Xw"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="9aT-am-HOh" secondAttribute="bottom" constant="100" id="yat-D3-DjE"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="9aT-am-HOh" secondAttribute="bottom" constant="17" id="yat-D3-DjE"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -335,6 +335,7 @@
                         <outlet property="deleteButton" destination="fND-ge-voC" id="ihz-rI-95s"/>
                         <outlet property="groupLabel" destination="iPd-rC-1Um" id="3gz-hU-bhb"/>
                         <outlet property="groupPicker" destination="9aT-am-HOh" id="vPG-dy-PfM"/>
+                        <outlet property="groupPickerBottomLayoutConstraint" destination="yat-D3-DjE" id="F4J-az-sgN"/>
                         <outlet property="highlightLabel" destination="gfQ-9p-b7A" id="ehG-ew-CrM"/>
                         <outlet property="highlightSwitch" destination="PRf-98-Brc" id="XhW-oB-DEx"/>
                         <outlet property="itemNameTextField" destination="Psa-ch-ant" id="BQL-gl-V4o"/>

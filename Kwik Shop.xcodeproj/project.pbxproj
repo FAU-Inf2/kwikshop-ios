@@ -27,6 +27,7 @@
 		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
 		3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */; };
 		3ADF5E9A1B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift */; };
+		3ADFE75C1B94793300AD2E81 /* ResizingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFE75B1B94793300AD2E81 /* ResizingViewController.swift */; };
 		3AE10D851B711A1C00E644D1 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */; };
 		3AE10D8C1B7122BE00E644D1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */; };
 		3AE21DFB1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE21DFA1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift */; };
@@ -90,6 +91,7 @@
 		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
 		3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageAutoCompletionHistoryViewController.swift; sourceTree = "<group>"; };
+		3ADFE75B1B94793300AD2E81 /* ResizingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizingViewController.swift; sourceTree = "<group>"; };
 		3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3AE21DFA1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListSeperatorTableViewCell.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */,
 				3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */,
 				3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift */,
+				3ADFE75B1B94793300AD2E81 /* ResizingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				3ADA6FD41B663498000B5396 /* Item.swift in Sources */,
 				3ADAFCEC1B7FA12C0035A040 /* ManagedGroup.swift in Sources */,
 				3AF5C5901B8F1FC800EAA051 /* DeleteConfirmationAlertHelper.swift in Sources */,
+				3ADFE75C1B94793300AD2E81 /* ResizingViewController.swift in Sources */,
 				3AE802EE1B8C4DC700533D83 /* AboutViewController.swift in Sources */,
 				3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */,
 				3AF0CE2E1B808BE400D0BC48 /* ManagedItem.swift in Sources */,

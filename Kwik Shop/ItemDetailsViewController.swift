@@ -28,7 +28,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewToolbarConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var groupPickerBottomLayoutConstraint: NSLayoutConstraint!
     
     var groupDelegate : GroupDelegate!
     var amountAndUnitDelegate : AmountAndUnitDelegate!
@@ -133,6 +133,10 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
         highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.bottomViewLayoutConstraint = self.groupPickerBottomLayoutConstraint
+        self.bottomViewLayoutConstraintDefaultConstant = 17
+        
     }
     
     private func selectGroup(group: Group, animated: Bool) {
