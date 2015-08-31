@@ -23,20 +23,14 @@ class ShoppingList : NSObject {
         }
     }
     
-    var sortType : Int? {
+    var sortType : SortType {
         get {
-            let sortType = managedShoppingList.sortType as Int
-            if sortType > 0 {
-                return sortType
-            }
-            return nil
+            let sortTypeNumber = managedShoppingList.sortType.integerValue
+            return SortType(rawValue: sortTypeNumber)!
         }
         set {
-            if newValue == nil {
-                managedShoppingList.sortType = -1
-            } else {
-                managedShoppingList.sortType = newValue!
-            }
+            let type = newValue
+            managedShoppingList.sortType = type.rawValue
         }
     }
     
@@ -188,7 +182,7 @@ class ShoppingList : NSObject {
         }
     }
     
-    convenience init (name : String, sortType : Int?) {
+    convenience init (name : String, sortType : SortType) {
         if ShoppingList.managedObjectContext == nil {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             ShoppingList.managedObjectContext = appDelegate.managedObjectContext
@@ -206,7 +200,7 @@ class ShoppingList : NSObject {
     }
     
     convenience init (name: String) {
-        self.init(name: name, sortType: nil)
+        self.init(name: name, sortType: SortType.manual)
     }
     
     init (managedShoppingList: ManagedShoppingList) {

@@ -27,7 +27,7 @@
     <entity name="ShoppingList" representedClassName="Kwik_Shop.ManagedShoppingList" syncable="YES">
         <attribute name="lastModifiedDate" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
-        <attribute name="sortType" attributeType="Integer 64" defaultValueString="-1" syncable="YES"/>
+        <attribute name="sortType" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="boughtItems" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Item" inverseName="shoppingListIfBought" inverseEntity="Item" syncable="YES"/>
         <relationship name="notBoughtItems" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Item" inverseName="shoppingListIfNotBought" inverseEntity="Item" syncable="YES"/>
     </entity>
