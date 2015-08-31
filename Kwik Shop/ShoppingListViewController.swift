@@ -24,8 +24,6 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     let autoCompletionHelper = AutoCompletionHelper.instance
     let itemParser = ItemParser()
     
-    var showGroupsInTableView = false
-    
     var shoppingList : ShoppingList!
     var items : [Item] {
         get {
@@ -207,7 +205,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 cell.nameLabel.highlighted = true
             }
         }
-        var showGroup = showGroupsInTableView && !item.bought
+        var showGroup = (shoppingList.sortType.rawValue == SortType.group.rawValue) && !item.bought
         if showGroup {
             if indexPath.row > 0 {
                 let previousGroup = notBoughtItems[indexPath.row - 1].group
@@ -508,7 +506,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     func sortShoppingListByAlphabet(action: UIAlertAction!) {
-        self.showGroupsInTableView = false
+        self.shoppingList.sortType = SortType.alphabetically
         var notBoughtItems = shoppingList.notBoughtItems
         notBoughtItems.sort { (first: Item, second: Item) -> Bool in
             let firstName = first.name
@@ -521,7 +519,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     func sortShoppingListByGroup(action: UIAlertAction!) {
-        self.showGroupsInTableView = true
+        self.shoppingList.sortType = SortType.group
         var notBoughtItems = shoppingList.notBoughtItems
         notBoughtItems.sort { (first: Item, second: Item) -> Bool in
             let firstGroup = first.group

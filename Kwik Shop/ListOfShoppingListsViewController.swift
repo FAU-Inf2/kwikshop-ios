@@ -53,28 +53,36 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
             return
         }
         
+        let groupHelper = GroupHelper.instance
+        
         let item1 = Item(name: "example_item_1".localized)
         item1.comment = "example_item_1_comment".localized
+        item1.group = groupHelper.FRUITS_AND_VEGETABLES
         
         let item2 =  Item(name: "example_item_2".localized)
         item2.comment = "example_item_2_comment".localized //Click a bit longer and then move your item to sort your list as you want; not working yet
+        item2.group = groupHelper.SWEETS_AND_SNACKS
         
         let item3 = Item(name: "example_item_3".localized)
         item3.amount = 5
         item3.unit = UnitHelper.instance.BOTTLE
         item3.comment = "example_item_3_comment".localized
+        item3.group = groupHelper.BEVERAGES
         
         let item4 = Item(name: "example_item_4".localized)
         item4.amount = 5
         item4.comment = "example_item_4_comment".localized
+        item4.group = groupHelper.PASTA
         
         let item5 = Item(name: "example_item_5".localized)
         item5.comment = "example_item_5_comment".localized
         item5.highlighted = true
+        item5.group = groupHelper.HOUSEHOLD
         
         let item6 = Item(name: "example_item_6".localized)
         item6.bought = true
         item6.comment = "example_item_6_comment".localized
+        item6.group = groupHelper.OTHER
         
         let list = ShoppingList(name: "example_shopping_list_title".localized)
         list.items = [item1, item2, item3, item4, item5, item6]
