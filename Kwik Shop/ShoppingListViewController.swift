@@ -14,7 +14,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     @IBOutlet weak var quickAddButton: UIButton!
     @IBOutlet weak var quickAddTextField: AutoCompleteTextField!
     @IBOutlet weak var shoppingListTableView: UITableView!
-    @IBOutlet weak var bottomTableViewLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomToolbarLayoutConstraint: NSLayoutConstraint!
     
     var returnToListOfShoppingListsDelegateMethod: (UIViewController -> ())?
     var closeKeyboardTapGestureRecognizer : UITapGestureRecognizer?
@@ -81,8 +81,9 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         
         initializeAutoCompletionTextField(quickAddTextField, withDataSource: self)
         
-        self.bottomViewLayoutConstraint = self.bottomTableViewLayoutConstraint
+        self.bottomViewLayoutConstraint = self.bottomToolbarLayoutConstraint
         self.bottomViewLayoutConstraintDefaultConstant = 0
+        self.bottomViewLayoutConstraintKeyboardOpenOffset = -44
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);

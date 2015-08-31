@@ -12,6 +12,7 @@ class ResizingViewController: UIViewController {
 
     @IBOutlet weak var bottomViewLayoutConstraint: NSLayoutConstraint!
     var bottomViewLayoutConstraintDefaultConstant : CGFloat!
+    var bottomViewLayoutConstraintKeyboardOpenOffset : CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class ResizingViewController: UIViewController {
 
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.bottomViewLayoutConstraint.constant = bottomViewLayoutConstraintDefaultConstant + keyboardSize.height
+            self.bottomViewLayoutConstraint.constant = (bottomViewLayoutConstraintKeyboardOpenOffset ?? bottomViewLayoutConstraintDefaultConstant) + keyboardSize.height
         }
     }
     
