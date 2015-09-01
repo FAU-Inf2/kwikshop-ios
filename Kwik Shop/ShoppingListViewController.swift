@@ -500,56 +500,35 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         }
         
         let sortType = shoppingList.sortType
-        
-        if sortType.isManualSorting {
-            let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
-            notBoughtItems.append(item)
-            shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-            updateModifyDate()
-            autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
-            saveToDatabase()
-        } else if sortType == SortType.alphabetically {
-            for row in 0 ..< notBoughtItems.count {
-                if item.name < notBoughtItems[row].name {
-                    // new item is to be inserted before that other item
-                    let newIndexPath = NSIndexPath(forRow: row, inSection: 0)
-                    notBoughtItems.insert(item, atIndex: row)
-                    shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                    updateModifyDate()
-                    autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
-                    saveToDatabase()
-                    return
+        var index : Int? = nil
+        if !sortType.isManualSorting {
+            if sortType == SortType.group {
+                for row in 0 ..< notBoughtItems.count {
+                    if item.group.name < notBoughtItems[row].group.name {
+                        index = row
+                        break
+                    }
+                }
+            } else if sortType == SortType.alphabetically {
+                for row in 0 ..< notBoughtItems.count {
+                    if item.name < notBoughtItems[row].name {
+                        index = row
+                        break
+                    }
                 }
             }
-            // new item is to be appended
-            let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
-            notBoughtItems.append(item)
-            shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-            updateModifyDate()
-            autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
-            saveToDatabase()
-        } else if sortType == SortType.group {
-            for row in 0 ..< notBoughtItems.count {
-                if item.group.name < notBoughtItems[row].group.name {
-                    // new item is to be inserted before that other item
-                    let newIndexPath = NSIndexPath(forRow: row, inSection: 0)
-                    notBoughtItems.insert(item, atIndex: row)
-                    shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                    updateModifyDate()
-                    autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
-                    saveToDatabase()
-                    return
-                }
-            }
-            // new item is to be appended
-            let newIndexPath = NSIndexPath(forRow: notBoughtItems.count, inSection: 0)
-            notBoughtItems.append(item)
-            shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-            updateModifyDate()
-            autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
-            saveToDatabase()
-
         }
+        
+        if index == nil {
+            index = notBoughtItems.count
+        }
+        
+        let newIndexPath = NSIndexPath(forRow: index!, inSection: 0)
+        notBoughtItems.insert(item, atIndex: index!)
+        shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+        updateModifyDate()
+        autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
+        saveToDatabase()
     }
     
     @IBAction func sortButtonPressed(sender: UIBarButtonItem) {
