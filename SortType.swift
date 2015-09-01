@@ -35,3 +35,7 @@ enum SortType: Int {
         }
     }
 }
+
+func == (left: SortType, right: SortType) -> Bool {
+    return left.rawValue == right.rawValue
+}
