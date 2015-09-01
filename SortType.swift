@@ -23,4 +23,15 @@ enum SortType: Int {
             return true
         }
     }
+    
+    var isManualSorting : Bool {
+        switch self {
+        case .manual:
+            fallthrough
+        case .manualWithGroups:
+            return true
+        default:
+            return false
+        }
+    }
 }

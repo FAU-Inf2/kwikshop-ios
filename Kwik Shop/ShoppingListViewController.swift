@@ -336,6 +336,16 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             My.cellSnapshot!.center = center
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
                 
+                // adjust sort type of the shopping list, if it is not a manual sort type already
+                let sortType = shoppingList.sortType
+                if !sortType.isManualSorting{
+                    if sortType.showGroups {
+                        shoppingList.sortType = SortType.manualWithGroups
+                    } else {
+                        shoppingList.sortType = SortType.manual
+                    }
+                }
+                
                 let shoppingListIndex = getIndexAndIndexPathsForIndexPath(indexPath!).index
                 let shoppingListInitialIndex = getIndexAndIndexPathsForIndexPath(Path.initialIndexPath!).index
                 
