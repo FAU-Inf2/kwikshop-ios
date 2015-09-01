@@ -11,13 +11,19 @@ navigation_bar_shopping_lists="Einkaufslisten";
 navigation_bar_about="Über";
 navigation_bar_settings="Einstellungen";
 
-// MARK: List of Shopping Lists View
-list_of_shopping_lists_item="Artikel";
-list_of_shopping_lists_items="Artikel";
-
 // MARK: Shopping List View
 shopping_list_seperator="Einkaufswagen";
 shopping_list_quick_add_button="Hinzufügen";
+
+// MARK: Sorting
+sorting_sort="Sortieren";
+sorting_sort_by="Sortieren nach";
+sorting_group="Gruppe";
+sorting_alphabet="Alphabet";
+
+// MARK: List of Shopping Lists View
+list_of_shopping_lists_item="Artikel";
+list_of_shopping_lists_items="Artikel";
 
 // MARK: Item Details View
 item_details_amount="Menge";

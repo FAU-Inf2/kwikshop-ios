@@ -63,6 +63,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         super.viewDidLoad()
         
         quickAddButton.setTitle("shopping_list_quick_add_button".localized, forState: UIControlState.Normal)
+        sortButton.title = "sorting_sort".localized
         
         shoppingListTableView.delegate = self
         shoppingListTableView.dataSource = self
@@ -373,7 +374,6 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                         } else {
                             shoppingList.sortType = SortType.manual
                         }
-                        println("asdf")
                     }
                 }
                 
@@ -566,9 +566,9 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     @IBAction func sortButtonPressed(sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Sort by", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        alert.addAction(UIAlertAction(title: "Group", style: .Default, handler: sortShoppingListByGroup))
-        alert.addAction(UIAlertAction(title: "Alphabet", style: .Default, handler: sortShoppingListByAlphabet))
+        let alert = UIAlertController(title: "sorting_sort_by".localized, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        alert.addAction(UIAlertAction(title: "sorting_group".localized, style: .Default, handler: sortShoppingListByGroup))
+        alert.addAction(UIAlertAction(title: "sorting_alphabet".localized, style: .Default, handler: sortShoppingListByAlphabet))
         alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

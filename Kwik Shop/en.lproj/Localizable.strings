@@ -15,6 +15,12 @@ navigation_bar_settings="Settings";
 shopping_list_seperator="Shopping cart";
 shopping_list_quick_add_button="Add";
 
+// MARK: Sorting
+sorting_sort="Sort";
+sorting_sort_by="Sort by";
+sorting_group="Group";
+sorting_alphabet="Alphabet";
+
 // MARK: List of Shopping Lists View
 list_of_shopping_lists_item="Item";
 list_of_shopping_lists_items="Items";
