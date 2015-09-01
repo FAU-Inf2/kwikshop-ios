@@ -421,6 +421,33 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     
     // MARK: Actions
     
+    private func itemIsPossisionedAtRightIndex(index: Int) -> Bool {
+        var itemIsAtRightPosition = true
+        let sortType = shoppingList.sortType
+        let item = items[index]
+        if !sortType.isManualSorting || !item.bought {
+            if index > 0 {
+                let previousItem = notBoughtItems[index - 1]
+                if sortType == SortType.group {
+                    itemIsAtRightPosition = previousItem.group.name <= item.group.name
+                } else if sortType == SortType.alphabetically {
+                    itemIsAtRightPosition = previousItem.name <= item.name
+                }
+            }
+            if itemIsAtRightPosition && index + 1 < notBoughtItems.count {
+                let nextItem = notBoughtItems[index + 1]
+                if sortType == SortType.group {
+                    itemIsAtRightPosition = item.group.name <= nextItem.group.name
+                } else if sortType == SortType.alphabetically {
+                    itemIsAtRightPosition = item.name <= nextItem.name
+                }
+                
+            }
+        }
+        return itemIsAtRightPosition
+    }
+
+    
     func updateModifyDate () {
         let now = NSDate()
         shoppingList.lastModifiedDate = now
@@ -608,28 +635,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                     if let item = sourceViewController.currentItem {
                         // item was changed
                         let sortType = shoppingList.sortType
-                        var itemIsAtRightPosition = true
-                        if !sortType.isManualSorting || !item.bought {
-                            if index > 0 {
-                                let previousItem = notBoughtItems[index - 1]
-                                if sortType == SortType.group {
-                                    itemIsAtRightPosition = previousItem.group.name <= item.group.name
-                                } else if sortType == SortType.alphabetically {
-                                    itemIsAtRightPosition = previousItem.name <= item.name
-                                }
-                            }
-                            if itemIsAtRightPosition && index + 1 < notBoughtItems.count {
-                                let nextItem = notBoughtItems[index + 1]
-                                if sortType == SortType.group {
-                                    itemIsAtRightPosition = item.group.name <= nextItem.group.name
-                                } else if sortType == SortType.alphabetically {
-                                    itemIsAtRightPosition = item.name <= nextItem.name
-                                }
-
-                            }
-                        }
                         
-                        if itemIsAtRightPosition {
+                        if itemIsPossisionedAtRightIndex(index) {
                             items[index] = sourceViewController.currentItem!
                             var indexPaths = [selectedIndexPath]
                             // if the next item is not bought yet, the group of the selected item might have changed, too. Thus, it should also be reloaded if groups are displayed
