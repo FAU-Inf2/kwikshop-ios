@@ -140,10 +140,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="nAg-4f-OGd" secondAttribute="trailing" constant="-16" id="4hQ-rl-5M4"/>
                             <constraint firstItem="nAg-4f-OGd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="9Vk-WG-gWB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nAg-4f-OGd" secondAttribute="bottom" id="g98-zI-Sf8"/>
-                            <constraint firstItem="nAg-4f-OGd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="mu6-af-nUS"/>
+                            <constraint firstItem="nAg-4f-OGd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h0O-qW-Awk"/>
+                            <constraint firstAttribute="trailing" secondItem="nAg-4f-OGd" secondAttribute="trailing" id="xAe-uP-O9i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shopping Lists" id="FqU-Ny-ZM3">
@@ -707,12 +707,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="i8u-jU-ffc" firstAttribute="top" secondItem="7oH-N2-KGT" secondAttribute="bottom" id="05S-Gq-ive"/>
+                            <constraint firstItem="7oH-N2-KGT" firstAttribute="leading" secondItem="nfw-Aq-cca" secondAttribute="leading" id="0nc-0C-ot1"/>
                             <constraint firstItem="ZvM-WA-eTk" firstAttribute="top" secondItem="i8u-jU-ffc" secondAttribute="bottom" id="4AG-4f-zca"/>
-                            <constraint firstItem="7oH-N2-KGT" firstAttribute="leading" secondItem="nfw-Aq-cca" secondAttribute="leadingMargin" constant="-16" id="Bzv-LJ-aQs"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="i8u-jU-ffc" secondAttribute="trailing" constant="-16" id="atB-XB-SU4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7oH-N2-KGT" secondAttribute="trailing" constant="-16" id="izw-xe-W0w"/>
+                            <constraint firstItem="i8u-jU-ffc" firstAttribute="leading" secondItem="nfw-Aq-cca" secondAttribute="leading" id="6YF-DH-CGV"/>
+                            <constraint firstAttribute="trailing" secondItem="7oH-N2-KGT" secondAttribute="trailing" id="aNC-hM-Df0"/>
                             <constraint firstItem="7oH-N2-KGT" firstAttribute="top" secondItem="nfw-Aq-cca" secondAttribute="topMargin" id="paN-Q6-tSL"/>
-                            <constraint firstItem="i8u-jU-ffc" firstAttribute="leading" secondItem="nfw-Aq-cca" secondAttribute="leadingMargin" constant="-16" id="vLB-5u-I5k"/>
+                            <constraint firstAttribute="trailing" secondItem="i8u-jU-ffc" secondAttribute="trailing" id="zuB-H4-y89"/>
                         </constraints>
                     </view>
                     <connections>
