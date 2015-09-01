@@ -607,16 +607,46 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                     let index = getIndexForIndexPath(selectedIndexPath)!
                     if let item = sourceViewController.currentItem {
                         // item was changed
-                        items[index] = sourceViewController.currentItem!
-                        var indexPaths = [selectedIndexPath]
-                        // if the next item is not bought yet, the group of the selected item might have changed, too. Thus, it should also be reloaded if groups are displayed
-                        if shoppingList.sortType.showGroups && index + 1 < notBoughtItems.count {
-                            indexPaths.append(NSIndexPath(forRow: index + 1, inSection: 0))
+                        let sortType = shoppingList.sortType
+                        var itemIsAtRightPosition = true
+                        if !sortType.isManualSorting || !item.bought {
+                            if index > 0 {
+                                let previousItem = notBoughtItems[index - 1]
+                                if sortType == SortType.group {
+                                    itemIsAtRightPosition = previousItem.group.name <= item.group.name
+                                } else if sortType == SortType.alphabetically {
+                                    itemIsAtRightPosition = previousItem.name <= item.name
+                                }
+                            }
+                            if itemIsAtRightPosition && index + 1 < notBoughtItems.count {
+                                let nextItem = notBoughtItems[index + 1]
+                                if sortType == SortType.group {
+                                    itemIsAtRightPosition = item.group.name <= nextItem.group.name
+                                } else if sortType == SortType.alphabetically {
+                                    itemIsAtRightPosition = item.name <= nextItem.name
+                                }
+
+                            }
                         }
-                        shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
-                        updateModifyDate()
-                        autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
-                        saveToDatabase()
+                        
+                        if itemIsAtRightPosition {
+                            items[index] = sourceViewController.currentItem!
+                            var indexPaths = [selectedIndexPath]
+                            // if the next item is not bought yet, the group of the selected item might have changed, too. Thus, it should also be reloaded if groups are displayed
+                            if sortType.showGroups && index + 1 < notBoughtItems.count {
+                                indexPaths.append(NSIndexPath(forRow: index + 1, inSection: 0))
+                            }
+                            shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
+                            updateModifyDate()
+                            autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
+                            saveToDatabase()
+                        } else {
+                            // the items are sorted automatically and the edited item is not bought yet
+                            notBoughtItems.removeAtIndex(index)
+                            shoppingListTableView.deleteRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                            shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                            addItem(item)
+                        }
                     } else {
                         // item is to be deleted
                         deleteItemAtIndexPath(selectedIndexPath)
