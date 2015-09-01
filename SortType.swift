@@ -9,5 +9,18 @@
 import Foundation
 
 enum SortType: Int {
-    case manual = 0, group, alphabetically
+    case manual = 0, group, alphabetically, manualWithGroups
+    
+    var showGroups : Bool {
+        switch self {
+        case .manual:
+            fallthrough
+        case .alphabetically:
+            return false
+        case .group:
+            fallthrough
+        case .manualWithGroups:
+            return true
+        }
+    }
 }

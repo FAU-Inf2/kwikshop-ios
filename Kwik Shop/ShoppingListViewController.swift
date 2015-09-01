@@ -205,7 +205,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 cell.nameLabel.highlighted = true
             }
         }
-        var showGroup = (shoppingList.sortType.rawValue == SortType.group.rawValue) && !item.bought
+        var showGroup = shoppingList.sortType.showGroups && !item.bought
         if showGroup {
             if indexPath.row > 0 {
                 let previousGroup = notBoughtItems[indexPath.row - 1].group
