@@ -608,7 +608,12 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                     if let item = sourceViewController.currentItem {
                         // item was changed
                         items[index] = sourceViewController.currentItem!
-                        shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                        var indexPaths = [selectedIndexPath]
+                        // if the next item is not bought yet, the group of the selected item might have changed, too. Thus, it should also be reloaded if groups are displayed
+                        if shoppingList.sortType.showGroups && index + 1 < notBoughtItems.count {
+                            indexPaths.append(NSIndexPath(forRow: index + 1, inSection: 0))
+                        }
+                        shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
                         updateModifyDate()
                         autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
                         saveToDatabase()
