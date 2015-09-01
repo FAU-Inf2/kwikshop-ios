@@ -38,7 +38,7 @@ settings_english="Englisch";
 settings_german="Deutsch";
 settings_portuguese="Portugiesisch";
 settings_manage_autocompletion_history="Autovervollständigungsverlauf verwalten";
-settings_manage_autocompletion_brand_history="Autovervollständigungsverlauf für Marken verwalten";
+settings_manage_brand_autocompletion_history="Autovervollständigungsverlauf für Marken verwalten";
 
 // MARK: Alert Box Dialogs
 alert_box_cancel="Abbrechen";

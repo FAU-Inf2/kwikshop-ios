@@ -38,7 +38,7 @@ settings_english="Inglês";
 settings_german="Alemão";
 settings_portuguese="Português";
 settings_manage_autocompletion_history="Gerenciar histórico de autopreenchimento";
-settings_manage_autocompletion_brand_history="Gerenciar histórico de autopreenchimento de marcas";
+settings_manage_brand_autocompletion_history="Gerenciar histórico de autopreenchimento de marcas";
 
 // MARK: Alert Box Dialogs
 alert_box_cancel="Cancelar";
