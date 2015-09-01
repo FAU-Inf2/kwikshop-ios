@@ -335,17 +335,6 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             center.y = locationInView.y
             My.cellSnapshot!.center = center
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                
-                // adjust sort type of the shopping list, if it is not a manual sort type already
-                let sortType = shoppingList.sortType
-                if !sortType.isManualSorting{
-                    if sortType.showGroups {
-                        shoppingList.sortType = SortType.manualWithGroups
-                    } else {
-                        shoppingList.sortType = SortType.manual
-                    }
-                }
-                
                 let shoppingListIndex = getIndexAndIndexPathsForIndexPath(indexPath!).index
                 let shoppingListInitialIndex = getIndexAndIndexPathsForIndexPath(Path.initialIndexPath!).index
                 
@@ -374,6 +363,19 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                     shoppingListTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                 }
                 shoppingListTableView.endUpdates()
+                
+                if shoppingListInitialIndex != nil && !itemIsPossisionedAtRightIndex(shoppingListIndex) {
+                    // adjust sort type of the shopping list, if it is not a manual sort type already
+                    let sortType = shoppingList.sortType
+                    if !sortType.isManualSorting{
+                        if sortType.showGroups {
+                            shoppingList.sortType = SortType.manualWithGroups
+                        } else {
+                            shoppingList.sortType = SortType.manual
+                        }
+                        println("asdf")
+                    }
+                }
                 
                 Path.initialIndexPath = indexPath
             }
@@ -421,30 +423,35 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     
     // MARK: Actions
     
-    private func itemIsPossisionedAtRightIndex(index: Int) -> Bool {
-        var itemIsAtRightPosition = true
-        let sortType = shoppingList.sortType
-        let item = items[index]
-        if !sortType.isManualSorting || !item.bought {
-            if index > 0 {
-                let previousItem = notBoughtItems[index - 1]
-                if sortType == SortType.group {
-                    itemIsAtRightPosition = previousItem.group.name <= item.group.name
-                } else if sortType == SortType.alphabetically {
-                    itemIsAtRightPosition = previousItem.name <= item.name
+    private func itemIsPossisionedAtRightIndex(optionalIndex: Int?) -> Bool {
+        if let index = optionalIndex {
+            var itemIsAtRightPosition = true
+            let sortType = shoppingList.sortType
+            let item = items[index]
+            if !sortType.isManualSorting || !item.bought {
+                if index > 0 {
+                    let previousItem = notBoughtItems[index - 1]
+                    if sortType == SortType.group {
+                        itemIsAtRightPosition = previousItem.group.name <= item.group.name
+                    } else if sortType == SortType.alphabetically {
+                        itemIsAtRightPosition = previousItem.name <= item.name
+                    }
+                }
+                if itemIsAtRightPosition && index + 1 < notBoughtItems.count {
+                    let nextItem = notBoughtItems[index + 1]
+                    if sortType == SortType.group {
+                        itemIsAtRightPosition = item.group.name <= nextItem.group.name
+                    } else if sortType == SortType.alphabetically {
+                        itemIsAtRightPosition = item.name <= nextItem.name
+                    }
+                    
                 }
             }
-            if itemIsAtRightPosition && index + 1 < notBoughtItems.count {
-                let nextItem = notBoughtItems[index + 1]
-                if sortType == SortType.group {
-                    itemIsAtRightPosition = item.group.name <= nextItem.group.name
-                } else if sortType == SortType.alphabetically {
-                    itemIsAtRightPosition = item.name <= nextItem.name
-                }
-                
-            }
-        }
         return itemIsAtRightPosition
+        } else {
+            // no item is always positioned right
+            return true
+        }
     }
 
     
