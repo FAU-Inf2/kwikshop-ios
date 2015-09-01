@@ -86,9 +86,6 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         self.bottomViewLayoutConstraint = self.bottomToolbarLayoutConstraint
         self.bottomViewLayoutConstraintDefaultConstant = 0
         self.bottomViewLayoutConstraintKeyboardOpenOffset = -44
-        
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -101,18 +98,6 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             completion: nil)
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
-    
-    /*func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.bottomTableViewLayoutConstraint.constant = keyboardSize.height
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.bottomTableViewLayoutConstraint.constant = 0
-        }
-    }*/
     
     // MARK: - Table view data source
     
@@ -570,6 +555,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         alert.addAction(UIAlertAction(title: "sorting_group".localized, style: .Default, handler: sortShoppingListByGroup))
         alert.addAction(UIAlertAction(title: "sorting_alphabet".localized, style: .Default, handler: sortShoppingListByAlphabet))
         alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: nil))
+        alert.popoverPresentationController?.barButtonItem = sortButton
         self.presentViewController(alert, animated: true, completion: nil)
     }
     

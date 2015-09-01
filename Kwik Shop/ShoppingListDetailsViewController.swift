@@ -111,6 +111,7 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
                 },
                 forASingularValue: true)
             
+            alert.popoverPresentationController?.barButtonItem = deleteButton
             presentViewController(alert, animated: true, completion: nil)
             
             return false

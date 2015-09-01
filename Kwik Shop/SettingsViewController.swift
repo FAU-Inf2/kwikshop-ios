@@ -136,6 +136,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             pickerView.selectRow(self.selectedLanguageIndex, inComponent: 0, animated: true)
         }))
         
+        alert.popoverPresentationController?.sourceRect = languagePicker.bounds
+        alert.popoverPresentationController?.sourceView = languagePicker
+        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Left
+        
         presentViewController(alert, animated: true, completion: nil)
     }
 }

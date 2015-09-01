@@ -248,7 +248,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
                     self.performSegueWithIdentifier("unwindToShoppingList", sender: deleteButton)
                 },
                 forASingularValue: true)
-            
+            alert.popoverPresentationController?.barButtonItem = deleteButton
             self.presentViewController(alert, animated: true, completion: nil)
             
             return false
