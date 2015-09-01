@@ -496,16 +496,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T3m-QK-7ug" firstAttribute="leading" secondItem="Nwc-ko-RFN" secondAttribute="leadingMargin" constant="-16" id="6CR-oP-uk6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aD1-WU-Hsc" secondAttribute="trailing" constant="-16" id="7sS-ja-cBQ"/>
+                            <constraint firstAttribute="trailing" secondItem="aD1-WU-Hsc" secondAttribute="trailing" id="3VN-Cv-seC"/>
                             <constraint firstItem="Dot-8D-Xvw" firstAttribute="top" secondItem="cZk-Bm-6Vr" secondAttribute="bottom" constant="8" id="8QB-0R-ZGJ"/>
-                            <constraint firstItem="aD1-WU-Hsc" firstAttribute="leading" secondItem="Nwc-ko-RFN" secondAttribute="leadingMargin" constant="-16" id="NhL-Fp-ejo"/>
+                            <constraint firstItem="aD1-WU-Hsc" firstAttribute="leading" secondItem="Nwc-ko-RFN" secondAttribute="leading" id="TRV-19-5lG"/>
                             <constraint firstItem="aD1-WU-Hsc" firstAttribute="top" secondItem="hjd-bk-bHL" secondAttribute="bottom" constant="8" id="UWZ-Pr-oMT"/>
                             <constraint firstItem="hjd-bk-bHL" firstAttribute="leading" secondItem="Nwc-ko-RFN" secondAttribute="leadingMargin" constant="8" id="WqI-4P-GI1"/>
                             <constraint firstItem="r7Q-I9-RKA" firstAttribute="top" secondItem="T3m-QK-7ug" secondAttribute="bottom" id="abx-Xm-TfT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="T3m-QK-7ug" secondAttribute="trailing" constant="-16" id="b9I-Ny-DPt"/>
                             <constraint firstItem="hjd-bk-bHL" firstAttribute="centerY" secondItem="Dot-8D-Xvw" secondAttribute="centerY" id="c4B-gx-2Y1"/>
+                            <constraint firstAttribute="trailing" secondItem="T3m-QK-7ug" secondAttribute="trailing" id="fiW-YQ-FSq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dot-8D-Xvw" secondAttribute="trailing" id="fxq-VP-AgS"/>
+                            <constraint firstItem="T3m-QK-7ug" firstAttribute="leading" secondItem="Nwc-ko-RFN" secondAttribute="leading" id="rvQ-77-qPw"/>
                             <constraint firstItem="Dot-8D-Xvw" firstAttribute="leading" secondItem="hjd-bk-bHL" secondAttribute="trailing" constant="8" id="uQs-0a-7jn"/>
                             <constraint firstItem="T3m-QK-7ug" firstAttribute="top" secondItem="aD1-WU-Hsc" secondAttribute="bottom" id="xeC-Eg-Kjy"/>
                         </constraints>
