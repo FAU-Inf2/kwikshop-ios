@@ -551,9 +551,9 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     @IBAction func sortButtonPressed(sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "sorting_sort_by".localized, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        alert.addAction(UIAlertAction(title: "sorting_group".localized, style: .Default, handler: sortShoppingListByGroup))
-        alert.addAction(UIAlertAction(title: "sorting_alphabet".localized, style: .Default, handler: sortShoppingListByAlphabet))
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        alert.addAction(UIAlertAction(title: "sorting_sort_by".localized + " " + "sorting_group".localized, style: .Default, handler: sortShoppingListByGroup))
+        alert.addAction(UIAlertAction(title: "sorting_sort_by".localized + " " + "sorting_alphabet".localized, style: .Default, handler: sortShoppingListByAlphabet))
         alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: nil))
         alert.popoverPresentationController?.barButtonItem = sortButton
         self.presentViewController(alert, animated: true, completion: nil)

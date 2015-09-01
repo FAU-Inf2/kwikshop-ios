@@ -16,10 +16,10 @@ shopping_list_seperator="Carro de compras";
 shopping_list_quick_add_button="Adicionar";
 
 // MARK: Sorting
-sorting_sort="Sort";
-sorting_sort_by="Sort by";
-sorting_group="Group";
-sorting_alphabet="Alphabet";
+sorting_sort="Ordenar";
+sorting_sort_by="Ordenar";
+sorting_group="por Grupos";
+sorting_alphabet="alfabéticamente";
 
 // MARK: List of Shopping Lists View
 list_of_shopping_lists_item="Item";
@@ -37,13 +37,13 @@ settings_language="Linguagem";
 settings_english="Inglês";
 settings_german="Alemão";
 settings_portuguese="Português";
-settings_manage_autocompletion_history="Manage autocompletion history";
-settings_manage_autocompletion_brand_history="Manage brand autocompletion history";
+settings_manage_autocompletion_history="Gerenciar histórico de autopreenchimento";
+settings_manage_autocompletion_brand_history="Gerenciar histórico de autopreenchimento de marcas";
 
 // MARK: Alert Box Dialogs
 alert_box_cancel="Cancelar";
 alert_box_delete="Apagar";
-alert_box_delete_plural="Delete all";
+alert_box_delete_plural="Apagar todos";
 alert_box_change_language_confirmation_beginning="Deseja mudar o idioma da aplicação para ";
 alert_box_change_language_confirmation_end="";
 alert_box_change_language_confirmation_yes_beginning="Mudar para ";
