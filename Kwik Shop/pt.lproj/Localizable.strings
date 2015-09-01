@@ -7,13 +7,13 @@
 */
 
 // MARK: Navigation bar titles
-navigation_bar_shopping_lists="Shopping Lists"; //TODO: translate
+navigation_bar_shopping_lists="Lista de Compras";
 navigation_bar_about="Sobre";
 navigation_bar_settings="Configurações";
 
 // MARK: Shopping List View
 shopping_list_seperator="Carro de compras";
-shopping_list_quick_add_button="Add";
+shopping_list_quick_add_button="Adicionar";
 
 // MARK: Sorting
 sorting_sort="Sort";
@@ -33,18 +33,18 @@ item_details_comment="Comentário";
 item_details_group="Grupo";
 
 // MARK: Settings View
-settings_language="Language";
+settings_language="Linguagem";
 settings_english="Inglês";
 settings_german="Alemão";
 settings_portuguese="Português";
 settings_manage_autocompletion_history="Manage autocompletion history";
-settings_manage_autocompletion_brand_history="Manage autocompletion brand history";
+settings_manage_autocompletion_brand_history="Manage brand autocompletion history";
 
 // MARK: Alert Box Dialogs
 alert_box_cancel="Cancelar";
 alert_box_delete="Apagar";
 alert_box_delete_plural="Delete all";
-alert_box_change_language_confirmation_beginning="Would you like to change the application language to ";
+alert_box_change_language_confirmation_beginning="Deseja mudar o idioma da aplicação para ";
 alert_box_change_language_confirmation_end="";
 alert_box_change_language_confirmation_yes_beginning="Mudar para ";
 alert_box_change_language_confirmation_yes_end="";
@@ -88,28 +88,28 @@ unit_millilitre_short="ml";
 unit_piece_short="pc";
 
 // Singulars
-unit_bag_singular="Bag";
-unit_bottle_singular="Bottle";
-unit_box_singular="Box";
-unit_dozen_singular="Dozen";
-unit_gram_singular="Gram";
-unit_kilogram_singular="Kilogram";
-unit_litre_singular="Litre";
-unit_millilitre_singular="Mililitre";
-unit_pack_singular="Pack";
-unit_piece_singular="Piece";
+unit_bag_singular="Sacola";
+unit_bottle_singular="Garrafa";
+unit_box_singular="Caixa";
+unit_dozen_singular="Dúzia";
+unit_gram_singular="Grama";
+unit_kilogram_singular="Kilograma";
+unit_litre_singular="Litro";
+unit_millilitre_singular="Mililitro";
+unit_pack_singular="Pacote";
+unit_piece_singular="Pedaço";
 
 // MARK: Example Shopping List
 example_shopping_list_title="Minha primeira lista de compras";
 example_item_1="Maçã";
 example_item_1_comment="Escreva na caixa acima para adicionar itens";
 example_item_2="Doces";
-example_item_2_comment=""; //"Click por mais tempo e então mova seu item para ordenar a lista da sua forma"
+example_item_2_comment="Click por mais tempo e então mova seu item para ordenar a lista da sua forma"
 example_item_3="Coca";
-example_item_3_comment="Swipe items to the right to mark them as bought";
+example_item_3_comment="Dê swipe à direita nos itens para marcar como comprado";
 example_item_4="Spaghetti";
-example_item_4_comment="You can add detailed items with the navigation bar button on the right";
+example_item_4_comment="Você pode adicionar detalhe aos itens com o botão da barra de navegação na direita";
 example_item_5="Papel higiênico";
 example_item_5_comment="Por exemplo você pode ressaltar itens importantes como papel higiênico";
 example_item_6="O item já foi comprado";
-example_item_6_comment="At least it used to be; swipe it again to mark it as bought again";
+example_item_6_comment="Ao menos ele costumava ser; dê swipe aqui novamente para marcar como comprado";

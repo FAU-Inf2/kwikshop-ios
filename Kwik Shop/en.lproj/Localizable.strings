@@ -38,7 +38,7 @@ settings_english="English";
 settings_german="German";
 settings_portuguese="Portuguese";
 settings_manage_autocompletion_history="Manage autocompletion history";
-settings_manage_autocompletion_brand_history="Manage autocompletion brand history";
+settings_manage_autocompletion_brand_history="Manage brand autocompletion history";
 
 // MARK: Alert Box Dialogs
 alert_box_cancel="Cancel";
