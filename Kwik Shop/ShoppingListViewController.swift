@@ -307,7 +307,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 UIView.animateWithDuration(0.25, animations: { () -> Void in
                     center.y = locationInView.y
                     My.cellSnapshot!.center = center
-                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
+                    let transformRatio = (self.view.bounds.width + 20) / self.view.bounds.width
+                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(transformRatio, transformRatio)
                     My.cellSnapshot!.alpha = 0.98
                     cell.alpha = 0.0
                     }, completion: { (finished) -> Void in
