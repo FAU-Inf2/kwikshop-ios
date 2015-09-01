@@ -10,20 +10,18 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNn-Sr-yI0">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
-                    <items>
-                        <navigationItem id="bhw-KY-QCT">
-                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="eDv-mv-9Kt"/>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="04y-94-wT5">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="SNn-Sr-yI0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4T1-iP-kyr"/>
-                <constraint firstItem="SNn-Sr-yI0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tfo-3x-ago"/>
-                <constraint firstAttribute="trailing" secondItem="SNn-Sr-yI0" secondAttribute="trailing" id="vjK-cn-iHe"/>
+                <constraint firstItem="04y-94-wT5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nOL-3D-haa"/>
+                <constraint firstItem="04y-94-wT5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qa9-Sq-WAn"/>
+                <constraint firstAttribute="trailing" secondItem="04y-94-wT5" secondAttribute="trailing" id="uE1-V5-N1b"/>
+                <constraint firstAttribute="bottom" secondItem="04y-94-wT5" secondAttribute="bottom" id="whz-Bk-IVi"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
