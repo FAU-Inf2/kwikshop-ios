@@ -89,7 +89,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return "settings_language".localized
         }
         if section == AUTOCOMPLETION_SECTION {
-            return "Autocompletion"
+            return "settings_autocompletion".localized
         }
         
         return nil

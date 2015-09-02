@@ -37,6 +37,7 @@ settings_language="Linguagem";
 settings_english="Inglês";
 settings_german="Alemão";
 settings_portuguese="Português";
+settings_autocompletion="Autopreenchimento";
 settings_manage_autocompletion_history="Gerenciar histórico de autopreenchimento";
 settings_manage_brand_autocompletion_history="Gerenciar histórico de autopreenchimento de marcas";
 

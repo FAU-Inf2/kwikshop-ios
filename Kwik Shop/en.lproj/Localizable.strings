@@ -37,6 +37,7 @@ settings_language="Language";
 settings_english="English";
 settings_german="German";
 settings_portuguese="Portuguese";
+settings_autocompletion="Autocompletion";
 settings_manage_autocompletion_history="Manage autocompletion history";
 settings_manage_brand_autocompletion_history="Manage brand autocompletion history";
 
