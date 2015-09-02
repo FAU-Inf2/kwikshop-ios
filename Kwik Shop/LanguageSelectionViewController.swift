@@ -12,10 +12,20 @@ class LanguageSelectionViewController: UIViewController, UITableViewDataSource, 
 
     @IBOutlet weak var languagesTableView: UITableView!
     
-    private var languageStrings : [String]!
-    private let languageAbbreviations = ["en", "de", "pt"]
-    private var selectedLanguageIndex : Int!
-    //private let languageIndexKey = "languageIndex"
+    private var selectedLanguageIndex : Int {
+        get {
+            return languageHelper.selectedLanguageIndex
+        }
+        set {
+            languageHelper.selectedLanguageIndex = newValue
+            languagesTableView.reloadData()
+        }
+    }
+    
+    private let languageHelper = LanguageHelper.instance
+    private var languageStrings : [String] {
+        return languageHelper.languageStrings
+    }
     
     override var hidesBottomBarWhenPushed : Bool {
         get {
@@ -33,25 +43,6 @@ class LanguageSelectionViewController: UIViewController, UITableViewDataSource, 
         languagesTableView.delegate = self
         languagesTableView.dataSource = self
         
-        self.languageStrings = ["settings_english".localized, "settings_german".localized, "settings_portuguese".localized]
-        
-        let languageAbbreviation : String
-        if let storedLanguageAbbreviation = NSUserDefaults.standardUserDefaults().stringArrayForKey("AppleLanguages")?[0] as? String {
-            if let index = find(languageAbbreviations, storedLanguageAbbreviation) {
-                languageAbbreviation = storedLanguageAbbreviation
-                selectedLanguageIndex = index
-            } else {
-                // found language is not supported
-                languageAbbreviation = getPreferredLanguageOrEnglish()
-                selectedLanguageIndex = 0
-                NSUserDefaults.standardUserDefaults().setObject(["en"], forKey: "AppleLanguages")
-            }
-        } else {
-            // no language stored before
-            languageAbbreviation = getPreferredLanguageOrEnglish()
-            selectedLanguageIndex = 0
-            NSUserDefaults.standardUserDefaults().setObject(["en"], forKey: "AppleLanguages")
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,10 +91,7 @@ class LanguageSelectionViewController: UIViewController, UITableViewDataSource, 
         
         alert.addAction(UIAlertAction(title: confirmationYesTitle, style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
             self.selectedLanguageIndex = row
-            let languageAbbreviation = self.languageAbbreviations[row]
-            NSUserDefaults.standardUserDefaults().setObject(["\(languageAbbreviation)"], forKey: "AppleLanguages")
-            tableView.reloadData()
-            }))
+        }))
         
         alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: nil))
         
@@ -112,18 +100,8 @@ class LanguageSelectionViewController: UIViewController, UITableViewDataSource, 
         alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Down | UIPopoverArrowDirection.Up
         
         presentViewController(alert, animated: true, completion: nil)
-
     }
     
-    private func getPreferredLanguageOrEnglish() -> String {
-        if let systemLanguage = NSLocale.preferredLanguages()[0] as? String {
-            if contains(self.languageAbbreviations, systemLanguage) {
-                return systemLanguage
-            }
-        }
-        return "en"
-    }
-
     /*
     // MARK: - Navigation
 

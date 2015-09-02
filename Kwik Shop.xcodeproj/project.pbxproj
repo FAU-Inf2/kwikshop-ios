@@ -38,6 +38,7 @@
 		3AE594E21B6FDAA9007A52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594E41B6FDAA9007A52DA /* Localizable.strings */; };
 		3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */; };
 		3AE65E7D1B96E9B500C1190E /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE65E7C1B96E9B500C1190E /* LanguageSelectionViewController.swift */; };
+		3AE65E7F1B96F1CD00C1190E /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE65E7E1B96F1CD00C1190E /* LanguageHelper.swift */; };
 		3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */; };
 		3AE6EEFF1B875DC00061F1A6 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6EEFE1B875DC00061F1A6 /* AutoCompleteTextField.swift */; };
 		3AE802EC1B8C490B00533D83 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE802EB1B8C490B00533D83 /* SettingsViewController.swift */; };
@@ -107,6 +108,7 @@
 		3AE594E51B6FDAAE007A52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLocalizationExtension.swift; sourceTree = "<group>"; };
 		3AE65E7C1B96E9B500C1190E /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
+		3AE65E7E1B96F1CD00C1190E /* LanguageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageHelper.swift; path = ../LanguageHelper.swift; sourceTree = "<group>"; };
 		3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListDetailsViewController.swift; sourceTree = "<group>"; };
 		3AE6EEFE1B875DC00061F1A6 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		3AE802EB1B8C490B00533D83 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				3ADF5E971B8DC0EA004767A5 /* Data Classes */,
 				3ADF5E961B8DC0D9004767A5 /* Delegates */,
 				3A6F95DF1B7E520300E262BB /* ItemParser.swift */,
+				3AE65E7E1B96F1CD00C1190E /* LanguageHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				3AF132DC1B9611880050FA46 /* AlternativeSettingsViewController.swift in Sources */,
 				3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */,
 				3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */,
+				3AE65E7F1B96F1CD00C1190E /* LanguageHelper.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
 				3ADF5E9A1B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift in Sources */,
 				3AE802EC1B8C490B00533D83 /* SettingsViewController.swift in Sources */,

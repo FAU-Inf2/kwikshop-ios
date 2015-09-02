@@ -13,8 +13,6 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
     // MARK: Properties
     @IBOutlet weak var settingsTableView : UITableView!
     
-    
-    
     private let LANGUAGE_SECTION = 0
     private let AUTOCOMPLETION_SECTION = 1
     
@@ -127,8 +125,6 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
 
         }
     }
-
-    
     
     @IBAction func unwindToSettings(sender: UIStoryboardSegue) {
         // this method is called, if a user selects "delete all" in the manage autocompletion history screen
@@ -146,45 +142,4 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
         
         
     }
-    
-    // MARK: UIPickerview Data Source and Delegate
-    /*func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return languageStrings.count
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return languageStrings[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row == selectedLanguageIndex {
-            return
-        }
-        
-        let message = "alert_box_change_language_confirmation_beginning".localized + languageStrings[row] + "alert_box_change_language_confirmation_end".localized + "?"
-        
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        let confirmationYesTitle = "alert_box_change_language_confirmation_yes_beginning".localized + languageStrings[row] + "alert_box_change_language_confirmation_yes_end".localized
-        
-        alert.addAction(UIAlertAction(title: confirmationYesTitle, style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
-            self.selectedLanguageIndex = row
-            let languageAbbreviation = self.languageAbbreviations[row]
-            NSUserDefaults.standardUserDefaults().setObject(["\(languageAbbreviation)"], forKey: "AppleLanguages")
-            }))
-        
-        alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: { [unowned self] (action: UIAlertAction!) in
-            pickerView.selectRow(self.selectedLanguageIndex, inComponent: 0, animated: true)
-            }))
-        
-        alert.popoverPresentationController?.sourceRect = languagePicker.bounds
-        alert.popoverPresentationController?.sourceView = languagePicker
-        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Left
-        
-        presentViewController(alert, animated: true, completion: nil)
-    }*/
 }
