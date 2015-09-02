@@ -37,6 +37,7 @@
 		3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */; };
 		3AE594E21B6FDAA9007A52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594E41B6FDAA9007A52DA /* Localizable.strings */; };
 		3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */; };
+		3AE65E7D1B96E9B500C1190E /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE65E7C1B96E9B500C1190E /* LanguageSelectionViewController.swift */; };
 		3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */; };
 		3AE6EEFF1B875DC00061F1A6 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6EEFE1B875DC00061F1A6 /* AutoCompleteTextField.swift */; };
 		3AE802EC1B8C490B00533D83 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE802EB1B8C490B00533D83 /* SettingsViewController.swift */; };
@@ -105,6 +106,7 @@
 		3AE594E31B6FDAA9007A52DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE594E51B6FDAAE007A52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3AE594E61B6FDC0D007A52DA /* StringLocalizationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLocalizationExtension.swift; sourceTree = "<group>"; };
+		3AE65E7C1B96E9B500C1190E /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
 		3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListDetailsViewController.swift; sourceTree = "<group>"; };
 		3AE6EEFE1B875DC00061F1A6 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		3AE802EB1B8C490B00533D83 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */,
 				3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */,
 				3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift */,
+				3AE65E7C1B96E9B500C1190E /* LanguageSelectionViewController.swift */,
 				3ADFE75B1B94793300AD2E81 /* ResizingViewController.swift */,
 			);
 			name = Controller;
@@ -500,6 +503,7 @@
 				3AE594E71B6FDC0D007A52DA /* StringLocalizationExtension.swift in Sources */,
 				3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */,
 				3AE93B391B821D50001B1365 /* GroupHelper.swift in Sources */,
+				3AE65E7D1B96E9B500C1190E /* LanguageSelectionViewController.swift in Sources */,
 				3A52D7411B8383BC00E44206 /* AutoCompletionHelper.swift in Sources */,
 				3A6F95E01B7E520300E262BB /* ItemParser.swift in Sources */,
 				3ADAFCDE1B7F42260035A040 /* DatabaseHelper.swift in Sources */,

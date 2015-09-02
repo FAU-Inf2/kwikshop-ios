@@ -13,10 +13,7 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
     // MARK: Properties
     @IBOutlet weak var settingsTableView : UITableView!
     
-    private var languageStrings : [String]!
-    private let languageAbbreviations = ["en", "de", "pt"]
-    private var selectedLanguageIndex : Int!
-    private let languageIndexKey = "languageIndex"
+    
     
     private let LANGUAGE_SECTION = 0
     private let AUTOCOMPLETION_SECTION = 1
@@ -28,7 +25,7 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
         settingsTableView.dataSource = self
         
         self.title = "navigation_bar_settings".localized
-        self.languageStrings = ["settings_english".localized, "settings_german".localized, "settings_portuguese".localized]
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -88,12 +85,6 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == LANGUAGE_SECTION {
-            settingsTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
-    }
-    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == LANGUAGE_SECTION {
             return "settings_language".localized
@@ -103,15 +94,6 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
         }
         
         return nil
-    }
-    
-    private func getPreferredLanguageOrEnglish() -> String {
-        if let systemLanguage = NSLocale.preferredLanguages()[0] as? String {
-            if contains(self.languageAbbreviations, systemLanguage) {
-                return systemLanguage
-            }
-        }
-        return "en"
     }
     
     override func didReceiveMemoryWarning() {

@@ -704,6 +704,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ke3-kc-e20" kind="show" id="lEZ-ps-z5P"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="autocompletionSettingsCell" textLabel="emc-bj-cPL" style="IBUITableViewCellStyleDefault" id="Tth-m3-hjx">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -769,6 +772,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqk-Q8-tEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2768" y="336"/>
+        </scene>
+        <!--Language Selection View Controller-->
+        <scene sceneID="S0h-ys-SWU">
+            <objects>
+                <viewController id="ke3-kc-e20" customClass="LanguageSelectionViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VKJ-wy-ld9"/>
+                        <viewControllerLayoutGuide type="bottom" id="xcs-M3-NrR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QXY-kj-ekf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="R8t-sr-Pjd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="languageCell" id="GXT-CS-iPH">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GXT-CS-iPH" id="4Gh-UX-9ZS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R8t-sr-Pjd" firstAttribute="leading" secondItem="QXY-kj-ekf" secondAttribute="leading" id="RiY-yG-bRY"/>
+                            <constraint firstAttribute="trailing" secondItem="R8t-sr-Pjd" secondAttribute="trailing" id="frH-dz-PKe"/>
+                            <constraint firstItem="xcs-M3-NrR" firstAttribute="top" secondItem="R8t-sr-Pjd" secondAttribute="bottom" id="x0h-0n-5xe"/>
+                            <constraint firstItem="R8t-sr-Pjd" firstAttribute="top" secondItem="QXY-kj-ekf" secondAttribute="top" id="ytf-ac-eIe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="languagesTableView" destination="R8t-sr-Pjd" id="4ok-CQ-tnG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fz3-qp-Psq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3651" y="-724"/>
         </scene>
         <!--Manage Auto Completion History View Controller-->
         <scene sceneID="gIS-Mk-CZx">
