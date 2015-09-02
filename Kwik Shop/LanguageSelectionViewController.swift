@@ -91,6 +91,7 @@ class LanguageSelectionViewController: UIViewController, UITableViewDataSource, 
         
         alert.addAction(UIAlertAction(title: confirmationYesTitle, style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
             self.selectedLanguageIndex = row
+            self.performSegueWithIdentifier("unwindToSettings", sender: self)
         }))
         
         alert.addAction(UIAlertAction(title: "alert_box_cancel".localized, style: .Cancel, handler: nil))

@@ -125,7 +125,7 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
         if sender === deleteButton {
             let alert = DeleteConfirmationAlertHelper.getDeleteConfirmationAlertWithDeleteHandler(
-                { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
+                { [unowned self] (action: UIAlertAction!) in
                     self.performSegueWithIdentifier("unwindToSettings", sender: self)
                 },
                 forASingularValue: false)
