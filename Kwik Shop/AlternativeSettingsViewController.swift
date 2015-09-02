@@ -31,6 +31,7 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
         if let indexPath = settingsTableView.indexPathForSelectedRow() {
             settingsTableView.deselectRowAtIndexPath(indexPath, animated: animated)
         }
+        settingsTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: LANGUAGE_SECTION)], withRowAnimation: .None)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -71,7 +72,7 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
         
         if section == LANGUAGE_SECTION {
             cell.textLabel?.text = "settings_language".localized
-            cell.detailTextLabel?.text = "English"
+            cell.detailTextLabel?.text = LanguageHelper.instance.selectedLanguage
         } else {
             if row == 0 {
                 cell.textLabel?.text = "settings_manage_autocompletion_history".localized
