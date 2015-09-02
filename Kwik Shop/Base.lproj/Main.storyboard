@@ -602,76 +602,9 @@
             <point key="canvasLocation" x="1966" y="-1220"/>
         </scene>
         <!--Settings-->
-        <scene sceneID="4sY-sG-baa">
-            <objects>
-                <viewController id="nhy-0s-tZj" customClass="SettingsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="i3x-Rz-mhu"/>
-                        <viewControllerLayoutGuide type="bottom" id="A1w-Ip-dc8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XCN-aV-AJb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsL-iR-TQT">
-                                <rect key="frame" x="100" y="72" width="320" height="162"/>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="Language" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeR-d4-Qkp">
-                                <rect key="frame" x="16" y="142" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JY-mW-zha">
-                                <rect key="frame" x="16" y="242" width="221" height="30"/>
-                                <state key="normal" title="Manage Autocompletion History">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="hwf-Xa-JuG" kind="show" id="Lnb-tZ-A5u"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-kq-VEr">
-                                <rect key="frame" x="16" y="280" width="267" height="30"/>
-                                <state key="normal" title="Manage Autocompletion Brand History">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="hwf-Xa-JuG" kind="show" id="DCp-ee-enW"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3JY-mW-zha" firstAttribute="top" secondItem="vsL-iR-TQT" secondAttribute="bottom" constant="8" id="5oQ-0F-VrW"/>
-                            <constraint firstItem="Ip3-kq-VEr" firstAttribute="top" secondItem="3JY-mW-zha" secondAttribute="bottom" constant="8" id="9Dx-eZ-mat"/>
-                            <constraint firstItem="vsL-iR-TQT" firstAttribute="leading" secondItem="IeR-d4-Qkp" secondAttribute="trailing" constant="8" id="CKA-fD-PEE"/>
-                            <constraint firstItem="IeR-d4-Qkp" firstAttribute="centerY" secondItem="vsL-iR-TQT" secondAttribute="centerY" id="Os2-OJ-ovd"/>
-                            <constraint firstItem="IeR-d4-Qkp" firstAttribute="leading" secondItem="3JY-mW-zha" secondAttribute="leading" id="PN5-JZ-hYo"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3JY-mW-zha" secondAttribute="trailing" id="VVB-hL-Kp6"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="vsL-iR-TQT" secondAttribute="trailing" id="Wnp-il-tI4"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Ip3-kq-VEr" secondAttribute="trailing" id="b3C-bI-gCE"/>
-                            <constraint firstItem="IeR-d4-Qkp" firstAttribute="leading" secondItem="XCN-aV-AJb" secondAttribute="leadingMargin" id="lFQ-50-qWd"/>
-                            <constraint firstItem="Ip3-kq-VEr" firstAttribute="leading" secondItem="XCN-aV-AJb" secondAttribute="leadingMargin" id="rGg-Y3-8X0"/>
-                            <constraint firstItem="vsL-iR-TQT" firstAttribute="top" secondItem="i3x-Rz-mhu" secondAttribute="bottom" constant="8" id="zUy-Fw-keZ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Settings" id="0Y2-IF-NOY"/>
-                    <connections>
-                        <outlet property="languageLabel" destination="IeR-d4-Qkp" id="J2e-Xq-0WW"/>
-                        <outlet property="languagePicker" destination="vsL-iR-TQT" id="js6-aJ-gxr"/>
-                        <outlet property="manageAutocomletionHistoryButton" destination="3JY-mW-zha" id="DkV-hH-jfn"/>
-                        <outlet property="manageAutocompletionBrandHistoryButton" destination="Ip3-kq-VEr" id="WjA-ZR-GTB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZi-Ke-6Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1956" y="-402"/>
-        </scene>
-        <!--Settings-->
         <scene sceneID="YBb-uV-RIB">
             <objects>
-                <viewController id="bGu-DQ-blo" customClass="AlternativeSettingsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bGu-DQ-blo" customClass="SettingsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ssr-ph-Ulf"/>
                         <viewControllerLayoutGuide type="bottom" id="AZ6-pm-cwe"/>
@@ -762,16 +695,14 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="f2h-rj-fdn">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="bcA-CZ-2tw"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="f2h-rj-fdn"/>
                     <connections>
                         <outlet property="settingsTableView" destination="Vyp-2R-bVr" id="4i7-hJ-sY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqk-Q8-tEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2768" y="336"/>
+            <point key="canvasLocation" x="1966" y="-402"/>
         </scene>
         <!--Language Selection View Controller-->
         <scene sceneID="S0h-ys-SWU">
@@ -814,7 +745,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fz3-qp-Psq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="2sZ-73-Y9X" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3651" y="-724"/>
+            <point key="canvasLocation" x="2779" y="-402"/>
         </scene>
         <!--Manage Auto Completion History View Controller-->
         <scene sceneID="gIS-Mk-CZx">
@@ -872,7 +803,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YC6-xt-P7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="stS-rt-rga" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3651" y="-18"/>
+            <point key="canvasLocation" x="1966" y="404"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="HxC-qk-qsm">
@@ -887,33 +818,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="bTD-t6-NiE" kind="relationship" relationship="viewControllers" id="6UI-mG-sAm"/>
-                        <segue destination="Jpl-u5-a5C" kind="relationship" relationship="viewControllers" id="G0J-8T-G7h"/>
-                        <segue destination="l97-3g-oQB" kind="relationship" relationship="viewControllers" id="Ugy-qT-rQW"/>
                         <segue destination="oH6-mN-RSd" kind="relationship" relationship="viewControllers" id="fpS-fj-z8r"/>
+                        <segue destination="l97-3g-oQB" kind="relationship" relationship="viewControllers" id="Ugy-qT-rQW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nro-wZ-yLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="342" y="-402"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="QZy-9o-wRh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jpl-u5-a5C" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="m2a-iY-ZSZ"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ggh-Un-tS4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="nhy-0s-tZj" kind="relationship" relationship="rootViewController" id="WEP-m9-XJD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jHC-v1-rmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1154" y="-402"/>
         </scene>
         <!--Shopping Lists-->
         <scene sceneID="kff-Gb-H0b">
@@ -953,11 +864,11 @@
             </objects>
             <point key="canvasLocation" x="1154" y="-1220"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="8IC-cg-lbr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oH6-mN-RSd" customClass="NavigationController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cM8-SE-Nxc"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="cM8-SE-Nxc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RoL-2b-OTS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -970,7 +881,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Up-vc-o25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1956" y="336"/>
+            <point key="canvasLocation" x="1154" y="-402"/>
         </scene>
     </scenes>
     <resources>
@@ -979,7 +890,7 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dxN-7j-ffA"/>
         <segue reference="W5s-hE-GpY"/>
+        <segue reference="eDs-LT-Dwr"/>
     </inferredMetricsTieBreakers>
 </document>
