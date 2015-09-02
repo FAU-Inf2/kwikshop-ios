@@ -31,6 +31,13 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
         self.languageStrings = ["settings_english".localized, "settings_german".localized, "settings_portuguese".localized]
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = settingsTableView.indexPathForSelectedRow() {
+            settingsTableView.deselectRowAtIndexPath(indexPath, animated: animated)
+        }
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
         return 2
@@ -49,10 +56,21 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("settingsCell", forIndexPath: indexPath) as! UITableViewCell
-        
+        let identifier : String
         let row = indexPath.row
         let section = indexPath.section
+        
+        if section == LANGUAGE_SECTION {
+            identifier = "languageSettingsCell"
+        } else /*if section == AUTOCOMPLETION_SECTION*/ {
+            if row == 0 {
+                identifier = "autocompletionSettingsCell"
+            } else /*if row == 1*/ {
+                identifier = "brandAutocompletionSettingsCell"
+            }
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
         
         cell.textLabel?.numberOfLines = 2
         
@@ -67,9 +85,13 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
             }
             cell.detailTextLabel?.text = ""
         }
-        
-        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == LANGUAGE_SECTION {
+            settingsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -102,22 +124,35 @@ class AlternativeSettingsViewController: UIViewController, UITableViewDelegate, 
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let destinationController = segue.destinationViewController as? ManageAutoCompletionHistoryViewController {
-            if sender === manageAutocomletionHistoryButton {
-                destinationController.manageItemNameCompletion = true
-            } else if sender === manageAutocompletionBrandHistoryButton {
-                destinationController.manageItemNameCompletion = false
+
+        let selectedIndexPath = settingsTableView.indexPathForSelectedRow()!
+        let row = selectedIndexPath.row
+        let section = selectedIndexPath.section
+        
+        if section == LANGUAGE_SECTION {
+            
+        } else if section == AUTOCOMPLETION_SECTION {
+            if let destinationController = segue.destinationViewController as? ManageAutoCompletionHistoryViewController {
+                if row == 0 {
+                    destinationController.manageItemNameCompletion = true
+                } else /*if row == 1*/ {
+                    destinationController.manageItemNameCompletion = false
+                }
             }
+
         }
-    }*/
+    }
+
     
     
     @IBAction func unwindToSettings(sender: UIStoryboardSegue) {
         // this method is called, if a user selects "delete all" in the manage autocompletion history screen
         let autoCompletionHelper = AutoCompletionHelper.instance
+        
+        //settingsTableView.deselectRowAtIndexPath(settingsTableView.indexPathForSelectedRow()!, animated: true)
         
         if let sourceViewController = sender.sourceViewController as? ManageAutoCompletionHistoryViewController {
             if sourceViewController.manageItemNameCompletion! {
