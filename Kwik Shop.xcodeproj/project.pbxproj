@@ -32,6 +32,7 @@
 		3ADFE7601B94BAFC00AD2E81 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFE75F1B94BAFC00AD2E81 /* SortType.swift */; };
 		3AE10D851B711A1C00E644D1 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */; };
 		3AE10D8C1B7122BE00E644D1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */; };
+		3AE14ED91B984AEE004F7A83 /* ItemDetailsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE14ED81B984AEE004F7A83 /* ItemDetailsPickerViewController.swift */; };
 		3AE21DFB1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE21DFA1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift */; };
 		3AE594DB1B6F9E34007A52DA /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AE594DA1B6F9E34007A52DA /* Colors.plist */; };
 		3AE594DE1B6FAE53007A52DA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */; };
@@ -105,6 +106,7 @@
 		3ADFE75F1B94BAFC00AD2E81 /* SortType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		3AE14ED81B984AEE004F7A83 /* ItemDetailsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsPickerViewController.swift; sourceTree = "<group>"; };
 		3AE21DFA1B78FF900015AEEC /* ShoppingListSeperatorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListSeperatorTableViewCell.swift; sourceTree = "<group>"; };
 		3AE594DA1B6F9E34007A52DA /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		3AE594DD1B6FAE53007A52DA /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */,
 				3ADCB0161B68D89B00BA963C /* AlternativeItemDetailsViewController.swift */,
 				3AE65E801B974D3A00C1190E /* ItemDetailsViewController.swift */,
+				3AE14ED81B984AEE004F7A83 /* ItemDetailsPickerViewController.swift */,
 				3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */,
 				3AF132DB1B9611880050FA46 /* SettingsViewController.swift */,
 				3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */,
@@ -544,6 +547,7 @@
 				3AE671471B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift in Sources */,
 				3AE65E7F1B96F1CD00C1190E /* LanguageHelper.swift in Sources */,
 				3AE65E881B974FD200C1190E /* HighlightTableViewCell.swift in Sources */,
+				3AE14ED91B984AEE004F7A83 /* ItemDetailsPickerViewController.swift in Sources */,
 				3A6ABDB81B64F492009FD7BE /* AppDelegate.swift in Sources */,
 				3AE65E8A1B975B3500C1190E /* BrandTableViewCell.swift in Sources */,
 				3ADF5E9A1B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift in Sources */,

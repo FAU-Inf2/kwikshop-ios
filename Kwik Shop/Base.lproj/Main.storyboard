@@ -416,7 +416,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="1vG-es-dNu" kind="show" id="gch-uz-8j8"/>
+                                            <segue destination="1vG-es-dNu" kind="show" identifier="ShowAmountAndUnit" id="gch-uz-8j8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="highlightCell" id="7Cc-Bh-gyg" customClass="HighlightTableViewCell" customModule="Kwik_Shop" customModuleProvider="target">
@@ -548,7 +548,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="1vG-es-dNu" kind="show" id="jck-VE-Lnt"/>
+                                            <segue destination="1vG-es-dNu" kind="show" identifier="ShowGroup" id="jck-VE-Lnt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -591,10 +591,10 @@
             </objects>
             <point key="canvasLocation" x="1154" y="2037"/>
         </scene>
-        <!--View Controller-->
+        <!--Item Details Picker View Controller-->
         <scene sceneID="LwB-Uv-afo">
             <objects>
-                <viewController id="1vG-es-dNu" sceneMemberID="viewController">
+                <viewController id="1vG-es-dNu" customClass="ItemDetailsPickerViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5X7-85-Kn3"/>
                         <viewControllerLayoutGuide type="bottom" id="B85-gd-hum"/>
@@ -615,6 +615,9 @@
                             <constraint firstItem="2IC-RP-D39" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ifz-Wi-6UN" secondAttribute="leading" id="bNz-n9-D4T"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="2IC-RP-D39" id="ETQ-QY-ZbA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihr-7X-XQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1180,6 +1183,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="eDs-LT-Dwr"/>
         <segue reference="tZY-mZ-oyP"/>
-        <segue reference="gch-uz-8j8"/>
+        <segue reference="jck-VE-Lnt"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,8 +25,8 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
     var currentItem : Item?
     var newItem = true
     
-    private var unitHasChanged = false
-    private var groupHasChanged = false
+    var unitHasChanged = false
+    var groupHasChanged = false
     
     private let autoCompletionHelper = AutoCompletionHelper.instance
     
@@ -107,6 +107,9 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
     override func viewWillAppear(animated: Bool) {
         if let indexPath = itemDetailsTableView.indexPathForSelectedRow() {
             itemDetailsTableView.deselectRowAtIndexPath(indexPath, animated: animated)
+        }
+        if let indexPaths = itemDetailsTableView.indexPathsForVisibleRows() {
+            itemDetailsTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
         }
     }
     
@@ -288,7 +291,8 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
             return false;
         }
         // somewhere else was tapped
-        return true;
+        closeKeyboard()
+        return false;
     }
 
     // MARK: Actions
@@ -337,7 +341,6 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
         }
         return true
     }
-
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
@@ -371,8 +374,17 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
             }
         } else if deleteButton === sender {
             currentItem = nil
+        } else if segue.identifier == "ShowAmountAndUnit" {
+            let itemDetailsPickerViewController = segue.destinationViewController as! ItemDetailsPickerViewController
+            itemDetailsPickerViewController.isAmountAndUnitPicker = true
+            itemDetailsPickerViewController.currentAmount = currentAmount
+            itemDetailsPickerViewController.currentUnit = currentUnit
+        } else if segue.identifier == "ShowGroup" {
+            let itemDetailsPickerViewController = segue.destinationViewController as! ItemDetailsPickerViewController
+            itemDetailsPickerViewController.isAmountAndUnitPicker = false
+            itemDetailsPickerViewController.currentGroup = currentGroup
         }
     }
-    
+
 
 }
