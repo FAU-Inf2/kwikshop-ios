@@ -117,5 +117,10 @@ class ItemDetailsPickerViewController: UIViewController, UIPickerViewDelegate, U
             currentGroup = groupDelegate.data[row]
         }
         delegate.pickerView?(pickerView, didSelectRow: row, inComponent: component)
+        if isAmountAndUnitPicker! {
+            if component == UNIT_COMPONENT {
+                currentAmount = amountAndUnitDelegate.getSelectedAmount()
+            }
+        }
     }
 }
