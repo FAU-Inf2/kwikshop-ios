@@ -114,7 +114,7 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
     }
     
     override func viewDidAppear(animated: Bool) {
-        if (newItem && currentItem == nil) {
+        if newItem && currentItem == nil && (currentItemName == nil || currentItemName!.isEmpty) {
             itemNameTextField?.becomeFirstResponder()
         }
     }
@@ -165,6 +165,7 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
             }
             
             cell.detailTextLabel?.text = amountText
+            cell.layoutSubviews()
             return cell
             
         case HIGHLIGHT_INDEX:
