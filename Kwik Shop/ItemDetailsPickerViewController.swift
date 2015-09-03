@@ -36,7 +36,6 @@ class ItemDetailsPickerViewController: UIViewController, UIPickerViewDelegate, U
             pickerView.dataSource = self
             
             amountAndUnitDelegate.selectAmount(currentAmount, andUnit: currentUnit!, forPickerView: pickerView, animated: false)
-            pickerView.reloadAllComponents()
         } else {
             groupDelegate = GroupDelegate()
             pickerView.delegate = self

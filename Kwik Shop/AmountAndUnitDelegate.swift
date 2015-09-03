@@ -44,7 +44,7 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let selectedUnit = unitData[pickerView.selectedRowInComponent(UNIT_COMPONENT)]
+        let selectedUnit = lastSelectedUnit//unitData[pickerView.selectedRowInComponent(UNIT_COMPONENT)]
         if component == AMOUNT_COMPONENT {
             if let amount = selectedUnit.allowedPickerAmounts[row] {
                 return "\(amount)"
@@ -134,7 +134,7 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
         pickerView.selectRow(unitRow, inComponent: UNIT_COMPONENT, animated: animated)
         self.lastSelectedUnit = unit
         if amount == nil {
-            // nil can only be the first amount (at the moment); if nil is not allowed, then "1" is selected (ad index 0)
+            // nil can only be the first amount (at the moment); if nil is not allowed, then "1" is selected (at index 0)
             pickerView.selectRow(0, inComponent: AMOUNT_COMPONENT, animated: animated)
         } else {
             var amounts = unit.allowedPickerAmounts
@@ -151,12 +151,14 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
                 self.lastSelectedAmount = amounts[0]
             }
         }
+        pickerView.reloadAllComponents()
     }
     
     func selectUnit(unit: Unit, forPickerView pickerView: UIPickerView, animated: Bool) {
         let unitRow = find(unitData, unit)!
         pickerView.selectRow(unitRow, inComponent: UNIT_COMPONENT, animated: animated)
         self.lastSelectedUnit = unit
+        pickerView.reloadAllComponents()
     }
     
     func getSelectedAmount() -> Int? {
