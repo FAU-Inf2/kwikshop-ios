@@ -22,7 +22,6 @@
 		3ADAFCDE1B7F42260035A040 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */; };
 		3ADAFCE81B7FA12C0035A040 /* ManagedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCE71B7FA12C0035A040 /* ManagedUnit.swift */; };
 		3ADAFCEC1B7FA12C0035A040 /* ManagedGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFCEB1B7FA12C0035A040 /* ManagedGroup.swift */; };
-		3ADCB0171B68D89B00BA963C /* AlternativeItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADCB0161B68D89B00BA963C /* AlternativeItemDetailsViewController.swift */; };
 		3ADD08571B6BF35D0060D2AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08561B6BF35D0060D2AC /* Group.swift */; };
 		3ADD08591B6BF3C70060D2AC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD08581B6BF3C70060D2AC /* Unit.swift */; };
 		3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */; };
@@ -96,7 +95,6 @@
 		3ADAFCDD1B7F42260035A040 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		3ADAFCE71B7FA12C0035A040 /* ManagedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedUnit.swift; sourceTree = "<group>"; };
 		3ADAFCEB1B7FA12C0035A040 /* ManagedGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedGroup.swift; sourceTree = "<group>"; };
-		3ADCB0161B68D89B00BA963C /* AlternativeItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeItemDetailsViewController.swift; sourceTree = "<group>"; };
 		3ADD08561B6BF35D0060D2AC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3ADD08581B6BF3C70060D2AC /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		3ADE96911B6D358D007E7DE4 /* GroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 				3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */,
 				3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */,
 				3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */,
-				3ADCB0161B68D89B00BA963C /* AlternativeItemDetailsViewController.swift */,
 				3AE65E801B974D3A00C1190E /* ItemDetailsViewController.swift */,
 				3AE14ED81B984AEE004F7A83 /* ItemDetailsPickerViewController.swift */,
 				3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */,
@@ -556,7 +553,6 @@
 				3AF0CE301B80D37E00D0BC48 /* ManagedShoppingList.swift in Sources */,
 				3ADE96921B6D358D007E7DE4 /* GroupDelegate.swift in Sources */,
 				3ADFE75E1B94BA9A00AD2E81 /* AmountIndexType.swift in Sources */,
-				3ADCB0171B68D89B00BA963C /* AlternativeItemDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
