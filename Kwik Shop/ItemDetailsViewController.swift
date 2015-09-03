@@ -75,7 +75,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         if newItem {
             if let item = currentItem {
                 itemNameTextField.text = item.name
-                
+                self.title = item.name
                 let unit = item.unit
                 let none = UnitHelper.instance.NONE
                 let unitToSelect : Unit
@@ -99,7 +99,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             }
         } else if let item = currentItem {
             itemNameTextField.text = item.name
-
+            self.title = item.name
             amountAndUnitDelegate.selectAmount(item.amount, andUnit: item.unit, forPickerView: unitPicker, animated: false)
             
             highlightSwitch.setOn(item.highlighted, animated: false)
