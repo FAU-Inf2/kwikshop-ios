@@ -136,6 +136,7 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
         if amount == nil {
             // nil can only be the first amount (at the moment); if nil is not allowed, then "1" is selected (at index 0)
             pickerView.selectRow(0, inComponent: AMOUNT_COMPONENT, animated: animated)
+            self.lastSelectedAmount = unit.allowedPickerAmounts[0]
         } else {
             var amounts = unit.allowedPickerAmounts
             var nonNilAmounts = [Int]()
