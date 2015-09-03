@@ -79,6 +79,7 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
                 }
                 currentUnit = unitToSelect
                 currentGroup = autoCompletionHelper.getGroupForItem(item)
+                currentAmount = item.amount
                 
                 if let visibleRows = itemDetailsTableView.indexPathsForVisibleRows() {
                     itemDetailsTableView.reloadRowsAtIndexPaths(visibleRows, withRowAnimation: .None)
