@@ -1,38 +1,27 @@
 //
-//  ItemDetailsController.swift
+//  AlternativeItemDetailsViewController.swift
 //  Kwik Shop
 //
-//  Created by Adrian Kretschmer on 29.07.15.
+//  Created by Adrian Kretschmer on 02.09.15.
 //  Copyright (c) 2015 FAU-Inf2. All rights reserved.
 //
 
 import UIKit
 
-class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, MLPAutoCompleteTextFieldDataSource {
+class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, MLPAutoCompleteTextFieldDataSource {
+    
     // MARK: Properties
-    @IBOutlet weak var itemNameTextField: MLPAutoCompleteTextField!
-    @IBOutlet weak var amountLabel: UILabel!    
-    //@IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var unitPicker: UIPickerView!
-    @IBOutlet weak var highlightLabel: UILabel!
-    @IBOutlet weak var highlightSwitch: UISwitch!
-    @IBOutlet weak var brandLabel: UILabel!
-    @IBOutlet weak var brandTextField: MLPAutoCompleteTextField!
-    @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var commentTextField: UITextField!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
-    @IBOutlet weak var groupLabel: UILabel!
-    @IBOutlet weak var groupPicker: UIPickerView!
-    @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewToolbarConstraint: NSLayoutConstraint!
-    @IBOutlet weak var groupPickerBottomLayoutConstraint: NSLayoutConstraint!
-    
-    var groupDelegate : GroupDelegate!
-    var amountAndUnitDelegate : AmountAndUnitDelegate!
-    
+    @IBOutlet weak var itemDetailsTableView: UITableView!
+    @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
+    weak var closeKeyboardTapGestureRecognizer: UITapGestureRecognizer!
+    weak var itemNameTextField: MLPAutoCompleteTextField?
+    weak var brandTextField: MLPAutoCompleteTextField?
+    weak var commentTextField: UITextField?
+
     var currentItem : Item?
     var newItem = true
     
@@ -41,135 +30,194 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     private let autoCompletionHelper = AutoCompletionHelper.instance
     
-    private let AMOUNT_COMPONENT = AmountAndUnitDelegate.AMOUNT_COMPONENT
-    private let UNIT_COMPONENT = AmountAndUnitDelegate.UNIT_COMPONENT
-    private let GROUP_COMPONENT = 0
+    var currentItemName : String?
+    var currentAmount : Int?
+    var currentUnit = UnitHelper.instance.NONE
+    var currentlyHighlighted = false
+    var currentBrand : String?
+    var currentComment : String?
+    var currentGroup = GroupHelper.instance.OTHER
     
-    // MARK: UIViewController
+    private let ITEM_NAME_INDEX = 0
+    private let AMOUNT_INDEX = 1
+    private let HIGHLIGHT_INDEX = 2
+    private let BRAND_INDEX = 3
+    private let COMMENT_INDEX = 4
+    private let GROUP_INDEX = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        amountLabel.text = "item_details_amount".localized
-        highlightLabel.text = "item_details_highlight".localized
-        brandLabel.text = "item_details_brand".localized
-        commentLabel.text = "item_details_comment".localized
-        groupLabel.text = "item_details_group".localized
+        itemDetailsTableView.dataSource = self
+        itemDetailsTableView.delegate = self
+        itemDetailsTableView.estimatedRowHeight = 44.0
+        itemDetailsTableView.rowHeight = UITableViewAutomaticDimension
         
-        if groupDelegate == nil {
-            groupDelegate = GroupDelegate()
-            groupPicker.delegate = self
-            groupPicker.dataSource = self
-        }
-        if amountAndUnitDelegate == nil {
-            amountAndUnitDelegate = AmountAndUnitDelegate()
-            unitPicker.delegate = self
-            unitPicker.dataSource = self
+        // close keyboard when user taps on the view
+        if self.closeKeyboardTapGestureRecognizer == nil {
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+            tapRecognizer.delegate = self
+            view.addGestureRecognizer(tapRecognizer)
+            self.closeKeyboardTapGestureRecognizer = tapRecognizer
         }
         
-        if let primaryColor = UIColor(resourceName: "primary_color") {
-            highlightSwitch.onTintColor = primaryColor
-        }
-        
-        self.hideToolbar(newItem)
+        self.bottomViewLayoutConstraint = toolbarBottomConstraint
+        self.bottomViewLayoutConstraintDefaultConstant = 0
         
         if newItem {
             if let item = currentItem {
-                itemNameTextField.text = item.name
-                
+                currentItemName = item.name
                 let unit = item.unit
                 let none = UnitHelper.instance.NONE
                 let unitToSelect : Unit
-                let animated : Bool
                 if unit !== none {
                     unitToSelect = unit
-                    animated = false
                 } else if let unit = autoCompletionHelper.getUnitForItem(item) {
                     unitToSelect = unit
-                    animated = true
                 } else {
                     unitToSelect = none
-                    animated = false
                 }
-                amountAndUnitDelegate.selectAmount(item.amount, andUnit: unitToSelect, forPickerView: unitPicker, animated: animated)
+                currentUnit = unitToSelect
+                currentGroup = autoCompletionHelper.getGroupForItem(item)
                 
-                let group = autoCompletionHelper.getGroupForItem(item)
-                selectGroup(group, animated: false)
+                if let visibleRows = itemDetailsTableView.indexPathsForVisibleRows() {
+                    itemDetailsTableView.reloadRowsAtIndexPaths(visibleRows, withRowAnimation: .None)
+                }
             } else {
-                //unitDelegate.displayUnitNamesInSingular = isThisSingular(nil)
+                // item details view is opened for a completely new item
             }
         } else if let item = currentItem {
-            itemNameTextField.text = item.name
-
-            amountAndUnitDelegate.selectAmount(item.amount, andUnit: item.unit, forPickerView: unitPicker, animated: false)
+            currentItemName = item.name
+            currentAmount = item.amount
+            currentUnit = item.unit
+            currentlyHighlighted = item.highlighted
+            currentBrand = item.brand
+            currentComment = item.comment
+            currentGroup = item.group
             
-            highlightSwitch.setOn(item.highlighted, animated: false)
-            if let brand = item.brand {
-                brandTextField.text = brand
+            if let visibleRows = itemDetailsTableView.indexPathsForVisibleRows() {
+                itemDetailsTableView.reloadRowsAtIndexPaths(visibleRows, withRowAnimation: .None)
             }
-            if let comment = item.comment {
-                commentTextField.text = comment
-            }
-            
-            let group = item.group
-            if let row = find(groupDelegate.data, group) {
-                groupPicker.selectRow(row, inComponent: GROUP_COMPONENT, animated: false)
-            }
-
         } else {
             assertionFailure("Item details was loaded with newItem set to false but currentItem set to nil")
         }
-        
-        itemNameTextField.delegate = self
-        initializeAutoCompletionTextField(itemNameTextField, withDataSource: self)
-        
-        checkValidItemName(itemNameTextField.text)
-        commentTextField.delegate = self
-        
-        brandTextField.delegate = self
-        initializeAutoCompletionTextField(brandTextField, withDataSource: self)
-        
-        // close keyboard when user taps on the view
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "closeKeyboard")
-        tapGesture.delegate = self
-        view.addGestureRecognizer(tapGesture)
-        highlightSwitch.addTarget(self, action: "closeKeyboard", forControlEvents: UIControlEvents.ValueChanged)
-        
-        self.bottomViewLayoutConstraint = self.groupPickerBottomLayoutConstraint
-        self.bottomViewLayoutConstraintDefaultConstant = 17
-        
     }
-    
-    private func selectGroup(group: Group, animated: Bool) {
-        if let row = find(groupDelegate.data, group) {
-            groupPicker.selectRow(row, inComponent: GROUP_COMPONENT, animated: animated)
-            groupHasChanged = true
+
+    override func viewWillAppear(animated: Bool) {
+        if let indexPath = itemDetailsTableView.indexPathForSelectedRow() {
+            itemDetailsTableView.deselectRowAtIndexPath(indexPath, animated: animated)
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         if (newItem && currentItem == nil) {
-            itemNameTextField.becomeFirstResponder()
+            itemNameTextField?.becomeFirstResponder()
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: UITableViewDelegate and DataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case ITEM_NAME_INDEX:
+            let cell = tableView.dequeueReusableCellWithIdentifier("itemNameCell", forIndexPath: indexPath) as! ItemNameTableViewCell
+            
+            if self.itemNameTextField == nil {
+                self.itemNameTextField = cell.itemNameTextField
+                self.itemNameTextField!.delegate = self
+                initializeAutoCompletionTextField(self.itemNameTextField!, withDataSource: self)
+            }
+            
+            if let itemName = currentItemName {
+                cell.itemNameTextField.text = itemName
+            }
+            return cell
+            
+        case AMOUNT_INDEX:
+            let cell = tableView.dequeueReusableCellWithIdentifier("amountCell", forIndexPath: indexPath) as! UITableViewCell
+            cell.textLabel?.text = "item_details_amount".localized
+            var amountText = ""
+            let singularAmount = isThisSingular(currentAmount)
+            if let amount = currentAmount {
+                amountText += "\(amount)"
+            }
+            if singularAmount && !currentUnit.shortestPossibleSingularDescription.isEmpty {
+                amountText += " \(currentUnit.shortestPossibleSingularDescription)"
+            } else if !singularAmount && !currentUnit.shortestPossibleDescription.isEmpty {
+                amountText += " \(currentUnit.shortestPossibleDescription)"
+            }
+            
+            cell.detailTextLabel?.text = amountText
+            return cell
+            
+        case HIGHLIGHT_INDEX:
+            let cell = tableView.dequeueReusableCellWithIdentifier("highlightCell", forIndexPath: indexPath) as! HighlightTableViewCell
+            cell.highlightLabel.text = "item_details_highlight".localized
+            cell.highlightSwitch.on = currentlyHighlighted
+            if let primaryColor = UIColor(resourceName: "primary_color") {
+                cell.highlightSwitch.onTintColor = primaryColor
+            }
+            return cell
+            
+        case BRAND_INDEX:
+            let cell = tableView.dequeueReusableCellWithIdentifier("brandCell", forIndexPath: indexPath) as! BrandTableViewCell
+            cell.brandLabel.text = "item_details_brand".localized
+            if self.brandTextField == nil {
+                self.brandTextField = cell.brandTextField
+                self.brandTextField!.delegate = self
+                initializeAutoCompletionTextField(self.brandTextField!, withDataSource: self)
+            }
+            if let brand = currentBrand {
+                cell.brandTextField.text = brand
+            }
+            return cell
+        
+        case COMMENT_INDEX:
+            let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! CommentTableViewCell
+            cell.commentLabel.text = "item_details_comment".localized
+            if self.commentTextField == nil {
+                self.commentTextField = cell.commentTextField
+                self.commentTextField!.delegate = self
+            }
+            if let comment = currentComment {
+                cell.commentTextField.text = comment
+            }
+            return cell
+        
+        default: // GROUP_INDEX:
+            let cell = tableView.dequeueReusableCellWithIdentifier("groupCell", forIndexPath: indexPath) as! UITableViewCell
+            cell.textLabel?.text = "item_details_group".localized
+            cell.detailTextLabel?.text = currentGroup.name
+            return cell
+        }
+    }
+    
+    // MARK: Textfield
     
     func checkValidItemName(text: String) {
         // Disable the Save button if the text field is empty.
         saveButton.enabled = !text.isEmpty
     }
     
-    // needs to be called at least once, otherwise the layout might be broken
-    private func hideToolbar(hide : Bool) {
-        toolBar.hidden=hide
-        scrollViewBottomConstraint.active = hide
-        scrollViewToolbarConstraint.active = !hide
-    }
-    
     func closeKeyboard() {
-        itemNameTextField.resignFirstResponder()
-        brandTextField.resignFirstResponder()
-        commentTextField.resignFirstResponder()
+        itemNameTextField?.resignFirstResponder()
+        brandTextField?.resignFirstResponder()
+        commentTextField?.resignFirstResponder()
     }
-    
+
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -179,19 +227,34 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     func textFieldDidEndEditing(textField: UITextField) {
         if (textField === itemNameTextField) {
-            let name = itemNameTextField.text
+            let name = itemNameTextField!.text
+            self.currentItemName = name
             checkValidItemName(name)
             navigationItem.title = name
             if newItem {
                 if !unitHasChanged {
                     if let unit = autoCompletionHelper.getUnitForName(name) {
-                        amountAndUnitDelegate.selectUnit(unit, forPickerView: unitPicker, animated: true)
+                        selectUnit(unit, animated: true)
                     }
                 }
                 if !groupHasChanged {
                     let group = autoCompletionHelper.getGroupForName(name)
                     selectGroup(group, animated: true)
                 }
+            }
+        } else if (textField === brandTextField) {
+            let brand = textField.text
+            if brand.isEmpty {
+                self.currentBrand = nil
+            } else {
+                self.currentBrand = brand
+            }
+        } else if (textField === commentTextField) {
+            let comment = textField.text
+            if comment.isEmpty {
+                self.currentComment = nil
+            } else {
+                self.currentComment = comment
             }
         }
     }
@@ -205,11 +268,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             return true
         }
     }
-    
-    private func isThisSingular (amount: Int?) -> Bool {
-        return amount == nil || amount == 1
-    }
-    
+
     // MARK: MLP Autocompletion
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!) -> [AnyObject]! {
         if textField === self.itemNameTextField {
@@ -223,15 +282,37 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     // MARK: UIGestureRecognizerDelegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if touch.view.isDescendantOfView(itemNameTextField.autoCompleteTableView) || touch.view.isDescendantOfView(brandTextField.autoCompleteTableView) {
+        if (itemNameTextField != nil && touch.view.isDescendantOfView(itemNameTextField!.autoCompleteTableView)) || (brandTextField != nil && touch.view.isDescendantOfView(brandTextField!.autoCompleteTableView)) {
             // autocomplete suggestion was tapped
             return false;
         }
         // somewhere else was tapped
         return true;
     }
+
+    // MARK: Actions
+    @IBAction func highlightSwichChanged(sender: UISwitch) {
+        self.currentlyHighlighted = sender.on
+    }
     
-    // MARK: Navigation
+    private func selectGroup(group: Group, animated: Bool) {
+        self.currentGroup = group
+        let animation = animated ? UITableViewRowAnimation.Automatic : UITableViewRowAnimation.None
+        itemDetailsTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: GROUP_INDEX, inSection: 0)], withRowAnimation: animation)
+    }
+    
+    private func selectUnit(unit: Unit, animated: Bool) {
+        self.currentUnit = unit
+        let animation = animated ? UITableViewRowAnimation.Automatic : UITableViewRowAnimation.None
+        itemDetailsTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: AMOUNT_INDEX, inSection: 0)], withRowAnimation: animation)
+    }
+    
+    private func isThisSingular (amount: Int?) -> Bool {
+        return amount == nil || amount == 1
+    }
+    
+    // MARK: - Navigation
+
     @IBAction func cancel(sender: UIBarButtonItem) {
         if newItem {
             dismissViewControllerAnimated(true, completion: nil)
@@ -242,7 +323,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
-        if sender === deleteButton {            
+        if sender === deleteButton {
             let alert = DeleteConfirmationAlertHelper.getDeleteConfirmationAlertWithDeleteHandler(
                 { [unowned self, weak deleteButton = self.deleteButton] (action: UIAlertAction!) in
                     self.performSegueWithIdentifier("unwindToShoppingList", sender: deleteButton)
@@ -255,27 +336,31 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         }
         return true
     }
+
     
-    
-    // This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
-            let name = itemNameTextField.text
-            let amount = amountAndUnitDelegate.getSelectedAmount()
-            let unitIndex = unitPicker.selectedRowInComponent(UNIT_COMPONENT)
-            let unit = amountAndUnitDelegate.unitData[unitIndex]
+            var name = itemNameTextField?.text
+            if name == nil {
+                name = currentItemName
+            }
+            let amount = currentAmount
+            let unit = currentUnit
+            let highlighted = currentlyHighlighted
+            var brand = brandTextField?.text
+            if brand == nil {
+                brand = currentBrand
+            }
+            var comment = commentTextField?.text
+            if comment == nil {
+                comment = currentComment
+            }
+            let group = currentGroup
             
-            let highlighted = highlightSwitch.on
-            let brand = brandTextField.text
-            let comment = commentTextField.text
-            
-            let groupIndex = groupPicker.selectedRowInComponent(GROUP_COMPONENT)
-            let group = groupDelegate.data[groupIndex]
-
             if currentItem == nil {
-                currentItem = Item(name: name, amount: amount, unit: unit, highlighted: highlighted, brand: brand, comment: comment, group: group)
+                currentItem = Item(name: name!, amount: amount, unit: unit, highlighted: highlighted, brand: brand, comment: comment, group: group)
             } else {
-                currentItem!.name = name
+                currentItem!.name = name!
                 currentItem!.amount = amount
                 currentItem!.unit = unit
                 currentItem!.highlighted = highlighted
@@ -288,58 +373,5 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         }
     }
     
-    // MARK: PickerView Delegate and Data Source
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        let delegate : UIPickerViewDataSource
-        if pickerView === unitPicker {
-            delegate = self.amountAndUnitDelegate
-        } else if pickerView === groupPicker {
-            delegate = self.groupDelegate
-        } else {
-            return 0
-        }
-        return delegate.numberOfComponentsInPickerView(pickerView)
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let delegate : UIPickerViewDataSource
-        if pickerView === unitPicker {
-            delegate = self.amountAndUnitDelegate
-        } else if pickerView === groupPicker {
-            delegate = self.groupDelegate
-        } else {
-            return 0
-        }
-        return delegate.pickerView(pickerView, numberOfRowsInComponent: component)
 
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let delegate : UIPickerViewDelegate
-        if pickerView === unitPicker {
-            delegate = self.amountAndUnitDelegate
-        } else if pickerView === groupPicker {
-            delegate = self.groupDelegate
-        } else {
-            return nil
-        }
-        return delegate.pickerView?(pickerView, titleForRow: row, forComponent: component)
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let delegate : UIPickerViewDelegate
-        if pickerView === unitPicker {
-            unitHasChanged = true
-            delegate = self.amountAndUnitDelegate
-        } else if pickerView === groupPicker {
-            groupHasChanged = true
-            delegate = self.groupDelegate
-        } else {
-            return
-        }
-        closeKeyboard()
-        delegate.pickerView?(pickerView, didSelectRow: row, inComponent: component)
-    }
-    
-    // MARK: Actions
 }

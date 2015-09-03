@@ -162,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="1154" y="404"/>
         </scene>
-        <!--Item Details View Controller-->
+        <!--Alternative Item Details View Controller-->
         <scene sceneID="UfP-iA-RdV">
             <objects>
-                <viewController id="XS2-JU-sfC" customClass="ItemDetailsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XS2-JU-sfC" customClass="AlternativeItemDetailsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uup-LB-s0x"/>
                         <viewControllerLayoutGuide type="bottom" id="EKU-nv-Qrc"/>
@@ -349,12 +349,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvs-nc-DCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tQq-Ny-O5Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="2037"/>
+            <point key="canvasLocation" x="-576" y="2297"/>
         </scene>
-        <!--Alternative Item Details View Controller-->
+        <!--Item Details View Controller-->
         <scene sceneID="wYt-mI-f9X">
             <objects>
-                <viewController id="Cf4-8d-6RP" customClass="AlternativeItemDetailsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Cf4-8d-6RP" customClass="ItemDetailsViewController" customModule="Kwik_Shop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h0O-vX-49B"/>
                         <viewControllerLayoutGuide type="bottom" id="B6P-XZ-IhU"/>
@@ -567,8 +567,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ugS-E3-YyY">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jgg-8H-AA8"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="4vC-1a-K7t"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jgg-8H-AA8">
+                            <connections>
+                                <action selector="cancel:" destination="Cf4-8d-6RP" id="3iH-Jo-acf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="4vC-1a-K7t">
+                            <connections>
+                                <segue destination="FK4-ua-Xvi" kind="unwind" unwindAction="unwindToShoppingList:" id="FG0-GD-EWn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="jgg-8H-AA8" id="8gy-Nb-Fuq"/>
@@ -579,8 +587,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dit-Yb-iDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FK4-ua-Xvi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2778" y="2037"/>
+            <point key="canvasLocation" x="1154" y="2037"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LwB-Uv-afo">
@@ -609,7 +618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihr-7X-XQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3585" y="2037"/>
+            <point key="canvasLocation" x="1966" y="2037"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="yKs-gZ-ivh">
@@ -714,7 +723,7 @@
                                             <outlet property="groupBackgroundLabel" destination="LJp-Qk-mvE" id="Hgh-cb-owj"/>
                                             <outlet property="groupLabel" destination="Q4r-EJ-vKi" id="e7t-FX-XUF"/>
                                             <outlet property="nameLabel" destination="COL-iC-W0q" id="R49-SI-Pw1"/>
-                                            <segue destination="XS2-JU-sfC" kind="show" identifier="ShowItemDetails" id="W5s-hE-GpY"/>
+                                            <segue destination="Cf4-8d-6RP" kind="show" identifier="ShowItemDetails" id="tZY-mZ-oyP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShoppingListSeperatorTableViewCell" id="YGu-TP-YZh" customClass="ShoppingListSeperatorTableViewCell" customModule="Kwik_Shop" customModuleProvider="target">
@@ -773,7 +782,7 @@
                     <navigationItem key="navigationItem" id="3Sm-Y3-37W">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dxp-Wi-ZoL">
                             <connections>
-                                <segue destination="AOq-tl-cPV" kind="presentation" identifier="AddItem" id="MKy-JF-4mD"/>
+                                <segue destination="g1g-gR-gEA" kind="presentation" identifier="AddItem" id="ZTq-i4-VMJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -806,7 +815,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCT-Lf-leg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="2037"/>
+            <point key="canvasLocation" x="-1446" y="2297"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xkb-3Q-ep5">
@@ -1080,7 +1089,6 @@
                         <segue destination="bTD-t6-NiE" kind="relationship" relationship="viewControllers" id="6UI-mG-sAm"/>
                         <segue destination="oH6-mN-RSd" kind="relationship" relationship="viewControllers" id="fpS-fj-z8r"/>
                         <segue destination="l97-3g-oQB" kind="relationship" relationship="viewControllers" id="Ugy-qT-rQW"/>
-                        <segue destination="g1g-gR-gEA" kind="relationship" relationship="viewControllers" id="1o2-20-toh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nro-wZ-yLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1161,7 +1169,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxu-iW-mir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1966" y="2037"/>
+            <point key="canvasLocation" x="342" y="2037"/>
         </scene>
     </scenes>
     <resources>
@@ -1170,8 +1178,8 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jck-VE-Lnt"/>
         <segue reference="eDs-LT-Dwr"/>
-        <segue reference="W5s-hE-GpY"/>
+        <segue reference="tZY-mZ-oyP"/>
+        <segue reference="gch-uz-8j8"/>
     </inferredMetricsTieBreakers>
 </document>
