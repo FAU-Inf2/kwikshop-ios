@@ -44,7 +44,7 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let selectedUnit = lastSelectedUnit//unitData[pickerView.selectedRowInComponent(UNIT_COMPONENT)]
+        let selectedUnit = lastSelectedUnit
         if component == AMOUNT_COMPONENT {
             if let amount = selectedUnit.allowedPickerAmounts[row] {
                 return "\(amount)"
