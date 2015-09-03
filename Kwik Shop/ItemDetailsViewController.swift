@@ -67,6 +67,7 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
         if newItem {
             if let item = currentItem {
                 currentItemName = item.name
+                self.title = currentItemName
                 let unit = item.unit
                 let none = UnitHelper.instance.NONE
                 let unitToSelect : Unit
@@ -89,6 +90,7 @@ class ItemDetailsViewController: AutoCompletionViewController, UITableViewDataSo
             }
         } else if let item = currentItem {
             currentItemName = item.name
+            self.title = currentItemName
             currentAmount = item.amount
             currentUnit = item.unit
             currentlyHighlighted = item.highlighted
