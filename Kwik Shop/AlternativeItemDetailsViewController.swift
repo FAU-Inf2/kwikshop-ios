@@ -63,6 +63,44 @@ class AlternativeItemDetailsViewController: AutoCompletionViewController, UITabl
         
         self.bottomViewLayoutConstraint = toolbarBottomConstraint
         self.bottomViewLayoutConstraintDefaultConstant = 0
+        
+        if newItem {
+            if let item = currentItem {
+                currentItemName = item.name
+                let unit = item.unit
+                let none = UnitHelper.instance.NONE
+                let unitToSelect : Unit
+                if unit !== none {
+                    unitToSelect = unit
+                } else if let unit = autoCompletionHelper.getUnitForItem(item) {
+                    unitToSelect = unit
+                } else {
+                    unitToSelect = none
+                }
+                currentUnit = unitToSelect
+                currentGroup = autoCompletionHelper.getGroupForItem(item)
+                
+                if let visibleRows = itemDetailsTableView.indexPathsForVisibleRows() {
+                    itemDetailsTableView.reloadRowsAtIndexPaths(visibleRows, withRowAnimation: .None)
+                }
+            } else {
+                // item details view is opened for a completely new item
+            }
+        } else if let item = currentItem {
+            currentItemName = item.name
+            currentAmount = item.amount
+            currentUnit = item.unit
+            currentlyHighlighted = item.highlighted
+            currentBrand = item.brand
+            currentComment = item.comment
+            currentGroup = item.group
+            
+            if let visibleRows = itemDetailsTableView.indexPathsForVisibleRows() {
+                itemDetailsTableView.reloadRowsAtIndexPaths(visibleRows, withRowAnimation: .None)
+            }
+        } else {
+            assertionFailure("Item details was loaded with newItem set to false but currentItem set to nil")
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -127,22 +165,42 @@ class AlternativeItemDetailsViewController: AutoCompletionViewController, UITabl
             
         case HIGHLIGHT_INDEX:
             let cell = tableView.dequeueReusableCellWithIdentifier("highlightCell", forIndexPath: indexPath) as! HighlightTableViewCell
-            
+            cell.highlightLabel.text = "item_details_highlight".localized
+            cell.highlightSwitch.on = currentlyHighlighted
+            if let primaryColor = UIColor(resourceName: "primary_color") {
+                cell.highlightSwitch.onTintColor = primaryColor
+            }
             return cell
             
         case BRAND_INDEX:
             let cell = tableView.dequeueReusableCellWithIdentifier("brandCell", forIndexPath: indexPath) as! BrandTableViewCell
-            
+            cell.brandLabel.text = "item_details_brand".localized
+            if self.brandTextField == nil {
+                self.brandTextField = cell.brandTextField
+                self.brandTextField!.delegate = self
+                initializeAutoCompletionTextField(self.brandTextField!, withDataSource: self)
+            }
+            if let brand = currentBrand {
+                cell.brandTextField.text = brand
+            }
             return cell
         
         case COMMENT_INDEX:
             let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! CommentTableViewCell
-            
+            cell.commentLabel.text = "item_details_comment".localized
+            if self.commentTextField == nil {
+                self.commentTextField = cell.commentTextField
+                self.commentTextField!.delegate = self
+            }
+            if let comment = currentComment {
+                cell.commentTextField.text = comment
+            }
             return cell
         
         default: // GROUP_INDEX:
             let cell = tableView.dequeueReusableCellWithIdentifier("groupCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = "item_details_group".localized
+            cell.detailTextLabel?.text = currentGroup.name
             return cell
         }
     }
@@ -184,6 +242,20 @@ class AlternativeItemDetailsViewController: AutoCompletionViewController, UITabl
                     selectGroup(group, animated: true)
                 }
             }
+        } else if (textField === brandTextField) {
+            let brand = textField.text
+            if brand.isEmpty {
+                self.currentBrand = nil
+            } else {
+                self.currentBrand = brand
+            }
+        } else if (textField === commentTextField) {
+            let comment = textField.text
+            if comment.isEmpty {
+                self.currentComment = nil
+            } else {
+                self.currentComment = comment
+            }
         }
     }
     
@@ -219,6 +291,10 @@ class AlternativeItemDetailsViewController: AutoCompletionViewController, UITabl
     }
 
     // MARK: Actions
+    @IBAction func highlightSwichChanged(sender: UISwitch) {
+        self.currentlyHighlighted = sender.on
+    }
+    
     private func selectGroup(group: Group, animated: Bool) {
         self.currentGroup = group
         let animation = animated ? UITableViewRowAnimation.Automatic : UITableViewRowAnimation.None
