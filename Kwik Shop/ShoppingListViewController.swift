@@ -571,7 +571,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         notBoughtItems.sort { (first: Item, second: Item) -> Bool in
             let firstName = first.name
             let secondName = second.name
-            return firstName < secondName
+            return firstName.caseInsensitiveCompare(secondName) == .OrderedAscending
         }
         shoppingList.notBoughtItems = notBoughtItems
         shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows()!, withRowAnimation: UITableViewRowAnimation.Automatic)

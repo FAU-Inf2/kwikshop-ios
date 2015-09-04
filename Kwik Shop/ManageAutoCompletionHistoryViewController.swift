@@ -44,10 +44,14 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
 
     override func viewWillAppear(animated: Bool) {
         if manageItemNameCompletion! {
-            sortedData = autoCompletionHelper.allAutoCompletionItemNames.sorted({$0 < $1})
+            sortedData = autoCompletionHelper.allAutoCompletionItemNames.sorted(isOrderedBefore)
         } else {
-            sortedData = autoCompletionHelper.allAutoCompletionBrandNames.sorted({$0 < $1})
+            sortedData = autoCompletionHelper.allAutoCompletionBrandNames.sorted(isOrderedBefore)
         }
+    }
+    
+    private func isOrderedBefore(first: String, second: String) -> Bool {
+        return first.caseInsensitiveCompare(second) == .OrderedAscending
     }
     
     override func didReceiveMemoryWarning() {
