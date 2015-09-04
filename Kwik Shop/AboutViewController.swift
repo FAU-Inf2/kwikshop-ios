@@ -42,7 +42,7 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
         let kwikShopAndroidDescription = "Kwik Shop Android App"
         let kwikShopAndroidLink = "https://github.com/FAU-Inf2/kwikshop-android"
         let kwikShopAndroidLicense = ", licensed under the MIT License, "
-        let somePortionsEnd = "were used in this application"
+        let somePortionsEnd = "were adopted to Swift and used in this application"
         
         let tabBarIconsDescription = "The tab bar icons were licensed by "
         let tabBarIconsLink = "https://icons8.com"
