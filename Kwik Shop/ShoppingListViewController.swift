@@ -62,6 +62,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = shoppingList.name
+        
         quickAddButton.setTitle("shopping_list_quick_add_button".localized, forState: UIControlState.Normal)
         sortButton.title = "sorting_sort".localized
         
