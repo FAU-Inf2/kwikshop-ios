@@ -40,6 +40,7 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
             doneButton.enabled = false
         } else if let list = shoppingList {
             nameTextField.text = list.name
+            self.title = list.name
         }
         
         // close keyboard when user taps on the view
