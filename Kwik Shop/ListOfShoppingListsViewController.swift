@@ -26,6 +26,9 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         shoppingListsTableView.delegate = self
         shoppingListsTableView.dataSource = self
         
+        shoppingListsTableView.estimatedRowHeight = 44.0
+        shoppingListsTableView.rowHeight = UITableViewAutomaticDimension
+        
         if shoppingLists.isEmpty {
             loadSampleData()
         }
@@ -118,6 +121,9 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         let shoppingList = shoppingLists[indexPath.row]
         
         cell.nameLabel.text = shoppingList.name
+        cell.nameLabel.numberOfLines = 0
+        cell.nameLabel.lineBreakMode = .ByWordWrapping
+        cell.nameLabel.sizeToFit()
         
         let numberOfItems = shoppingList.items.count
         var numberOfItemsText = "\(numberOfItems) "
@@ -135,6 +141,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
         let longPress = UILongPressGestureRecognizer(target: self, action: "handleGesture:")
         cell.addGestureRecognizer(longPress)
         
+        cell.updateConstraints()
 
         return cell
     }
