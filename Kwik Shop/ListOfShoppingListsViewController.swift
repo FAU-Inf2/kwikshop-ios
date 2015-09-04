@@ -206,6 +206,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
                     let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
                     shoppingLists.append(shoppingList)
                     shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    shoppingListsTableView.selectRowAtIndexPath(newIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
                     dbHelper.saveData()
                     self.goToShoppingList = true
                 }
