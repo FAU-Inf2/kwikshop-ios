@@ -268,18 +268,10 @@
 		3AE10D881B711C6800E644D1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */,
-				3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */,
-				3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */,
-				3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */,
-				3ADCB0161B68D89B00BA963C /* ItemDetailsViewController.swift */,
-				3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */,
-				3AF132DB1B9611880050FA46 /* SettingsViewController.swift */,
-				3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */,
-				3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */,
-				3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift */,
-				3AE65E7C1B96E9B500C1190E /* LanguageSelectionViewController.swift */,
-				3ADFE75B1B94793300AD2E81 /* ResizingViewController.swift */,
+				3AEBD9711B99A13400B06CB7 /* Base classes */,
+				3AEBD9721B99A14A00B06CB7 /* Settings */,
+				3AEBD9731B99A16100B06CB7 /* About */,
+				3AEBD9741B99A16E00B06CB7 /* Shopping */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -323,6 +315,46 @@
 				3AE6EEFE1B875DC00061F1A6 /* AutoCompleteTextField.swift */,
 			);
 			name = "Auto Completion";
+			sourceTree = "<group>";
+		};
+		3AEBD9711B99A13400B06CB7 /* Base classes */ = {
+			isa = PBXGroup;
+			children = (
+				3AE10D8B1B7122BE00E644D1 /* NavigationController.swift */,
+				3AEC4A0F1B8B314900CF87AD /* AutoCompletionViewController.swift */,
+				3AE802F11B8CBD1D00533D83 /* TabBarViewController.swift */,
+				3ADFE75B1B94793300AD2E81 /* ResizingViewController.swift */,
+			);
+			name = "Base classes";
+			sourceTree = "<group>";
+		};
+		3AEBD9721B99A14A00B06CB7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3AF132DB1B9611880050FA46 /* SettingsViewController.swift */,
+				3ADF5E991B8DF5B8004767A5 /* ManageAutoCompletionHistoryViewController.swift */,
+				3AE65E7C1B96E9B500C1190E /* LanguageSelectionViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		3AEBD9731B99A16100B06CB7 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				3AE802ED1B8C4DC700533D83 /* AboutViewController.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		3AEBD9741B99A16E00B06CB7 /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				3AF5966A1B74E61600B7D05F /* ListOfShoppingListsViewController.swift */,
+				3AE671461B75FE2A00DE47D5 /* ShoppingListDetailsViewController.swift */,
+				3AE10D841B711A1C00E644D1 /* ShoppingListViewController.swift */,
+				3ADCB0161B68D89B00BA963C /* ItemDetailsViewController.swift */,
+			);
+			name = Shopping;
 			sourceTree = "<group>";
 		};
 		BE14752F429065AE1EB8B813 /* Frameworks */ = {
