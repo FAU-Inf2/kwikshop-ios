@@ -193,7 +193,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         } else {
             return
         }
-        scrollView.contentOffset = scrollToPoint
+        scrollView.setContentOffset(scrollToPoint, animated: true)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
