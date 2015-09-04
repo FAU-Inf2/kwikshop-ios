@@ -188,6 +188,10 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             cell.amountLabel.text = amountText
             
             cell.nameLabel.text = item.name
+            
+            cell.nameLabel.numberOfLines = 0
+            cell.nameLabel.lineBreakMode = .ByWordWrapping
+            
             if item.highlighted {
                 cell.nameLabel.highlightedTextColor = UIColor.redColor()
                 cell.nameLabel.highlighted = true
@@ -210,6 +214,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             cell.groupLabel.text = ""
             cell.groupBackgroundLabel.backgroundColor = nil
         }
+        
+        cell.updateConstraints()
         return cell
     }
     
