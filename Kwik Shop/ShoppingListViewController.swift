@@ -514,7 +514,9 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 dbHelper.deleteItem(item)
                 updateModifyDate()
                 saveToDatabase()
-                shoppingListTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Bottom)
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                shoppingListTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Bottom)
+                shoppingListTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
                 return
             }
         }
@@ -549,6 +551,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         updateModifyDate()
         autoCompletionHelper.createOrUpdateAutoCompletionDataForItem(item)
         saveToDatabase()
+        shoppingListTableView.scrollToRowAtIndexPath(newIndexPath, atScrollPosition: .None, animated: true)
     }
     
     @IBAction func sortButtonPressed(sender: UIBarButtonItem) {
