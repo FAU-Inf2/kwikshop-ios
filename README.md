@@ -43,4 +43,4 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 - The tab bar icons were licensed by [Icons8](https://icons8.com) under the [CC BY-ND 3.0](https://creativecommons.org/licenses/by-nd/3.0/) license.
 
-- Some portions of the [Kwik Shop Android App](https://github.com/FAU-Inf2/kwikshop-android), licensed under the MIT License, were used in this application
+- Some portions of the [Kwik Shop Android App](https://github.com/FAU-Inf2/kwikshop-android), licensed under the MIT License, were adopted to swift and used in this application
