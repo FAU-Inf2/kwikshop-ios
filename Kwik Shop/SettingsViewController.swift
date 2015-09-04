@@ -36,7 +36,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if let indexPath = settingsTableView.indexPathForSelectedRow() {
             settingsTableView.deselectRowAtIndexPath(indexPath, animated: animated)
         }
-        settingsTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: LANGUAGE_SECTION)], withRowAnimation: .None)
+        if LANGUAGE_SELECTION_ENABLED {
+            settingsTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: LANGUAGE_SECTION)], withRowAnimation: .None)
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
