@@ -45,8 +45,13 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     
     func loadFromDatabase() {
         if let shoppingLists = dbHelper.loadShoppingLists() {
-            self.shoppingLists = shoppingLists
+            let sortedShoppingLists = shoppingLists.sorted(sortByDate)
+            self.shoppingLists = sortedShoppingLists
         }
+    }
+    
+    private func sortByDate(firstList: ShoppingList, secondList: ShoppingList) -> Bool {
+        return firstList.lastModifiedDate > secondList.lastModifiedDate
     }
     
     func loadSampleData() {
@@ -170,7 +175,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
                 indexPath = shoppingListsTableView.indexPathForCell(selectedShoppingListCell)!
             } else {
                 // a new shopping list has just been created
-                indexPath = NSIndexPath(forRow: shoppingLists.count - 1, inSection: 0)
+                indexPath = NSIndexPath(forRow: 0, inSection: 0)
             }
             let selectedShoppingList = shoppingLists[indexPath.row]
             shoppingListViewController.shoppingList = selectedShoppingList
@@ -184,7 +189,10 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
             // shopping list could have new items
             if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow() {
                 shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList
-                shoppingListsTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                self.shoppingLists.sort(sortByDate)
+                if let visibleRows = shoppingListsTableView.indexPathsForVisibleRows() {
+                    shoppingListsTableView.reloadRowsAtIndexPaths(visibleRows, withRowAnimation: .None)
+                }
             }
         }
     }
@@ -203,8 +211,8 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
                         assertionFailure("Returning from shopping list details for an existing item allthough no table row was selected")
                     }
                 } else {
-                    let newIndexPath = NSIndexPath(forRow: shoppingLists.count, inSection: 0)
-                    shoppingLists.append(shoppingList)
+                    let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+                    shoppingLists.insert(shoppingList, atIndex: 0)
                     shoppingListsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
                     shoppingListsTableView.selectRowAtIndexPath(newIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
                     dbHelper.saveData()
