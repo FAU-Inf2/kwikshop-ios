@@ -340,6 +340,7 @@
                         <outlet property="highlightSwitch" destination="PRf-98-Brc" id="XhW-oB-DEx"/>
                         <outlet property="itemNameTextField" destination="Psa-ch-ant" id="BQL-gl-V4o"/>
                         <outlet property="saveButton" destination="fQ0-3c-R3n" id="Xnq-OC-3nz"/>
+                        <outlet property="scrollView" destination="TPV-7C-344" id="C3g-gM-J5k"/>
                         <outlet property="scrollViewBottomConstraint" destination="Cyz-hy-Bv0" id="NCR-BO-SNN"/>
                         <outlet property="scrollViewToolbarConstraint" destination="ZDE-BA-xrE" id="9Ec-zo-MWM"/>
                         <outlet property="toolBar" destination="4vm-Np-9NP" id="zur-Zf-Yfj"/>

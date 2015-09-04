@@ -26,6 +26,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var groupPicker: UIPickerView!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewToolbarConstraint: NSLayoutConstraint!
     @IBOutlet weak var groupPickerBottomLayoutConstraint: NSLayoutConstraint!
@@ -175,6 +176,24 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        let scrollToPoint : CGPoint
+        if textField === itemNameTextField {
+            //let position = textField.frame.origin
+            //let point = CGPoint(x: 0, y: position.y)
+            scrollToPoint = CGPoint(x: 0, y: 0)
+        } else if textField === brandTextField{
+            let labelPosition = brandLabel.frame.origin
+            scrollToPoint = CGPoint(x: 0, y: labelPosition.y)
+        } else if textField === commentTextField {
+            let labelPosition = commentLabel.frame.origin
+            scrollToPoint = CGPoint(x: 0, y: labelPosition.y)
+        } else {
+            return
+        }
+        scrollView.contentOffset = scrollToPoint
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
