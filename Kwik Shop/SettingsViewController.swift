@@ -13,8 +13,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: Properties
     @IBOutlet weak var settingsTableView : UITableView!
     
-    private let LANGUAGE_SECTION = 0
-    private let AUTOCOMPLETION_SECTION = 1
+    private let LANGUAGE_SELECTION_ENABLED = false
+    private var LANGUAGE_SECTION : Int {
+        return LANGUAGE_SELECTION_ENABLED ? 0 : -1
+    }
+    private var AUTOCOMPLETION_SECTION : Int {
+        return LANGUAGE_SELECTION_ENABLED ? 1 : 0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +40,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // Return the number of sections.
-        return 2
+        return LANGUAGE_SELECTION_ENABLED ? 2 : 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
