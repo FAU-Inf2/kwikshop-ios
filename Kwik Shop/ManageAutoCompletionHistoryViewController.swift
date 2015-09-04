@@ -26,6 +26,7 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     }
 
     private let autoCompletionHelper = AutoCompletionHelper.instance
+    private var sortedData : [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,14 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        if manageItemNameCompletion! {
+            sortedData = autoCompletionHelper.allAutoCompletionItemNames.sorted({$0 < $1})
+        } else {
+            sortedData = autoCompletionHelper.allAutoCompletionBrandNames.sorted({$0 < $1})
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,25 +66,14 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if manageItemNameCompletion! {
-            return autoCompletionHelper.allAutoCompletionItemNames.count
-        } else {
-            return autoCompletionHelper.allAutoCompletionBrandNames.count
-        }
+        return sortedData.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("autoCompletionDataCell", forIndexPath: indexPath) as! UITableViewCell
         
-        let text : String
-        if manageItemNameCompletion! {
-            text = autoCompletionHelper.allAutoCompletionItemNames[indexPath.row]
-        } else {
-            text = autoCompletionHelper.allAutoCompletionBrandNames[indexPath.row]
-        }
-        
         // Configure the cell...
-        cell.textLabel?.text = text
+        cell.textLabel?.text = sortedData[indexPath.row]
         
         return cell
     }
@@ -93,10 +91,11 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            let nameToDelete = sortedData.removeAtIndex(indexPath.row)
             if manageItemNameCompletion! {
-                autoCompletionHelper.deleteAutocompletionDataAtIndex(indexPath.row)
+                autoCompletionHelper.deleteAutocompletionDataWithItemName(nameToDelete)
             } else {
-                autoCompletionHelper.deleteAutocompletionBrandDataAtIndex(indexPath.row)
+                autoCompletionHelper.deleteAutocompletionBrandDataWithName(nameToDelete)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {

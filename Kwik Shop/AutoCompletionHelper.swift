@@ -231,6 +231,12 @@ class AutoCompletionHelper {
         deleteAutocompletionDataAtIndex(index, andSave: true)
     }
     
+    func deleteAutocompletionDataWithItemName(name: String) {
+        if let index = find(itemNames, name) {
+            deleteAutocompletionDataAtIndex(index)
+        }
+    }
+    
     func deleteAllAutoCompletionData() {
         while !itemNames.isEmpty {
             deleteAutocompletionDataAtIndex(0, andSave: false)
@@ -249,6 +255,12 @@ class AutoCompletionHelper {
     
     func deleteAutocompletionBrandDataAtIndex(index: Int) {
         deleteAutocompletionBrandDataAtIndex(index, andSave: true)
+    }
+    
+    func deleteAutocompletionBrandDataWithName(name: String) {
+        if let index = find(brandNames, name) {
+            deleteAutocompletionBrandDataAtIndex(index)
+        }
     }
     
     func deleteAllAutoCompletionBrandData() {
