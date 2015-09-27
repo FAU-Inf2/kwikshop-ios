@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let indexPath = settingsTableView.indexPathForSelectedRow() {
+        if let indexPath = settingsTableView.indexPathForSelectedRow {
             settingsTableView.deselectRowAtIndexPath(indexPath, animated: animated)
         }
         if LANGUAGE_SELECTION_ENABLED {
@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) 
         
         cell.textLabel?.numberOfLines = 2
         
@@ -115,7 +115,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
-        let selectedIndexPath = settingsTableView.indexPathForSelectedRow()!
+        let selectedIndexPath = settingsTableView.indexPathForSelectedRow!
         let row = selectedIndexPath.row
         let section = selectedIndexPath.section
         

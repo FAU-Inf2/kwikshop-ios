@@ -13,9 +13,9 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let shoppingListsItem = self.tabBar.items![0] as! UITabBarItem
-        let settingsItem = self.tabBar.items![1] as! UITabBarItem
-        let aboutItem = self.tabBar.items![2] as! UITabBarItem
+        let shoppingListsItem = self.tabBar.items![0] 
+        let settingsItem = self.tabBar.items![1] 
+        let aboutItem = self.tabBar.items![2] 
         
         shoppingListsItem.title = "navigation_bar_shopping_lists".localized
         settingsItem.title = "navigation_bar_settings".localized

@@ -93,7 +93,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition(
             { [unowned self] (context) -> () in
-                if let indexPaths = self.shoppingListTableView.indexPathsForVisibleRows() {
+                if let indexPaths = self.shoppingListTableView.indexPathsForVisibleRows {
                     self.shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
                 }
             },
@@ -291,8 +291,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         let state = longPress.state
-        var locationInView = longPress.locationInView(shoppingListTableView)
-        var indexPath = shoppingListTableView.indexPathForRowAtPoint(locationInView)
+        let locationInView = longPress.locationInView(shoppingListTableView)
+        let indexPath = shoppingListTableView.indexPathForRowAtPoint(locationInView)
         
         struct My {
             static var cellSnapshot : UIView? = nil
@@ -374,7 +374,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 Path.initialIndexPath = indexPath
             }
         case UIGestureRecognizerState.Ended:
-            if let indexPaths = shoppingListTableView.indexPathsForVisibleRows() {
+            if let indexPaths = shoppingListTableView.indexPathsForVisibleRows {
                 shoppingListTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
             }
             fallthrough
@@ -574,26 +574,26 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     func sortShoppingListByAlphabet(action: UIAlertAction!) {
         self.shoppingList.sortType = SortType.alphabetically
         var notBoughtItems = shoppingList.notBoughtItems
-        notBoughtItems.sort { (first: Item, second: Item) -> Bool in
+        notBoughtItems.sortInPlace { (first: Item, second: Item) -> Bool in
             let firstName = first.name
             let secondName = second.name
             return firstName.caseInsensitiveCompare(secondName) == .OrderedAscending
         }
         shoppingList.notBoughtItems = notBoughtItems
-        shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows()!, withRowAnimation: UITableViewRowAnimation.Automatic)
+        shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows!, withRowAnimation: UITableViewRowAnimation.Automatic)
         saveToDatabase()
     }
     
     func sortShoppingListByGroup(action: UIAlertAction!) {
         self.shoppingList.sortType = SortType.group
         var notBoughtItems = shoppingList.notBoughtItems
-        notBoughtItems.sort { (first: Item, second: Item) -> Bool in
+        notBoughtItems.sortInPlace { (first: Item, second: Item) -> Bool in
             let firstGroup = first.group
             let secondGroup = second.group
             return firstGroup.name < secondGroup.name
         }
         shoppingList.notBoughtItems = notBoughtItems
-        shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows()!, withRowAnimation: UITableViewRowAnimation.Automatic)
+        shoppingListTableView.reloadRowsAtIndexPaths(shoppingListTableView.indexPathsForVisibleRows!, withRowAnimation: UITableViewRowAnimation.Automatic)
         saveToDatabase()
     }
 
@@ -606,7 +606,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         if segue.identifier == "ShowItemDetails" {
             let itemDetailsViewController = segue.destinationViewController as! ItemDetailsViewController
             if let selectedItemCell = sender as? ItemTableViewCell {
-                selectedIndexPath = shoppingListTableView.indexPathForSelectedRow()
+                selectedIndexPath = shoppingListTableView.indexPathForSelectedRow
                 
                 let indexPath = shoppingListTableView.indexPathForCell(selectedItemCell)!
                 let index = getIndexForIndexPath(indexPath)
@@ -727,7 +727,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         if text.isEmpty {
             valid = false
         } else {
-            var digitsAndSpaces = NSMutableCharacterSet.decimalDigitCharacterSet()
+            let digitsAndSpaces = NSMutableCharacterSet.decimalDigitCharacterSet()
             digitsAndSpaces.formUnionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
             let textCharSet = NSCharacterSet(charactersInString: text)
             if digitsAndSpaces.isSupersetOfSet(textCharSet) {

@@ -44,9 +44,9 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
 
     override func viewWillAppear(animated: Bool) {
         if manageItemNameCompletion! {
-            sortedData = autoCompletionHelper.allAutoCompletionItemNames.sorted(isOrderedBefore)
+            sortedData = autoCompletionHelper.allAutoCompletionItemNames.sort(isOrderedBefore)
         } else {
-            sortedData = autoCompletionHelper.allAutoCompletionBrandNames.sorted(isOrderedBefore)
+            sortedData = autoCompletionHelper.allAutoCompletionBrandNames.sort(isOrderedBefore)
         }
     }
     
@@ -74,7 +74,7 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("autoCompletionDataCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("autoCompletionDataCell", forIndexPath: indexPath) 
         
         // Configure the cell...
         cell.textLabel?.text = sortedData[indexPath.row]
@@ -124,7 +124,7 @@ class ManageAutoCompletionHistoryViewController: UIViewController, UITableViewDa
 
     // MARK: - Navigation
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
         if sender === deleteButton {
             let alert = DeleteConfirmationAlertHelper.getDeleteConfirmationAlertWithDeleteHandler(

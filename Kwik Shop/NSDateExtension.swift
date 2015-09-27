@@ -17,10 +17,10 @@ extension NSDate {
             let calendar = NSCalendar.currentCalendar()
             let todayAtMidnight = calendar.startOfDayForDate(now)
             let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
-                .CalendarUnitDay,
+                .Day,
                 value: 1,
                 toDate: todayAtMidnight,
-                options: NSCalendarOptions(0))
+                options: NSCalendarOptions(rawValue: 0))
             
             if self < tomorrow! && self >= todayAtMidnight{
                 //self is today

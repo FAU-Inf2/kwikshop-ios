@@ -131,7 +131,7 @@ class ShoppingList : NSObject {
         return lists
     }
     
-    func swapItemsAtIndices(#initialIndex: Int?, newIndex: Int?){
+    func swapItemsAtIndices(initialIndex initialIndex: Int?, newIndex: Int?){
         var index : Int! = nil
         if let firstIndex = initialIndex {
             // moving an item

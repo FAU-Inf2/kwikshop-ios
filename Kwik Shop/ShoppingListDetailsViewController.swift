@@ -103,7 +103,7 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
         if sender === deleteButton {            
             let alert = DeleteConfirmationAlertHelper.getDeleteConfirmationAlertWithDeleteHandler(

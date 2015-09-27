@@ -420,6 +420,8 @@
 		3A6ABDAC1B64F492009FD7BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "FAU-Inf2";
 				TargetAttributes = {

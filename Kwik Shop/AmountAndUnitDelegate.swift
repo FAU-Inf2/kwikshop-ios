@@ -108,12 +108,12 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
                         // -> the picker is at position 0 (amount nil) and should be at position 1 (amount 1)
                         pickerView.selectRow(1, inComponent: AMOUNT_COMPONENT, animated: false)
                     } else {
-                        var amounts = selectedUnit.allowedPickerAmounts
+                        let amounts = selectedUnit.allowedPickerAmounts
                         var nonNilAmounts = [Int]()
                         for amount in amounts {
                             nonNilAmounts.append(amount ?? -1)
                         }
-                        if let index = find(nonNilAmounts, oldAmount!) {
+                        if let index = nonNilAmounts.indexOf(oldAmount!) {
                             pickerView.selectRow(index, inComponent: AMOUNT_COMPONENT, animated: false)
                         } else {
                             // the amount that was selected before can't be selected for the current unit
@@ -130,7 +130,7 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func selectAmount(amount: Int?, andUnit unit: Unit, forPickerView pickerView: UIPickerView, animated: Bool) {
-        let unitRow = find(unitData, unit)!
+        let unitRow = unitData.indexOf(unit)!
         pickerView.selectRow(unitRow, inComponent: UNIT_COMPONENT, animated: animated)
         self.lastSelectedUnit = unit
         if amount == nil {
@@ -143,7 +143,7 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
             for amount in amounts {
                 nonNilAmounts.append(amount ?? -1)
             }
-            if let index = find(nonNilAmounts, amount!) {
+            if let index = nonNilAmounts.indexOf(amount!) {
                 pickerView.selectRow(index, inComponent: AMOUNT_COMPONENT, animated: animated)
                 self.lastSelectedAmount = amounts[index]
             } else {
@@ -155,7 +155,7 @@ class AmountAndUnitDelegate : NSObject, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func selectUnit(unit: Unit, forPickerView pickerView: UIPickerView, animated: Bool) {
-        let unitRow = find(unitData, unit)!
+        let unitRow = unitData.indexOf(unit)!
         pickerView.selectRow(unitRow, inComponent: UNIT_COMPONENT, animated: animated)
         self.lastSelectedUnit = unit
     }

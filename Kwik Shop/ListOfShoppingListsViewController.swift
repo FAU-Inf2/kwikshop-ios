@@ -45,7 +45,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     
     func loadFromDatabase() {
         if let shoppingLists = dbHelper.loadShoppingLists() {
-            let sortedShoppingLists = shoppingLists.sorted(sortByDate)
+            let sortedShoppingLists = shoppingLists.sort(sortByDate)
             self.shoppingLists = sortedShoppingLists
         }
     }
@@ -187,10 +187,10 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     func unwindToListOfShoppingLists(sender: UIViewController) {
         if let sourceViewController = sender as? ShoppingListViewController, shoppingList = sourceViewController.shoppingList {
             // shopping list could have new items
-            if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow() {
+            if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow {
                 shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList
-                self.shoppingLists.sort(sortByDate)
-                if let visibleRows = shoppingListsTableView.indexPathsForVisibleRows() {
+                self.shoppingLists.sortInPlace(sortByDate)
+                if let visibleRows = shoppingListsTableView.indexPathsForVisibleRows {
                     shoppingListsTableView.reloadRowsAtIndexPaths(visibleRows, withRowAnimation: .None)
                 }
             }

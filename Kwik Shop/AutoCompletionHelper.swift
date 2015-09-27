@@ -97,7 +97,7 @@ class AutoCompletionHelper {
     
     func createOrUpdateAutoCompletionDataForName(name: String, unit: Unit?, group: Group?) {
         var newValue = false
-        if !contains(itemNames, name) {
+        if !itemNames.contains(name) {
             itemNames.append(name)
             newValue = true
         }
@@ -124,7 +124,7 @@ class AutoCompletionHelper {
     
     func createOrUpdateAutoCompletionBrandDataForBrand(brand: String) {
         let data : AutoCompletionBrandData
-        if !contains(brandNames, brand) {
+        if !brandNames.contains(brand) {
             brandNames.append(brand)
             data = NSEntityDescription.insertNewObjectForEntityForName("AutoCompletionBrandData", inManagedObjectContext: managedObjectContext) as! AutoCompletionBrandData
         } else {
@@ -232,7 +232,7 @@ class AutoCompletionHelper {
     }
     
     func deleteAutocompletionDataWithItemName(name: String) {
-        if let index = find(itemNames, name) {
+        if let index = itemNames.indexOf(name) {
             deleteAutocompletionDataAtIndex(index)
         }
     }
@@ -258,7 +258,7 @@ class AutoCompletionHelper {
     }
     
     func deleteAutocompletionBrandDataWithName(name: String) {
-        if let index = find(brandNames, name) {
+        if let index = brandNames.indexOf(name) {
             deleteAutocompletionBrandDataAtIndex(index)
         }
     }

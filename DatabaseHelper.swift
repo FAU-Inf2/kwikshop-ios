@@ -31,7 +31,7 @@ class DatabaseHelper: NSObject {
         let fetchRequest = NSFetchRequest(entityName: "Item")
         var result = [Item]()
         
-        if let fetchResults = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedItem] {
+        if let fetchResults = (try? self.managedObjectContext.executeFetchRequest(fetchRequest)) as? [ManagedItem] {
             for managed in fetchResults {
                 if let item = managed.item {
                     result.append(item)
@@ -42,14 +42,14 @@ class DatabaseHelper: NSObject {
             }
         }
         
-        println("Number of items in DB: \(result.count)")
+        print("Number of items in DB: \(result.count)")
     }
     
     private func printNumberOfUnitsInDB() {
         let fetchRequest = NSFetchRequest(entityName: "Unit")
         var result = [Unit]()
         
-        if let fetchResults = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedUnit] {
+        if let fetchResults = (try? self.managedObjectContext.executeFetchRequest(fetchRequest)) as? [ManagedUnit] {
             for managed in fetchResults {
                 if let unit = managed.unit {
                     result.append(unit)
@@ -60,14 +60,14 @@ class DatabaseHelper: NSObject {
             }
         }
         
-        println("Number of units in DB: \(result.count)")
+        print("Number of units in DB: \(result.count)")
     }
     
     private func printNumberOfGroupsInDB() {
         let fetchRequest = NSFetchRequest(entityName: "Group")
         var result = [Group]()
         
-        if let fetchResults = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedGroup] {
+        if let fetchResults = (try? self.managedObjectContext.executeFetchRequest(fetchRequest)) as? [ManagedGroup] {
             for managed in fetchResults {
                 if let group = managed.group {
                     result.append(group)
@@ -78,7 +78,7 @@ class DatabaseHelper: NSObject {
             }
         }
         
-        println("Number of groups in DB: \(result.count)")
+        print("Number of groups in DB: \(result.count)")
     }
     
     func loadShoppingLists() -> [ShoppingList]? {
@@ -86,7 +86,7 @@ class DatabaseHelper: NSObject {
         var result : [ShoppingList]? = nil
         
         // Execute the fetch request, and cast the results to an array of ShoppingList objects
-        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedShoppingList] {
+        if let fetchResults = (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [ManagedShoppingList] {
             let shoppingLists = ShoppingList.getShoppingListsFromManagedShoppingLists(fetchResults)
             result = shoppingLists
         }
@@ -98,7 +98,7 @@ class DatabaseHelper: NSObject {
         var result : [Group]? = nil
         
         // Execute the fetch request, and cast the results to an array of Group objects
-        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedGroup] {
+        if let fetchResults = (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [ManagedGroup] {
             result = [Group]()
             for managedGroup in fetchResults {
                 if let group = managedGroup.group {
@@ -116,7 +116,7 @@ class DatabaseHelper: NSObject {
         var result : [Unit]? = nil
         
         // Execute the fetch request, and cast the results to an array of Unit objects
-        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ManagedUnit] {
+        if let fetchResults = (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [ManagedUnit] {
             result = [Unit]()
             for managedUnit in fetchResults {
                 if let unit = managedUnit.unit {
@@ -131,16 +131,21 @@ class DatabaseHelper: NSObject {
 
     func loadAutoCompletionData() -> [AutoCompletionData]? {
         let fetchRequest = NSFetchRequest(entityName: "AutoCompletionData")
-        return managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [AutoCompletionData]
+        return (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [AutoCompletionData]
     }
     
     func loadAutoCompletionBrandData() -> [AutoCompletionBrandData]? {
         let fetchRequest = NSFetchRequest(entityName: "AutoCompletionBrandData")
-        return managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [AutoCompletionBrandData]
+        return (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [AutoCompletionBrandData]
     }
     
     func saveData() -> Bool {
-        return managedObjectContext.save(nil)
+        do {
+            try managedObjectContext.save()
+            return true
+        } catch _ {
+            return false
+        }
     }
     
     func deleteItem(item : Item) {

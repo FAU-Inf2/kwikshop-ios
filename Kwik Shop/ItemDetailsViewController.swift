@@ -112,7 +112,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             }
             
             let group = item.group
-            if let row = find(groupDelegate.data, group) {
+            if let row = groupDelegate.data.indexOf(group) {
                 groupPicker.selectRow(row, inComponent: GROUP_COMPONENT, animated: false)
             }
 
@@ -141,7 +141,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     }
     
     private func selectGroup(group: Group, animated: Bool) {
-        if let row = find(groupDelegate.data, group) {
+        if let row = groupDelegate.data.indexOf(group) {
             groupPicker.selectRow(row, inComponent: GROUP_COMPONENT, animated: animated)
             groupHasChanged = true
         }
@@ -259,7 +259,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         // if a confirmation dialoge should be displayed before the item is deleted: here is the place to do so
         if sender === deleteButton {            
             let alert = DeleteConfirmationAlertHelper.getDeleteConfirmationAlertWithDeleteHandler(

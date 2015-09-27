@@ -24,7 +24,7 @@ class AutoCompletionViewController: ResizingViewController {
     }
     
     func initializeAutoCompletionTextField(textField: MLPAutoCompleteTextField, withDataSource dataSource: MLPAutoCompleteTextFieldDataSource) {
-        if !contains(autoCompleteTextFields, textField) {
+        if !autoCompleteTextFields.contains(textField) {
             autoCompleteTextFields.append(textField)
         }
         textField.autoCompleteDataSource = dataSource

@@ -62,7 +62,7 @@ class LanguageSelectionViewController: UIViewController, UITableViewDataSource, 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("languageCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("languageCell", forIndexPath: indexPath) 
         
         // Configure the cell...
         cell.textLabel?.text = languageStrings[indexPath.row]
@@ -98,7 +98,7 @@ class LanguageSelectionViewController: UIViewController, UITableViewDataSource, 
         
         alert.popoverPresentationController?.sourceRect = tableView.cellForRowAtIndexPath(indexPath)!.bounds
         alert.popoverPresentationController?.sourceView = tableView.cellForRowAtIndexPath(indexPath)!
-        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Down | UIPopoverArrowDirection.Up
+        alert.popoverPresentationController?.permittedArrowDirections = [UIPopoverArrowDirection.Down, UIPopoverArrowDirection.Up]
         
         presentViewController(alert, animated: true, completion: nil)
     }

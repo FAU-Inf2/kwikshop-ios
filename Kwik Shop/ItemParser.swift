@@ -24,7 +24,7 @@ class ItemParser {
         }
         
         let first = words.first!
-        if let amount = first.toInt() {
+        if let amount = Int(first) {
             // amount found in the first word
             if count == 1 {
                 return (nil, amount, nil) // only amount was entered
@@ -59,7 +59,7 @@ class ItemParser {
         }
         
         if count > 1 {
-            if let amount = words.last!.toInt() {
+            if let amount = Int(words.last!) {
                 // amount found in the last word
                 var itemName = ""
                 for index in 0 ..< count - 1 {
@@ -75,7 +75,7 @@ class ItemParser {
         }
         
         if count > 2 {
-            if let amount = words[count - 2].toInt() {
+            if let amount = Int(words[count - 2]) {
                 // amount found in the second last word, if last word is unit, this is ok
                 if let unit = findUnitForString(words.last!, withAmountSpecified: amount) {
                     // amount and unit are the last two words

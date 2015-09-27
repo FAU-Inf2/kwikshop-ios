@@ -36,7 +36,7 @@ class AutoCompleteTextField: MLPAutoCompleteTextField, MLPAutoCompleteTextFieldD
         return false
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         super.autoCompleteDelegate = self
     }
