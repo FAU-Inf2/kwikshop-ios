@@ -292,7 +292,6 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         let state = longPress.state
         let locationInView = longPress.locationInView(shoppingListTableView)
-        let indexPath = shoppingListTableView.indexPathForRowAtPoint(locationInView)
         
         struct My {
             static var cellSnapshot : UIView? = nil
@@ -301,6 +300,23 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             static var initialIndexPath : NSIndexPath? = nil
         }
         
+        let indexPath : NSIndexPath?
+        let indexPathOfLocationInView = shoppingListTableView.indexPathForRowAtPoint(locationInView)
+        if let newRow = indexPathOfLocationInView?.row {
+            if let oldRow = Path.initialIndexPath?.row {
+                if (newRow < oldRow) {
+                    indexPath = NSIndexPath(forRow: oldRow - 1, inSection: indexPathOfLocationInView!.section)
+                } else if (newRow == oldRow) {
+                    indexPath = NSIndexPath(forRow: oldRow, inSection: indexPathOfLocationInView!.section)
+                } else {
+                    indexPath = NSIndexPath(forRow: oldRow + 1, inSection: indexPathOfLocationInView!.section)
+                }
+            } else {
+                indexPath = indexPathOfLocationInView
+            }
+        } else {
+            indexPath = nil
+        }
         
         switch state {
         case UIGestureRecognizerState.Began:
