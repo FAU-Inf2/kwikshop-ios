@@ -185,7 +185,7 @@ class ListOfShoppingListsViewController: UIViewController, UITableViewDataSource
     }
         
     func unwindToListOfShoppingLists(sender: UIViewController) {
-        if let sourceViewController = sender as? ShoppingListViewController, shoppingList = sourceViewController.shoppingList {
+        if let sourceViewController = sender as? ShoppingListViewController {
             // shopping list could have new items
             if let selectedIndexPath = shoppingListsTableView.indexPathForSelectedRow {
                 shoppingLists[selectedIndexPath.row] = sourceViewController.shoppingList

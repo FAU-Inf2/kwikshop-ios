@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class Group : NSObject, Equatable {
+class Group : NSObject {
 
     private static var managedObjectContext : NSManagedObjectContext?
     

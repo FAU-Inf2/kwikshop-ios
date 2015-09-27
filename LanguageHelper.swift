@@ -43,7 +43,7 @@ class LanguageHelper {
         self.languageStrings = ["settings_english".localized, "settings_german".localized, "settings_portuguese".localized]
         
         let languageAbbreviation : String
-        if let storedLanguageAbbreviation = NSUserDefaults.standardUserDefaults().stringArrayForKey("AppleLanguages")?[0] as? String {
+        if let storedLanguageAbbreviation = NSUserDefaults.standardUserDefaults().stringArrayForKey("AppleLanguages")?[0] {
             if let index = languageAbbreviations.indexOf(storedLanguageAbbreviation) {
                 languageAbbreviation = storedLanguageAbbreviation
                 selectedIndex = index
@@ -62,10 +62,9 @@ class LanguageHelper {
     }
     
     private func getPreferredLanguageOrEnglish() -> String {
-        if let systemLanguage = NSLocale.preferredLanguages()[0] as? String {
-            if self.languageAbbreviations.contains(systemLanguage) {
-                return systemLanguage
-            }
+        let systemLanguage = NSLocale.preferredLanguages()[0]
+        if self.languageAbbreviations.contains(systemLanguage) {
+            return systemLanguage
         }
         return "en"
     }

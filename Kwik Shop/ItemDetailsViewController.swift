@@ -123,7 +123,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
         itemNameTextField.delegate = self
         initializeAutoCompletionTextField(itemNameTextField, withDataSource: self)
         
-        checkValidItemName(itemNameTextField.text)
+        checkValidItemName(itemNameTextField.text!)
         commentTextField.delegate = self
         
         brandTextField.delegate = self
@@ -199,16 +199,16 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     func textFieldDidEndEditing(textField: UITextField) {
         if (textField === itemNameTextField) {
             let name = itemNameTextField.text
-            checkValidItemName(name)
+            checkValidItemName(name!)
             navigationItem.title = name
             if newItem {
                 if !unitHasChanged {
-                    if let unit = autoCompletionHelper.getUnitForName(name) {
+                    if let unit = autoCompletionHelper.getUnitForName(name!) {
                         amountAndUnitDelegate.selectUnit(unit, forPickerView: unitPicker, animated: true)
                     }
                 }
                 if !groupHasChanged {
-                    let group = autoCompletionHelper.getGroupForName(name)
+                    let group = autoCompletionHelper.getGroupForName(name!)
                     selectGroup(group, animated: true)
                 }
             }
@@ -217,7 +217,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if textField === itemNameTextField {
-            let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            let text = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
             checkValidItemName(text)
             return true
         } else {
@@ -242,7 +242,7 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
     
     // MARK: UIGestureRecognizerDelegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if touch.view.isDescendantOfView(itemNameTextField.autoCompleteTableView) || touch.view.isDescendantOfView(brandTextField.autoCompleteTableView) {
+        if touch.view!.isDescendantOfView(itemNameTextField.autoCompleteTableView) || touch.view!.isDescendantOfView(brandTextField.autoCompleteTableView) {
             // autocomplete suggestion was tapped
             return false;
         }
@@ -292,9 +292,9 @@ class ItemDetailsViewController : AutoCompletionViewController, UITextFieldDeleg
             let group = groupDelegate.data[groupIndex]
 
             if currentItem == nil {
-                currentItem = Item(name: name, amount: amount, unit: unit, highlighted: highlighted, brand: brand, comment: comment, group: group)
+                currentItem = Item(name: name!, amount: amount, unit: unit, highlighted: highlighted, brand: brand, comment: comment, group: group)
             } else {
-                currentItem!.name = name
+                currentItem!.name = name!
                 currentItem!.amount = amount
                 currentItem!.unit = unit
                 currentItem!.highlighted = highlighted

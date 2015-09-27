@@ -53,7 +53,7 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
         let tabBarIconsLicenseDescriptionEnd = " license."
         
         let defaultFont = UIFont.systemFontOfSize(CGFloat(14))
-        let meta = "<meta name=\"viewport\" content=\"width=device-width\"/>"
+        //let meta = "<meta name=\"viewport\" content=\"width=device-width\"/>"
         let htmlHeader = "<!DOCTYPE html>\n<html><head><style>p,h1,h2,h3,blockquote{font-family: \"\(defaultFont.familyName)\"}</style></head>\n<body>\n"
         let htmlFooter = "</body>\n</html>"
         
@@ -92,7 +92,7 @@ class AboutViewController: UIViewController, UIWebViewDelegate {
                 let orientation = UIApplication.sharedApplication().statusBarOrientation
                 if orientation.isLandscape {
                     self.initialLinkIntercepted = false
-                    self.aboutWebView?.loadHTMLString(self.aboutText, baseURL: nil)
+                    self.aboutWebView?.loadHTMLString(self.aboutText!, baseURL: nil)
                 }
             },
             completion: nil)

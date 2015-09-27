@@ -79,14 +79,14 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         //if (textField === nameTextField) {
-            checkValidName(textField.text)
+            checkValidName(textField.text!)
             navigationItem.title = textField.text
         //}
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         //if (textField === nameTextField) {
-            let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            let text = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
             checkValidName(text)
             return true
         //}
@@ -128,9 +128,9 @@ class ShoppingListDetailsViewController: UIViewController, UITextFieldDelegate {
             shoppingList = nil
         } else {
             if newList {
-                shoppingList = ShoppingList(name: nameTextField.text)
+                shoppingList = ShoppingList(name: nameTextField.text!)
             } else {
-                shoppingList!.name = nameTextField.text
+                shoppingList!.name = nameTextField.text!
             }
         }
         

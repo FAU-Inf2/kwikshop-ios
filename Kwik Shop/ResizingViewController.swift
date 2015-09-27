@@ -34,7 +34,7 @@ class ResizingViewController: UIViewController {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+        if let _ = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
             self.bottomViewLayoutConstraint.constant = bottomViewLayoutConstraintDefaultConstant
         }
     }

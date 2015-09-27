@@ -13,7 +13,7 @@ class AutoCompleteTextField: MLPAutoCompleteTextField, MLPAutoCompleteTextFieldD
     
     private var privateDelegate : MLPAutoCompleteTextFieldDelegate?
     
-    override var autoCompleteDelegate : MLPAutoCompleteTextFieldDelegate! {
+    override var autoCompleteDelegate : MLPAutoCompleteTextFieldDelegate? {
         set {
             if newValue !== self {
                 privateDelegate = newValue

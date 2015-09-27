@@ -244,7 +244,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     
     // MARK: UIGestureRecognizerDelegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if gestureRecognizer === closeKeyboardTapGestureRecognizer && touch.view.isDescendantOfView(quickAddTextField.autoCompleteTableView) {
+        if gestureRecognizer === closeKeyboardTapGestureRecognizer && touch.view!.isDescendantOfView(quickAddTextField.autoCompleteTableView) {
             // autocomplete suggestion was tapped
             return false;
         }
@@ -403,7 +403,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     
     func snapshopOfCell(inputView: UIView) -> UIView {
         UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
-        inputView.layer.renderInContext(UIGraphicsGetCurrentContext())
+        inputView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext() as UIImage
         UIGraphicsEndImageContext()
         let cellSnapshot : UIView = UIImageView(image: image)
@@ -495,7 +495,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
 
     @IBAction func quickAddPressed(sender: UIButton) {
-        if let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text) {
+        if let item = itemParser.getItemWithParsedAmountAndUnitForInput(quickAddTextField.text!) {
             quickAddTextField.text = ""
             quickAddButton.enabled = false
             quickAddTextField.autoCompleteTableViewHidden = true
@@ -616,11 +616,11 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
             }
         }
         else if segue.identifier == "AddItem" {
-            if !quickAddTextField.text.isEmpty {
+            if !quickAddTextField.text!.isEmpty {
                 let navigationController = segue.destinationViewController as! NavigationController
                 let itemDetailsViewController = navigationController.topViewController as! ItemDetailsViewController
-                if !quickAddTextField.text.isEmpty {
-                    if let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text) {
+                if !quickAddTextField.text!.isEmpty {
+                    if let nameAmountAndUnit = itemParser.getNameAmountAndUnitForInput(quickAddTextField.text!) {
                         let item = itemParser.getItemForParsedAmountAndUnit((nameAmountAndUnit.name ?? "", nameAmountAndUnit.amount, nameAmountAndUnit.unit))
                         itemDetailsViewController.currentItem = item
                     }
@@ -686,7 +686,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
-        if quickAddTextField.text.isEmpty {
+        if quickAddTextField.text!.isEmpty {
             closeKeyboard()
         } else {
             quickAddPressed(quickAddButton)
@@ -702,14 +702,13 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        quickAddTextField.autoCompleteTableViewHidden = false
-        let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        let text = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
         checkValidItemName(text)
         return true
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        checkValidItemName(textField.text)
+        checkValidItemName(textField.text!)
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

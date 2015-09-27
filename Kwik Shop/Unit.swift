@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class Unit : NSObject, Equatable{
+class Unit : NSObject{
     
     private static var managedObjectContext : NSManagedObjectContext?
     
