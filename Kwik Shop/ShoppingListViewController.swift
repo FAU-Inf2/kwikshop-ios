@@ -457,7 +457,7 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                     
                 }
             }
-        return itemIsAtRightPosition
+            return itemIsAtRightPosition
         } else {
             // no item is always positioned right
             return true
@@ -672,8 +672,8 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                             // the items are sorted automatically and the edited item is not bought yet
                             notBoughtItems.removeAtIndex(index)
                             shoppingListTableView.deleteRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-                            shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                             addItem(item)
+                            shoppingListTableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                         }
                     } else {
                         // item is to be deleted
