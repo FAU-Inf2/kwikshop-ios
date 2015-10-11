@@ -267,9 +267,14 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                 item.bought = !item.bought
                 
                 if boughtBeforeSwipe {
-                    notBoughtItems.append(item)
-                    let newIndexPath = NSIndexPath(forRow: notBoughtItems.count - 1, inSection: 0)
-                    shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    if (shoppingList.sortType.isManualSorting) {
+                        notBoughtItems.append(item)
+                        let newIndexPath = NSIndexPath(forRow: notBoughtItems.count - 1, inSection: 0)
+                        shoppingListTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    } else {
+                        // the group is sorted automatically, so the item should be inserted at a specific position
+                        addItem(item) // takes care of sorting it right
+                    }
                 } else {
                     boughtItems.append(item)
                     let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
