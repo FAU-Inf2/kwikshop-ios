@@ -275,6 +275,23 @@ class ShoppingListViewController : AutoCompletionViewController, UITableViewData
                     let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
                     let newIndexPaths = getIndexAndIndexPathsForIndexPath(newIndexPath).indexPaths
                     shoppingListTableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Bottom)
+                    
+                    if (shoppingList.sortType.showGroups) {
+                        // update the item before this one (if existent)
+                        let indexPathBefore : NSIndexPath?
+                        if index >= 1 {
+                            indexPathBefore = NSIndexPath(forRow: index, inSection: 0)
+                        } else {
+                            indexPathBefore = nil
+                        }
+                        if indexPathBefore != nil {
+                            shoppingListTableView.reloadRowsAtIndexPaths([indexPathBefore!], withRowAnimation: .None)
+                        } else {
+                            if notBoughtItems.count > 0 {
+                                shoppingListTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+                            }
+                        }
+                    }
                 }
                 updateModifyDate()
                 saveToDatabase()
