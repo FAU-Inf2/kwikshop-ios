@@ -708,7 +708,7 @@
 				INFOPLIST_FILE = "Kwik Shop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-Shop";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.kwikshop.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
@@ -724,7 +724,7 @@
 				INFOPLIST_FILE = "Kwik Shop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-Shop";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.kwikshop.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
@@ -744,7 +744,7 @@
 				);
 				INFOPLIST_FILE = "Kwik ShopTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-ShopTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.kwikshop.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
@@ -766,7 +766,7 @@
 				);
 				INFOPLIST_FILE = "Kwik ShopTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.Kwik-ShopTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.fau.cs.mad.kwikshop.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Kwik_Shop-Bridging-Header.h";
